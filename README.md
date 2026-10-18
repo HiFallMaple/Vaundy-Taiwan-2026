@@ -110,3 +110,7 @@ const CACHE_VERSION = "v1.8.1";   // → 改成下一個版本號
 
 新工作從 `develop` 建立分支，檢查通過後合回 `develop` 預覽。開發及測試部署不調整正式版本號、不要求建立 PR；正式發布另依 `AGENTS.md` 辦理。測試 repo 只存建置產物，不在該處修改程式碼。原有的修復與重構分支保留作為審核紀錄；向原作者貢獻時另從乾淨的 upstream 基底整理相關提交。
 
+
+## 應援資料維護
+
+日本版與韓國版共用合唱範圍、動作、讀音渲染與統計邏輯；各版本的內容、提示與來源集中在 `src/chant/version-data.js`。列表摘要由資料生成，修改應援後執行 `npm run generate:chant-metadata`。格式、沿用規則與驗證指令見 [應援資料維護](docs/chant-data.md)。
