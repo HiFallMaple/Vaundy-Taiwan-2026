@@ -45,7 +45,7 @@ export const JP_CHANT_GUIDES = {
   },
   Backlight: {
     notes: [
-      "副歌一起大聲唱；最後一段兩次都是「悪党ふっ飛ばして」，請特別注意。"
+      "副歌一起大聲唱；最後一段先唱「悪党ぶっ飛ばして」，再唱「悪党ふっ飛ばして」，請特別注意。"
     ],
     chantTimes: [46.5, 59, 126, 139, 193.5, 207],
     chantSegments: [

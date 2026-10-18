@@ -22,6 +22,9 @@
  *   and its reading unchanged; resolving it requires a lyric-text correction.
  */
 export const FURIGANA_CORRECTIONS = Object.freeze({
+  "[wave]もう寂しくないさないさ 逆光よ": "[wave]もう<ruby>寂<rt>さび</rt></ruby>しくないさないさ <ruby>逆光<rt>ぎゃっこう</rt></ruby>よ",
+  "[wave]もう怒りよまた悪党ぶっ飛ばしてそりゃあ愛ある罰だ": "[wave]もう<ruby>怒<rt>いか</rt></ruby>りよまた<ruby>悪党<rt>あくとう</rt></ruby>ぶっ<ruby>飛<rt>と</rt></ruby>ばしてそりゃあ<ruby>愛<rt>あい</rt></ruby>ある<ruby>罰<rt>ばつ</rt></ruby>だ",
+  "[wave]そう 怒りよさぁ 悪党ふっ飛ばして そりゃあ愛への罰だ": "[wave]そう <ruby>怒<rt>いか</rt></ruby>りよさぁ <ruby>悪党<rt>あくとう</rt></ruby>ふっ<ruby>飛<rt>と</rt></ruby>ばして そりゃあ<ruby>愛<rt>あい</rt></ruby>への<ruby>罰<rt>ばつ</rt></ruby>だ",
   "[wave]愛で": "[wave]<ruby>愛<rt>あい</rt></ruby>で",
   "[wave]揺れる世界の中で僕達は": "[wave]<ruby>揺<rt>ゆ</rt></ruby>れる<ruby>世界<rt>せかい</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で<ruby>僕達<rt>ぼくたち</rt></ruby>は",
   "[wave]揺れる世界の中を僕達は": "[wave]<ruby>揺<rt>ゆ</rt></ruby>れる<ruby>世界<rt>せかい</rt></ruby>の<ruby>中<rt>なか</rt></ruby>を<ruby>僕達<rt>ぼくたち</rt></ruby>は",
@@ -359,6 +362,9 @@ export const FURIGANA_CORRECTIONS = Object.freeze({
 });
 
 export const ROMAJI_CORRECTIONS = Object.freeze({
+  "[wave]もう寂しくないさないさ 逆光よ": "[wave]mō sabishiku nai sa nai sa gyakkō yo",
+  "[wave]もう怒りよまた悪党ぶっ飛ばしてそりゃあ愛ある罰だ": "[wave]mō ikari yo mata akutō buttobashi te soryā ai aru batsu da",
+  "[wave]そう 怒りよさぁ 悪党ふっ飛ばして そりゃあ愛への罰だ": "[wave]sō ikari yo sā akutō futtobashi te soryā ai e no batsu da",
   "[clap]聞かせてくれよ 聞きたいんだ": "[clap]kika se te kure yo kiki tai n da",
   "[wave]愛で": "[wave]ai de",
   "[wave]揺れる世界の中で僕達は": "[wave]yureru sekai no naka de bokutachi wa",
