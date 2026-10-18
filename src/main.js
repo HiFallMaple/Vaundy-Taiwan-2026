@@ -48,7 +48,7 @@ import { resolveLineChant, selectGuide } from "./chant/resolve.js";
 import { markChantRanges } from "./chant/render.js";
 import { chantSummary, buildChantBlocks } from "./chant/summary.js";
 import { SONG_MARKS } from "./song-mark-metadata.js";
-import { getChantGuides, loadFurigana, loadKaraokeSources, loadSongLyrics } from "./services/lazy-modules.js";
+import { getChantGuides, getChantSources, loadFurigana, loadKaraokeSources, loadSongLyrics } from "./services/lazy-modules.js";
 import { loadJapaneseFontSubset } from "./services/japanese-font.js";
 import { store } from "./services/storage.js";
 import { createDocumentPip } from "./document-pip.js";
@@ -310,9 +310,11 @@ function renderChantVersionNote(song = currentSong){
   if (!el) return;
   const guide = chantGuideFor(song);
   const inherited = guide.resolvedVersion !== chantVersion;
+  const sources = guide.sourceIds.map(id => getChantSources()[id]);
   el.innerHTML = `<b>${chantVersionLabel()}</b>：${inherited
     ? `這首歌沿用${chantVersionLabel(guide.resolvedVersion)}標記。`
-    : "歌詞旁的麥克風圖示代表大合唱段落。"}`;
+    : "歌詞旁的麥克風圖示代表大合唱段落。"}${sources.map(source =>
+      ` <a href="${escapeHtml(source.url)}" target="_blank" rel="noopener">${escapeHtml(source.label)} ↗</a>`).join("")}`;
 }
 
 function renderChantNotes(song = currentSong){

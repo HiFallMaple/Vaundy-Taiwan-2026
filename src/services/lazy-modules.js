@@ -4,9 +4,14 @@ let songLyricsPromise = null;
 let furiganaCorrectionsApplied = false;
 let correctionsPromise = null;
 let chantGuides = null;
+let chantSources = null;
 
 export function getChantGuides(){
   return chantGuides;
+}
+
+export function getChantSources(){
+  return chantSources;
 }
 
 export function loadSongLyrics(){
@@ -15,8 +20,9 @@ export function loadSongLyrics(){
       import("../song-lyrics.js"),
       import("../chant/version-data.js")
     ])
-      .then(([{ SONG_LYRICS }, { CHANT_GUIDES }]) => {
+      .then(([{ SONG_LYRICS }, { CHANT_GUIDES, CHANT_SOURCES }]) => {
         chantGuides = CHANT_GUIDES;
+        chantSources = CHANT_SOURCES;
         return new Map(SONG_LYRICS.map(song => [song.id, song]));
       })
       .catch((error) => {
