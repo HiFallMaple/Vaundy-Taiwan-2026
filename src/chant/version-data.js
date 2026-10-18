@@ -41,7 +41,7 @@ export const CHANT_GUIDES = {
         sourceIds: ["jp-canva"],
         notes: ["日本版會區分 Uh／Yeah、Da、Na、Tu 等不同應援聲，請跟著各段節奏。","「Tokimekiのせい」很重要；這首歌可以和 Vaundy 一起玩得很 High。"],
         cues: [
-          {"time":17,"expectedText":"[wave]Hu Hu Hu Ya Ya x3","chant":{"kind":"full"}},
+          {"time":17,"expectedText":"[wave]Hu Hu Hu Ya Ya x3","chant":{"kind":"full","translationParts":[{"text":"Hu Hu Hu Ya Ya x3","occurrence":1}]}},
           {"time":26.5,"expectedText":"Hu Hu Hu Ya Ya x2","chant":{"kind":"full"}},
           {"time":33,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
           {"time":38,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
@@ -49,7 +49,7 @@ export const CHANT_GUIDES = {
           {"time":49,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
           {"time":54,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
           {"time":63.5,"expectedText":"Hu Hu Hu Hu Hu","chant":{"kind":"full"}},
-          {"time":89,"expectedText":"[wave] Hu Hu Hu Ya Ya x3","chant":{"kind":"full"}},
+          {"time":89,"expectedText":"[wave] Hu Hu Hu Ya Ya x3","chant":{"kind":"full","translationParts":[{"text":"Hu Hu Hu Ya Ya x3","occurrence":1}]}},
           {"time":99,"expectedText":"Hu Hu Hu Ya Ya x2","chant":{"kind":"full"}},
           {"time":105,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
           {"time":110,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
@@ -58,7 +58,7 @@ export const CHANT_GUIDES = {
           {"time":126,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
           {"time":134.5,"expectedText":"Hu Hu Hu Hu","chant":{"kind":"full"}},
           {"time":145,"expectedText":"震え出す その線のせいで 動き出してしまうの (しまうの)","chant":{"kind":"partial","parts":[{"jp":{"text":"しまうの","occurrence":1},"romaji":{"text":"shimau no","occurrence":1}}]}},
-          {"time":153,"expectedText":"[wave]Du Du Du Ya Ya x2","chant":{"kind":"full"}},
+          {"time":153,"expectedText":"[wave]Du Du Du Ya Ya x2","chant":{"kind":"full","translationParts":[{"text":"Du Du Du Ya Ya x2","occurrence":1}]}},
           {"time":159.5,"expectedText":"[wave]ときめきのせい","chant":{"kind":"full"}},
           {"time":161,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
           {"time":166,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
@@ -2306,4 +2306,8 @@ export const CHANT_GUIDES = {
       }
     }
   },
+};
+
+export const CHANT_SOURCES = {
+  "jp-canva": { label: "VAUNDY 應援教學", url: "https://www.canva.com/design/DAGzhwjn1P4/WDMcBwi1A-ZJpX615SFpig/view" }
 };

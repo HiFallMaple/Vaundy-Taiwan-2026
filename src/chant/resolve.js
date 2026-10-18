@@ -48,6 +48,11 @@ export function resolveLineChant(line, entry, version, readings = {}){
       }
     }
   }
+  for (const target of cue?.chant?.translationParts || []){
+    const range = findRange(line.tr, target);
+    if (ranges.zh.some(r => r.start < range.end && range.start < r.end)) throw new Error("Overlapping translation ranges");
+    ranges.zh.push(range);
+  }
   return { time: line.time, chant, ranges, actions: actions?.values || [], requestedVersion: version, resolvedVersion: guide.resolvedVersion };
 }
 

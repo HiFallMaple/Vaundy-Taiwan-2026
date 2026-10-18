@@ -39,6 +39,11 @@ test("all song versions render kana, romaji and translation without losing visib
           try { result = parse(markChantRanges(markup, resolved[index].ranges[mode], full, document)); }
           catch (error){ throw new Error(`${song.id} ${version} @${line.time} ${mode}: ${error.message}`); }
           assert.equal(compact(visible(result)), compact(visible(parse(markup))), `${song.id} ${version} @${line.time} ${mode}`);
+          const expected = full ? compact(visible(parse(markup))) : resolved[index].ranges[mode]
+            .slice().sort((a, b) => a.start - b.start)
+            .map(r => Array.from(compact(visible(parse(markup)))).slice(r.start, r.end).join("")).join("");
+          const marked = [...result.querySelectorAll(".chant-range")].map(el => compact(visible(el))).join("");
+          assert.equal(marked, expected, `Chant text: ${song.id} ${version} @${line.time} ${mode}`);
         }
       });
     }
