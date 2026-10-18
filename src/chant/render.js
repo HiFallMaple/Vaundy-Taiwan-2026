@@ -1,7 +1,8 @@
 export function markChantRanges(markup, ranges, full = false, documentRef = document){
   const template = documentRef.createElement("template");
   template.innerHTML = markup;
-  template.content.querySelectorAll(".ico").forEach(icon => icon.remove());
+  const content = template.content;
+  content.querySelectorAll(".ico").forEach(icon => icon.remove());
   const pieces = [];
   const visit = parent => {
     for (const node of [...parent.childNodes]){
@@ -14,7 +15,7 @@ export function markChantRanges(markup, ranges, full = false, documentRef = docu
       }
     }
   };
-  visit(template.content);
+  visit(content);
   let index = 0;
   const selected = position => full || ranges.some(r => r.start <= position && position < r.end);
   const wrap = node => {
@@ -52,6 +53,6 @@ export function markChantRanges(markup, ranges, full = false, documentRef = docu
     piece.node.replaceWith(fragment);
   }
   const output = documentRef.createElement("div");
-  output.appendChild(template.content);
+  output.appendChild(content);
   return output.innerHTML;
 }

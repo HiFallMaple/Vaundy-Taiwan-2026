@@ -27,6 +27,9 @@ test("ruby and supplementary Unicode characters retain exact text", () => {
 test("ruby boundaries are rejected instead of expanding the chant", () => {
   assert.throws(() => markChantRanges("<ruby>未来<rt>みらい</rt></ruby>", [{ start: 0, end: 1 }], false, document), /splits ruby/);
 });
+test("action-only markup is removed without reintroducing an icon", () => {
+  assert.equal(markChantRanges('<span class="ico">拍手</span>', [], false, document), "");
+});
 test("all song versions render kana, romaji and translation without losing visible text", () => {
   for (const song of SONG_LYRICS){
     for (const version of ["jp", "kr"]){
