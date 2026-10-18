@@ -9,7 +9,10 @@
     "check:karaoke": "node scripts/check-karaoke-alignment.mjs",
     "test:karaoke": "node --test tests/karaoke-*.test.mjs",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate:chant-metadata": "node scripts/chant-metadata.mjs --write",
+    "check:chants": "node scripts/chant-metadata.mjs",
+    "test:chants": "node --test tests/chant-*.test.mjs"
   },
   "devDependencies": {
     "linkedom": "^0.18.13",

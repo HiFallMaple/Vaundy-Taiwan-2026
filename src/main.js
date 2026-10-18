@@ -46,6 +46,7 @@ import {
 } from "./chant-guide.js";
 import { resolveLineChant, selectGuide } from "./chant/resolve.js";
 import { markChantRanges } from "./chant/render.js";
+import { chantSummary, buildChantBlocks } from "./chant/summary.js";
 import { SONG_MARKS } from "./song-mark-metadata.js";
 import { getChantGuides, loadFurigana, loadKaraokeSources, loadSongLyrics } from "./services/lazy-modules.js";
 import { loadJapaneseFontSubset } from "./services/japanese-font.js";
@@ -3182,6 +3183,7 @@ function documentPipLineMarkup(line, active){
   clone.classList.add("in-view");
   const output = document.createElement("div");
   output.className = clone.className;
+  output.dataset.chant = clone.dataset.chant;
   output.innerHTML = clone.innerHTML;
   return output.outerHTML;
 }
@@ -3683,73 +3685,30 @@ function lineIsChant(line, song = currentSong){
   return resolvedChant(line, song).chant !== "none";
 }
 
-const CHANT_LEAD_SEC  = 1.2;   // 떼창 직전 한 박자 먼저 들어가 준비할 시간
-const CHANT_TAIL_SEC  = 0.6;   // 마지막 글자가 잘리지 않도록 뒤에 남기는 여유
-const CHANT_GAP_MERGE = 2.5;   // 실제로 붙어 있는 짧은 공백만 이어서 듣는다
 const chantBlockCache = new Map();
 
-/* 곡을 훑어 떼창 구간 목록을 만든다. [{from,to,start,end}, …]
-   from/to 는 가사 줄 번호, start/end 는 영상에서의 초. */
 function chantBlocks(song){
   if (!song) return [];
-  const cacheKey = `${chantVersion}:${song.id}`;
-  if (chantBlockCache.has(cacheKey)) return chantBlockCache.get(cacheKey);
-
-  const lines = song.lyrics || [];
-  const lineEnd = (i)=> lines[i + 1] ? playbackTimeForLine(song, i + 1)
-                                     : playbackTimeForLine(song, i) + 8;
-  const raw = [];
-  for (let i = 0; i < lines.length; i++){
-    if (!lineIsChant(lines[i], song)) continue;
-    let e = i;
-    while (e + 1 < lines.length && lineIsChant(lines[e + 1], song)) e++;
-    raw.push({
-      from: i, to: e,
-      start: Math.max(0, playbackTimeForLine(song, i) - CHANT_LEAD_SEC),
-      end:   lineEnd(e) + CHANT_TAIL_SEC
-    });
-    i = e;
+  const key = `${chantVersion}:${song.id}`;
+  if (!chantBlockCache.has(key)){
+    const lines = song.lyrics || [];
+    chantBlockCache.set(key, buildChantBlocks(
+      lines.map(line => resolvedChant(line, song)),
+      lines.map((_, index) => playbackTimeForLine(song, index))
+    ));
   }
-  // 몇 초 듣자고 끊으면 오히려 어수선하므로 가까운 구간끼리 묶는다
-  const out = [];
-  raw.forEach(b => {
-    const last = out[out.length - 1];
-    if (last && b.start - last.end < CHANT_GAP_MERGE){ last.end = b.end; last.to = b.to; }
-    else out.push({ from:b.from, to:b.to, start:b.start, end:b.end });
-  });
-  chantBlockCache.set(cacheKey, out);
-  return out;
+  return chantBlockCache.get(key);
 }
 
-/* ── 곡 목록 응원 배지 ───────────────────────────────────────
-   곡의 가사 데이터를 한 번 훑어서 떼창이 몇 줄인지, 박수·손 흔들기·
-   점프·팔 돌리기가 들어 있는지 세어 둔다. 가사를 고치면 배지도 저절로
-   따라 바뀌므로 따로 관리할 표가 없다. */
 const songMarksCache = new Map();
 
 function songMarks(song){
   const cacheKey = `${chantVersion}:${song.id}`;
   if (songMarksCache.has(cacheKey)) return songMarksCache.get(cacheKey);
 
-  const guideMarks = SONG_MARKS[song.id];
-  if (!song.lyrics && guideMarks){
-    const mark = {
-      chant: guideMarks.chant?.[chantVersion] || 0,
-      clap: Boolean(guideMarks.clap),
-      wave: Boolean(guideMarks.wave),
-      jump: Boolean(guideMarks.jump),
-      spin: Boolean(guideMarks.spin)
-    };
-    songMarksCache.set(cacheKey, mark);
-    return mark;
-  }
-
-  const mark = { chant: 0, clap: false, wave: false, jump: false, spin: false };
-
-  (song.lyrics || []).forEach(line => {
-    resolvedChant(line, song).actions.forEach(action => { mark[action] = true; });
-    if (lineIsChant(line, song)) mark.chant++;
-  });
+  const mark = song.lyrics
+    ? chantSummary(song.lyrics.map(line => resolvedChant(line, song)))
+    : SONG_MARKS[song.id][chantVersion];
 
   songMarksCache.set(cacheKey, mark);
   return mark;
