@@ -3,11 +3,22 @@ let karaokeSourcesPromise = null;
 let songLyricsPromise = null;
 let furiganaCorrectionsApplied = false;
 let correctionsPromise = null;
+let chantGuides = null;
+
+export function getChantGuides(){
+  return chantGuides;
+}
 
 export function loadSongLyrics(){
   if (!songLyricsPromise){
-    songLyricsPromise = import("../song-lyrics.js")
-      .then(({ SONG_LYRICS }) => new Map(SONG_LYRICS.map(song => [song.id, song])))
+    songLyricsPromise = Promise.all([
+      import("../song-lyrics.js"),
+      import("../chant/version-data.js")
+    ])
+      .then(([{ SONG_LYRICS }, { CHANT_GUIDES }]) => {
+        chantGuides = CHANT_GUIDES;
+        return new Map(SONG_LYRICS.map(song => [song.id, song]));
+      })
       .catch((error) => {
         songLyricsPromise = null;
         throw error;

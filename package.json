@@ -12,6 +12,7 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "linkedom": "^0.18.13",
     "vite": "^7.1.7"
   }
 }
