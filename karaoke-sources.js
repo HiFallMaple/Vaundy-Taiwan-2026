@@ -19,7 +19,7 @@
 (function (root) {
   "use strict";
 
-  const CACHE_VERSION = "v2";
+  const CACHE_VERSION = "v3";
   const CACHE_PREFIX = "horo-karaoke-";
   const DEFAULT_WORKER = "https://lyrics.txw.qzz.io";
   const AMLL_API = "https://api.amll.dev";
@@ -259,15 +259,15 @@
     }
   }
 
-  function cacheKey(song) {
-    return `${CACHE_PREFIX}${CACHE_VERSION}-${String(song && song.id || "unknown")}`;
+  function cacheKey(song, version = CACHE_VERSION) {
+    return `${CACHE_PREFIX}${version}-${String(song && song.id || "unknown")}`;
   }
 
-  function readCache(song) {
+  function readCache(song, version = CACHE_VERSION) {
     const storage = getLocalStorage();
     if (!storage) return null;
     try {
-      const value = JSON.parse(storage.getItem(cacheKey(song)) || "null");
+      const value = JSON.parse(storage.getItem(cacheKey(song, version)) || "null");
       return value && value.format === "timed-lyrics-v1" ? value : null;
     } catch (error) {
       return null;
@@ -356,7 +356,9 @@
 
   async function fetchWorker(song, options) {
     const base = String((options && options.workerUrl) || DEFAULT_WORKER).replace(/\/$/, "");
-    const trackId = encodeURIComponent(`horo-${String(song && song.id || "song")}`);
+    const providedId = String(song && song.karaokeTrackId || "");
+    const trackId = /^[a-zA-Z0-9]{1,100}$/.test(providedId) ? providedId
+      : `horo${String(song && song.id || "song").replace(/[^a-zA-Z0-9]/g, "")}`.slice(0, 100);
     const url = new URL(`${base}/lyrics/${trackId}`);
     url.searchParams.set("track_name", sourceTitle(song));
     url.searchParams.append("artist_name", sourceArtist(song));
@@ -368,7 +370,10 @@
     });
     const timed = normaliseBeautifulLyrics(payload);
     if (timed) {
-      timed.source = "開源多來源（Musixmatch / QQ / 酷狗 / 網易雲）";
+      const providerNames = { kugou: "酷狗 KRC", qqmusic: "QQ Music QRC", netease: "網易雲 YRC", musixmatch: "Musixmatch RichSync" };
+      timed.source = providerNames[payload.Source && payload.Source.Provider]
+        || "開源多來源（Musixmatch / QQ / 酷狗 / 網易雲）";
+      timed.granularity = "word";
       timed.providerOrder = PROVIDER_ORDER.slice(0, 4);
     }
     return timed;
@@ -437,7 +442,12 @@
       notify(opts, { state: "cache", source: cached.source });
       return cached;
     }
+    const legacyCache = readCache(song, "v2");
     if (root.navigator && root.navigator.onLine === false) {
+      if (legacyCache) {
+        notify(opts, { state: "cache", source: legacyCache.source });
+        return legacyCache;
+      }
       notify(opts, { state: "offline" });
       return null;
     }
@@ -456,6 +466,9 @@
       if (timed) {
         writeCache(song, timed);
         notify(opts, { state: "ready", source: timed.source });
+      } else if (legacyCache) {
+        notify(opts, { state: "cache", source: legacyCache.source });
+        return legacyCache;
       } else {
         notify(opts, { state: "miss" });
       }

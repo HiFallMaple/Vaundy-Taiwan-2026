@@ -61,6 +61,7 @@ export const SONGS = [
   {
     "id": "Yobigoe",
     "title": "呼喚聲 (呼び声)",
+    "karaokeTrackId": "3kQf453SpkwX7ALdgzNSNY",
     "translationCredit": "藍色小樹熊",
     "translationCreditUrl": "https://bluekokomurmur.com/lyrics/vaundy-yobigoe/",
     "translationSourceUrl": "https://bluekokomurmur.com/lyrics/vaundy-yobigoe/",
