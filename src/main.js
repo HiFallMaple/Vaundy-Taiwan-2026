@@ -2523,7 +2523,7 @@ function renderSong(song){
       window.clearTimeout(lyricsLoadTimer);
       if (renderToken !== songRenderToken || !location.hash.startsWith("#/song/")) return;
       const fullSong = songMap.get(song.id);
-      if (fullSong) renderSong({ ...song, ...fullSong });
+      if (fullSong) renderSong({ ...fullSong, ...song, lyrics: fullSong.lyrics });
       else showSongLyricsLoadIssue(renderToken, "找不到這首歌的歌詞資料，請重新載入頁面。");
     }).catch(() => {
       window.clearTimeout(lyricsLoadTimer);

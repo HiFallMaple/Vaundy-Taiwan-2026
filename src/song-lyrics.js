@@ -3,9 +3,6 @@
 export const SONGS = [
   {
     id: "Tokimeki",
-    title: "心動 (Tokimeki)",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "-_PKhPMXMDY", // ← 실제 유튜브 영상 ID로 교체
     lyrics: [
       { time: 0, jp: "[clap]目に映るのは 確かなときめきで光る魔法",                                                             tr: "映照在我的雙眼裡的東西　是確實的　讓人感到Tokimeki且發著光芒的魔法" },
       { time: 9, jp: "[clap]思い当たるのは 誰かの 涙が落ちる音",                                                             tr: "我所想起的是　他人的　落淚的聲音" },
@@ -63,9 +60,6 @@ export const SONGS = [
   },
   {
     id: "KaijuNoHanauta",
-    title: "怪獸之花歌 (怪獣の花唄)",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "UM9XNpgrqVk",
     lyrics: [
      // 中文翻譯參考：月勳，https://home.gamer.com.tw/artwork.php?sn=5348608
      { time: 8, jp: "[clap]思い出すのは 君の歌",                                                             tr: "我所想起的是你的歌" },
@@ -135,9 +129,6 @@ export const SONGS = [
   },
   {
     id: "CHAINSAWBLOOD",
-    title: "CHAINSAW BLOOD",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "FL1QjjkZVm4",
     lyrics: [
       { time: 0, jp: "[clap]",                                                             },
       { time: 19, jp: "[clap]急ぐ雑踏も軽くcrackな視点",                                                             tr: "就連著急不已的腳步聲也變得輕快的crack視角" },
@@ -201,9 +192,6 @@ export const SONGS = [
   },
   {
     id: "KoikazeniNosete",
-    title: "乘著戀愛感冒 (恋風邪にのせて)",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "1FIhcdocT-k",
     lyrics: [
       { time: 19, jp: "[clap]",                                                             },
       { time: 37.5, jp: "[clap]変わりゆく景色 窓越しに覗いた",                                                             tr: "不斷變幻的景色　隔著窗戶悄悄窺探" },
@@ -238,9 +226,6 @@ export const SONGS = [
   },
   {
     id: "Odoriko",
-    title: "舞者 (踊り子)",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "7HgJIAUtICU",
     lyrics: [
       { time: 0, jp: "[clap]",                                                             },
       { time: 18.5, jp: "[clap]ねぇ、どっかに置いてきたような",                                                             tr: "吶、雖然我想起了一兩件" },
@@ -277,9 +262,6 @@ export const SONGS = [
   },
   {
     id: "HadakaNoYusha",
-    title: "裸身勇者 (裸の勇者)",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "FT0GKCuSaW0",
     lyrics: [
       { time: 0, jp: "[clap]誰かが変な涙を 飲み込んで 呑み込んでいる",                                                             tr: "某人在此刻吞下了淚水。" },
       { time: 11, jp: "力が伴う 悪意振り解いて",                                                             tr: "帶有力量　解開惡意" },
@@ -309,9 +291,6 @@ export const SONGS = [
   },
   {
     id: "Fukakouryoku",
-    title: "不可幸力 (不可幸力)",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "Gbz2C2gQREI",
     lyrics: [
       { time: 0, jp: "[clap]",                                                             },
       { time: 19, jp: "[clap]どこにいっても", tr: "不管去到哪裡" },
@@ -371,9 +350,6 @@ export const SONGS = [
   },
   {
     id: "Reunion",
-    title: "重逢 (再会)",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "WcaSSvtHFeM",
     lyrics: [
       { time: 20.5, jp: "[clap]",                                                             },
       { time: 40, jp: "[clap]one more time もう少しで起こすよmagic",                 tr: "再差一點點就能喚醒了啊 magic" },
@@ -411,13 +387,6 @@ export const SONGS = [
   },
   {
     id: "hanaurana",
-    title: "花占卜 (花占い)",
-    translationCredit: "Smiecj",
-    translationCreditUrl: "https://smiecj.com/2022/12/30/vaundy-hanauranai/",
-    translationSourceUrl: "https://smiecj.com/2022/12/30/vaundy-hanauranai/",
-    translationLicense: "CC BY-NC-SA 4.0",
-    translationLicenseUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    youtubeId: "onhBN0qkUcE",
     lyrics: [
       { time: 1.5, jp: "[clap]街の夕焼けに溶けた", tr: "融化在夕陽街角下的" },
       { time: 4.5, jp: "僕たちはまだニ人だろうか", tr: "依然是你我二人對吧" },
@@ -495,11 +464,6 @@ export const SONGS = [
   },
   {
     id: "Yobigoe",
-    title: "呼喚聲 (呼び声)",
-    translationCredit: "藍色小樹熊",
-    translationCreditUrl: "https://bluekokomurmur.com/lyrics/vaundy-yobigoe/",
-    translationSourceUrl: "https://bluekokomurmur.com/lyrics/vaundy-yobigoe/",
-    youtubeId: "CI2x2aSi8aI",
     lyrics: [
       { time: 1.13, jp: "[clap]この惑星の真ん中で",                 tr: "在這顆星球的正中央" },
       { time: 8.66, jp: "[clap]時折り描いた暗闇照らす何か",                 tr: "偶爾描繪出的　是照亮黑暗的某種存在" },
@@ -557,9 +521,6 @@ export const SONGS = [
   },
   {
     id: "Tomoshibi",
-    title: "燈火 (灯火)",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "nrLZ-vTiQa4",
     lyrics: [
       { time: 10, jp: "[clap]単調な足音にメロディーを乗せたら",                 tr: "要是能在單調的腳步聲中　乘上旋律的話" },
       { time: 19, jp: "[clap]感情が淘汰してく自尊心と僕の悲哀を",                 tr: "感情將會慢慢淘汰　自尊心與我的悲哀" },
@@ -596,11 +557,6 @@ export const SONGS = [
   },
   {
     id: "HowdoIknow'",
-    title: "我怎麼會知道呢 (僕にはどうしてわかるんだろう)",
-    translationCredit: "藍色小樹熊",
-    translationCreditUrl: "https://bluekokomurmur.com/lyrics/vaundy-boku-niwa-doshite-wakarundarou/",
-    translationSourceUrl: "https://bluekokomurmur.com/lyrics/vaundy-boku-niwa-doshite-wakarundarou/",
-    youtubeId: "x4aWXNWPrtY",
     lyrics: [
       { time: 28, jp: "今晩は降りる駅を変え僕の心に咲いていた",                 tr: "今晚我換了車站下車" },
       { time: 34, jp: "小さなプライドの行方を探したずっと気づけなかったんだ",                 tr: "尋找那在我心中綻放的小小自尊的去向　我一直沒察覺到" },
@@ -641,8 +597,6 @@ export const SONGS = [
   },
   {
     id: "Shiwaawase'",
-    title: "皺褶相合 (しわあわせ)",
-    youtubeId: "JwmGruvGt_I",
     lyrics: [
       { time: 35, jp: "僕の時価総額400円の心臓と",                 tr: "心臟科，市值400日圓" },
       { time: 41, jp: "絵に描いたような君の綺麗な心臓を",                 tr: "你美麗如畫的心" },
@@ -681,9 +635,6 @@ export const SONGS = [
   },
   {
     id: "Homunculus",
-    title: "人造小人 (ホムンクルス)",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "ZhUa0CumyxQ",
     lyrics: [
       { time: 8, jp: "[wave]Oh-yeah, yeah-yeah-yeah x 3", },
       { time: 27, jp: "[wave]ホムンクルス!", },
@@ -734,8 +685,6 @@ export const SONGS = [
   },
   {
     id: "soramimi",
-    title: "soramimi",
-    youtubeId: "Jh_0EW6G3gQ",
     lyrics: [
       { time: 0, jp: "[clap]",                                                             },
       { time: 16.5, jp: "[clap]今日も愉快だね叶えたい想像に塞いだ目",                 tr: "今天也很愉快，眼睛被我想要實現的想像力擋住了" },
@@ -772,11 +721,6 @@ export const SONGS = [
   },
   {
     id: "TokyoFlash",
-    title: "東京 Flash (東京フラッシュ)",
-    translationCredit: "雨音子",
-    translationCreditUrl: "https://ameotoko1997.blog.fc2.com/blog-entry-375.html",
-    translationSourceUrl: "https://ameotoko1997.blog.fc2.com/blog-entry-375.html",
-    youtubeId: "SIuF37EWaLU",
     lyrics: [
       { time: 22.5, jp: "相槌がうまくなったんだ",                 tr: "變得擅長附和他人了呢" },
       { time: 26, jp: "できてるできてる",                 tr: "有辦到嗎？　有辦到嗎？" },
@@ -829,9 +773,6 @@ export const SONGS = [
   },
   {
     id: "NakiJizo",
-    title: "哭泣地藏 (泣き地蔵)",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "XQTM2M5iD_I",
     lyrics: [
       { time: 0, jp: "[clap]",                                                             },
       { time: 16, jp: "[clap]僕たちは少数の利益のためのピラミッド",                 tr: "我們是為了少數利益而存在的管理層級" },
@@ -871,8 +812,6 @@ export const SONGS = [
   },
    {
     id: "napori",
-    title: "napori",
-    youtubeId: "ZeIGVnkYX04",
     lyrics: [
       { time: 15, jp: "ろくな音楽もなくてそんなひびをまた2人で",                 tr: "再一次，那些沒有適當音樂的日子" },
       { time: 23, jp: "僕ら指にラブソングで今夜も二人で歩いてこ",                 tr: "我們今晚帶著一首情歌走路吧" },
@@ -913,9 +852,6 @@ export const SONGS = [
   },
   {
     id: "Backlight",
-    title: "逆光 (逆光)",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "RhDxXvn6YaQ",
     lyrics: [
       { time: 27.5, jp: "[clap]散々な思い出は悲しみを穿つほど",                 tr: "悽慘的回憶就像是穿過悲傷一樣" },
       { time: 34, jp: "[clap]やるせない恨みはアイツのために置いてきたのさ",                 tr: "我為了那傢伙而加無法解悶的怨恨　而置之不理" },
@@ -952,8 +888,6 @@ export const SONGS = [
   },
   {
     id: "NEOJAPAN",
-    title: "NEO JAPAN",
-    youtubeId: "QC6gd_b1nz8",
     lyrics: [
       { time: 30, jp: "ある日気づいた、根付いた 岸辺の球根 根回し手回し",                 tr: "我意識到有一天，為根深蒂固的海濱蛋根前話做準備" },
       { time: 34.5, jp: "足りぬと、税の倍増 を総称は心の保証と",                 tr: "如果還不夠，加倍徵稅的一般名稱是作為心靈的保證。" },
@@ -996,8 +930,6 @@ export const SONGS = [
   },
   {
     id: "ZuttoLoveSong",
-    title: "一直都是情歌 (ずっとラブソング)",
-    youtubeId: "wriTi0J_-1A",
     lyrics: [
       { time: 14, jp: "いつかこの街ごと 消えてなくなること",                 tr: "總有一天，這整個村莊都會消失" },
       { time: 20.5, jp: "知ってても 最後まで待てるよ oh...",                 tr: "我知道，但我會等到最後哦" },
@@ -1043,9 +975,6 @@ export const SONGS = [
   },
   {
     id: "Iseijin'",
-    title: "偉生人 (偉生人)",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "aDaWuvpB_Kw",
     lyrics: [
       { time: 2, jp: "理想郷探した 誰より早く",                 tr: "尋找著理想國度　比任何人都要快" },
       { time: 8.5, jp: "間違いなく辿り着くために",                 tr: "只為了能毫無差錯地抵達" },
@@ -1093,8 +1022,6 @@ export const SONGS = [
   },
   {
     id: "ZERO",
-    title: "ZERO",
-    youtubeId: "Fs7MW0rx9Cw",
     lyrics: [
       { time: 24, jp: "Hate His fire picks are hailing down",           tr: "憎恨祂的火焰傾瀉而下" },
       { time: 31, jp: "Ain't been caught in night",           tr: "晚上捉不到" },
@@ -1144,8 +1071,6 @@ export const SONGS = [
   },
   {
     id: "SonnaBitternaHanashi)",
-    title: "那樣的 bitter 故事 (そんなbitterな話)",
-    youtubeId: "V-gxqhWEbxI",
     lyrics: [
       { time: 19.5, jp: "思い出すようなmidnight",                 tr: "我覺得午夜會想起來" },
       { time: 22, jp: "苦い思い出もblueも",                 tr: "既不是痛苦的想法，也不是藍色的" },
@@ -1193,8 +1118,6 @@ export const SONGS = [
   },
   {
     id: "Fujin",
-    title: "風神 (風神)",
-    youtubeId: "yiU0I0tvt6s",
     lyrics: [
       { time: 13, jp: "[clap]よりも 「救いたい」 と悲劇を気取ってた",                 tr: "我扮演這場悲劇是因為我比其他任何人都更想拯救它。" },
       { time: 23, jp: "[clap]面倒よりも それが砕いても、煮込んでも",                 tr: "而不是麻煩，即使它被砸碎或煮沸，" },
@@ -1238,11 +1161,6 @@ export const SONGS = [
   },
   {
     id: "Jonetsu",
-    title: "常熱 (常熱)",
-    translationCredit: "Oblivionis",
-    translationCreditUrl: "https://home.gamer.com.tw/artwork.php?sn=5830053",
-    translationSourceUrl: "https://home.gamer.com.tw/artwork.php?sn=5830053",
-    youtubeId: "fxtQ4Dsmqo0",
     lyrics: [
       { time: 0, jp: "[clap]",                                                             },
       { time: 29, jp: "[clap]太陽系をちょうど抜けたあたりで",                 tr: "在一脫離太陽系的時候" },
@@ -1289,9 +1207,6 @@ export const SONGS = [
   },
   {
     id: "Kagero",
-    title: "陽炎 (かげろう)",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "gY-7i-T76o0",
     lyrics: [
       { time: 10, jp: "焼かれて逃げ水追いかけては 追いつけない。",                 tr: "受著炙烤追逐著海市蜃樓　卻怎樣也追不上。" },
       { time: 17, jp: "おどけた魂が俺に魅せる幻。",                 tr: "那滑稽嬉鬧的靈魂展示給我的幻象。" },
@@ -1333,8 +1248,6 @@ export const SONGS = [
   },
   {
     id: "IdeagaAfureteNemurenai",
-    title: "理念滿溢而無法入睡 (イデアが溢れて眠れない)",
-    youtubeId: "0u_zA8BJG6A",
     lyrics: [
       { time: 20.5, jp: "そこはかとなく 嫌いが勝つようになったね",                 tr: "出於某種原因，不喜歡的感覺浮出水面。" },
       { time: 25, jp: "でも僕だけが いる世界が少し好きになった",                 tr: "但我變得有點喜歡一個只有我一個人的世界。" },
@@ -1385,9 +1298,6 @@ export const SONGS = [
   },
   {
     id: "flyaway",
-    title: "飛翔之時 (飛ぶ時)",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "ARj1adoUoEU",
     lyrics: [
       { time: 0, jp: "[wave]",                                                             },
       { time: 19.5, jp: "[clap]痛みの数だけ",                 tr: "經歷過多少痛楚" },
@@ -1439,9 +1349,6 @@ export const SONGS = [
   },
   {
     id: "mabuta",
-    title: "眼瞼 (まぶた)",
-    translationCredit: "巴哈姆特的月勳",
-    youtubeId: "fjx_uy5eD8g",
     lyrics: [
       { time: 0, jp: "[clap]",                                                             },
       { time: 19.5, jp: "[clap]あなたが今も",                 tr: "因為現在的你" },
@@ -1490,8 +1397,6 @@ export const SONGS = [
   },
   {
     id: "Hitomibore",
-    title: "為瞳孔著迷 (瞳惚れ)",
-    youtubeId: "XEEXE8Ei5SA",
     lyrics: [
       { time: 0, jp: "[clap]",              },
       { time: 20.5, jp: "[clap]さりげなく時は",                 tr: "時間，彷彿什麼都不是。" },
@@ -1556,13 +1461,6 @@ export const SONGS = [
   },
   {
     id: "SekainoHimitsu",
-    title: "世界的秘密 (世界の秘密)",
-    translationCredit: "Smiecj",
-    translationCreditUrl: "https://smiecj.com/2023/05/07/vaundy-sekainohimitu/",
-    translationSourceUrl: "https://smiecj.com/2023/05/07/vaundy-sekainohimitu/",
-    translationLicense: "CC BY-NC-SA 4.0",
-    translationLicenseUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    youtubeId: "xFoTFCHU70s",
     lyrics: [
       { time: 14, jp: "[clap]",              },
       { time: 27, jp: "[clap]きっと僕ら何かに追われてる",                 tr: "一直在被什麼推著前進的我們" },
@@ -1615,8 +1513,6 @@ export const SONGS = [
   },
   {
     id: "Wasuremono",
-    title: "遺忘之物 (忘れ物)",
-    youtubeId: "tQq8C7irREk",
     lyrics: [
       { time: 15.5, jp: "僕らはきっと",                 tr: "我們一定會" },
       { time: 17.5, jp: "そこらにある物じゃ 足りなかった",                 tr: "光是去那裡是不夠的。" },
@@ -1654,11 +1550,6 @@ export const SONGS = [
   },
    {
     id: "Timeparadox",
-    title: "時間悖論 (タイムパラドックス)",
-    translationCredit: "藍色小樹熊",
-    translationCreditUrl: "https://bluekokomurmur.com/lyrics/vaundy-taimu-paradokkusu/",
-    translationSourceUrl: "https://bluekokomurmur.com/lyrics/vaundy-taimu-paradokkusu/",
-    youtubeId: "ewhRE-BvJCg",
     lyrics: [
       { time: 11.5, jp: "[clap]",              },
       { time: 24.5, jp: "[clap]あのね君と出会ったことを今でも",                 tr: "你知道嗎，和你相遇的那一刻" },
@@ -1696,13 +1587,6 @@ export const SONGS = [
   },
   {
     id: "TodomenoIchigeki",
-    title: "最後一擊 (トドメの一撃)",
-    translationCredit: "Smiecj",
-    translationCreditUrl: "https://smiecj.com/2023/10/08/vaundy-todome/",
-    translationSourceUrl: "https://smiecj.com/2023/10/08/vaundy-todome/",
-    translationLicense: "CC BY-NC-SA 4.0",
-    translationLicenseUrl: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    youtubeId: "7xRWOylrLfI",
     lyrics: [
       { time: 7, jp: "[clap]",              },
       { time: 26.5, jp: "[clap]視界に目前映る深い真紅",                 tr: "飄入眼中的，是那抹深邃的暗紅" },
@@ -1763,8 +1647,6 @@ export const SONGS = [
   },
   {
     id: " Kimagure",
-    title: "任性 (気まぐれ)",
-    youtubeId: "uYyfD5A-w8Q",
     lyrics: [
       { time: 4.5, jp: "むせるほど、猛烈な",                 tr: "令人嘆為觀止，兇猛" },
       { time: 10.5, jp: "時間が経っている",                 tr: "因為時間在流逝" },
