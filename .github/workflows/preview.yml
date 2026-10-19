@@ -1,0 +1,64 @@
+name: Deploy preview site
+
+on:
+  push:
+    branches: [develop]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: preview-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    if: github.repository == 'HiFallMaple/Vaundy-Taiwan-2026' && github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Configure preview domain and indexing
+        run: |
+          printf 'preview.vaundy.fans\n' > dist/CNAME
+          printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
+          touch dist/.nojekyll
+          rm -f dist/sitemap.xml
+          node --input-type=module -e "import fs from 'node:fs'; const p='dist/index.html'; fs.writeFileSync(p, fs.readFileSync(p,'utf8').replace('<head>', '<head><meta name=\"robots\" content=\"noindex, nofollow\">'));"
+
+      - name: Publish to preview repository
+        env:
+          PREVIEW_DEPLOY_KEY: ${{ secrets.PREVIEW_DEPLOY_KEY }}
+        run: |
+          install -m 700 -d "$HOME/.ssh"
+          umask 077
+          printf '%s\n' "$PREVIEW_DEPLOY_KEY" > "$RUNNER_TEMP/preview-key"
+          trap 'rm -f "$RUNNER_TEMP/preview-key"' EXIT
+          curl --fail --silent --show-error https://api.github.com/meta | jq -r '.ssh_keys[] | "github.com " + .' > "$RUNNER_TEMP/preview-known-hosts"
+          export GIT_SSH_COMMAND="ssh -i $RUNNER_TEMP/preview-key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes -o UserKnownHostsFile=$RUNNER_TEMP/preview-known-hosts"
+          git clone --depth 1 git@github.com:HiFallMaple/Vaundy-Taiwan-preview.git "$RUNNER_TEMP/preview-site"
+          rsync -a --delete --exclude=.git dist/ "$RUNNER_TEMP/preview-site/"
+          cd "$RUNNER_TEMP/preview-site"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add --all
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(preview): deploy $GITHUB_SHA"
+            git push origin HEAD:main
+          fi

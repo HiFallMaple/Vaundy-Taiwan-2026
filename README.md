@@ -101,3 +101,10 @@ const CACHE_VERSION = "v1.8.1";   // → 改成下一個版本號
 > 演出場館的行動網路可能不穩定。
 > **請在家先開啟一次網站。** 先開啟過一次，到了演出現場即使沒有網路，也能查看歌詞。
 > （只有 YouTube 影片需要網路連線。）
+
+## 本 fork 的開發與部署
+
+正式站為 `https://vaundy.fans`，只接受 `main` 的手動 Pages 部署；推送或合併本身不會發布。測試站為 `https://preview.vaundy.fans`，推送 `develop` 後自動建置，將產物送至獨立的 `HiFallMaple/Vaundy-Taiwan-preview` repository。
+
+新工作從 `develop` 建立分支，檢查通過後合回 `develop` 預覽。開發及測試部署不調整正式版本號、不要求建立 PR；正式發布另依 `AGENTS.md` 辦理。測試 repo 只存建置產物，不在該處修改程式碼。原有的修復與重構分支保留作為審核紀錄；向原作者貢獻時另從乾淨的 upstream 基底整理相關提交。
+
