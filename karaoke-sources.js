@@ -188,7 +188,9 @@
       if (!lineText.trim() || !Number.isFinite(start) || !Number.isFinite(end)) return;
       lines.push({ start, end, words: [{ text: lineText, start, end }] });
     });
-    return normaliseLines(lines, "LRCLIB lyricsfile（逐行時間）");
+    const result = normaliseLines(lines, "LRCLIB lyricsfile（逐行時間）");
+    if (result) result.granularity = "line";
+    return result;
   }
 
   function parseLrclibSyncedLyrics(text) {
@@ -209,7 +211,9 @@
       const end = next ? Math.max(line.start + 0.04, next.start) : line.start + 4;
       return { start: line.start, end, words: [{ text: line.text, start: line.start, end }] };
     });
-    return normaliseLines(timed, "LRCLIB syncedLyrics（逐行時間）");
+    const result = normaliseLines(timed, "LRCLIB syncedLyrics（逐行時間）");
+    if (result) result.granularity = "line";
+    return result;
   }
 
   function parseLrclib(payload) {
@@ -497,74 +501,91 @@
     return sorted.length % 2 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
   }
 
-  /* Match provider text to the hand-edited line list, then translate the
-     provider's audio clock into the YouTube video's clock. */
   function alignToLocalLyrics(timedLyrics, localLyrics) {
     if (!timedLyrics || !Array.isArray(timedLyrics.lines) || !Array.isArray(localLyrics)) return null;
     const words = flattenWords(timedLyrics.lines);
     const chars = [];
     words.forEach((word, wordIndex) => {
-      Array.from(normaliseText(word.text)).forEach((char) => {
-        chars.push({ char, wordIndex, start: word.start, end: word.end });
-      });
+      const letters = Array.from(normaliseText(word.text));
+      letters.forEach((char, index) => chars.push({
+        char, wordIndex, start: word.start, end: word.end,
+        first: index === 0, last: index === letters.length - 1
+      }));
     });
     const sourceText = chars.map((entry) => entry.char).join("");
     if (!sourceText) return null;
 
+    const entries = localLyrics.map(line => {
+      const raw = String(line && line.jp || "");
+      const repeat = raw.match(/^(.*?)\s*[x×]\s*(\d+)\s*$/iu);
+      const repeated = repeat && Number(repeat[2]) >= 2 && Number(repeat[2]) <= 20;
+      const text = normaliseText(repeated ? repeat[1].repeat(Number(repeat[2])) : raw);
+      const positions = [];
+      if (Array.from(text).length >= 2) {
+        let cursor = 0;
+        while (cursor < sourceText.length) {
+          const found = sourceText.indexOf(text, cursor);
+          if (found < 0) break;
+          positions.push(Array.from(sourceText.slice(0, found)).length);
+          cursor = found + text.length;
+        }
+      }
+      return { text, positions, repeated, length: Array.from(text).length, time: finite(line && line.time) };
+    });
+    const anchors = entries.filter(entry => entry.length >= 6 && entry.positions.length === 1
+      && entry.time != null && chars[entry.positions[0]].first
+      && entries.filter(other => other.text === entry.text).length === 1)
+      .map(entry => entry.time - chars[entry.positions[0]].start);
+    const center = median(anchors);
+    const coherent = anchors.filter(value => Math.abs(value - center) <= 2);
+    const offset = coherent.length >= 3 ? median(coherent) : 0;
     const matches = [];
+    const diagnostics = Array(localLyrics.length).fill(null);
     let cursor = 0;
-    localLyrics.forEach((line, index) => {
-      const text = normaliseText(line && line.jp);
-      if (text.length < 2) return;
-      let position = sourceText.indexOf(text, cursor);
-      if (position < 0) position = sourceText.indexOf(text);
-      if (position < 0) return;
-      const first = chars[position];
-      const last = chars[position + text.length - 1];
-      if (!first || !last) return;
-      const localStart = finite(line.time);
-      if (localStart == null) return;
-      const firstWord = first.wordIndex;
-      const lastWord = last.wordIndex;
-      const matchedWords = words.slice(firstWord, lastWord + 1);
-      if (!matchedWords.length) return;
-      matches.push({
-        index,
-        position,
-        start: first.start,
-        end: Math.max(first.start + 0.04, last.end),
-        localStart,
-        words: matchedWords
-      });
-      cursor = position + text.length;
+    entries.forEach((entry, index) => {
+      if (entry.length < 2 || entry.time == null) return;
+      const candidates = entry.positions.filter(position => position >= cursor).map(position => {
+        const first = chars[position];
+        const last = chars[position + entry.length - 1];
+        const expected = entry.time - offset;
+        const error = first.first ? Math.abs(first.start - expected)
+          : Math.max(first.start - expected, expected - first.end, 0);
+        return { position, first, last, error };
+      }).sort((a, b) => a.error - b.error || a.position - b.position);
+      const best = candidates[0];
+      if (!best || best.error > 2) {
+        diagnostics[index] = { reason: best ? "time-mismatch" : entry.positions.length ? "source-order" : "text-mismatch" };
+        return;
+      }
+      matches.push({ index, entry, ...best });
+      cursor = best.position + entry.length;
     });
 
-    const eligible = localLyrics.filter((line) => normaliseText(line && line.jp).length >= 2).length;
+    const eligible = entries.filter(entry => entry.length >= 2).length;
     const minimum = Math.min(3, Math.max(1, eligible));
     if (matches.length < minimum) return null;
     if (eligible >= 6 && matches.length / eligible < 0.18) return null;
 
-    /* Keep the existing hand-edited line anchors authoritative.  Providers
-       often use a different intro trim or combine/split lines, so applying
-       one global offset to every word can make the first line visibly late.
-       We still expose the robust median offset for diagnostics, while each
-       matched line keeps its local anchor and preserves the provider's
-       relative word rhythm inside that line. */
-    const offset = median(matches.map((match) => match.localStart - match.start));
     const aligned = Array(localLyrics.length).fill(null);
-    matches.forEach((match) => {
-      const lineOffset = match.localStart - match.start;
-      const wordsWithOffset = match.words.map((word) => ({
-        text: word.text,
-        start: Math.max(0, word.start + lineOffset),
-        end: Math.max(word.start + lineOffset + 0.04, word.end + lineOffset)
-      }));
-      aligned[match.index] = {
-        start: Math.max(0, match.localStart),
-        end: Math.max(match.localStart + 0.04, match.end + lineOffset),
-        granularity: timedLyrics.granularity || "word",
-        words: wordsWithOffset
-      };
+    matches.forEach(({ index, entry, first, last }) => {
+      const start = Math.max(0, entry.time);
+      const next = localLyrics.slice(index + 1).find(line => finite(line.time) > start
+        && normaliseText(line.jp || line.tr));
+      const span = last.end - first.start;
+      const end = Math.min(start + span, next ? Number(next.time) : Infinity);
+      if (!(end > start)) return;
+      const granularity = timedLyrics.granularity === "line" || !first.first || !last.last || entry.repeated
+        ? "line" : "word";
+      const scale = (end - start) / span;
+      const alignedWords = granularity === "line"
+        ? [{ text: String(localLyrics[index].jp), start, end }]
+        : words.slice(first.wordIndex, last.wordIndex + 1).map(word => ({
+          text: word.text,
+          start: Math.max(start, start + (word.start - first.start) * scale),
+          end: Math.min(end, start + (word.end - first.start) * scale)
+        }));
+      aligned[index] = { start, end, granularity, sourceStart: first.start, sourceEnd: last.end, words: alignedWords };
+      diagnostics[index] = { reason: "matched", sourceStart: first.start, granularity };
     });
     return {
       format: "timed-lyrics-v1-aligned",
@@ -572,9 +593,10 @@
       source: timedLyrics.source,
       providerOrder: timedLyrics.providerOrder || PROVIDER_ORDER.slice(),
       offset,
-      matchedLines: matches.length,
+      matchedLines: aligned.filter(Boolean).length,
       totalLines: eligible,
-      lines: aligned
+      lines: aligned,
+      diagnostics
     };
   }
 
@@ -596,19 +618,19 @@
         out.push(null);
         return;
       }
-      let position = text.indexOf(wanted, cursor);
-      if (position < 0) position = text.indexOf(wanted);
-      if (position < 0) {
+      const found = text.indexOf(wanted, cursor);
+      if (found < 0) {
         out.push(null);
         return;
       }
+      const position = Array.from(text.slice(0, found)).length;
       const first = chars[position];
-      const last = chars[position + wanted.length - 1];
+      const last = chars[position + Array.from(wanted).length - 1];
       out.push({
         start: first.word.start,
-        end: Math.max(first.word.start + 0.04, last.word.end)
+        end: last.word.end
       });
-      cursor = position + wanted.length;
+      cursor = found + wanted.length;
       matched += 1;
     });
     return { timings: out, matched, total: (unitTexts || []).filter((textValue) => normaliseText(textValue)).length };
@@ -924,16 +946,18 @@
   }
 
   function allocateUnitTimings(unitTexts, start, end) {
-    const total = Math.max(0.04, end - start);
+    const total = Math.max(0, end - start);
     const weights = (unitTexts || []).map((text) =>
       normaliseText(text) ? Math.max(0.45, normaliseText(text).length || 1) : 0
     );
     const weightSum = weights.reduce((sum, value) => sum + value, 0) || 1;
     let cursor = start;
+    let usedWeight = 0;
     return weights.map((weight) => {
-      if (!weight) return null;
-      const next = cursor + total * weight / weightSum;
-      const result = { start: cursor, end: Math.max(cursor + 0.02, next) };
+      if (!weight || !total) return null;
+      usedWeight += weight;
+      const next = usedWeight === weightSum ? end : start + total * usedWeight / weightSum;
+      const result = { start: cursor, end: Math.min(end, next) };
       cursor = next;
       return result;
     });
