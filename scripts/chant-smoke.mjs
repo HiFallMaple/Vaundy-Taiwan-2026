@@ -1,3 +1,4 @@
+import { getReading } from "../src/readings/lookup.js";
 import fs from "node:fs";
 import { pathToFileURL } from "node:url";
 import { parseHTML } from "linkedom";
@@ -61,7 +62,7 @@ try {
           const target = row.querySelector(".lyric-jp");
           const source = visible(target);
           const lyric = song.lyrics[index];
-          assert.equal(source, compact(mode === "romaji" ? readings[lyric.jp] || lyric.jp : lyric.jp), `Reading text: ${song.id} ${mode} @${resolved.time}`);
+          assert.equal(source, compact(mode === "romaji" ? getReading(readings, lyric.jp) || lyric.jp : lyric.jp), `Reading text: ${song.id} ${mode} @${resolved.time}`);
           const ranges = resolved.ranges[mode === "romaji" ? "romaji" : "jp"];
           const want = resolved.chant === "full" ? source : ranges.slice().sort((a, b) => a.start - b.start).map(r => Array.from(source).slice(r.start, r.end).join("")).join("");
           const actual = [...target.querySelectorAll(".chant-range")].map(visible).join("");

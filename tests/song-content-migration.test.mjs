@@ -1,3 +1,4 @@
+import { getReading } from "../src/readings/lookup.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import fs from "node:fs";
@@ -18,7 +19,7 @@ for (const song of SONG_LYRICS){
     const { lyrics, ...metadata } = song;
     const content = lyrics.map(line => {
       const { jp, ...rest } = line;
-      return { ...rest, jp: strip(jp), furigana: strip(furigana[jp] || jp), romaji: strip(readings[jp] || jp) };
+      return { ...rest, jp: strip(jp), furigana: strip(getReading(furigana, jp) || jp), romaji: strip(getReading(readings, jp) || jp) };
     });
     const guides = Object.fromEntries(["jp", "kr"].map(version => {
       const lines = resolveSongChants(song, CHANT_GUIDES[song.id], version, readings);

@@ -1,5 +1,7 @@
 # 應援資料維護
 
+讀音由 `src/readings/lookup.js` 統一處理：先以完整舊鍵值套用人工修正，再移除鍵值與讀音內容的動作標記，建立純文字索引。標記不同但純文字相同的項目必須具有相同讀音，否則報錯；不會任意覆蓋。`furigana.js` 保留生成資料，修正仍放在 `src/furigana-corrections.js`。瀏覽器與檢查腳本共用此規則。
+
 歌詞、翻譯、影片時間與圖片存於 `src/song-lyrics.js`。應援內容存於 `src/chant/version-data.js`；`src/chant-guide.js` 保留版本名稱、指南差異摘要與共用來源入口。完整應援資料與歌詞一起延遲載入，首頁只讀生成的 `src/song-mark-metadata.js`。
 
 ## 歌曲與版本

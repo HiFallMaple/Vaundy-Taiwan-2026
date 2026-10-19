@@ -1,3 +1,4 @@
+import { getReading } from "../src/readings/lookup.js";
 import fs from "node:fs";
 import { parseHTML } from "linkedom";
 import { SONG_LYRICS } from "../src/song-lyrics.js";
@@ -20,7 +21,7 @@ for (const song of SONG_LYRICS){
       const lines = resolveSongChants(song, entry, version, readings);
       lines.forEach((line, index) => {
         const lyric = song.lyrics[index];
-        const markup = (furigana[lyric.jp] || lyric.jp).replace(/[\[(](?:wave|clap|mic|chant|jump|spin|turn)[\])]/giu, "");
+        const markup = (getReading(furigana, lyric.jp) || lyric.jp).replace(/[\[(](?:wave|clap|mic|chant|jump|spin|turn)[\])]/giu, "");
         markChantRanges(markup, line.ranges.jp, line.chant === "full", document);
       });
       result[song.id][version] = chantSummary(lines);

@@ -1,17 +1,8 @@
-import fs from "node:fs";
-import vm from "node:vm";
 import { SONG_LYRICS as SONGS } from "../src/song-lyrics.js";
-import { ROMAJI_CORRECTIONS } from "../src/furigana-corrections.js";
 import { CHANT_GUIDES } from "../src/chant/version-data.js";
+import { readings as romajiByLine } from "./chant-data.mjs";
+import { getReading } from "../src/readings/lookup.js";
 
-const furiganaSource = fs.readFileSync(new URL("../furigana.js", import.meta.url), "utf8");
-const generated = { window: {} };
-vm.runInNewContext(furiganaSource, generated, { filename: "furigana.js" });
-
-const romajiByLine = {
-  ...(generated.window.JP_ROMAJI || {}),
-  ...ROMAJI_CORRECTIONS,
-};
 const japaneseCharacters = /[ぁ-ゖ゠-ヿ一-鿿]/u;
 
 const textOf = value => Array.isArray(value)
@@ -28,7 +19,7 @@ for (const song of SONGS) {
     const source = textOf(line.jp);
     if (!source || !japaneseCharacters.test(source)) continue;
 
-    const romaji = romajiByLine[source];
+    const romaji = getReading(romajiByLine, source);
     if (typeof romaji !== "string") {
       if (!seenMissing.has(source)) {
         seenMissing.add(source);

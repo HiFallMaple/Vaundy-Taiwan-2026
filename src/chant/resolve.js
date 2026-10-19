@@ -1,3 +1,5 @@
+import { getReading } from "../readings/lookup.js";
+
 export const ICONS = /[\[(](?:wave|clap|mic|chant|jump|spin|turn)[\])]/giu;
 export const compact = value => Array.from(String(value || "").replace(ICONS, "")).filter(c => !/\s/u.test(c)).join("");
 export const timeKey = time => Math.round(Number(time) * 1000);
@@ -57,5 +59,5 @@ export function resolveLineChant(line, entry, version, readings = {}){
 }
 
 export function resolveSongChants(song, entry, version, readings = {}){
-  return song.lyrics.map(line => resolveLineChant(line, entry, version, { romaji: readings[line.jp] }));
+  return song.lyrics.map(line => resolveLineChant(line, entry, version, { romaji: getReading(readings, line.jp) }));
 }

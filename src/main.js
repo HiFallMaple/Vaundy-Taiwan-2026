@@ -48,7 +48,7 @@ import { resolveLineChant, selectGuide } from "./chant/resolve.js";
 import { markChantRanges } from "./chant/render.js";
 import { chantSummary, buildChantBlocks } from "./chant/summary.js";
 import { SONG_MARKS } from "./song-mark-metadata.js";
-import { getChantGuides, getChantSources, loadFurigana, loadKaraokeSources, loadSongLyrics } from "./services/lazy-modules.js";
+import { getJapaneseReading, getChantGuides, getChantSources, loadFurigana, loadKaraokeSources, loadSongLyrics } from "./services/lazy-modules.js";
 import { loadJapaneseFontSubset } from "./services/japanese-font.js";
 import { store } from "./services/storage.js";
 import { createDocumentPip } from "./document-pip.js";
@@ -3022,14 +3022,14 @@ function withIcons(str){
 }
 function renderKanaLine(str){
   const source = String(str ?? "");
-  const ruby = window.JP_FURIGANA && window.JP_FURIGANA[source];
+  const ruby = getJapaneseReading(source, "furigana");
   if (!ruby) return withIcons(source);
   return spaceCjkLatinMarkup(ruby).replace(ICON_TOKEN_RE, (m, key)=> INLINE_ICONS[key.toLowerCase()] || m);
 }
 
 function renderRomajiLine(str, includeIcons = true){
   const source = String(str ?? "");
-  const romaji = window.JP_ROMAJI && window.JP_ROMAJI[source];
+  const romaji = getJapaneseReading(source, "romaji");
   const value = typeof romaji === "string" ? romaji : source;
   return includeIcons
     ? withIcons(value)
@@ -3054,7 +3054,7 @@ function renderJapaneseLine(str){
 
 function resolvedChant(line, song = currentSong){
   return resolveLineChant(line, getChantGuides()[song.id], chantVersion, {
-    romaji: window.JP_ROMAJI?.[line.jp]
+    romaji: getJapaneseReading(line.jp, "romaji")
   });
 }
 

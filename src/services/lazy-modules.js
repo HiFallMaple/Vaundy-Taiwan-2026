@@ -1,7 +1,9 @@
+import { buildReadingLookup, getReading } from "../readings/lookup.js";
+
 let furiganaPromise = null;
 let karaokeSourcesPromise = null;
 let songLyricsPromise = null;
-let furiganaCorrectionsApplied = false;
+let readingLookup = null;
 let correctionsPromise = null;
 let chantGuides = null;
 let chantSources = null;
@@ -35,44 +37,33 @@ export function loadSongLyrics(){
 
 function loadCorrections(){
   if (!correctionsPromise){
-    correctionsPromise = import("../furigana-corrections.js")
-      .then(module => module)
-      .catch(() => null);
+    correctionsPromise = import("../furigana-corrections.js").catch(error => {
+      correctionsPromise = null;
+      throw error;
+    });
   }
   return correctionsPromise;
 }
 
-function applyFuriganaCorrections(corrections){
-  if (furiganaCorrectionsApplied) return;
-  if (!corrections) return;
-  const { FURIGANA_CORRECTIONS, ROMAJI_CORRECTIONS } = corrections;
-  if (window.JP_FURIGANA){
-    window.JP_FURIGANA = Object.freeze({
-      ...window.JP_FURIGANA,
-      ...FURIGANA_CORRECTIONS
-    });
-  }
-  if (window.JP_ROMAJI){
-    window.JP_ROMAJI = Object.freeze({
-      ...window.JP_ROMAJI,
-      ...ROMAJI_CORRECTIONS
-    });
-  }
-  if (!window.JP_FURIGANA && !window.JP_ROMAJI) return;
-  furiganaCorrectionsApplied = true;
+export function getJapaneseReading(text, mode){
+  return getReading(readingLookup?.[mode], text);
 }
 
 export function loadFurigana(){
-  if (window.JP_FURIGANA || window.JP_ROMAJI){
-    return loadCorrections().then(applyFuriganaCorrections);
-  }
+  if (readingLookup) return Promise.resolve();
   if (!furiganaPromise){
     furiganaPromise = Promise.all([
       import("../../furigana.js"),
       loadCorrections()
-    ])
-      .then(([, corrections]) => applyFuriganaCorrections(corrections))
-      .catch(() => undefined);
+    ]).then(([, corrections]) => {
+      readingLookup = buildReadingLookup(
+        { furigana: window.JP_FURIGANA, romaji: window.JP_ROMAJI },
+        { furigana: corrections.FURIGANA_CORRECTIONS, romaji: corrections.ROMAJI_CORRECTIONS }
+      );
+    }).catch(error => {
+      furiganaPromise = null;
+      console.error("Reading data could not be loaded", error);
+    });
   }
   return furiganaPromise;
 }
