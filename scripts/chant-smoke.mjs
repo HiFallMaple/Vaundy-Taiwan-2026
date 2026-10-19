@@ -3,7 +3,7 @@ import fs from "node:fs";
 import { pathToFileURL } from "node:url";
 import { parseHTML } from "linkedom";
 import assert from "node:assert/strict";
-import { SONG_LYRICS } from "../src/song-lyrics.js";
+import { SONG_CONTENT } from "../src/song-content.js";
 import { CHANT_GUIDES } from "../src/chant/version-data.js";
 import { compact, resolveSongChants } from "../src/chant/resolve.js";
 import { readings } from "./chant-data.mjs";
@@ -43,7 +43,7 @@ try {
     return compact(clone.textContent);
   };
   let cases = 0;
-  for (const song of SONG_LYRICS){
+  for (const song of SONG_CONTENT){
     console.log(`Checking ${song.id}`);
     location.hash = `#/song/${encodeURIComponent(song.id)}`;
     window.dispatchEvent(new Event("hashchange"));

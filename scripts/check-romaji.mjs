@@ -1,4 +1,4 @@
-import { SONG_LYRICS as SONGS } from "../src/song-lyrics.js";
+import { SONG_CONTENT as SONGS } from "../src/song-content.js";
 import { CHANT_GUIDES } from "../src/chant/version-data.js";
 import { readings as romajiByLine } from "./chant-data.mjs";
 import { getReading } from "../src/readings/lookup.js";

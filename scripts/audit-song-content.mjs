@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import vm from "node:vm";
-import { SONG_LYRICS } from "../src/song-lyrics.js";
+import { SONG_CONTENT } from "../src/song-content.js";
 import { SONGS } from "../src/song-metadata.js";
 import { FURIGANA_CORRECTIONS, ROMAJI_CORRECTIONS } from "../src/furigana-corrections.js";
 
@@ -16,7 +16,7 @@ for (const [mode, table] of Object.entries({ furigana: { ...context.window.JP_FU
     normalized.set(text, reading);
   }
 }
-for (const song of SONG_LYRICS){
+for (const song of SONG_CONTENT){
   const metadata = SONGS.find(item => item.id === song.id);
   for (const key of Object.keys(song).filter(key => key !== "lyrics")){
     if (song[key] !== metadata?.[key]) report.metadataDifferences.push({ song: song.id, key, content: song[key], metadata: metadata?.[key] });

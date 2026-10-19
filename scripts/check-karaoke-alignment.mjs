@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import vm from "node:vm";
-import { SONG_LYRICS as SONGS } from "../src/song-lyrics.js";
+import { SONG_CONTENT as SONGS } from "../src/song-content.js";
 import { readings as romajiByLine, furigana as furiganaByLine } from "./chant-data.mjs";
 import { getReading } from "../src/readings/lookup.js";
 

@@ -2,7 +2,7 @@ import { buildReadingLookup, getReading } from "../readings/lookup.js";
 
 let furiganaPromise = null;
 let karaokeSourcesPromise = null;
-let songLyricsPromise = null;
+let songContentPromise = null;
 let readingLookup = null;
 let correctionsPromise = null;
 let chantGuides = null;
@@ -16,23 +16,23 @@ export function getChantSources(){
   return chantSources;
 }
 
-export function loadSongLyrics(){
-  if (!songLyricsPromise){
-    songLyricsPromise = Promise.all([
-      import("../song-lyrics.js"),
+export function loadSongContent(){
+  if (!songContentPromise){
+    songContentPromise = Promise.all([
+      import("../song-content.js"),
       import("../chant/version-data.js")
     ])
-      .then(([{ SONG_LYRICS }, { CHANT_GUIDES, CHANT_SOURCES }]) => {
+      .then(([{ SONG_CONTENT }, { CHANT_GUIDES, CHANT_SOURCES }]) => {
         chantGuides = CHANT_GUIDES;
         chantSources = CHANT_SOURCES;
-        return new Map(SONG_LYRICS.map(song => [song.id, song]));
+        return new Map(SONG_CONTENT.map(song => [song.id, song]));
       })
       .catch((error) => {
-        songLyricsPromise = null;
+        songContentPromise = null;
         throw error;
       });
   }
-  return songLyricsPromise;
+  return songContentPromise;
 }
 
 function loadCorrections(){

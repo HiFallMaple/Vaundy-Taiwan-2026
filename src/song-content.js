@@ -1,6 +1,6 @@
 /* Song lyrics stay out of the guide entry chunk and load on song pages. */
 
-export const SONGS = [
+export const SONG_CONTENT = [
   {
     id: "Tokimeki",
     lyrics: [
@@ -1687,4 +1687,3 @@ export const SONGS = [
   },
 ];
 
-export { SONGS as SONG_LYRICS };

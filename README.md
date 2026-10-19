@@ -9,7 +9,9 @@
 ```text
 index.html                  ← HTML 外殼與 PWA meta；Vite 建置時填入首頁
 src/main.js                 ← 頁面路由、互動與渲染邏輯
-src/data.js                 ← 歌詞、歌單、座位與演出資料
+src/data.js                 ← 歌單、座位與演出共用資料
+src/song-metadata.js        ← 歌名、影片與翻譯署名
+src/song-content.js         ← 延遲載入的完整歌曲內容
 src/base.css                ← 基礎元件樣式
 src/theme.css               ← 主題與頁面外觀樣式
 src/app.css                 ← CSS 統一入口

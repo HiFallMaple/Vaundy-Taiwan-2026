@@ -48,7 +48,7 @@ import { resolveLineChant, selectGuide } from "./chant/resolve.js";
 import { markChantRanges } from "./chant/render.js";
 import { chantSummary, buildChantBlocks } from "./chant/summary.js";
 import { SONG_MARKS } from "./song-mark-metadata.js";
-import { getJapaneseReading, getChantGuides, getChantSources, loadFurigana, loadKaraokeSources, loadSongLyrics } from "./services/lazy-modules.js";
+import { getJapaneseReading, getChantGuides, getChantSources, loadFurigana, loadKaraokeSources, loadSongContent } from "./services/lazy-modules.js";
 import { loadJapaneseFontSubset } from "./services/japanese-font.js";
 import { store } from "./services/storage.js";
 import { createDocumentPip } from "./document-pip.js";
@@ -2519,7 +2519,7 @@ function renderSong(song){
       );
     }, 15000);
 
-    loadSongLyrics().then(songMap => {
+    loadSongContent().then(songMap => {
       window.clearTimeout(lyricsLoadTimer);
       if (renderToken !== songRenderToken || !location.hash.startsWith("#/song/")) return;
       const fullSong = songMap.get(song.id);

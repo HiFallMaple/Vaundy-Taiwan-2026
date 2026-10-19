@@ -1,7 +1,7 @@
 import { getReading } from "../src/readings/lookup.js";
 import fs from "node:fs";
 import { parseHTML } from "linkedom";
-import { SONG_LYRICS } from "../src/song-lyrics.js";
+import { SONG_CONTENT } from "../src/song-content.js";
 import { CHANT_GUIDES, CHANT_SOURCES } from "../src/chant/version-data.js";
 import { resolveSongChants } from "../src/chant/resolve.js";
 import { validateChantEntry } from "../src/chant/validate.js";
@@ -11,8 +11,8 @@ import { readings, furigana } from "./chant-data.mjs";
 
 const { document } = parseHTML("<html></html>");
 const result = {};
-if (Object.keys(CHANT_GUIDES).length !== SONG_LYRICS.length) throw new Error("Song guide count differs");
-for (const song of SONG_LYRICS){
+if (Object.keys(CHANT_GUIDES).length !== SONG_CONTENT.length) throw new Error("Song guide count differs");
+for (const song of SONG_CONTENT){
   try {
     const entry = CHANT_GUIDES[song.id];
     validateChantEntry(song, entry, CHANT_SOURCES);
@@ -32,4 +32,4 @@ const output = `export const SONG_MARKS = {\n${Object.entries(result).map(([id, 
 const path = new URL("../src/song-mark-metadata.js", import.meta.url);
 if (process.argv.includes("--write")) fs.writeFileSync(path, output);
 else if (fs.readFileSync(path, "utf8").replace(/\r\n/g, "\n") !== output) throw new Error("Stale chant metadata; run npm run generate:chant-metadata");
-console.log(`Validated ${SONG_LYRICS.length} songs / 72 versions, cue references, readings, ruby boundaries and metadata.`);
+console.log(`Validated ${SONG_CONTENT.length} songs / 72 versions, cue references, readings, ruby boundaries and metadata.`);
