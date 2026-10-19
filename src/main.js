@@ -3839,8 +3839,11 @@ function assignKaraokeLineTiming(line, timedLine){
     units.forEach((unit, index) => {
       const timing = timings[index];
       if (!timing || !Number.isFinite(Number(timing.start)) || !Number.isFinite(Number(timing.end))) return;
-      unit.start = Number(timing.start);
-      unit.end = Math.max(unit.start + 0.02, Number(timing.end));
+      const unitStart = Math.max(start, Number(timing.start));
+      const unitEnd = Math.min(end, Number(timing.end));
+      if (unitEnd <= unitStart) return;
+      unit.start = unitStart;
+      unit.end = unitEnd;
       /* Keep the timing on the element too.  Reading-mode changes replace
          the inner HTML, and a DOM-backed value makes the romaji fallback
          survive browser rendering/isolation differences just like kana. */

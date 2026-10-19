@@ -7,6 +7,7 @@
     "dev": "vite",
     "check:lyrics": "node scripts/check-romaji.mjs",
     "check:karaoke": "node scripts/check-karaoke-alignment.mjs",
+    "test:karaoke": "node --test tests/karaoke-*.test.mjs",
     "build": "vite build",
     "preview": "vite preview"
   },
