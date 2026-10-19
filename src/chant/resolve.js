@@ -2,7 +2,6 @@ import { getReading } from "../readings/lookup.js";
 
 export const ICONS = /[\[(](?:wave|clap|mic|chant|jump|spin|turn)[\])]/giu;
 export const compact = value => Array.from(String(value || "").replace(ICONS, "")).filter(c => !/\s/u.test(c)).join("");
-export const timeKey = time => Math.round(Number(time) * 1000);
 
 export function selectGuide(entry, version, seen = new Set()){
   if (seen.has(version)) throw new Error(`Circular chant inheritance: ${version}`);
@@ -15,7 +14,7 @@ export function selectGuide(entry, version, seen = new Set()){
 }
 
 export function findRange(source, target){
-  if (!target || !Number.isInteger(target.occurrence) || target.occurrence < 1) throw new Error("Invalid chant occurrence");
+  if (!target || typeof target.text !== "string" || !Number.isInteger(target.occurrence) || target.occurrence < 1) throw new Error("Invalid chant occurrence or target");
   const chars = Array.from(compact(source));
   const needle = Array.from(compact(target.text));
   if (!needle.length) throw new Error("Empty chant target");
@@ -28,15 +27,11 @@ export function findRange(source, target){
 
 export function resolveLineChant(line, entry, version, readings = {}){
   const guide = selectGuide(entry, version);
-  const cue = (guide.cues || []).find(c => timeKey(c.time) === timeKey(line.time));
-  const actions = (guide.actionOverrides || []).find(c => timeKey(c.time) === timeKey(line.time))
-    || (entry.actions || []).find(c => timeKey(c.time) === timeKey(line.time));
-  if (cue && cue.expectedText !== line.jp) throw new Error(`Stale chant text @ ${line.time}`);
-  if (actions && actions.expectedText !== line.jp) throw new Error(`Stale action text @ ${line.time}`);
+  const cue = line.chants?.[guide.resolvedVersion];
   const chant = cue?.chant?.kind || "none";
   if (!["none", "full", "partial"].includes(chant)) throw new Error(`Invalid chant kind: ${chant}`);
   if (chant === "full" && cue.chant.parts) throw new Error("Full chant cannot have parts");
-  const sources = { jp: line.jp, romaji: readings.romaji, zh: line.tr };
+  const sources = { jp: line.jp, romaji: readings.romaji ?? (!/[ぁ-ゖ゠-ヿ一-鿿]/u.test(line.jp) ? line.jp : undefined), zh: line.tr };
   const ranges = { jp: [], romaji: [], zh: [] };
   if (chant === "partial"){
     if (!cue.chant.parts?.length) throw new Error("Partial chant requires parts");
@@ -55,9 +50,34 @@ export function resolveLineChant(line, entry, version, readings = {}){
     if (ranges.zh.some(r => r.start < range.end && range.start < r.end)) throw new Error("Overlapping translation ranges");
     ranges.zh.push(range);
   }
-  return { time: line.time, chant, ranges, actions: actions?.values || [], requestedVersion: version, resolvedVersion: guide.resolvedVersion };
+  const actionPlacements = (cue?.actions || []).map(action => {
+    const marks = parseActionMarks(action.marks);
+    const keys = ["at", "before", "after"].filter(key => Object.hasOwn(action, key));
+    if (keys.length !== 1 || action.at !== undefined && !["start", "end"].includes(action.at)) throw new Error("Invalid action position");
+    const positions = {};
+    for (const mode of ["jp", "romaji"]){
+      if (action.at) positions[mode] = action.at === "start" ? 0 : Array.from(compact(sources[mode])).length;
+      else {
+        const target = (action.before || action.after)?.[mode];
+        if (!target || !compact(line.jp)) throw new Error("Inline action requires Japanese and romaji targets");
+        if (typeof target.text !== "string" || !compact(target.text) || !Number.isInteger(target.occurrence) || target.occurrence < 1) throw new Error("Invalid action target");
+        if (sources[mode] === undefined) positions[mode] = null;
+        else {
+          const range = findRange(sources[mode], target);
+          positions[mode] = action.before ? range.start : range.end;
+        }
+      }
+    }
+    return { marks, positions, edge: action.at || keys[0] };
+  });
+  return { time: line.time, chant, ranges, actionPlacements, actions: [...new Set(actionPlacements.flatMap(action => action.marks))], requestedVersion: version, resolvedVersion: guide.resolvedVersion };
 }
 
 export function resolveSongChants(song, entry, version, readings = {}){
   return song.lyrics.map(line => resolveLineChant(line, entry, version, { romaji: getReading(readings, line.jp) }));
+}
+
+export function parseActionMarks(value){
+  if (typeof value !== "string" || !/^(?:\[(?:clap|wave|jump|spin)\])+$/.test(value)) throw new Error(`Invalid action marks: ${value}`);
+  return [...value.matchAll(/\[([a-z]+)\]/g)].map(match => match[1]);
 }

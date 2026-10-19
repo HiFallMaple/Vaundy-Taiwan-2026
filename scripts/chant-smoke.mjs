@@ -67,7 +67,9 @@ try {
           const want = resolved.chant === "full" ? source : ranges.slice().sort((a, b) => a.start - b.start).map(r => Array.from(source).slice(r.start, r.end).join("")).join("");
           const actual = [...target.querySelectorAll(".chant-range")].map(visible).join("");
           assert.equal(actual, want, `${song.id} ${version} ${mode} @${resolved.time}`);
-          assert.equal([...target.children].filter(n => n.classList.contains("ico")).length, resolved.actions.length, `Actions: ${song.id} ${version} ${mode} @${resolved.time}`);
+          assert.equal(target.querySelectorAll(".ico").length, resolved.actionPlacements.reduce((count, placement) => count + placement.marks.length, 0), `Actions: ${song.id} ${version} ${mode} @${resolved.time}`);
+          assert.equal(row.querySelectorAll(".ico .karaoke-unit, .karaoke-unit .ico, .chant-range .ico").length, 0, `Action isolation: ${song.id} ${version} ${mode}`);
+          if (mode === "both") assert.equal(row.querySelectorAll(".lyric-romaji .ico").length, 0, `Duplicate actions: ${song.id}`);
         });
         document.getElementById("karaoke-btn").click();
         document.getElementById("karaoke-btn").click();

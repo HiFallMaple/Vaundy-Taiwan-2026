@@ -1,9 +1,13 @@
 import fs from "node:fs";
 import vm from "node:vm";
-import { SONG_CONTENT } from "../src/song-content.js";
+import { execFileSync } from "node:child_process";
 import { SONGS } from "../src/song-metadata.js";
 import { FURIGANA_CORRECTIONS, ROMAJI_CORRECTIONS } from "../src/furigana-corrections.js";
 
+const baseline = execFileSync("git", ["show", "24afe41611391da1993e5e57b1472fd332a0d6f2:src/song-lyrics.js"], { encoding: "utf8" });
+const historical = {};
+vm.runInNewContext(baseline.replace("export const SONGS", "const SONGS").replace(/export \{ SONGS as SONG_LYRICS \};/, "") + ";globalThis.songs = SONGS;", historical);
+const SONG_CONTENT = historical.songs;
 const strip = value => value.replace(/[\[(](?:wave|clap|mic|chant|jump|spin|turn)[\])]/giu, "");
 const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(new URL("../furigana.js", import.meta.url), "utf8"), context);

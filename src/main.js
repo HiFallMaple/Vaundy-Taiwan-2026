@@ -45,7 +45,7 @@ import {
   CHANT_REFERENCE_URL
 } from "./chant-guide.js";
 import { resolveLineChant, selectGuide } from "./chant/resolve.js";
-import { markChantRanges } from "./chant/render.js";
+import { markChantRanges, insertActionIcons } from "./chant/render.js";
 import { chantSummary, buildChantBlocks } from "./chant/summary.js";
 import { SONG_MARKS } from "./song-mark-metadata.js";
 import { getJapaneseReading, getChantGuides, getChantSources, loadFurigana, loadKaraokeSources, loadSongContent } from "./services/lazy-modules.js";
@@ -543,11 +543,9 @@ function japaneseTitleText(title){
 }
 
 function songJapaneseFontText(song){
-  const guide = chantGuideFor(song, "jp");
   return [
     japaneseTitleText(song.title),
-    ...(song.lyrics || []).map(line => line.jp || ""),
-    ...(guide?.cues || []).flatMap(cue => (cue.chant.parts || []).map(part => part.jp.text))
+    ...(song.lyrics || []).map(line => line.jp || "")
   ];
 }
 
@@ -3012,28 +3010,19 @@ function spaceCjkLatinMarkup(markup){
   return parts.join("");
 }
 
-/* 가사 글자를 안전하게 처리하면서, [wave] [clap] [mic] 같은 표시를
-   그 자리에서 움직이는 아이콘으로 바꿔 준다. 가사 어느 위치에나 넣을 수 있다. */
-/* [wave] 처럼 대괄호로도, (wave) 처럼 소괄호로도 쓸 수 있게 둘 다 인식 */
 const ICON_TOKEN_RE = /[\[(](wave|clap|mic|chant|jump|spin|turn)[\])]/gi;
-function withIcons(str){
-  if (str === undefined || str === null) return "";
-  return escapeHtml(spaceCjkLatinText(str)).replace(ICON_TOKEN_RE, (m, key)=> INLINE_ICONS[key.toLowerCase()] || m);
+function renderPlainLine(str){
+  return escapeHtml(spaceCjkLatinText(str));
 }
 function renderKanaLine(str){
   const source = String(str ?? "");
   const ruby = getJapaneseReading(source, "furigana");
-  if (!ruby) return withIcons(source);
-  return spaceCjkLatinMarkup(ruby).replace(ICON_TOKEN_RE, (m, key)=> INLINE_ICONS[key.toLowerCase()] || m);
+  return ruby ? spaceCjkLatinMarkup(ruby) : renderPlainLine(source);
 }
 
-function renderRomajiLine(str, includeIcons = true){
+function renderRomajiLine(str){
   const source = String(str ?? "");
-  const romaji = getJapaneseReading(source, "romaji");
-  const value = typeof romaji === "string" ? romaji : source;
-  return includeIcons
-    ? withIcons(value)
-    : escapeHtml(spaceCjkLatinText(value)).replace(ICON_TOKEN_RE, "");
+  return escapeHtml(spaceCjkLatinText(getJapaneseReading(source, "romaji") ?? source));
 }
 
 function readingModeLabel(mode = readingMode){
@@ -3061,9 +3050,9 @@ function resolvedChant(line, song = currentSong){
 function renderChantAwareLine(str, line, song, render, mode){
   const resolved = resolvedChant(line, song);
   const full = resolved.chant === "full" && mode !== "zh";
-  const icons = mode === "jp" || mode === "romaji" && readingMode === "romaji"
-    ? resolved.actions.map(action => INLINE_ICONS[action] || "").join("") : "";
-  return icons + markChantRanges(render(str), resolved.ranges[mode] || [], full);
+  const markup = markChantRanges(render(str), resolved.ranges[mode] || [], full);
+  const showActions = mode === "jp" || mode === "romaji" && readingMode === "romaji";
+  return showActions ? insertActionIcons(markup, resolved.actionPlacements, mode, INLINE_ICONS) : markup;
 }
 
 function renderJapaneseLyricLine(line, song = currentSong){
@@ -3072,11 +3061,11 @@ function renderJapaneseLyricLine(line, song = currentSong){
 }
 
 function renderRomajiLyricLine(line, song = currentSong){
-  return renderChantAwareLine(line.jp || "", line, song, text => renderRomajiLine(text, false), "romaji");
+  return renderChantAwareLine(line.jp || "", line, song, text => renderRomajiLine(text), "romaji");
 }
 
 function renderTranslationLyricLine(line, song = currentSong){
-  return renderChantAwareLine(line.tr || "", line, song, withIcons, "zh");
+  return renderChantAwareLine(line.tr || "", line, song, renderPlainLine, "zh");
 }
 
 /*

@@ -161,3 +161,13 @@ git diff --check
 - 確認 `furigana.js` 未修改、沒有無關歌詞更動、review/ 未動、每行歌詞格式符合要求。
 - 更新 AGENTS、README、docs/chant-data.md 的 source-of-truth 與格式；不留下與實際 schema 相矛盾的指示。
 - 停在本分支供使用者審核。不得將完成實作自行解讀為發布或合併授權。
+
+## 實作結果
+
+- 已依上述五階段完成。36 首／1,463 行均使用 `SONG_CONTENT`，每筆歌詞只有一個實體行；沒有新增行 ID 或重複應援時間。
+- 全曲 metadata、純文字、翻譯、時間、圖片、讀音、版本來源、合唱範圍、統計與練習區間通過遷移前基準。生成摘要未變。
+- `furigana.js` 與 `src/furigana-corrections.js` 均未修改，純文字讀音索引沒有衝突。21 個純動作行保留，重複歷史標記不自動改變已確認的版本動作。
+- 唯一歷史句中標記〈不可幸力〉102.5 秒的 `w[wave]elcome…` 保留目前的行首位置；未擅自恢復單字內圖示。新行內定位由合成測試覆蓋，實際恢復零處、待確認一處。
+- `test:content` 42 項、`test:chants` 93 項、`test:karaoke` 13 項、`check:lyrics`、`check:karaoke`、摘要生成檢查與 `git diff --check` 通過。`test:chant-app` 包含 build 與 432 組雙向版本／讀音／卡拉 OK 切換案例，亦通過。
+- 當前瀏覽器工具沒有可用瀏覽器連線，明暗模式實際排版、影片、PiP 與 Service Worker 未在真實瀏覽器驗收；DOM 測試不代替此項。
+- 日常維護與單行資料示例見 `docs/chant-data.md`。版本號、部署設定、既有配色與未追蹤的 `review/` 保持原樣。

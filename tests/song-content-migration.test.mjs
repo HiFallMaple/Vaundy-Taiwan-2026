@@ -18,13 +18,12 @@ for (const song of SONG_CONTENT){
   test(`${song.id} preserves content, readings, guides and practice blocks`, () => {
     const { lyrics, ...metadata } = song;
     const content = lyrics.map(line => {
-      const { jp, ...rest } = line;
+      const { jp, chants, ...rest } = line;
       return { ...rest, jp: strip(jp), furigana: strip(getReading(furigana, jp) || jp), romaji: strip(getReading(readings, jp) || jp) };
     });
     const guides = Object.fromEntries(["jp", "kr"].map(version => {
       const lines = resolveSongChants(song, CHANT_GUIDES[song.id], version, readings);
-      const { actions, versions } = CHANT_GUIDES[song.id];
-      const { cues, actionOverrides, ...guide } = versions[version];
+      const guide = CHANT_GUIDES[song.id].versions[version];
       return [version, { guide, summary: chantSummary(lines), blocks: buildChantBlocks(lines, lyrics.map(line => line.time)) }];
     }));
     assert.equal(hash({ metadata: { ...SONGS.find(item => item.id === song.id), ...metadata }, content, guides }), baseline[song.id]);

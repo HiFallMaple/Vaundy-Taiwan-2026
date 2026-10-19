@@ -1,5 +1,4 @@
 import { SONG_CONTENT as SONGS } from "../src/song-content.js";
-import { CHANT_GUIDES } from "../src/chant/version-data.js";
 import { readings as romajiByLine } from "./chant-data.mjs";
 import { getReading } from "../src/readings/lookup.js";
 
@@ -36,13 +35,11 @@ for (const song of SONGS) {
   }
 }
 
-for (const [song, entry] of Object.entries(CHANT_GUIDES)) {
-  for (const [version, guide] of Object.entries(entry.versions)) {
-    for (const cue of guide.cues || []) {
-      for (const part of cue.chant.parts || []) {
-        if (typeof part.romaji?.text !== "string" || japaneseCharacters.test(part.romaji.text)) {
-          missingChantSegments.push({ song, version, time: cue.time, source: part.jp?.text });
-        }
+for (const song of SONGS){
+  for (const line of song.lyrics){
+    for (const [version, cue] of Object.entries(line.chants || {})){
+      for (const part of cue.chant?.parts || []){
+        if (typeof part.romaji?.text !== "string" || japaneseCharacters.test(part.romaji.text)) missingChantSegments.push({ song: song.id, version, time: line.time, source: part.jp?.text });
       }
     }
   }
