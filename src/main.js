@@ -3010,7 +3010,6 @@ function spaceCjkLatinMarkup(markup){
   return parts.join("");
 }
 
-const ICON_TOKEN_RE = /[\[(](wave|clap|mic|chant|jump|spin|turn)[\])]/gi;
 function renderPlainLine(str){
   return escapeHtml(spaceCjkLatinText(str));
 }
@@ -3286,7 +3285,7 @@ function lyricPartText(value){
 function hasDisplayedLyricText(line){
   if (!line) return false;
   return [line.jp, line.tr].some(value =>
-    lyricPartText(value).replace(ICON_TOKEN_RE, "").replace(/\s/gu, "").length > 0
+    lyricPartText(value).replace(/\s/gu, "").length > 0
   );
 }
 
@@ -3364,7 +3363,7 @@ function karaokeRange(song, index){
   // 歌詞錨點之間常常包含前奏／間奏，不能把整段空白也平均塗成歌詞。
   // 以歌曲 BPM 與本句字數估出「唱完本句」的上限；若下一句更早，
   // 仍以現有人工錨點為準。這只決定句內高亮的收尾，不會改動原始 time。
-  const source = String(line.jp || "").replace(ICON_TOKEN_RE, "");
+  const source = String(line.jp || "");
   const weight = karaokeUnitWeight(source) || 1;
   const bpm = Number(SONG_BPM[song.id]) || 120;
   const estimatedDuration = Math.max(0.8, Math.min(12, weight * (60 / bpm) * KARAOKE_UNIT_BEATS));

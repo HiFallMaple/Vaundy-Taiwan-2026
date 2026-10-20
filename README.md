@@ -115,4 +115,4 @@ const CACHE_VERSION = "v1.8.1";   // → 改成下一個版本號
 
 ## 應援資料維護
 
-日本版與韓國版共用合唱範圍、動作、讀音渲染與統計邏輯；每行的動作位置與合唱存於 `src/song-content.js` 的 `chants.jp`／`chants.kr`；歌曲層級的提示、來源與沿用規則存於 `src/chant/version-data.js`。歌曲內容每筆歌詞維持一個實體行；修改時間只需改該行的 `time`。假名與羅馬字以純歌詞查詢，生成讀音表維持原樣，人工修正仍放在 `src/furigana-corrections.js`。列表摘要由資料生成，修改應援後執行 `npm run generate:chant-metadata`。格式、沿用規則與驗證指令見 [應援資料維護](docs/chant-data.md)。
+日本版與韓國版共用合唱範圍、動作、讀音渲染與統計邏輯；每行的動作位置與合唱存於 `src/song-content.js` 的 `chants.jp`／`chants.kr`；歌曲層級的提示、來源與沿用規則存於 `src/chant/version-data.js`。歌曲內容每筆歌詞維持一個實體行；修改時間只需改該行的 `time`。假名與羅馬字以純歌詞精確查詢；`furigana.js` 與 `src/furigana-corrections.js` 的鍵與值均不含動作標記，人工新增與修正放在後者，並優先於基礎表。列表摘要由資料生成，修改應援後執行 `npm run generate:chant-metadata`。格式、沿用規則與驗證指令見 [應援資料維護](docs/chant-data.md)。

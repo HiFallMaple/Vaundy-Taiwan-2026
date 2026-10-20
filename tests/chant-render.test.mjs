@@ -37,7 +37,7 @@ test("all song versions render kana, romaji and translation without losing visib
       const resolved = resolveSongChants(song, CHANT_GUIDES[song.id], version, readings);
       song.lyrics.forEach((line, index) => {
         for (const [mode, source] of Object.entries({ jp: getReading(furigana, line.jp) || line.jp, romaji: getReading(readings, line.jp) || line.jp, zh: line.tr || "" })){
-          const markup = source.replace(/[\[(](?:wave|clap|mic|chant|jump|spin|turn)[\])]/giu, "");
+          const markup = source;
           const full = resolved[index].chant === "full" && mode !== "zh";
           let result;
           try { result = parse(markChantRanges(markup, resolved[index].ranges[mode], full, document)); }

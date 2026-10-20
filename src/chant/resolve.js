@@ -1,7 +1,6 @@
 import { getReading } from "../readings/lookup.js";
 
-export const ICONS = /[\[(](?:wave|clap|mic|chant|jump|spin|turn)[\])]/giu;
-export const compact = value => Array.from(String(value || "").replace(ICONS, "")).filter(c => !/\s/u.test(c)).join("");
+export const compact = value => Array.from(String(value || "")).filter(c => !/\s/u.test(c)).join("");
 
 export function selectGuide(entry, version, seen = new Set()){
   if (seen.has(version)) throw new Error(`Circular chant inheritance: ${version}`);

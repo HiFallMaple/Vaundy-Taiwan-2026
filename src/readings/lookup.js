@@ -1,30 +1,25 @@
-export function stripActionMarkers(value){
-  return String(value ?? "").replace(/[\[(](?:wave|clap|mic|chant|jump|spin|turn)[\])]/giu, "");
-}
+const ACTION_MARKER = /[\[(](?:wave|clap|mic|chant|jump|spin|turn)[\])]/iu;
 
 export function buildReadingLookup(base, corrections = {}){
   const result = {};
-  const conflicts = [];
   for (const mode of ["furigana", "romaji"]){
     const table = Object.create(null);
-    const origins = new Map();
-    for (const [key, value] of Object.entries({ ...base[mode], ...corrections[mode] })){
-      const text = stripActionMarkers(key);
-      if (!text.trim()) continue;
-      const reading = stripActionMarkers(value);
-      if (Object.hasOwn(table, text) && table[text] !== reading){
-        conflicts.push({ mode, text, keys: [origins.get(text), key] });
-      } else {
+    for (const [source, entries] of [["base", base[mode]], ["corrections", corrections[mode]]]){
+      for (const [text, reading] of Object.entries(entries || {})){
+        if (!text.trim() || typeof reading !== "string" || !reading.trim()){
+          throw new Error(`Invalid ${source} ${mode} reading: ${JSON.stringify(text)}`);
+        }
+        if (ACTION_MARKER.test(text) || ACTION_MARKER.test(reading)){
+          throw new Error(`Action markers are not allowed in ${source} ${mode} readings: ${JSON.stringify(text)}`);
+        }
         table[text] = reading;
-        origins.set(text, key);
       }
     }
     result[mode] = Object.freeze(table);
   }
-  if (conflicts.length) throw new Error(`Conflicting action-free readings: ${JSON.stringify(conflicts)}`);
   return Object.freeze(result);
 }
 
 export function getReading(table, text){
-  return table?.[stripActionMarkers(text)];
+  return table?.[text];
 }

@@ -13,7 +13,6 @@ const textOf = value => Array.isArray(value)
   ? value.map(part => typeof part === "string" ? part : part?.text || "").join("")
   : String(value ?? "");
 
-const ICON_TOKEN_RE = /[\[(](?:wave|clap|mic|chant|jump|spin|turn)[\])]/giu;
 const ROMAJI_WORD_CHAR_RE = /[\p{Script=Latin}\p{N}]/u;
 const ROMAJI_WORD_CONTINUATION_RE = /[\p{Script=Latin}\p{N}'’_-]/u;
 
@@ -24,7 +23,7 @@ function stripMarkup(value){
 /* Mirror the karaoke decorator: a ruby is one visible unit, plain text is
    split by character, and whitespace/icons do not become timed units. */
 function referenceReadings(markup){
-  const value = String(markup || "").replace(ICON_TOKEN_RE, "");
+  const value = String(markup || "");
   const units = [];
   const rubyRe = /<ruby(?:\s[^>]*)?>([\s\S]*?)<\/ruby>/giu;
   let cursor = 0;
@@ -51,7 +50,7 @@ function referenceReadings(markup){
 }
 
 function romajiUnits(value){
-  const chars = Array.from(String(value || "").replace(ICON_TOKEN_RE, ""));
+  const chars = Array.from(String(value || ""));
   const units = [];
   for (let index = 0; index < chars.length;) {
     const char = chars[index];
@@ -101,7 +100,7 @@ function checkFixture(label, unitTexts, referenceTexts, expected){
 
 assert(karaoke && typeof karaoke.mapUnitsToReferenceTimings === "function",
   "KARAOKE_SOURCES.mapUnitsToReferenceTimings is unavailable");
-const reunionLine = "[wave]君に出会えるからまた夏で話そう";
+const reunionLine = "君に出会えるからまた夏で話そう";
 assert(/<ruby>夏<rt>ここ<\/rt><\/ruby>/u.test(getReading(furiganaByLine, reunionLine) || ""),
   "Reunion: 夏 must keep the user-confirmed ここ reading");
 

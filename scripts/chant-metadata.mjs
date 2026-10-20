@@ -22,7 +22,7 @@ for (const song of SONG_CONTENT){
       const lines = resolveSongChants(song, entry, version, readings);
       lines.forEach((line, index) => {
         const lyric = song.lyrics[index];
-        const markup = (getReading(furigana, lyric.jp) || lyric.jp).replace(/[\[(](?:wave|clap|mic|chant|jump|spin|turn)[\])]/giu, "");
+        const markup = getReading(furigana, lyric.jp) || lyric.jp;
         for (const [mode, source] of Object.entries({ jp: markup, romaji: getReading(readings, lyric.jp) || lyric.jp })){
           const marked = markChantRanges(source, line.ranges[mode], line.chant === "full", document);
           try { insertActionIcons(marked, line.actionPlacements, mode, INLINE_ICONS, document); }
