@@ -79,12 +79,12 @@ npm run test:chant-app
 git diff --check
 ```
 
-`check:chants` 會檢查單行排版、metadata 分工、版本、讀音、目標位置、ruby 邊界與摘要；build 也執行此檢查。`test:content` 保存遷移前全曲內容、讀音、來源、統計及練習區間的 SHA-256 基準，不能整份重生使測試通過。`tests/fixtures/chant-baseline.json` 保存合唱範圍與有效動作種類，經確認的內容改動才更新對應基準。
+`check:chants` 檢查單行排版、metadata 分工、版本、讀音、目標位置、ruby 邊界與摘要；build 也執行此檢查。`test:content` 驗證純文字讀音鍵、人工修正優先順序、非法資料拒絕與歌詞單行格式。`test:chants` 驗證版本解析、合唱範圍、行內圖示、全曲文字保留、統計與練習區間；正常修改歌詞不需要更新整曲雜湊基準。
 
 `test:chant-app` 建置後以 LinkeDOM 測試全曲兩版雙向切換、三種讀音與卡拉 OK，共 432 組案例，包括圖示數量及隔離。它無法代表實際瀏覽器的配色、排版、影片、PiP 或 Service Worker 驗收。
 
-## 本次遷移盤點
+## 維護範例與已確認行為
 
-以 `24afe41611391da1993e5e57b1472fd332a0d6f2` 為基準，`node scripts/audit-song-content.mjs` 可重跑歷史盤點。沒有 metadata 值差異、沒有純文字讀音鍵衝突；21 行只有動作，26 行含多個歷史標記，均保留既有版本的有效動作，不自動恢復歷史重複圖示。
+修改歌詞文字或斷句時，在 `src/furigana-corrections.js` 同步補上新的完整純文字鍵與讀音；只改時間或動作時，不需變更讀音鍵。人工修正與基礎資料分開維護，不把兩者合成一份來源檔。基礎表源自歷史生成資料，repo 目前未提供重新生成它的工具；未來重新匯入資料時也必須遵守純文字鍵與人工修正優先規則。
 
-〈不可幸力〉102.5 秒的歷史標記 `w[wave]elcome` 已由使用者確認為誤植；日韓兩版皆在完整 `welcome to the dirty night` 前方揮手，並由實際歌曲的渲染回歸測試驗證。
+〈不可幸力〉102.5 秒的日韓兩版皆在完整 `welcome to the dirty night` 前方揮手，不在單字中間插圖示；此行有實際歌曲的渲染回歸測試。其他行內動作仍可使用 before／after 定位。
