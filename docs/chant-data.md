@@ -87,4 +87,4 @@ git diff --check
 
 以 `24afe41611391da1993e5e57b1472fd332a0d6f2` 為基準，`node scripts/audit-song-content.mjs` 可重跑歷史盤點。沒有 metadata 值差異、沒有純文字讀音鍵衝突；21 行只有動作，26 行含多個歷史標記，均保留既有版本的有效動作，不自動恢復歷史重複圖示。
 
-唯一句中歷史標記是〈不可幸力〉102.5 秒的 `w[wave]elcome to the dirty night`。目前保留既有版本的行首揮手，不推測是否應插在單字 welcome 內。因此本次實際歌曲恢復句中位置零處、保留行首且待確認一處；新行內定位能力由合成案例驗證。
+〈不可幸力〉102.5 秒的歷史標記 `w[wave]elcome` 已由使用者確認為誤植；日韓兩版皆在完整 `welcome to the dirty night` 前方揮手，並由實際歌曲的渲染回歸測試驗證。

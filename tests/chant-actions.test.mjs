@@ -4,6 +4,8 @@ import { parseHTML } from "linkedom";
 import { resolveLineChant } from "../src/chant/resolve.js";
 import { insertActionIcons, markChantRanges } from "../src/chant/render.js";
 import { chantSummary } from "../src/chant/summary.js";
+import { SONG_CONTENT } from "../src/song-content.js";
+import { CHANT_GUIDES } from "../src/chant/version-data.js";
 
 const { document } = parseHTML("<html></html>");
 const icons = Object.fromEntries(["wave", "clap", "jump", "spin"].map(mark => [mark, `<i class="ico ico-${mark}">[${mark}]</i>`]));
@@ -20,6 +22,23 @@ const plain = markup => {
   root.querySelectorAll("rt,rp").forEach(node => node.remove());
   return root.textContent;
 };
+
+test("不可幸力 keeps the confirmed wave before welcome in both versions", () => {
+  const song = SONG_CONTENT.find(song => song.id === "Fukakouryoku");
+  const line = song.lyrics.find(line => line.time === 102.5);
+  assert.equal(line.jp, "welcome to the dirty night");
+  for (const version of ["jp", "kr"]){
+    const resolved = resolveLineChant(line, CHANT_GUIDES[song.id], version);
+    const markup = markChantRanges(line.jp, resolved.ranges.jp, resolved.chant === "full", document);
+    const root = document.createElement("div");
+    root.innerHTML = insertActionIcons(markup, resolved.actionPlacements, "jp", icons, document);
+    assert.equal(root.firstElementChild.className, "ico ico-wave");
+    assert.equal(root.querySelectorAll(".ico").length, 1);
+    assert.equal(root.querySelectorAll(".chant-range .ico").length, 0);
+    root.querySelector(".ico").remove();
+    assert.equal(root.textContent, "welcome to the dirty night");
+  }
+});
 
 test("start, before, after and end retain repeated marks and whitespace", () => {
   const line = { time: 1, jp: "😀今 チェンジ", chants: { jp: { actions: [
