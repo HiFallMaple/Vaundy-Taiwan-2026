@@ -7,11 +7,12 @@
     "dev": "vite",
     "check:lyrics": "node scripts/check-romaji.mjs",
     "check:karaoke": "node scripts/check-karaoke-alignment.mjs",
+    "test:content": "node --test tests/readings.test.mjs tests/song-content-format.test.mjs",
     "test:karaoke": "node --test tests/karaoke-*.test.mjs",
     "build": "npm run check:chants && vite build",
     "preview": "vite preview",
     "generate:chant-metadata": "node scripts/chant-metadata.mjs --write",
-    "check:chants": "node scripts/chant-metadata.mjs",
+    "check:chants": "node scripts/check-song-content.mjs && node scripts/chant-metadata.mjs",
     "test:chants": "node --test tests/chant-*.test.mjs",
     "test:chant-app": "npm run build && node scripts/chant-smoke.mjs"
   },

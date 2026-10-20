@@ -1,8 +1,9 @@
+import { getReading } from "../src/readings/lookup.js";
 import test from "node:test";
 import assert from "node:assert/strict";
 import { parseHTML } from "linkedom";
 import { markChantRanges } from "../src/chant/render.js";
-import { SONG_LYRICS } from "../src/song-lyrics.js";
+import { SONG_CONTENT } from "../src/song-content.js";
 import { CHANT_GUIDES } from "../src/chant/version-data.js";
 import { resolveSongChants, compact } from "../src/chant/resolve.js";
 import { readings, furigana } from "../scripts/chant-data.mjs";
@@ -31,12 +32,12 @@ test("action-only markup is removed without reintroducing an icon", () => {
   assert.equal(markChantRanges('<span class="ico">拍手</span>', [], false, document), "");
 });
 test("all song versions render kana, romaji and translation without losing visible text", () => {
-  for (const song of SONG_LYRICS){
+  for (const song of SONG_CONTENT){
     for (const version of ["jp", "kr"]){
       const resolved = resolveSongChants(song, CHANT_GUIDES[song.id], version, readings);
       song.lyrics.forEach((line, index) => {
-        for (const [mode, source] of Object.entries({ jp: furigana[line.jp] || line.jp, romaji: readings[line.jp] || line.jp, zh: line.tr || "" })){
-          const markup = source.replace(/[\[(](?:wave|clap|mic|chant|jump|spin|turn)[\])]/giu, "");
+        for (const [mode, source] of Object.entries({ jp: getReading(furigana, line.jp) || line.jp, romaji: getReading(readings, line.jp) || line.jp, zh: line.tr || "" })){
+          const markup = source;
           const full = resolved[index].chant === "full" && mode !== "zh";
           let result;
           try { result = parse(markChantRanges(markup, resolved[index].ranges[mode], full, document)); }

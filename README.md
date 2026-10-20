@@ -9,7 +9,9 @@
 ```text
 index.html                  ← HTML 外殼與 PWA meta；Vite 建置時填入首頁
 src/main.js                 ← 頁面路由、互動與渲染邏輯
-src/data.js                 ← 歌詞、歌單、座位與演出資料
+src/data.js                 ← 歌單、座位與演出共用資料
+src/song-metadata.js        ← 歌名、影片與翻譯署名
+src/song-content.js         ← 延遲載入的歌詞、時間與逐行版本應援
 src/base.css                ← 基礎元件樣式
 src/theme.css               ← 主題與頁面外觀樣式
 src/app.css                 ← CSS 統一入口
@@ -113,4 +115,4 @@ const CACHE_VERSION = "v1.8.1";   // → 改成下一個版本號
 
 ## 應援資料維護
 
-日本版與韓國版共用合唱範圍、動作、讀音渲染與統計邏輯；各版本的內容、提示與來源集中在 `src/chant/version-data.js`。列表摘要由資料生成，修改應援後執行 `npm run generate:chant-metadata`。格式、沿用規則與驗證指令見 [應援資料維護](docs/chant-data.md)。
+日本版與韓國版共用合唱範圍、動作、讀音渲染與統計邏輯；每行的動作位置與合唱存於 `src/song-content.js` 的 `chants.jp`／`chants.kr`；歌曲層級的提示、來源與沿用規則存於 `src/chant/version-data.js`。歌曲內容每筆歌詞維持一個實體行；修改時間只需改該行的 `time`。假名與羅馬字以純歌詞精確查詢；`furigana.js` 與 `src/furigana-corrections.js` 的鍵與值均不含動作標記，人工新增與修正放在後者，並優先於基礎表。列表摘要由資料生成，修改應援後執行 `npm run generate:chant-metadata`。格式、沿用規則與驗證指令見 [應援資料維護](docs/chant-data.md)。

@@ -1,8 +1,9 @@
+import { getReading } from "../src/readings/lookup.js";
 import fs from "node:fs";
 import { pathToFileURL } from "node:url";
 import { parseHTML } from "linkedom";
 import assert from "node:assert/strict";
-import { SONG_LYRICS } from "../src/song-lyrics.js";
+import { SONG_CONTENT } from "../src/song-content.js";
 import { CHANT_GUIDES } from "../src/chant/version-data.js";
 import { compact, resolveSongChants } from "../src/chant/resolve.js";
 import { readings } from "./chant-data.mjs";
@@ -42,7 +43,7 @@ try {
     return compact(clone.textContent);
   };
   let cases = 0;
-  for (const song of SONG_LYRICS){
+  for (const song of SONG_CONTENT){
     console.log(`Checking ${song.id}`);
     location.hash = `#/song/${encodeURIComponent(song.id)}`;
     window.dispatchEvent(new Event("hashchange"));
@@ -61,12 +62,14 @@ try {
           const target = row.querySelector(".lyric-jp");
           const source = visible(target);
           const lyric = song.lyrics[index];
-          assert.equal(source, compact(mode === "romaji" ? readings[lyric.jp] || lyric.jp : lyric.jp), `Reading text: ${song.id} ${mode} @${resolved.time}`);
+          assert.equal(source, compact(mode === "romaji" ? getReading(readings, lyric.jp) || lyric.jp : lyric.jp), `Reading text: ${song.id} ${mode} @${resolved.time}`);
           const ranges = resolved.ranges[mode === "romaji" ? "romaji" : "jp"];
           const want = resolved.chant === "full" ? source : ranges.slice().sort((a, b) => a.start - b.start).map(r => Array.from(source).slice(r.start, r.end).join("")).join("");
           const actual = [...target.querySelectorAll(".chant-range")].map(visible).join("");
           assert.equal(actual, want, `${song.id} ${version} ${mode} @${resolved.time}`);
-          assert.equal([...target.children].filter(n => n.classList.contains("ico")).length, resolved.actions.length, `Actions: ${song.id} ${version} ${mode} @${resolved.time}`);
+          assert.equal(target.querySelectorAll(".ico").length, resolved.actionPlacements.reduce((count, placement) => count + placement.marks.length, 0), `Actions: ${song.id} ${version} ${mode} @${resolved.time}`);
+          assert.equal(row.querySelectorAll(".ico .karaoke-unit, .karaoke-unit .ico, .chant-range .ico").length, 0, `Action isolation: ${song.id} ${version} ${mode}`);
+          if (mode === "both") assert.equal(row.querySelectorAll(".lyric-romaji .ico").length, 0, `Duplicate actions: ${song.id}`);
         });
         document.getElementById("karaoke-btn").click();
         document.getElementById("karaoke-btn").click();

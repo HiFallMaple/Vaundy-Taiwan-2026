@@ -45,10 +45,10 @@ import {
   CHANT_REFERENCE_URL
 } from "./chant-guide.js";
 import { resolveLineChant, selectGuide } from "./chant/resolve.js";
-import { markChantRanges } from "./chant/render.js";
+import { markChantRanges, insertActionIcons } from "./chant/render.js";
 import { chantSummary, buildChantBlocks } from "./chant/summary.js";
 import { SONG_MARKS } from "./song-mark-metadata.js";
-import { getChantGuides, getChantSources, loadFurigana, loadKaraokeSources, loadSongLyrics } from "./services/lazy-modules.js";
+import { getJapaneseReading, getChantGuides, getChantSources, loadFurigana, loadKaraokeSources, loadSongContent } from "./services/lazy-modules.js";
 import { loadJapaneseFontSubset } from "./services/japanese-font.js";
 import { store } from "./services/storage.js";
 import { createDocumentPip } from "./document-pip.js";
@@ -543,11 +543,9 @@ function japaneseTitleText(title){
 }
 
 function songJapaneseFontText(song){
-  const guide = chantGuideFor(song, "jp");
   return [
     japaneseTitleText(song.title),
-    ...(song.lyrics || []).map(line => line.jp || ""),
-    ...(guide?.cues || []).flatMap(cue => (cue.chant.parts || []).map(part => part.jp.text))
+    ...(song.lyrics || []).map(line => line.jp || "")
   ];
 }
 
@@ -2519,11 +2517,11 @@ function renderSong(song){
       );
     }, 15000);
 
-    loadSongLyrics().then(songMap => {
+    loadSongContent().then(songMap => {
       window.clearTimeout(lyricsLoadTimer);
       if (renderToken !== songRenderToken || !location.hash.startsWith("#/song/")) return;
       const fullSong = songMap.get(song.id);
-      if (fullSong) renderSong({ ...song, ...fullSong });
+      if (fullSong) renderSong({ ...fullSong, ...song, lyrics: fullSong.lyrics });
       else showSongLyricsLoadIssue(renderToken, "找不到這首歌的歌詞資料，請重新載入頁面。");
     }).catch(() => {
       window.clearTimeout(lyricsLoadTimer);
@@ -3012,28 +3010,18 @@ function spaceCjkLatinMarkup(markup){
   return parts.join("");
 }
 
-/* 가사 글자를 안전하게 처리하면서, [wave] [clap] [mic] 같은 표시를
-   그 자리에서 움직이는 아이콘으로 바꿔 준다. 가사 어느 위치에나 넣을 수 있다. */
-/* [wave] 처럼 대괄호로도, (wave) 처럼 소괄호로도 쓸 수 있게 둘 다 인식 */
-const ICON_TOKEN_RE = /[\[(](wave|clap|mic|chant|jump|spin|turn)[\])]/gi;
-function withIcons(str){
-  if (str === undefined || str === null) return "";
-  return escapeHtml(spaceCjkLatinText(str)).replace(ICON_TOKEN_RE, (m, key)=> INLINE_ICONS[key.toLowerCase()] || m);
+function renderPlainLine(str){
+  return escapeHtml(spaceCjkLatinText(str));
 }
 function renderKanaLine(str){
   const source = String(str ?? "");
-  const ruby = window.JP_FURIGANA && window.JP_FURIGANA[source];
-  if (!ruby) return withIcons(source);
-  return spaceCjkLatinMarkup(ruby).replace(ICON_TOKEN_RE, (m, key)=> INLINE_ICONS[key.toLowerCase()] || m);
+  const ruby = getJapaneseReading(source, "furigana");
+  return ruby ? spaceCjkLatinMarkup(ruby) : renderPlainLine(source);
 }
 
-function renderRomajiLine(str, includeIcons = true){
+function renderRomajiLine(str){
   const source = String(str ?? "");
-  const romaji = window.JP_ROMAJI && window.JP_ROMAJI[source];
-  const value = typeof romaji === "string" ? romaji : source;
-  return includeIcons
-    ? withIcons(value)
-    : escapeHtml(spaceCjkLatinText(value)).replace(ICON_TOKEN_RE, "");
+  return escapeHtml(spaceCjkLatinText(getJapaneseReading(source, "romaji") ?? source));
 }
 
 function readingModeLabel(mode = readingMode){
@@ -3054,16 +3042,16 @@ function renderJapaneseLine(str){
 
 function resolvedChant(line, song = currentSong){
   return resolveLineChant(line, getChantGuides()[song.id], chantVersion, {
-    romaji: window.JP_ROMAJI?.[line.jp]
+    romaji: getJapaneseReading(line.jp, "romaji")
   });
 }
 
 function renderChantAwareLine(str, line, song, render, mode){
   const resolved = resolvedChant(line, song);
   const full = resolved.chant === "full" && mode !== "zh";
-  const icons = mode === "jp" || mode === "romaji" && readingMode === "romaji"
-    ? resolved.actions.map(action => INLINE_ICONS[action] || "").join("") : "";
-  return icons + markChantRanges(render(str), resolved.ranges[mode] || [], full);
+  const markup = markChantRanges(render(str), resolved.ranges[mode] || [], full);
+  const showActions = mode === "jp" || mode === "romaji" && readingMode === "romaji";
+  return showActions ? insertActionIcons(markup, resolved.actionPlacements, mode, INLINE_ICONS) : markup;
 }
 
 function renderJapaneseLyricLine(line, song = currentSong){
@@ -3072,11 +3060,11 @@ function renderJapaneseLyricLine(line, song = currentSong){
 }
 
 function renderRomajiLyricLine(line, song = currentSong){
-  return renderChantAwareLine(line.jp || "", line, song, text => renderRomajiLine(text, false), "romaji");
+  return renderChantAwareLine(line.jp || "", line, song, text => renderRomajiLine(text), "romaji");
 }
 
 function renderTranslationLyricLine(line, song = currentSong){
-  return renderChantAwareLine(line.tr || "", line, song, withIcons, "zh");
+  return renderChantAwareLine(line.tr || "", line, song, renderPlainLine, "zh");
 }
 
 /*
@@ -3297,7 +3285,7 @@ function lyricPartText(value){
 function hasDisplayedLyricText(line){
   if (!line) return false;
   return [line.jp, line.tr].some(value =>
-    lyricPartText(value).replace(ICON_TOKEN_RE, "").replace(/\s/gu, "").length > 0
+    lyricPartText(value).replace(/\s/gu, "").length > 0
   );
 }
 
@@ -3375,7 +3363,7 @@ function karaokeRange(song, index){
   // 歌詞錨點之間常常包含前奏／間奏，不能把整段空白也平均塗成歌詞。
   // 以歌曲 BPM 與本句字數估出「唱完本句」的上限；若下一句更早，
   // 仍以現有人工錨點為準。這只決定句內高亮的收尾，不會改動原始 time。
-  const source = String(line.jp || "").replace(ICON_TOKEN_RE, "");
+  const source = String(line.jp || "");
   const weight = karaokeUnitWeight(source) || 1;
   const bpm = Number(SONG_BPM[song.id]) || 120;
   const estimatedDuration = Math.max(0.8, Math.min(12, weight * (60 / bpm) * KARAOKE_UNIT_BEATS));

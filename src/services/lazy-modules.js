@@ -1,7 +1,9 @@
+import { buildReadingLookup, getReading } from "../readings/lookup.js";
+
 let furiganaPromise = null;
 let karaokeSourcesPromise = null;
-let songLyricsPromise = null;
-let furiganaCorrectionsApplied = false;
+let songContentPromise = null;
+let readingLookup = null;
 let correctionsPromise = null;
 let chantGuides = null;
 let chantSources = null;
@@ -14,65 +16,54 @@ export function getChantSources(){
   return chantSources;
 }
 
-export function loadSongLyrics(){
-  if (!songLyricsPromise){
-    songLyricsPromise = Promise.all([
-      import("../song-lyrics.js"),
+export function loadSongContent(){
+  if (!songContentPromise){
+    songContentPromise = Promise.all([
+      import("../song-content.js"),
       import("../chant/version-data.js")
     ])
-      .then(([{ SONG_LYRICS }, { CHANT_GUIDES, CHANT_SOURCES }]) => {
+      .then(([{ SONG_CONTENT }, { CHANT_GUIDES, CHANT_SOURCES }]) => {
         chantGuides = CHANT_GUIDES;
         chantSources = CHANT_SOURCES;
-        return new Map(SONG_LYRICS.map(song => [song.id, song]));
+        return new Map(SONG_CONTENT.map(song => [song.id, song]));
       })
       .catch((error) => {
-        songLyricsPromise = null;
+        songContentPromise = null;
         throw error;
       });
   }
-  return songLyricsPromise;
+  return songContentPromise;
 }
 
 function loadCorrections(){
   if (!correctionsPromise){
-    correctionsPromise = import("../furigana-corrections.js")
-      .then(module => module)
-      .catch(() => null);
+    correctionsPromise = import("../furigana-corrections.js").catch(error => {
+      correctionsPromise = null;
+      throw error;
+    });
   }
   return correctionsPromise;
 }
 
-function applyFuriganaCorrections(corrections){
-  if (furiganaCorrectionsApplied) return;
-  if (!corrections) return;
-  const { FURIGANA_CORRECTIONS, ROMAJI_CORRECTIONS } = corrections;
-  if (window.JP_FURIGANA){
-    window.JP_FURIGANA = Object.freeze({
-      ...window.JP_FURIGANA,
-      ...FURIGANA_CORRECTIONS
-    });
-  }
-  if (window.JP_ROMAJI){
-    window.JP_ROMAJI = Object.freeze({
-      ...window.JP_ROMAJI,
-      ...ROMAJI_CORRECTIONS
-    });
-  }
-  if (!window.JP_FURIGANA && !window.JP_ROMAJI) return;
-  furiganaCorrectionsApplied = true;
+export function getJapaneseReading(text, mode){
+  return getReading(readingLookup?.[mode], text);
 }
 
 export function loadFurigana(){
-  if (window.JP_FURIGANA || window.JP_ROMAJI){
-    return loadCorrections().then(applyFuriganaCorrections);
-  }
+  if (readingLookup) return Promise.resolve();
   if (!furiganaPromise){
     furiganaPromise = Promise.all([
       import("../../furigana.js"),
       loadCorrections()
-    ])
-      .then(([, corrections]) => applyFuriganaCorrections(corrections))
-      .catch(() => undefined);
+    ]).then(([, corrections]) => {
+      readingLookup = buildReadingLookup(
+        { furigana: window.JP_FURIGANA, romaji: window.JP_ROMAJI },
+        { furigana: corrections.FURIGANA_CORRECTIONS, romaji: corrections.ROMAJI_CORRECTIONS }
+      );
+    }).catch(error => {
+      furiganaPromise = null;
+      console.error("Reading data could not be loaded", error);
+    });
   }
   return furiganaPromise;
 }

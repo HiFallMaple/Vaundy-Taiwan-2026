@@ -1,30 +1,18 @@
 import fs from "node:fs";
 import vm from "node:vm";
-import { SONG_LYRICS as SONGS } from "../src/song-lyrics.js";
-import { FURIGANA_CORRECTIONS, ROMAJI_CORRECTIONS } from "../src/furigana-corrections.js";
+import { SONG_CONTENT as SONGS } from "../src/song-content.js";
+import { readings as romajiByLine, furigana as furiganaByLine } from "./chant-data.mjs";
+import { getReading } from "../src/readings/lookup.js";
 
 const source = fs.readFileSync(new URL("../karaoke-sources.js", import.meta.url), "utf8");
 const sourceContext = { window: {} };
 vm.runInNewContext(source, sourceContext, { filename: "karaoke-sources.js" });
 const karaoke = sourceContext.window.KARAOKE_SOURCES;
 
-const furiganaSource = fs.readFileSync(new URL("../furigana.js", import.meta.url), "utf8");
-const furiganaContext = { window: {} };
-vm.runInNewContext(furiganaSource, furiganaContext, { filename: "furigana.js" });
-const furiganaByLine = {
-  ...(furiganaContext.window.JP_FURIGANA || {}),
-  ...FURIGANA_CORRECTIONS,
-};
-const romajiByLine = {
-  ...(furiganaContext.window.JP_ROMAJI || {}),
-  ...ROMAJI_CORRECTIONS,
-};
-
 const textOf = value => Array.isArray(value)
   ? value.map(part => typeof part === "string" ? part : part?.text || "").join("")
   : String(value ?? "");
 
-const ICON_TOKEN_RE = /[\[(](?:wave|clap|mic|chant|jump|spin|turn)[\])]/giu;
 const ROMAJI_WORD_CHAR_RE = /[\p{Script=Latin}\p{N}]/u;
 const ROMAJI_WORD_CONTINUATION_RE = /[\p{Script=Latin}\p{N}'’_-]/u;
 
@@ -35,7 +23,7 @@ function stripMarkup(value){
 /* Mirror the karaoke decorator: a ruby is one visible unit, plain text is
    split by character, and whitespace/icons do not become timed units. */
 function referenceReadings(markup){
-  const value = String(markup || "").replace(ICON_TOKEN_RE, "");
+  const value = String(markup || "");
   const units = [];
   const rubyRe = /<ruby(?:\s[^>]*)?>([\s\S]*?)<\/ruby>/giu;
   let cursor = 0;
@@ -62,7 +50,7 @@ function referenceReadings(markup){
 }
 
 function romajiUnits(value){
-  const chars = Array.from(String(value || "").replace(ICON_TOKEN_RE, ""));
+  const chars = Array.from(String(value || ""));
   const units = [];
   for (let index = 0; index < chars.length;) {
     const char = chars[index];
@@ -112,8 +100,8 @@ function checkFixture(label, unitTexts, referenceTexts, expected){
 
 assert(karaoke && typeof karaoke.mapUnitsToReferenceTimings === "function",
   "KARAOKE_SOURCES.mapUnitsToReferenceTimings is unavailable");
-const reunionLine = "[wave]君に出会えるからまた夏で話そう";
-assert(/<ruby>夏<rt>ここ<\/rt><\/ruby>/u.test(furiganaByLine[reunionLine] || ""),
+const reunionLine = "君に出会えるからまた夏で話そう";
+assert(/<ruby>夏<rt>ここ<\/rt><\/ruby>/u.test(getReading(furiganaByLine, reunionLine) || ""),
   "Reunion: 夏 must keep the user-confirmed ここ reading");
 
 checkFixture(
@@ -153,9 +141,9 @@ for (const song of SONGS) {
   for (const [index, line] of (song.lyrics || []).entries()) {
     lineCount += 1;
     const sourceText = textOf(line.jp);
-    const markup = furiganaByLine[sourceText] || sourceText;
-    const romaji = typeof romajiByLine[sourceText] === "string"
-      ? romajiByLine[sourceText]
+    const markup = getReading(furiganaByLine, sourceText) || sourceText;
+    const romaji = typeof getReading(romajiByLine, sourceText) === "string"
+      ? getReading(romajiByLine, sourceText)
       : sourceText;
     const referenceTexts = referenceReadings(markup);
     const unitTexts = romajiUnits(romaji);

@@ -1,2313 +1,580 @@
 export const CHANT_GUIDES = {
   "Tokimeki": {
-    actions: [
-      {"time":0,"expectedText":"[clap]目に映るのは 確かなときめきで光る魔法","values":["clap"]},
-      {"time":9,"expectedText":"[clap]思い当たるのは 誰かの 涙が落ちる音","values":["clap"]},
-      {"time":17,"expectedText":"[wave]Hu Hu Hu Ya Ya x3","values":["wave"]},
-      {"time":22.5,"expectedText":"[wave]それは、軽やかな魔法","values":["wave"]},
-      {"time":29,"expectedText":"[wave]美しいほど 止まらぬCRY","values":["wave"]},
-      {"time":33,"expectedText":"[wave]DA-DADADADA","values":["wave"]},
-      {"time":38,"expectedText":"[wave](DA-DA-DA)","values":["wave"]},
-      {"time":44,"expectedText":"[wave]見えぬ未来も 悪くはないぜ (ないぜ)","values":["wave"]},
-      {"time":49,"expectedText":"[wave]DA-DADADADA","values":["wave"]},
-      {"time":54,"expectedText":"[wave](DA-DA-DA)","values":["wave"]},
-      {"time":59.5,"expectedText":"[wave]ほら、ほらもっと聞かせて","values":["wave"]},
-      {"time":73,"expectedText":"[clap]聞こえてるのは 確かな ときめきで歌う魔法","values":["clap"]},
-      {"time":81,"expectedText":"[clap]思い当たるのは 誰かの 鼻歌のイントロ","values":["clap"]},
-      {"time":89,"expectedText":"[wave] Hu Hu Hu Ya Ya x3","values":["wave"]},
-      {"time":95,"expectedText":"[wave]それは、鮮やかな魔法","values":["wave"]},
-      {"time":101,"expectedText":"[wave]聞こえてるのは","values":["wave"]},
-      {"time":105,"expectedText":"[wave]DA-DADADADA","values":["wave"]},
-      {"time":110,"expectedText":"[wave](DA-DA-DA)","values":["wave"]},
-      {"time":115.9,"expectedText":"[wave]見えぬ未来も 悪くはないぜ (ないぜ)","values":["wave"]},
-      {"time":121,"expectedText":"[wave]DA-DADADADA","values":["wave"]},
-      {"time":126,"expectedText":"[wave](DA-DA-DA)","values":["wave"]},
-      {"time":131.5,"expectedText":"[wave]ほら、ほらもっと聞かせて","values":["wave"]},
-      {"time":137,"expectedText":"途切れない 悲しみは点で 線を描いてるようだ","values":["clap"]},
-      {"time":145,"expectedText":"震え出す その線のせいで 動き出してしまうの (しまうの)","values":["clap"]},
-      {"time":153,"expectedText":"[wave]Du Du Du Ya Ya x2","values":["wave"]},
-      {"time":157.5,"expectedText":"[wave]止まれないのは","values":["wave"]},
-      {"time":159.5,"expectedText":"[wave]ときめきのせい","values":["wave"]},
-      {"time":161,"expectedText":"[wave]DA-DADADADA","values":["wave"]},
-      {"time":166,"expectedText":"[wave](DA-DA-DA)","values":["wave"]},
-      {"time":172,"expectedText":"[wave]見えぬ未来も 悪くはないぜ (ないぜ)","values":["wave"]},
-      {"time":177,"expectedText":"[wave]DA-DADADADA","values":["wave"]},
-      {"time":182,"expectedText":"[wave](DA-DA-DA)","values":["wave"]},
-      {"time":187.5,"expectedText":"[wave]ほら、ほらもっと聞かせて","values":["wave"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["日本版會區分 Uh／Yeah、Da、Na、Tu 等不同應援聲，請跟著各段節奏。","「Tokimekiのせい」很重要；這首歌可以和 Vaundy 一起玩得很 High。"],
-        cues: [
-          {"time":17,"expectedText":"[wave]Hu Hu Hu Ya Ya x3","chant":{"kind":"full","translationParts":[{"text":"Hu Hu Hu Ya Ya x3","occurrence":1}]}},
-          {"time":26.5,"expectedText":"Hu Hu Hu Ya Ya x2","chant":{"kind":"full"}},
-          {"time":33,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
-          {"time":38,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
-          {"time":44,"expectedText":"[wave]見えぬ未来も 悪くはないぜ (ないぜ)","chant":{"kind":"partial","parts":[{"jp":{"text":"ないぜ","occurrence":1},"romaji":{"text":"nai ze","occurrence":1}}]}},
-          {"time":49,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
-          {"time":54,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
-          {"time":63.5,"expectedText":"Hu Hu Hu Hu Hu","chant":{"kind":"full"}},
-          {"time":89,"expectedText":"[wave] Hu Hu Hu Ya Ya x3","chant":{"kind":"full","translationParts":[{"text":"Hu Hu Hu Ya Ya x3","occurrence":1}]}},
-          {"time":99,"expectedText":"Hu Hu Hu Ya Ya x2","chant":{"kind":"full"}},
-          {"time":105,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
-          {"time":110,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
-          {"time":115.9,"expectedText":"[wave]見えぬ未来も 悪くはないぜ (ないぜ)","chant":{"kind":"partial","parts":[{"jp":{"text":"ないぜ","occurrence":1},"romaji":{"text":"nai ze","occurrence":1}}]}},
-          {"time":121,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
-          {"time":126,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
-          {"time":134.5,"expectedText":"Hu Hu Hu Hu","chant":{"kind":"full"}},
-          {"time":145,"expectedText":"震え出す その線のせいで 動き出してしまうの (しまうの)","chant":{"kind":"partial","parts":[{"jp":{"text":"しまうの","occurrence":1},"romaji":{"text":"shimau no","occurrence":1}}]}},
-          {"time":153,"expectedText":"[wave]Du Du Du Ya Ya x2","chant":{"kind":"full","translationParts":[{"text":"Du Du Du Ya Ya x2","occurrence":1}]}},
-          {"time":159.5,"expectedText":"[wave]ときめきのせい","chant":{"kind":"full"}},
-          {"time":161,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
-          {"time":166,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
-          {"time":172,"expectedText":"[wave]見えぬ未来も 悪くはないぜ (ないぜ)","chant":{"kind":"partial","parts":[{"jp":{"text":"ないぜ","occurrence":1},"romaji":{"text":"nai ze","occurrence":1}}]}},
-          {"time":177,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
-          {"time":182,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
-          {"time":191.5,"expectedText":"Hu Hu Hu Hu Hu","chant":{"kind":"full"}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "日本版會區分 Uh／Yeah、Da、Na、Tu 等不同應援聲，請跟著各段節奏。",
+          "「Tokimekiのせい」很重要；這首歌可以和 Vaundy 一起玩得很 High。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":17,"expectedText":"[wave]Hu Hu Hu Ya Ya x3","chant":{"kind":"full"}},
-          {"time":26.5,"expectedText":"Hu Hu Hu Ya Ya x2","chant":{"kind":"full"}},
-          {"time":33,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
-          {"time":38,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
-          {"time":44,"expectedText":"[wave]見えぬ未来も 悪くはないぜ (ないぜ)","chant":{"kind":"full"}},
-          {"time":49,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
-          {"time":54,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
-          {"time":63.5,"expectedText":"Hu Hu Hu Hu Hu","chant":{"kind":"full"}},
-          {"time":89,"expectedText":"[wave] Hu Hu Hu Ya Ya x3","chant":{"kind":"full"}},
-          {"time":99,"expectedText":"Hu Hu Hu Ya Ya x2","chant":{"kind":"full"}},
-          {"time":105,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
-          {"time":110,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
-          {"time":115.9,"expectedText":"[wave]見えぬ未来も 悪くはないぜ (ないぜ)","chant":{"kind":"full"}},
-          {"time":121,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
-          {"time":126,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
-          {"time":134.5,"expectedText":"Hu Hu Hu Hu","chant":{"kind":"full"}},
-          {"time":145,"expectedText":"震え出す その線のせいで 動き出してしまうの (しまうの)","chant":{"kind":"full"}},
-          {"time":153,"expectedText":"[wave]Du Du Du Ya Ya x2","chant":{"kind":"full"}},
-          {"time":159.5,"expectedText":"[wave]ときめきのせい","chant":{"kind":"full"}},
-          {"time":161,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
-          {"time":166,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
-          {"time":172,"expectedText":"[wave]見えぬ未来も 悪くはないぜ (ないぜ)","chant":{"kind":"full"}},
-          {"time":177,"expectedText":"[wave]DA-DADADADA","chant":{"kind":"full"}},
-          {"time":182,"expectedText":"[wave](DA-DA-DA)","chant":{"kind":"full"}},
-          {"time":191.5,"expectedText":"Hu Hu Hu Hu Hu","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "KaijuNoHanauta": {
-    actions: [
-      {"time":8,"expectedText":"[clap]思い出すのは 君の歌","values":["clap"]},
-      {"time":11.5,"expectedText":"[clap]会話よりも鮮明だ","values":["clap"]},
-      {"time":15,"expectedText":"[clap]どこに行ってしまったの いつも探すんだよ","values":["clap"]},
-      {"time":21.5,"expectedText":"[clap]思い出すのは 君の歌","values":["clap"]},
-      {"time":24.5,"expectedText":"[clap]歌い笑う顔が鮮明だ","values":["clap"]},
-      {"time":28,"expectedText":"[clap]君に似合うんだよ ずっと見ていたいよ","values":["clap"]},
-      {"time":34,"expectedText":"[clap]でも最後に見たいのは","values":["clap"]},
-      {"time":37.5,"expectedText":"[clap]きっともう君の夢の中","values":["clap"]},
-      {"time":40.5,"expectedText":"[clap]もう一度 また","values":["clap"]},
-      {"time":42.5,"expectedText":"[clap]聞かせてくれよ 聞きたいんだ","values":["clap"]},
-      {"time":47.5,"expectedText":"[wave]騒げ怪獣の歌","values":["wave"]},
-      {"time":52,"expectedText":"[wave]まだ消えない 夢の歌唱えて","values":["wave"]},
-      {"time":58.5,"expectedText":"[wave]君がいつも","values":["wave"]},
-      {"time":64.5,"expectedText":"[wave]まだ消えない 口ずさんでしまうよ","values":["wave"]},
-      {"time":72.5,"expectedText":"[clap]思い出すのは 君がいた","values":["clap"]},
-      {"time":76,"expectedText":"[clap]ギター持ってる 君がいた","values":["clap"]},
-      {"time":79,"expectedText":"[clap]忘れられないんだよ","values":["clap"]},
-      {"time":82,"expectedText":"[clap]だから僕が歌うよ","values":["clap"]},
-      {"time":85.5,"expectedText":"[clap]でも最後に見たいのは","values":["clap"]},
-      {"time":88.5,"expectedText":"[clap]きっともう君の夢の中","values":["clap"]},
-      {"time":91.5,"expectedText":"[clap]もう一度 また","values":["clap"]},
-      {"time":93.5,"expectedText":"[clap]聞かせてくれよ 聞きたいんだ","values":["clap"]},
-      {"time":98.5,"expectedText":"[wave]騒げ怪獣の歌","values":["wave"]},
-      {"time":103,"expectedText":"[wave]まだ消えない 夢の歌唱えて","values":["wave"]},
-      {"time":110,"expectedText":"[wave]君がいつも","values":["wave"]},
-      {"time":116,"expectedText":"[wave]まだ消えない 口ずさんでしまうよ","values":["wave"]},
-      {"time":123.5,"expectedText":"[clap]落ちてく過去は鮮明で","values":["clap"]},
-      {"time":127,"expectedText":"[clap]見せたい未来は繊細で","values":["clap"]},
-      {"time":130,"expectedText":"[clap]すぎてく日々には鈍感な君へ","values":["clap"]},
-      {"time":137,"expectedText":"[clap]落ちてく過去は鮮明で","values":["clap"]},
-      {"time":140,"expectedText":"[clap]見せたい未来は繊細で","values":["clap"]},
-      {"time":143,"expectedText":"[clap]すぎてく日々には鈍感な君へ","values":["clap"]},
-      {"time":146.5,"expectedText":"[wave]ねぇ、もっと","values":["wave"]},
-      {"time":150,"expectedText":"[wave]騒げ怪獣の歌","values":["wave"]},
-      {"time":154,"expectedText":"[wave]まだ消えない 夢の歌唱えて","values":["wave"]},
-      {"time":161,"expectedText":"[wave]君がいつも","values":["wave"]},
-      {"time":167,"expectedText":"[wave]まだ消えない 口ずさんでしまうよ","values":["wave"]},
-      {"time":175.5,"expectedText":"[wave]眠れない夜に","values":["wave"]},
-      {"time":178.5,"expectedText":"[wave]眠らない夜を","values":["wave"]},
-      {"time":182,"expectedText":"[wave]眠くないまだね","values":["wave"]},
-      {"time":188.5,"expectedText":"[wave]眠れない夜に","values":["wave"]},
-      {"time":191.5,"expectedText":"[wave]眠らない夜を","values":["wave"]},
-      {"time":195,"expectedText":"[wave]眠くないまだね","values":["wave"]},
-      {"time":201,"expectedText":"[wave]落ちてく過去は鮮明で","values":["wave"]},
-      {"time":203.5,"expectedText":"[wave]見せたい未来は繊細で","values":["wave"]},
-      {"time":206.5,"expectedText":"[wave]すぎてく日々には鈍感な君へ","values":["wave"]},
-      {"time":213.5,"expectedText":"[wave]落ちてく過去は鮮明で","values":["wave"]},
-      {"time":216.5,"expectedText":"[wave]見せたい未来は繊細で","values":["wave"]},
-      {"time":219.5,"expectedText":"[wave]すぎてく日々には鈍感な君へ","values":["wave"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["「もっと」「ねぇ もっと」請大聲喊；「君がいつも」也可以直接指向 Vaundy。","第一段「落ちてく過去は鮮明で……」整段一起唱；後段只跟著「眠れない夜に／眠らない夜を／眠くないまだね」這些標色回應詞。"],
-        cues: [
-          {"time":46.5,"expectedText":"もっと","chant":{"kind":"full"}},
-          {"time":58.5,"expectedText":"[wave]君がいつも","chant":{"kind":"full"}},
-          {"time":97.5,"expectedText":"もっと","chant":{"kind":"full"}},
-          {"time":110,"expectedText":"[wave]君がいつも","chant":{"kind":"full"}},
-          {"time":123.5,"expectedText":"[clap]落ちてく過去は鮮明で","chant":{"kind":"full"}},
-          {"time":127,"expectedText":"[clap]見せたい未来は繊細で","chant":{"kind":"full"}},
-          {"time":130,"expectedText":"[clap]すぎてく日々には鈍感な君へ","chant":{"kind":"full"}},
-          {"time":146.5,"expectedText":"[wave]ねぇ、もっと","chant":{"kind":"full"}},
-          {"time":161,"expectedText":"[wave]君がいつも","chant":{"kind":"full"}},
-          {"time":175.5,"expectedText":"[wave]眠れない夜に","chant":{"kind":"full"}},
-          {"time":178.5,"expectedText":"[wave]眠らない夜を","chant":{"kind":"full"}},
-          {"time":182,"expectedText":"[wave]眠くないまだね","chant":{"kind":"full"}},
-          {"time":188.5,"expectedText":"[wave]眠れない夜に","chant":{"kind":"full"}},
-          {"time":191.5,"expectedText":"[wave]眠らない夜を","chant":{"kind":"full"}},
-          {"time":195,"expectedText":"[wave]眠くないまだね","chant":{"kind":"full"}},
-          {"time":201,"expectedText":"[wave]落ちてく過去は鮮明で","chant":{"kind":"full"}},
-          {"time":203.5,"expectedText":"[wave]見せたい未来は繊細で","chant":{"kind":"full"}},
-          {"time":206.5,"expectedText":"[wave]すぎてく日々には鈍感な君へ","chant":{"kind":"full"}},
-          {"time":213.5,"expectedText":"[wave]落ちてく過去は鮮明で","chant":{"kind":"full"}},
-          {"time":216.5,"expectedText":"[wave]見せたい未来は繊細で","chant":{"kind":"full"}},
-          {"time":219.5,"expectedText":"[wave]すぎてく日々には鈍感な君へ","chant":{"kind":"full"}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "「もっと」「ねぇ もっと」請大聲喊；「君がいつも」也可以直接指向 Vaundy。",
+          "第一段「落ちてく過去は鮮明で……」整段一起唱；後段只跟著「眠れない夜に／眠らない夜を／眠くないまだね」這些標色回應詞。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":15,"expectedText":"[clap]どこに行ってしまったの いつも探すんだよ","chant":{"kind":"full"}},
-          {"time":28,"expectedText":"[clap]君に似合うんだよ ずっと見ていたいよ","chant":{"kind":"full"}},
-          {"time":46.5,"expectedText":"もっと","chant":{"kind":"full"}},
-          {"time":47.5,"expectedText":"[wave]騒げ怪獣の歌","chant":{"kind":"full"}},
-          {"time":52,"expectedText":"[wave]まだ消えない 夢の歌唱えて","chant":{"kind":"full"}},
-          {"time":58.5,"expectedText":"[wave]君がいつも","chant":{"kind":"full"}},
-          {"time":64.5,"expectedText":"[wave]まだ消えない 口ずさんでしまうよ","chant":{"kind":"full"}},
-          {"time":97.5,"expectedText":"もっと","chant":{"kind":"full"}},
-          {"time":98.5,"expectedText":"[wave]騒げ怪獣の歌","chant":{"kind":"full"}},
-          {"time":103,"expectedText":"[wave]まだ消えない 夢の歌唱えて","chant":{"kind":"full"}},
-          {"time":110,"expectedText":"[wave]君がいつも","chant":{"kind":"full"}},
-          {"time":116,"expectedText":"[wave]まだ消えない 口ずさんでしまうよ","chant":{"kind":"full"}},
-          {"time":123.5,"expectedText":"[clap]落ちてく過去は鮮明で","chant":{"kind":"full"}},
-          {"time":127,"expectedText":"[clap]見せたい未来は繊細で","chant":{"kind":"full"}},
-          {"time":130,"expectedText":"[clap]すぎてく日々には鈍感な君へ","chant":{"kind":"full"}},
-          {"time":137,"expectedText":"[clap]落ちてく過去は鮮明で","chant":{"kind":"full"}},
-          {"time":140,"expectedText":"[clap]見せたい未来は繊細で","chant":{"kind":"full"}},
-          {"time":143,"expectedText":"[clap]すぎてく日々には鈍感な君へ","chant":{"kind":"full"}},
-          {"time":146.5,"expectedText":"[wave]ねぇ、もっと","chant":{"kind":"full"}},
-          {"time":150,"expectedText":"[wave]騒げ怪獣の歌","chant":{"kind":"full"}},
-          {"time":154,"expectedText":"[wave]まだ消えない 夢の歌唱えて","chant":{"kind":"full"}},
-          {"time":161,"expectedText":"[wave]君がいつも","chant":{"kind":"full"}},
-          {"time":167,"expectedText":"[wave]まだ消えない 口ずさんでしまうよ","chant":{"kind":"full"}},
-          {"time":175.5,"expectedText":"[wave]眠れない夜に","chant":{"kind":"full"}},
-          {"time":178.5,"expectedText":"[wave]眠らない夜を","chant":{"kind":"full"}},
-          {"time":182,"expectedText":"[wave]眠くないまだね","chant":{"kind":"full"}},
-          {"time":188.5,"expectedText":"[wave]眠れない夜に","chant":{"kind":"full"}},
-          {"time":191.5,"expectedText":"[wave]眠らない夜を","chant":{"kind":"full"}},
-          {"time":195,"expectedText":"[wave]眠くないまだね","chant":{"kind":"full"}},
-          {"time":201,"expectedText":"[wave]落ちてく過去は鮮明で","chant":{"kind":"full"}},
-          {"time":203.5,"expectedText":"[wave]見せたい未来は繊細で","chant":{"kind":"full"}},
-          {"time":206.5,"expectedText":"[wave]すぎてく日々には鈍感な君へ","chant":{"kind":"full"}},
-          {"time":213.5,"expectedText":"[wave]落ちてく過去は鮮明で","chant":{"kind":"full"}},
-          {"time":216.5,"expectedText":"[wave]見せたい未来は繊細で","chant":{"kind":"full"}},
-          {"time":219.5,"expectedText":"[wave]すぎてく日々には鈍感な君へ","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "CHAINSAWBLOOD": {
-    actions: [
-      {"time":0,"expectedText":"[clap]","values":["clap"]},
-      {"time":19,"expectedText":"[clap]急ぐ雑踏も軽くcrackな視点","values":["clap"]},
-      {"time":22.5,"expectedText":"[clap]居ても泣いても立てぬflatな視点","values":["clap"]},
-      {"time":25.5,"expectedText":"[clap]弾む鼓動は刻むclap無しで","values":["clap"]},
-      {"time":29,"expectedText":"[clap]忘れたいほど怒るchain回して","values":["clap"]},
-      {"time":32.5,"expectedText":"[wave]Hu Hu Hu Hu  Hu Hu Hu Hu Hu","values":["wave"]},
-      {"time":38,"expectedText":"[wave]Hu-Hu-Hu-Hu","values":["wave"]},
-      {"time":40,"expectedText":"[wave]舌鳴らし今 錆び付け黒く","values":["wave"]},
-      {"time":45.5,"expectedText":"[jump]血がたぎってもう煮立ってもう やめれない","values":["jump"]},
-      {"time":48.5,"expectedText":"[jump]砕ききっても穿っても止まぬ","values":["jump"]},
-      {"time":51.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","values":["wave"]},
-      {"time":54.5,"expectedText":"[jump]Tell me why cry? Tell me why","values":["jump"]},
-      {"time":58.5,"expectedText":"[jump]血がたぎってもう煮立ってもう 止まれない","values":["jump"]},
-      {"time":61.5,"expectedText":"[jump]血を喰らうたび悪夢また よぎる","values":["jump"]},
-      {"time":64.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","values":["wave"]},
-      {"time":68,"expectedText":"[jump]Tell me why cry? Tell me why you grinning?","values":["jump"]},
-      {"time":69,"expectedText":"[clap]","values":["clap"]},
-      {"time":84,"expectedText":"[clap]妄想に侵された 右脳操作不能機能の相殺法に","values":["clap"]},
-      {"time":88.5,"expectedText":"[clap]使った愛の手！","values":["clap"]},
-      {"time":90,"expectedText":"[clap]笑かしたbadなschemeを食ってしまう紳士","values":["clap"]},
-      {"time":92.5,"expectedText":"[clap]フワァと立ちくらみ言葉を有し","values":["clap"]},
-      {"time":94,"expectedText":"[wave]CHAINSAW is 使える愛の手","values":["wave"]},
-      {"time":97.5,"expectedText":"[wave]見える雑踏は軽くcrackな始点","values":["wave"]},
-      {"time":100.5,"expectedText":"[wave]居ても泣いても立てぬflatな始点","values":["wave"]},
-      {"time":104,"expectedText":"[wave]弾む鼓動は歪むclean toneで","values":["wave"]},
-      {"time":107.5,"expectedText":"[wave]忘れたいから早くchain回して","values":["wave"]},
-      {"time":111,"expectedText":"[wave]Hu Hu Hu Hu  Hu Hu Hu Hu Hu","values":["wave"]},
-      {"time":116.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","values":["wave"]},
-      {"time":118.5,"expectedText":"[wave]歯軋りで、ほら 焼き付く赤く","values":["wave"]},
-      {"time":123.5,"expectedText":"[jump]血がたぎってもう煮立ってもう やめれない","values":["jump"]},
-      {"time":127,"expectedText":"[jump]砕ききっても穿っても止まぬ","values":["jump"]},
-      {"time":129.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","values":["wave"]},
-      {"time":133,"expectedText":"[jump]Tell me why cry? Tell me why","values":["jump"]},
-      {"time":136.5,"expectedText":"[jump]血がたぎってもう煮立ってもう 止まれない","values":["jump"]},
-      {"time":140,"expectedText":"[jump]血を喰らうたび悪夢また よぎる","values":["jump"]},
-      {"time":142.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","values":["wave"]},
-      {"time":146,"expectedText":"[jump]Tell me why cry? Tell me why","values":["jump"]},
-      {"time":149.5,"expectedText":"[clap]轟いたbad news 平和目論む悪魔のpartyで","values":["clap"]},
-      {"time":156.5,"expectedText":"[clap]須くengineかき鳴らした","values":["clap"]},
-      {"time":164.5,"expectedText":"[jump]血がたぎってもう煮立ってもう やめれない","values":["jump"]},
-      {"time":168,"expectedText":"[jump]砕ききっても穿っても止まぬ","values":["jump"]},
-      {"time":170.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","values":["wave"]},
-      {"time":174,"expectedText":"[jump]Tell me why cry? Tell me why","values":["jump"]},
-      {"time":177.5,"expectedText":"[jump]血がたぎってもう煮立ってもう 止まれない","values":["jump"]},
-      {"time":180.5,"expectedText":"[jump]血を喰らうたび悪夢また よぎる ","values":["jump"]},
-      {"time":183.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","values":["wave"]},
-      {"time":187,"expectedText":"[jump]Tell me why cry? Tell me why you grinning?","values":["jump"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["日本版需要跟上的聲音應援很多，B 段先抓準進入時機，後半能整段跟上就很厲害。","✋⬆️ 是高舉雙手的動作；✋⤴️ 是高舉手、手心向前拋。"],
-        cues: [
-          {"time":32.5,"expectedText":"[wave]Hu Hu Hu Hu  Hu Hu Hu Hu Hu","chant":{"kind":"full"}},
-          {"time":38,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}},
-          {"time":43,"expectedText":"CHAINSAW BLOOD","chant":{"kind":"full"}},
-          {"time":51.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}},
-          {"time":57,"expectedText":"CHAINSAW BLOOD","chant":{"kind":"full"}},
-          {"time":64.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}},
-          {"time":89.5,"expectedText":"(ハイッ ハイッ)","chant":{"kind":"full"}},
-          {"time":94,"expectedText":"[wave]CHAINSAW is 使える愛の手","chant":{"kind":"full"}},
-          {"time":111,"expectedText":"[wave]Hu Hu Hu Hu  Hu Hu Hu Hu Hu","chant":{"kind":"full"}},
-          {"time":116.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}},
-          {"time":121.5,"expectedText":"CHAINSAW BLOOD","chant":{"kind":"full"}},
-          {"time":129.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}},
-          {"time":135.5,"expectedText":"CHAINSAW BLOOD","chant":{"kind":"full"}},
-          {"time":142.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}},
-          {"time":159.5,"expectedText":"CHAINSAW BLOOD","chant":{"kind":"full"}},
-          {"time":170.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}},
-          {"time":176.5,"expectedText":"CHAINSAW BLOOD","chant":{"kind":"full"}},
-          {"time":183.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "日本版需要跟上的聲音應援很多，B 段先抓準進入時機，後半能整段跟上就很厲害。",
+          "✋⬆️ 是高舉雙手的動作；✋⤴️ 是高舉手、手心向前拋。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":32.5,"expectedText":"[wave]Hu Hu Hu Hu  Hu Hu Hu Hu Hu","chant":{"kind":"full"}},
-          {"time":38,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}},
-          {"time":43,"expectedText":"CHAINSAW BLOOD","chant":{"kind":"full"}},
-          {"time":51.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}},
-          {"time":57,"expectedText":"CHAINSAW BLOOD","chant":{"kind":"full"}},
-          {"time":64.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}},
-          {"time":89.5,"expectedText":"(ハイッ ハイッ)","chant":{"kind":"full"}},
-          {"time":94,"expectedText":"[wave]CHAINSAW is 使える愛の手","chant":{"kind":"full"}},
-          {"time":97.5,"expectedText":"[wave]見える雑踏は軽くcrackな始点","chant":{"kind":"full"}},
-          {"time":100.5,"expectedText":"[wave]居ても泣いても立てぬflatな始点","chant":{"kind":"full"}},
-          {"time":104,"expectedText":"[wave]弾む鼓動は歪むclean toneで","chant":{"kind":"full"}},
-          {"time":107.5,"expectedText":"[wave]忘れたいから早くchain回して","chant":{"kind":"full"}},
-          {"time":111,"expectedText":"[wave]Hu Hu Hu Hu  Hu Hu Hu Hu Hu","chant":{"kind":"full"}},
-          {"time":116.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}},
-          {"time":121.5,"expectedText":"CHAINSAW BLOOD","chant":{"kind":"full"}},
-          {"time":129.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}},
-          {"time":135.5,"expectedText":"CHAINSAW BLOOD","chant":{"kind":"full"}},
-          {"time":142.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}},
-          {"time":159.5,"expectedText":"CHAINSAW BLOOD","chant":{"kind":"full"}},
-          {"time":170.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}},
-          {"time":176.5,"expectedText":"CHAINSAW BLOOD","chant":{"kind":"full"}},
-          {"time":183.5,"expectedText":"[wave]Hu-Hu-Hu-Hu","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "KoikazeniNosete": {
-    actions: [
-      {"time":19,"expectedText":"[clap]","values":["clap"]},
-      {"time":37.5,"expectedText":"[clap]変わりゆく景色 窓越しに覗いた","values":["clap"]},
-      {"time":42,"expectedText":"[clap]懐かしい風が呼んできた どっかで","values":["clap"]},
-      {"time":48.5,"expectedText":"[clap]見えない 互いを互いに 合図して そっと","values":["clap"]},
-      {"time":53.5,"expectedText":"[clap]二人 目をそらして気付いたの ","values":["clap"]},
-      {"time":60.5,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っている ","values":["wave"]},
-      {"time":68.5,"expectedText":"[wave]思い出す日々が  僕たちを悲しませるの ねぇ","values":["wave"]},
-      {"time":77,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っていた ","values":["wave"]},
-      {"time":85,"expectedText":"[wave]繰り返す日々が  僕たちを振り向かせるの ねぇ","values":["wave"]},
-      {"time":93.5,"expectedText":"[wave]そっと二人 魔法を唱えるの 恋風邪にのせて","values":["wave"]},
-      {"time":107,"expectedText":"[clap]","values":["clap"]},
-      {"time":118.5,"expectedText":"[clap]混ざりゆく景色 雨越しに覗いた","values":["clap"]},
-      {"time":123.5,"expectedText":"[clap]暖かい風が呼んできた どっかで","values":["clap"]},
-      {"time":129.5,"expectedText":"[clap]消えない 互いを互いに 合図して そっと","values":["clap"]},
-      {"time":135.5,"expectedText":"[clap]二人 目を凝らして気付いたの","values":["clap"]},
-      {"time":142,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っている ","values":["wave"]},
-      {"time":150,"expectedText":"[wave]思い出す日々が  僕たちを悲しませるの ねぇ","values":["wave"]},
-      {"time":158.5,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っていた ","values":["wave"]},
-      {"time":166.5,"expectedText":"[wave]繰り返す日々が  僕たちを振り向かせるの ねぇ","values":["wave"]},
-      {"time":175,"expectedText":"[wave]そっと二人 魔法を唱えるの","values":["wave"]},
-      {"time":183.5,"expectedText":"[clap]言葉が深める惑星の夜に今","values":["clap"]},
-      {"time":190,"expectedText":"[clap]あなたを探して 答えた","values":["clap"]},
-      {"time":194,"expectedText":"[clap]「心枯れるまで、共に笑っていよう」","values":["clap"]},
-      {"time":199,"expectedText":"[clap]やっと二人 目を合わせて気付いたの","values":["clap"]},
-      {"time":209.5,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っている ","values":["wave"]},
-      {"time":217,"expectedText":"[wave]思い出す日々が  僕たちを悲しませるの ねぇ","values":["wave"]},
-      {"time":225.5,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っていた ","values":["wave"]},
-      {"time":233.5,"expectedText":"[wave]繰り返す日々が  僕たちを振り向かせるの ねぇ","values":["wave"]},
-      {"time":242,"expectedText":"[wave]そっと二人 魔法を唱えるの 恋風邪にのせて","values":["wave"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["「愛で」與「日々が」請大聲唱出來，三次副歌都一樣。"],
-        cues: [
-          {"time":60.5,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っている ","chant":{"kind":"partial","parts":[{"jp":{"text":"愛で","occurrence":1},"romaji":{"text":"ai de","occurrence":1}}]}},
-          {"time":68.5,"expectedText":"[wave]思い出す日々が  僕たちを悲しませるの ねぇ","chant":{"kind":"partial","parts":[{"jp":{"text":"日々が","occurrence":1},"romaji":{"text":"hibi ga","occurrence":1}}]}},
-          {"time":77,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っていた ","chant":{"kind":"partial","parts":[{"jp":{"text":"愛で","occurrence":1},"romaji":{"text":"ai de","occurrence":1}}]}},
-          {"time":85,"expectedText":"[wave]繰り返す日々が  僕たちを振り向かせるの ねぇ","chant":{"kind":"partial","parts":[{"jp":{"text":"日々が","occurrence":1},"romaji":{"text":"hibi ga","occurrence":1}}]}},
-          {"time":142,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っている ","chant":{"kind":"partial","parts":[{"jp":{"text":"愛で","occurrence":1},"romaji":{"text":"ai de","occurrence":1}}]}},
-          {"time":150,"expectedText":"[wave]思い出す日々が  僕たちを悲しませるの ねぇ","chant":{"kind":"partial","parts":[{"jp":{"text":"日々が","occurrence":1},"romaji":{"text":"hibi ga","occurrence":1}}]}},
-          {"time":158.5,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っていた ","chant":{"kind":"partial","parts":[{"jp":{"text":"愛で","occurrence":1},"romaji":{"text":"ai de","occurrence":1}}]}},
-          {"time":166.5,"expectedText":"[wave]繰り返す日々が  僕たちを振り向かせるの ねぇ","chant":{"kind":"partial","parts":[{"jp":{"text":"日々が","occurrence":1},"romaji":{"text":"hibi ga","occurrence":1}}]}},
-          {"time":209.5,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っている ","chant":{"kind":"partial","parts":[{"jp":{"text":"愛で","occurrence":1},"romaji":{"text":"ai de","occurrence":1}}]}},
-          {"time":217,"expectedText":"[wave]思い出す日々が  僕たちを悲しませるの ねぇ","chant":{"kind":"partial","parts":[{"jp":{"text":"日々が","occurrence":1},"romaji":{"text":"hibi ga","occurrence":1}}]}},
-          {"time":225.5,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っていた ","chant":{"kind":"partial","parts":[{"jp":{"text":"愛で","occurrence":1},"romaji":{"text":"ai de","occurrence":1}}]}},
-          {"time":233.5,"expectedText":"[wave]繰り返す日々が  僕たちを振り向かせるの ねぇ","chant":{"kind":"partial","parts":[{"jp":{"text":"日々が","occurrence":1},"romaji":{"text":"hibi ga","occurrence":1}}]}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "「愛で」與「日々が」請大聲唱出來，三次副歌都一樣。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":60.5,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っている ","chant":{"kind":"full"}},
-          {"time":68.5,"expectedText":"[wave]思い出す日々が  僕たちを悲しませるの ねぇ","chant":{"kind":"full"}},
-          {"time":77,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っていた ","chant":{"kind":"full"}},
-          {"time":85,"expectedText":"[wave]繰り返す日々が  僕たちを振り向かせるの ねぇ","chant":{"kind":"full"}},
-          {"time":142,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っている ","chant":{"kind":"full"}},
-          {"time":150,"expectedText":"[wave]思い出す日々が  僕たちを悲しませるの ねぇ","chant":{"kind":"full"}},
-          {"time":158.5,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っていた ","chant":{"kind":"full"}},
-          {"time":166.5,"expectedText":"[wave]繰り返す日々が  僕たちを振り向かせるの ねぇ","chant":{"kind":"full"}},
-          {"time":209.5,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っている ","chant":{"kind":"full"}},
-          {"time":217,"expectedText":"[wave]思い出す日々が  僕たちを悲しませるの ねぇ","chant":{"kind":"full"}},
-          {"time":225.5,"expectedText":"[wave]くだらない愛で 僕たちはいつも笑っていた ","chant":{"kind":"full"}},
-          {"time":233.5,"expectedText":"[wave]繰り返す日々が  僕たちを振り向かせるの ねぇ","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "Odoriko": {
-    actions: [
-      {"time":0,"expectedText":"[clap]","values":["clap"]},
-      {"time":18.5,"expectedText":"[clap]ねぇ、どっかに置いてきたような","values":["clap"]},
-      {"time":24,"expectedText":"[clap]事が一つ二つ浮いているけど","values":["clap"]},
-      {"time":31,"expectedText":"[clap]ねぇ、ちゃんと拾っておこう","values":["clap"]},
-      {"time":36.5,"expectedText":"[clap]はじけて忘れてしまう前に","values":["clap"]},
-      {"time":43,"expectedText":"[spin]回り出した あの子と僕の未来が","values":["spin"]},
-      {"time":49.5,"expectedText":"[spin]止まりどっかで またやり直せたら","values":["spin"]},
-      {"time":55.5,"expectedText":"[spin]回り出した あの子と僕が被害者","values":["spin"]},
-      {"time":62,"expectedText":"[spin]づらでどっかを また練り歩けたらな","values":["spin"]},
-      {"time":80,"expectedText":"[clap]あのね、私あなたに会ったの","values":["clap"]},
-      {"time":85.5,"expectedText":"[clap]夢の中に置いてきたけどね","values":["clap"]},
-      {"time":92,"expectedText":"[clap]ねぇ、どうして私が好きなの","values":["clap"]},
-      {"time":98,"expectedText":"[clap]一度しか会ったことがないのにね","values":["clap"]},
-      {"time":104.5,"expectedText":"[clap]思いを蹴って 二人でしてんだ","values":["clap"]},
-      {"time":107.5,"expectedText":"[clap]壊れない愛を歌う 言葉を二人に課して","values":["clap"]},
-      {"time":112,"expectedText":"[clap]誓いをたてんだ 忘れない愛を歌うようにね","values":["clap"]},
-      {"time":116.5,"expectedText":"[spin]回り出した あの子と僕の未来が","values":["spin"]},
-      {"time":122.5,"expectedText":"[spin]止まりどっかで またやり直せたら","values":["spin"]},
-      {"time":129,"expectedText":"[spin]回り出した あの子と僕が被害者","values":["spin"]},
-      {"time":135,"expectedText":"[spin]づらでどっかを また練り歩けたらな","values":["spin"]},
-      {"time":168.5,"expectedText":"[spin]回り出した あの子と僕の未来が","values":["spin"]},
-      {"time":175,"expectedText":"[spin]止まりどっかで またやり直せたら","values":["spin"]},
-      {"time":181,"expectedText":"[spin]回り出した あの子と僕が被害者","values":["spin"]},
-      {"time":187,"expectedText":"[spin]づらでどっかを また練り歩けたらな","values":["spin"]},
-      {"time":193,"expectedText":"[spin]時代に乗って僕たちは 変わらず愛に生きるだろう","values":["spin"]},
-      {"time":199.5,"expectedText":"[spin]僕らが散って残るのは 変わらぬ愛の歌なんだろうな","values":["spin"]},
-      {"time":205.5,"expectedText":"[spin]時代に乗って僕たちは 変わらず愛に生きるだろう","values":["spin"]},
-      {"time":211.5,"expectedText":"[spin]僕らが散って残るのは 変わらぬ愛の歌なんだろうな","values":["spin"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["副歌舉起食指逆時針旋轉。","第一段「とぅるるる……」是安靜段落，不用拍手；最後副歌唱完手勢自由。"],
-        cues: [
-
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "副歌舉起食指逆時針旋轉。",
+          "第一段「とぅるるる……」是安靜段落，不用拍手；最後副歌唱完手勢自由。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":68,"expectedText":"とぅるるる とぅるるる とぅるる x 4","chant":{"kind":"full"}},
-          {"time":141,"expectedText":"とぅるるる とぅるるる とぅるる x 8","chant":{"kind":"full"}},
-          {"time":193,"expectedText":"[spin]時代に乗って僕たちは 変わらず愛に生きるだろう","chant":{"kind":"full"}},
-          {"time":199.5,"expectedText":"[spin]僕らが散って残るのは 変わらぬ愛の歌なんだろうな","chant":{"kind":"full"}},
-          {"time":205.5,"expectedText":"[spin]時代に乗って僕たちは 変わらず愛に生きるだろう","chant":{"kind":"full"}},
-          {"time":211.5,"expectedText":"[spin]僕らが散って残るのは 変わらぬ愛の歌なんだろうな","chant":{"kind":"full"}},
-          {"time":218,"expectedText":"とぅるるる とぅるるる とぅるる x 4","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "HadakaNoYusha": {
-    actions: [
-      {"time":0,"expectedText":"[clap]誰かが変な涙を 飲み込んで 呑み込んでいる","values":["clap"]},
-      {"time":34.5,"expectedText":"[wave]愛してしまった全部全部 降りかかった呪いも全部","values":["wave"]},
-      {"time":46,"expectedText":"[wave]もう愛してしまった想いを全部 守れるほどの光を","values":["wave"]},
-      {"time":59.5,"expectedText":"[clap]何処からか舞った悲しみが 飛び交って 飛び交っている","values":["clap"]},
-      {"time":71,"expectedText":"[clap]失って また失って 膝をつき 息をしている","values":["clap"]},
-      {"time":129,"expectedText":"[clap]誰もが求めた剣はこの誰かが残してった鈍が","values":["clap"]},
-      {"time":141,"expectedText":"[clap]この誰かが残してった鈍が闇を裂いてしまう前に","values":["clap"]},
-      {"time":152,"expectedText":"[wave]愛してしまった全部全部 降りかかった呪いも全部","values":["wave"]},
-      {"time":164,"expectedText":"[wave]もう愛してしまった想いを全部 守れるほどの光を","values":["wave"]},
-      {"time":176,"expectedText":"[wave]力が伴う悪意振り解いて耳は聞こえちゃいない","values":["wave"]},
-      {"time":185,"expectedText":"[wave]だが勇者は今力はいらない身に任せて","values":["wave"]},
-      {"time":194,"expectedText":"[wave]カゲは迫る「お前はなんだ」と","values":["wave"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["三次「愛して」只唱這三個字；後面的歌詞不需要整段跟唱。","「それは涙と対になって」與「そこは涙と対になって」請整段一起唱。"],
-        cues: [
-          {"time":34.5,"expectedText":"[wave]愛してしまった全部全部 降りかかった呪いも全部","chant":{"kind":"partial","parts":[{"jp":{"text":"愛して","occurrence":1},"romaji":{"text":"aishi te","occurrence":1}}]}},
-          {"time":82,"expectedText":"それは涙と対になって 悲しみと力となって","chant":{"kind":"full"}},
-          {"time":94,"expectedText":"そこは涙と対になって 滾りが溢れかえって","chant":{"kind":"full"}},
-          {"time":105,"expectedText":"愛してしまった全部全部 降りかかった呪いも全部","chant":{"kind":"partial","parts":[{"jp":{"text":"愛して","occurrence":1},"romaji":{"text":"aishi te","occurrence":1}}]}},
-          {"time":152,"expectedText":"[wave]愛してしまった全部全部 降りかかった呪いも全部","chant":{"kind":"partial","parts":[{"jp":{"text":"愛して","occurrence":1},"romaji":{"text":"aishi te","occurrence":1}}]}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "三次「愛して」只唱這三個字；後面的歌詞不需要整段跟唱。",
+          "「それは涙と対になって」與「そこは涙と対になって」請整段一起唱。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":34.5,"expectedText":"[wave]愛してしまった全部全部 降りかかった呪いも全部","chant":{"kind":"full"}},
-          {"time":82,"expectedText":"それは涙と対になって 悲しみと力となって","chant":{"kind":"full"}},
-          {"time":94,"expectedText":"そこは涙と対になって 滾りが溢れかえって","chant":{"kind":"full"}},
-          {"time":105,"expectedText":"愛してしまった全部全部 降りかかった呪いも全部","chant":{"kind":"full"}},
-          {"time":152,"expectedText":"[wave]愛してしまった全部全部 降りかかった呪いも全部","chant":{"kind":"full"}},
-          {"time":176,"expectedText":"[wave]力が伴う悪意振り解いて耳は聞こえちゃいない","chant":{"kind":"full"}},
-          {"time":185,"expectedText":"[wave]だが勇者は今力はいらない身に任せて","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "Fukakouryoku": {
-    actions: [
-      {"time":0,"expectedText":"[clap]","values":["clap"]},
-      {"time":19,"expectedText":"[clap]どこにいっても","values":["clap"]},
-      {"time":23,"expectedText":"[clap]そのままどっかに出すくだり","values":["clap"]},
-      {"time":25,"expectedText":"[clap]そんな劣等も葛藤もみんな持ってる","values":["clap"]},
-      {"time":30.5,"expectedText":"[clap]なんでもかんでも欲しがる世界じゃない？","values":["clap"]},
-      {"time":32.5,"expectedText":"[clap]また回る世界に飲まれている","values":["clap"]},
-      {"time":37,"expectedText":"[clap]膨らんだ、妄想、幻想、真相を、いやあれを探してる","values":["clap"]},
-      {"time":41.5,"expectedText":"[clap]あれ、なに、わからないよ","values":["clap"]},
-      {"time":46.5,"expectedText":"[clap]それ、なに、甘い理想に","values":["clap"]},
-      {"time":54,"expectedText":"[wave]welcome to the dirty night","values":["wave"]},
-      {"time":55.5,"expectedText":"[wave]みんな心の中までイカレちまっている","values":["wave"]},
-      {"time":59,"expectedText":"[wave]welcome to the dirty night","values":["wave"]},
-      {"time":61,"expectedText":"[wave]そんな世界にみんなで寄り添いあっている","values":["wave"]},
-      {"time":64,"expectedText":"[wave]welcome to the dirty night","values":["wave"]},
-      {"time":66,"expectedText":"[wave]みんな心の中から弱って朽ちていく","values":["wave"]},
-      {"time":69.5,"expectedText":"[wave]welcome to the dirty night","values":["wave"]},
-      {"time":71,"expectedText":"[wave]そんな世界だから皆慰めあっている","values":["wave"]},
-      {"time":85,"expectedText":"[clap]あれ、なに、わからないよ","values":["clap"]},
-      {"time":90.5,"expectedText":"[clap]それ、なに、辛い日々に","values":["clap"]},
-      {"time":97.5,"expectedText":"[wave]welcome to the dirty night","values":["wave"]},
-      {"time":99,"expectedText":"[wave]みんな心の中までイカレちまっている","values":["wave"]},
-      {"time":102.5,"expectedText":"w[wave]elcome to the dirty night","values":["wave"]},
-      {"time":104.5,"expectedText":"[wave]そんな世界にみんなで寄り添いあっている","values":["wave"]},
-      {"time":108,"expectedText":"[wave]welcome to the dirty night","values":["wave"]},
-      {"time":109.5,"expectedText":"[wave]みんな心の中から弱って朽ちていく","values":["wave"]},
-      {"time":113,"expectedText":"[wave]welcome to the dirty night","values":["wave"]},
-      {"time":114.5,"expectedText":"[wave]そんな世界だから皆慰めあっている","values":["wave"]},
-      {"time":121.5,"expectedText":"[wave]愛で","values":["wave"]},
-      {"time":123,"expectedText":"[wave]揺れる世界の中で僕達は","values":["wave"]},
-      {"time":128.5,"expectedText":"[wave]キスをしあって生きている","values":["wave"]},
-      {"time":133,"expectedText":"[wave]揺れる世界の中を僕達は","values":["wave"]},
-      {"time":142.5,"expectedText":"[wave]なぁなんて美しい世界だ","values":["wave"]},
-      {"time":148,"expectedText":"[wave]まぁなんとか手を取り合うんだ","values":["wave"]},
-      {"time":150,"expectedText":"[wave]まるで恋愛映画のラストシーンのような","values":["wave"]},
-      {"time":154.5,"expectedText":"[wave]愛で","values":["wave"]},
-      {"time":156,"expectedText":"[wave]靡く世界の中で僕達は","values":["wave"]},
-      {"time":161.5,"expectedText":"[wave]キスをしあって生きている","values":["wave"]},
-      {"time":166,"expectedText":"[wave]靡く世界の中を僕達は","values":["wave"]},
-      {"time":176.5,"expectedText":"[wave]welcome to the dirty night","values":["wave"]},
-      {"time":178.5,"expectedText":"[wave]みんな心の中までイカレちまっている","values":["wave"]},
-      {"time":181.5,"expectedText":"[wave]welcome to the dirty night","values":["wave"]},
-      {"time":183.5,"expectedText":"[wave]そんな世界にみんなで寄り添いあっている","values":["wave"]},
-      {"time":187,"expectedText":"[wave]welcome to the dirty night","values":["wave"]},
-      {"time":188.5,"expectedText":"[wave]みんな心の中から弱って朽ちていく","values":["wave"]},
-      {"time":192,"expectedText":"[wave]welcome to the dirty night","values":["wave"]},
-      {"time":193.5,"expectedText":"[wave]そんな世界だから皆慰めあっている","values":["wave"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["副歌一起唱「Welcome to the dirty night」。","「あれ なに」「それ なに」「愛で」是熟悉 VAWS 應援的人會喊的回應。"],
-        cues: [
-          {"time":41.5,"expectedText":"[clap]あれ、なに、わからないよ","chant":{"kind":"partial","parts":[{"jp":{"text":"あれ、なに","occurrence":1},"romaji":{"text":"are, nani","occurrence":1}}]}},
-          {"time":46.5,"expectedText":"[clap]それ、なに、甘い理想に","chant":{"kind":"partial","parts":[{"jp":{"text":"それ、なに","occurrence":1},"romaji":{"text":"sore, nani","occurrence":1}}]}},
-          {"time":54,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":59,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":64,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":69.5,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":85,"expectedText":"[clap]あれ、なに、わからないよ","chant":{"kind":"partial","parts":[{"jp":{"text":"あれ、なに","occurrence":1},"romaji":{"text":"are, nani","occurrence":1}}]}},
-          {"time":90.5,"expectedText":"[clap]それ、なに、辛い日々に","chant":{"kind":"partial","parts":[{"jp":{"text":"それ、なに","occurrence":1},"romaji":{"text":"sore, nani","occurrence":1}}]}},
-          {"time":97.5,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":102.5,"expectedText":"w[wave]elcome to the dirty night","chant":{"kind":"full"}},
-          {"time":108,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":113,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":154.5,"expectedText":"[wave]愛で","chant":{"kind":"partial","parts":[{"jp":{"text":"愛で","occurrence":1},"romaji":{"text":"ai de","occurrence":1}}]}},
-          {"time":176.5,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":181.5,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":187,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":192,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "副歌一起唱「Welcome to the dirty night」。",
+          "「あれ なに」「それ なに」「愛で」是熟悉 VAWS 應援的人會喊的回應。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":25,"expectedText":"[clap]そんな劣等も葛藤もみんな持ってる","chant":{"kind":"full"}},
-          {"time":28.5,"expectedText":"その理由は同じ","chant":{"kind":"full"}},
-          {"time":32.5,"expectedText":"[clap]また回る世界に飲まれている","chant":{"kind":"full"}},
-          {"time":35,"expectedText":"それも理由は同じ","chant":{"kind":"full"}},
-          {"time":41.5,"expectedText":"[clap]あれ、なに、わからないよ","chant":{"kind":"full"}},
-          {"time":46.5,"expectedText":"[clap]それ、なに、甘い理想に","chant":{"kind":"full"}},
-          {"time":54,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":59,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":64,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":69.5,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":85,"expectedText":"[clap]あれ、なに、わからないよ","chant":{"kind":"full"}},
-          {"time":90.5,"expectedText":"[clap]それ、なに、辛い日々に","chant":{"kind":"full"}},
-          {"time":97.5,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":102.5,"expectedText":"w[wave]elcome to the dirty night","chant":{"kind":"full"}},
-          {"time":108,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":113,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":154.5,"expectedText":"[wave]愛で","chant":{"kind":"full"}},
-          {"time":156,"expectedText":"[wave]靡く世界の中で僕達は","chant":{"kind":"full"}},
-          {"time":166,"expectedText":"[wave]靡く世界の中を僕達は","chant":{"kind":"full"}},
-          {"time":172,"expectedText":"目を合わせあって生きる","chant":{"kind":"full"}},
-          {"time":176.5,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":181.5,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":187,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}},
-          {"time":192,"expectedText":"[wave]welcome to the dirty night","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "Reunion": {
-    actions: [
-      {"time":20.5,"expectedText":"[clap]","values":["clap"]},
-      {"time":40,"expectedText":"[clap]one more time もう少しで起こすよmagic","values":["clap"]},
-      {"time":46.5,"expectedText":"[clap]超TRY 光を貸してbody","values":["clap"]},
-      {"time":51.5,"expectedText":"[clap]どうにかしてでも一つ願い、聞いてくれ","values":["clap"]},
-      {"time":58,"expectedText":"[clap]どうこうよりも一つ想い、悟ってくれ","values":["clap"]},
-      {"time":66,"expectedText":"[clap]宇宙一の悲しみと霧覚める静けさと","values":["clap"]},
-      {"time":72.5,"expectedText":"[clap]僕の心拍でもしもしもし","values":["clap"]},
-      {"time":77,"expectedText":"[wave]もしもここからまた出会えるのなら","values":["wave"]},
-      {"time":81,"expectedText":"[wave]この先は一瞬も一寸の隅も","values":["wave"]},
-      {"time":88,"expectedText":"[wave]忘れず全部覚えておこう","values":["wave"]},
-      {"time":91.5,"expectedText":"[wave]目を閉じあうたびまぶたで久しく","values":["wave"]},
-      {"time":97.5,"expectedText":"[wave]君に出会えるからまた夏で話そう","values":["wave"]},
-      {"time":117,"expectedText":"[clap]one more night もう少しで起こすよmagic","values":["clap"]},
-      {"time":123,"expectedText":"[clap]超HIGHもうすでに力んでるマジ","values":["clap"]},
-      {"time":128,"expectedText":"[clap]どう見たってもう無謀のコース蠱毒みたいだね","values":["clap"]},
-      {"time":135,"expectedText":"[clap]どうこうよりも秘匿の情を掘りおこしてくれ","values":["clap"]},
-      {"time":143,"expectedText":"[clap]宇宙一の快感と咳き込める重圧と","values":["clap"]},
-      {"time":149.5,"expectedText":"[clap]僕の情熱でもしもしもし","values":["clap"]},
-      {"time":206,"expectedText":"[clap]ねぇ君はそれでも、胸の奥僕の 何かの","values":["clap"]},
-      {"time":212.5,"expectedText":"[clap]在処をそれでも、探すだろうかねぇ、もしも","values":["clap"]},
-      {"time":225,"expectedText":"[wave]もしもここからまた出会えるのなら","values":["wave"]},
-      {"time":229,"expectedText":"[wave]これまでの一瞬も一寸の隅も","values":["wave"]},
-      {"time":236,"expectedText":"[wave]忘れず全部覚えておこう","values":["wave"]},
-      {"time":239.5,"expectedText":"[wave]目を閉じあうたびまぶたで久しく","values":["wave"]},
-      {"time":245.5,"expectedText":"[wave]君に出会えるからまた夏で話そう","values":["wave"]}
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":40,"expectedText":"[clap]one more time もう少しで起こすよmagic","chant":{"kind":"full"}},
-          {"time":46.5,"expectedText":"[clap]超TRY 光を貸してbody","chant":{"kind":"full"}},
-          {"time":77,"expectedText":"[wave]もしもここからまた出会えるのなら","chant":{"kind":"full"}},
-          {"time":88,"expectedText":"[wave]忘れず全部覚えておこう","chant":{"kind":"full"}},
-          {"time":97.5,"expectedText":"[wave]君に出会えるからまた夏で話そう","chant":{"kind":"full"}},
-          {"time":117,"expectedText":"[clap]one more night もう少しで起こすよmagic","chant":{"kind":"full"}},
-          {"time":123,"expectedText":"[clap]超HIGHもうすでに力んでるマジ","chant":{"kind":"full"}},
-          {"time":225,"expectedText":"[wave]もしもここからまた出会えるのなら","chant":{"kind":"full"}},
-          {"time":236,"expectedText":"[wave]忘れず全部覚えておこう","chant":{"kind":"full"}},
-          {"time":245.5,"expectedText":"[wave]君に出会えるからまた夏で話そう","chant":{"kind":"full"}}
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "hanaurana": {
-    actions: [
-      {"time":1.5,"expectedText":"[clap]街の夕焼けに溶けた","values":["clap"]},
-      {"time":8,"expectedText":"[clap]風が吹く僕たちを乗せて","values":["clap"]},
-      {"time":12,"expectedText":"[clap]ニ人でちぎった花に","values":["clap"]},
-      {"time":32.5,"expectedText":"[clap]願うなら","values":["clap"]},
-      {"time":40,"expectedText":"[clap]叶うなら","values":["clap"]},
-      {"time":61,"expectedText":"[clap]恋路の果てには何がある","values":["clap"]},
-      {"time":74,"expectedText":"[wave]僕達の千年の恋は","values":["wave"]},
-      {"time":81,"expectedText":"[wave]僕達は千年後もまだ","values":["wave"]},
-      {"time":96.5,"expectedText":"[clap]貴方と以外","values":["clap"]},
-      {"time":101,"expectedText":"[clap]波の中で","values":["clap"]},
-      {"time":107,"expectedText":"[clap]2人がたっている","values":["clap"]},
-      {"time":125,"expectedText":"[clap]願いは君との先にある","values":["clap"]},
-      {"time":138,"expectedText":"[wave]僕達の千年の恋は","values":["wave"]},
-      {"time":145,"expectedText":"[wave]僕達は千年後もまだ","values":["wave"]},
-      {"time":160,"expectedText":"[clap] 何年経っても妄想が","values":["clap"]},
-      {"time":163,"expectedText":"[clap]もうこんなに","values":["clap"]},
-      {"time":166.5,"expectedText":"[clap]願いは","values":["clap"]},
-      {"time":170,"expectedText":"溢れ出していく","values":["clap"]},
-      {"time":173.5,"expectedText":"[wave]僕達の千年の恋は","values":["wave"]},
-      {"time":181,"expectedText":"[wave]僕達は千年後もまだ","values":["wave"]},
-      {"time":185.5,"expectedText":"[wave]ちぎって","values":["wave"]},
-      {"time":188.5,"expectedText":"[wave]何年経っても妄想が","values":["wave"]},
-      {"time":191.5,"expectedText":"[wave]もうこんなに","values":["wave"]},
-      {"time":194.5,"expectedText":"[wave]願えば","values":["wave"]},
-      {"time":196,"expectedText":"[wave]何年経っても妄想が","values":["wave"]},
-      {"time":198.5,"expectedText":"[wave]もうこんなに","values":["wave"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["副歌以雙手高舉、左右揮手為主；開心時可以跳。","這首日本版不要求整段跟唱，拍手與揮手盡情做即可。"],
-        cues: [
-          {"time":46.5,"expectedText":"なんて笑って吐いて捨てては","chant":{"kind":"full"}},
-          {"time":53.5,"expectedText":"抱いて抱えて悶えた先には","chant":{"kind":"full"}},
-          {"time":110.5,"expectedText":"なんて笑って吐いて捨てては","chant":{"kind":"full"}},
-          {"time":118,"expectedText":"抱いて抱えて悶えた先には","chant":{"kind":"full"}},
-          {"time":160,"expectedText":"[clap] 何年経っても妄想が","chant":{"kind":"partial","parts":[{"jp":{"text":"何年経っても妄想が","occurrence":1},"romaji":{"text":"nan nen tatte mo mōsō ga","occurrence":1}}]}},
-          {"time":163,"expectedText":"[clap]もうこんなに","chant":{"kind":"partial","parts":[{"jp":{"text":"もうこんなに","occurrence":1},"romaji":{"text":"mō konnani","occurrence":1}}]}},
-          {"time":168,"expectedText":"花が散るほど","chant":{"kind":"partial","parts":[{"jp":{"text":"花が散るほど","occurrence":1},"romaji":{"text":"hana ga chiru hodo","occurrence":1}}]}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "副歌以雙手高舉、左右揮手為主；開心時可以跳。",
+          "這首日本版不要求整段跟唱，拍手與揮手盡情做即可。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":46.5,"expectedText":"なんて笑って吐いて捨てては","chant":{"kind":"full"}},
-          {"time":53.5,"expectedText":"抱いて抱えて悶えた先には","chant":{"kind":"full"}},
-          {"time":110.5,"expectedText":"なんて笑って吐いて捨てては","chant":{"kind":"full"}},
-          {"time":118,"expectedText":"抱いて抱えて悶えた先には","chant":{"kind":"full"}},
-          {"time":160,"expectedText":"[clap] 何年経っても妄想が","chant":{"kind":"full"}},
-          {"time":163,"expectedText":"[clap]もうこんなに","chant":{"kind":"full"}},
-          {"time":168,"expectedText":"花が散るほど","chant":{"kind":"full"}},
-          {"time":173.5,"expectedText":"[wave]僕達の千年の恋は","chant":{"kind":"full"}},
-          {"time":176,"expectedText":"相槌で咲く","chant":{"kind":"full"}},
-          {"time":178.5,"expectedText":"花のように","chant":{"kind":"full"}},
-          {"time":188.5,"expectedText":"[wave]何年経っても妄想が","chant":{"kind":"full"}},
-          {"time":190,"expectedText":"根を張って","chant":{"kind":"full"}},
-          {"time":191.5,"expectedText":"[wave]もうこんなに","chant":{"kind":"full"}},
-          {"time":193,"expectedText":"溢れ出している","chant":{"kind":"full"}},
-          {"time":196,"expectedText":"[wave]何年経っても妄想が","chant":{"kind":"full"}},
-          {"time":197.5,"expectedText":"根を張って","chant":{"kind":"full"}},
-          {"time":198.5,"expectedText":"[wave]もうこんなに","chant":{"kind":"full"}},
-          {"time":200,"expectedText":"溢れ出していく","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "Yobigoe": {
-    actions: [
-      {"time":1.13,"expectedText":"[clap]この惑星の真ん中で","values":["clap"]},
-      {"time":8.66,"expectedText":"[clap]時折り描いた暗闇照らす何か","values":["clap"]},
-      {"time":12.693,"expectedText":"[clap]この部屋を立ち籠めている何か","values":["clap"]},
-      {"time":16.7,"expectedText":"[clap]それは紅色の記憶のような","values":["clap"]},
-      {"time":24.87,"expectedText":"[clap]空いた穴を埋めていくような何か","values":["clap"]},
-      {"time":28.64,"expectedText":"[clap]天井のしみ無数の何か","values":["clap"]},
-      {"time":32.68,"expectedText":"[wave]「この夢が覚めたら」","values":["wave"]},
-      {"time":36.02,"expectedText":"[wave]逃げ出してしまうかこのまま","values":["wave"]},
-      {"time":40.47,"expectedText":"[wave]「この夢が覚めたら」","values":["wave"]},
-      {"time":44.5,"expectedText":"[wave]寂しくなるよだからいつまでも","values":["wave"]},
-      {"time":50.34,"expectedText":"[wave]どんな夜も","values":["wave"]},
-      {"time":52.785,"expectedText":"[wave]輝いて消えないものに 手を伸ばして","values":["wave"]},
-      {"time":58.45,"expectedText":"[wave]僕らまだ不確かな未来歌えるよ","values":["wave"]},
-      {"time":64.37,"expectedText":"[wave]どんな日々も","values":["wave"]},
-      {"time":66.605,"expectedText":"[wave]輝いて消えてくものさ、手を伸ばして","values":["wave"]},
-      {"time":72.44,"expectedText":"[wave]僕らまた不確かな未来歌えるよ","values":["wave"]},
-      {"time":82.6,"expectedText":"[wave]ほら待ってるよ 「今チェンジ」","values":["wave"]},
-      {"time":91.18,"expectedText":"[clap]この惑星の真ん中で","values":["clap"]},
-      {"time":98.63,"expectedText":"[clap]差し詰め、希望に似た溢れる何か","values":["clap"]},
-      {"time":102.634,"expectedText":"[clap]余さず描いた立ち籠めていた何か","values":["clap"]},
-      {"time":107.03,"expectedText":"[clap]まだ紅色幕開け前か","values":["clap"]},
-      {"time":114.68,"expectedText":"[clap]隙間風たどりここまで来ていた","values":["clap"]},
-      {"time":118.643,"expectedText":"[clap]明白だが、まだ知らない何か","values":["clap"]},
-      {"time":123.128,"expectedText":"[wave]これじゃ 不安だらけ勘違いだらけ","values":["wave"]},
-      {"time":127.42,"expectedText":"[wave]独りよがりじゃないか","values":["wave"]},
-      {"time":131.048,"expectedText":"[wave]でも 震えてる","values":["wave"]},
-      {"time":132.896,"expectedText":"[wave]声武者震いは「今チェンジ」","values":["wave"]},
-      {"time":136.12,"expectedText":"[wave]このままこの続きを","values":["wave"]},
-      {"time":140.4,"expectedText":"[wave]どんな夜も","values":["wave"]},
-      {"time":142.762,"expectedText":"[wave]輝いて消えないものに手を伸ばして","values":["wave"]},
-      {"time":148.47,"expectedText":"[wave]僕らまだ不確かな未来歌えるよ","values":["wave"]},
-      {"time":166.56,"expectedText":"[wave]「この夢が覚めたら」","values":["wave"]},
-      {"time":170.66,"expectedText":"[wave]呼び声はもう覚えた","values":["wave"]},
-      {"time":174.71,"expectedText":"[wave]「この夢が覚めたら」","values":["wave"]},
-      {"time":178.59,"expectedText":"[wave]唱えるわ","values":["wave"]},
-      {"time":184.32,"expectedText":"[clap]どんな夜も","values":["clap"]},
-      {"time":186.803,"expectedText":"[clap]輝いて消えないものに手を伸ばして","values":["clap"]},
-      {"time":192.37,"expectedText":"[clap]僕ら今確かに、見上げているはず","values":["clap"]},
-      {"time":197.12,"expectedText":"[wave]今 チェンジどんな時も","values":["wave"]},
-      {"time":200.819,"expectedText":"[wave]輝いて消えないものに手を伸ばして","values":["wave"]},
-      {"time":206.44,"expectedText":"[wave]僕ら今確かに 未来歌えるよ","values":["wave"]},
-      {"time":212.49,"expectedText":"[wave]どんな夜も Ah~","values":["wave"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["依橘色標記跟唱；如果想簡化，只要跟著唱「チェンジ」也可以。"],
-        cues: [
-          {"time":32.68,"expectedText":"[wave]「この夢が覚めたら」","chant":{"kind":"full"}},
-          {"time":40.47,"expectedText":"[wave]「この夢が覚めたら」","chant":{"kind":"full"}},
-          {"time":49.25,"expectedText":"今 チェンジ","chant":{"kind":"partial","parts":[{"jp":{"text":"チェンジ","occurrence":1},"romaji":{"text":"chenji","occurrence":1}}]}},
-          {"time":52.785,"expectedText":"[wave]輝いて消えないものに 手を伸ばして","chant":{"kind":"full"}},
-          {"time":63.57,"expectedText":"チェンジ","chant":{"kind":"full"}},
-          {"time":66.605,"expectedText":"[wave]輝いて消えてくものさ、手を伸ばして","chant":{"kind":"full"}},
-          {"time":77.67,"expectedText":"チェンジ","chant":{"kind":"full"}},
-          {"time":82.6,"expectedText":"[wave]ほら待ってるよ 「今チェンジ」","chant":{"kind":"partial","parts":[{"jp":{"text":"チェンジ","occurrence":1},"romaji":{"text":"chenji","occurrence":1}}]}},
-          {"time":132.896,"expectedText":"[wave]声武者震いは「今チェンジ」","chant":{"kind":"partial","parts":[{"jp":{"text":"チェンジ","occurrence":1},"romaji":{"text":"chenji","occurrence":1}}]}},
-          {"time":139.16,"expectedText":"今 チェンジ","chant":{"kind":"partial","parts":[{"jp":{"text":"チェンジ","occurrence":1},"romaji":{"text":"chenji","occurrence":1}}]}},
-          {"time":142.762,"expectedText":"[wave]輝いて消えないものに手を伸ばして","chant":{"kind":"full"}},
-          {"time":153.64,"expectedText":"チェンジ","chant":{"kind":"full"}},
-          {"time":166.56,"expectedText":"[wave]「この夢が覚めたら」","chant":{"kind":"full"}},
-          {"time":174.71,"expectedText":"[wave]「この夢が覚めたら」","chant":{"kind":"full"}},
-          {"time":180.09,"expectedText":"今 チェンジ x 4","chant":{"kind":"full"}},
-          {"time":184.32,"expectedText":"[clap]どんな夜も","chant":{"kind":"full"}},
-          {"time":186.803,"expectedText":"[clap]輝いて消えないものに手を伸ばして","chant":{"kind":"full"}},
-          {"time":197.12,"expectedText":"[wave]今 チェンジどんな時も","chant":{"kind":"partial","parts":[{"jp":{"text":"チェンジ","occurrence":1},"romaji":{"text":"chenji","occurrence":1}}]}},
-          {"time":200.819,"expectedText":"[wave]輝いて消えないものに手を伸ばして","chant":{"kind":"full"}},
-          {"time":211.63,"expectedText":"チェンジ","chant":{"kind":"full"}},
-          {"time":212.49,"expectedText":"[wave]どんな夜も Ah~","chant":{"kind":"partial","parts":[{"jp":{"text":"どんな夜も Ah~","occurrence":1},"romaji":{"text":"donna yoru mo Ah ~","occurrence":1}}]}},
-          {"time":219.19,"expectedText":"今チェンジ x 5","chant":{"kind":"full"}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "依橘色標記跟唱；如果想簡化，只要跟著唱「チェンジ」也可以。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":16.7,"expectedText":"[clap]それは紅色の記憶のような","chant":{"kind":"full"}},
-          {"time":32.68,"expectedText":"[wave]「この夢が覚めたら」","chant":{"kind":"full"}},
-          {"time":40.47,"expectedText":"[wave]「この夢が覚めたら」","chant":{"kind":"full"}},
-          {"time":49.25,"expectedText":"今 チェンジ","chant":{"kind":"full"}},
-          {"time":52.785,"expectedText":"[wave]輝いて消えないものに 手を伸ばして","chant":{"kind":"full"}},
-          {"time":63.57,"expectedText":"チェンジ","chant":{"kind":"full"}},
-          {"time":66.605,"expectedText":"[wave]輝いて消えてくものさ、手を伸ばして","chant":{"kind":"full"}},
-          {"time":77.67,"expectedText":"チェンジ","chant":{"kind":"full"}},
-          {"time":82.6,"expectedText":"[wave]ほら待ってるよ 「今チェンジ」","chant":{"kind":"full"}},
-          {"time":107.03,"expectedText":"[clap]まだ紅色幕開け前か","chant":{"kind":"full"}},
-          {"time":139.16,"expectedText":"今 チェンジ","chant":{"kind":"full"}},
-          {"time":140.4,"expectedText":"[wave]どんな夜も","chant":{"kind":"full"}},
-          {"time":142.762,"expectedText":"[wave]輝いて消えないものに手を伸ばして","chant":{"kind":"full"}},
-          {"time":153.64,"expectedText":"チェンジ","chant":{"kind":"full"}},
-          {"time":166.56,"expectedText":"[wave]「この夢が覚めたら」","chant":{"kind":"full"}},
-          {"time":174.71,"expectedText":"[wave]「この夢が覚めたら」","chant":{"kind":"full"}},
-          {"time":180.09,"expectedText":"今 チェンジ x 4","chant":{"kind":"full"}},
-          {"time":184.32,"expectedText":"[clap]どんな夜も","chant":{"kind":"full"}},
-          {"time":186.803,"expectedText":"[clap]輝いて消えないものに手を伸ばして","chant":{"kind":"full"}},
-          {"time":197.12,"expectedText":"[wave]今 チェンジどんな時も","chant":{"kind":"full"}},
-          {"time":200.819,"expectedText":"[wave]輝いて消えないものに手を伸ばして","chant":{"kind":"full"}},
-          {"time":211.63,"expectedText":"チェンジ","chant":{"kind":"full"}},
-          {"time":219.19,"expectedText":"今チェンジ x 5","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "Tomoshibi": {
-    actions: [
-      {"time":10,"expectedText":"[clap]単調な足音にメロディーを乗せたら","values":["clap"]},
-      {"time":19,"expectedText":"[clap]感情が淘汰してく自尊心と僕の悲哀を","values":["clap"]},
-      {"time":27.5,"expectedText":"[clap]見えない見えないものを見えてる見えてる「本当」に","values":["clap"]},
-      {"time":32,"expectedText":"[clap]見えない見えない本当を見えてる見えてる感動に","values":["clap"]},
-      {"time":36,"expectedText":"[clap]探した僕の運命と揺るぎない世界の歌","values":["clap"]},
-      {"time":40,"expectedText":"[clap]そんな場所に僕たちはいつまでも生きている","values":["clap"]},
-      {"time":44.5,"expectedText":"[clap]交わした天の約束を裏切られたとしても","values":["clap"]},
-      {"time":49,"expectedText":"[clap]そんなことに僕たちは気付かずに生きていくだけだけ","values":["clap"]},
-      {"time":63,"expectedText":"[clap]完璧な理想郷など僕らにはあり得はしないから","values":["clap"]},
-      {"time":71,"expectedText":"[clap]見えない見えないものを見えてる見えてる「本当」に","values":["clap"]},
-      {"time":75.5,"expectedText":"[clap]見えない見えない本当を見えてる見えてる感動に","values":["clap"]},
-      {"time":79.5,"expectedText":"[clap]探した僕の運命と揺るぎない世界の歌","values":["clap"]},
-      {"time":83.5,"expectedText":"[clap]そんな場所に僕たちはいつまでも生きている","values":["clap"]},
-      {"time":88,"expectedText":"[clap]交わした天の約束を裏切られたとしても","values":["clap"]},
-      {"time":92,"expectedText":"[clap]そんなことに僕たちは気付かずに生きていくだけ","values":["clap"]},
-      {"time":105.5,"expectedText":"[clap]揺るぎないね僕たちは何度も声を上げて","values":["clap"]},
-      {"time":110,"expectedText":"[clap]ありもしない滑走路羽を広げ走る","values":["clap"]},
-      {"time":114.5,"expectedText":"[clap]揺るぎはしないよ僕たちは何度も声を上げて","values":["clap"]},
-      {"time":118.5,"expectedText":"[clap]何度も声を上げて何度も声を上げて","values":["clap"]},
-      {"time":123.5,"expectedText":"[wave]どうしようどこへ行こうか僕が今惨憺と声に出して","values":["wave"]},
-      {"time":131,"expectedText":"[wave]また見えない地図を僕は必死に探して歩いている","values":["wave"]},
-      {"time":140,"expectedText":"[wave]けどまだ","values":["wave"]},
-      {"time":144,"expectedText":"[wave]いつかまた目が見え始めるまで","values":["wave"]},
-      {"time":148.5,"expectedText":"[wave]まだ見えない未来を僕ら灯火で照らしていくから","values":["wave"]},
-      {"time":158,"expectedText":"[wave]探した僕の運命と揺るぎない世界の歌","values":["wave"]},
-      {"time":162,"expectedText":"[wave]そんな場所に僕たちはいつまでも生きている","values":["wave"]},
-      {"time":166.5,"expectedText":"[wave]交わした天の約束を裏切られたとしても","values":["wave"]},
-      {"time":171,"expectedText":"[wave]そんなことに僕たちは気付かずに生きていくだけ","values":["wave"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["日本版最重要的兩個應援點是「ねぇ」與「けど まだ」，請大聲喊出來。","拍手跟著鼓聲即可。"],
-        cues: [
-          {"time":121,"expectedText":"ねぇ","chant":{"kind":"full"}},
-          {"time":140,"expectedText":"[wave]けどまだ","chant":{"kind":"full"}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "日本版最重要的兩個應援點是「ねぇ」與「けど まだ」，請大聲喊出來。",
+          "拍手跟著鼓聲即可。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":121,"expectedText":"ねぇ","chant":{"kind":"full"}},
-          {"time":131,"expectedText":"[wave]また見えない地図を僕は必死に探して歩いている","chant":{"kind":"full"}},
-          {"time":140,"expectedText":"[wave]けどまだ","chant":{"kind":"full"}},
-          {"time":158,"expectedText":"[wave]探した僕の運命と揺るぎない世界の歌","chant":{"kind":"full"}},
-          {"time":162,"expectedText":"[wave]そんな場所に僕たちはいつまでも生きている","chant":{"kind":"full"}},
-          {"time":166.5,"expectedText":"[wave]交わした天の約束を裏切られたとしても","chant":{"kind":"full"}},
-          {"time":171,"expectedText":"[wave]そんなことに僕たちは気付かずに生きていくだけ","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "HowdoIknow'": {
-    actions: [
-      {"time":75,"expectedText":"[wave]僕にはどうしてわかるんだろう","values":["wave"]},
-      {"time":80,"expectedText":"[wave]迷える日々がこれとない味のエッセイ","values":["wave"]},
-      {"time":87,"expectedText":"[wave]僕にはどうしてわかるんだろう","values":["wave"]},
-      {"time":91.5,"expectedText":"[wave]挫折の日々は色づくため全部モノクロ","values":["wave"]},
-      {"time":149,"expectedText":"[wave]僕にはどうしてわかるんだろう","values":["wave"]},
-      {"time":154,"expectedText":"[wave]全てのことが走馬灯、胸に残っている","values":["wave"]},
-      {"time":161,"expectedText":"[wave]僕にはどうしてわかるんだろう","values":["wave"]},
-      {"time":166,"expectedText":"[wave]全てのことが色で満ちていたモノクロ","values":["wave"]},
-      {"time":208,"expectedText":"[wave]僕にはどうしてわかるんだろう","values":["wave"]},
-      {"time":213.5,"expectedText":"[wave]全てのことが走馬灯、胸に残っている","values":["wave"]},
-      {"time":220,"expectedText":"[wave]僕にはどうしてわかるんだろう","values":["wave"]},
-      {"time":225,"expectedText":"[wave]全てのことがまるで明くる前のよう","values":["wave"]},
-      {"time":232,"expectedText":"[wave]僕にはどうしてわかるんだろう","values":["wave"]},
-      {"time":237,"expectedText":"[wave]全ての日々がこれとない味のエッセイ","values":["wave"]},
-      {"time":244,"expectedText":"[wave]僕にはどうしてわかるんだろう","values":["wave"]},
-      {"time":249,"expectedText":"[wave]全ての景色が思い出すためのモノクロ","values":["wave"]}
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":75,"expectedText":"[wave]僕にはどうしてわかるんだろう","chant":{"kind":"full"}},
-          {"time":87,"expectedText":"[wave]僕にはどうしてわかるんだろう","chant":{"kind":"full"}},
-          {"time":149,"expectedText":"[wave]僕にはどうしてわかるんだろう","chant":{"kind":"full"}},
-          {"time":161,"expectedText":"[wave]僕にはどうしてわかるんだろう","chant":{"kind":"full"}},
-          {"time":208,"expectedText":"[wave]僕にはどうしてわかるんだろう","chant":{"kind":"full"}},
-          {"time":220,"expectedText":"[wave]僕にはどうしてわかるんだろう","chant":{"kind":"full"}},
-          {"time":232,"expectedText":"[wave]僕にはどうしてわかるんだろう","chant":{"kind":"full"}},
-          {"time":244,"expectedText":"[wave]僕にはどうしてわかるんだろう","chant":{"kind":"full"}}
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "Shiwaawase'": {
-    actions: [
-
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":167,"expectedText":"重なるひびを僕達は流るるひびも僕達は","chant":{"kind":"full"}},
-          {"time":173.5,"expectedText":"思い出すこともなくなって","chant":{"kind":"full"}},
-          {"time":176,"expectedText":"しまうんだろう しまうんだろうって","chant":{"kind":"full"}},
-          {"time":179,"expectedText":"重なるひびを僕達は流るるひびも僕達は","chant":{"kind":"full"}},
-          {"time":185,"expectedText":"思い出すこともなくなってそんな しわあわせで","chant":{"kind":"full"}},
-          {"time":241,"expectedText":"重なるひびを僕達は流るるひびも僕達は","chant":{"kind":"full"}},
-          {"time":246,"expectedText":"思い出すこともなくなって しまうんだろう しまうんだろうって","chant":{"kind":"full"}},
-          {"time":252.5,"expectedText":"重なるひびを僕達は流るるひびも僕達は","chant":{"kind":"full"}},
-          {"time":258.5,"expectedText":"思い出すこともなくなって しまうんだろう しまうんだろうって","chant":{"kind":"full"}},
-          {"time":264.5,"expectedText":"重なるひびを僕達は流るるひびも僕達は","chant":{"kind":"full"}},
-          {"time":270.5,"expectedText":"思い出すこともなくなって しまうんだろう しまうんだろうって","chant":{"kind":"full"}}
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "Homunculus": {
-    actions: [
-      {"time":8,"expectedText":"[wave]Oh-yeah, yeah-yeah-yeah x 3","values":["wave"]},
-      {"time":27,"expectedText":"[wave]ホムンクルス!","values":["wave"]},
-      {"time":46,"expectedText":"[clap]せっかくだからそうね、肩でも揉んでダーリン","values":["clap"]},
-      {"time":52,"expectedText":"[clap]小さくても次第にグツグツ煮立って終いにゃ それを鼓舞する","values":["clap"]},
-      {"time":59,"expectedText":"[wave]イチ・ニー・サン起爆上等Alright","values":["wave"]},
-      {"time":62.5,"expectedText":"[wave]ヨン で開幕起爆、解放万歳","values":["wave"]},
-      {"time":65.5,"expectedText":"[wave]サン・ニー・イチ・ハイ‼ 起爆、障壁崩壊","values":["wave"]},
-      {"time":68.5,"expectedText":"[wave]行くぜ喝采気は満ちた","values":["wave"]},
-      {"time":73,"expectedText":"[wave]目覚めたる不穏に晴れ、濁す不確かの到来","values":["wave"]},
-      {"time":79,"expectedText":"[wave]風の目の方に歩き出す脱、言念、且つ自暴論","values":["wave"]},
-      {"time":85,"expectedText":"[wave]Oh-oh, Oh-oh, Oh-oh Oh-yeah, yeah-yeah-yeah","values":["wave"]},
-      {"time":96,"expectedText":"[clap]ギリ奪取いきりたつ一時run away","values":["clap"]},
-      {"time":99,"expectedText":"[clap]今肩でも揉むよダーリン","values":["clap"]},
-      {"time":102,"expectedText":"[clap]ニキビ Flash迷走→帰結無事誤解のway","values":["clap"]},
-      {"time":105.5,"expectedText":"[clap]feeling 脱線 but まだこんなんじゃ懲りない","values":["clap"]},
-      {"time":109.5,"expectedText":"[wave]イチ・ニー・サン起爆上等Alright","values":["wave"]},
-      {"time":112.5,"expectedText":"[wave]ヨン で開幕起爆、解放万歳","values":["wave"]},
-      {"time":115.5,"expectedText":"[wave]サン・ニー・イチ・ハイ‼ 起爆、障壁崩壊","values":["wave"]},
-      {"time":119,"expectedText":"[wave]行くぜ喝采俺が来た","values":["wave"]},
-      {"time":123,"expectedText":"[wave]目覚めたる不穏に晴れ、濁す不確かの到来","values":["wave"]},
-      {"time":129,"expectedText":"[clap]風の目の方に歩き出す脱、言念、且つ自暴論","values":["clap"]},
-      {"time":146.5,"expectedText":"[clap]どうして心満たして振り払おうとしているんだろう","values":["clap"]},
-      {"time":155,"expectedText":"[clap]ねぇ痛いでしょて、参ってしまうほど","values":["clap"]},
-      {"time":161,"expectedText":"[wave]あなたを愛してしまったって、このままが美しいと","values":["wave"]},
-      {"time":170,"expectedText":"[wave]飾ったままで、言霊をもう一度希望抱くほどの未来","values":["wave"]},
-      {"time":179.5,"expectedText":"[wave]そこに見たんだよ","values":["wave"]},
-      {"time":181.5,"expectedText":"[wave]確かめ合うかより","values":["wave"]},
-      {"time":187.5,"expectedText":"[wave]思い合えるより","values":["wave"]},
-      {"time":190.5,"expectedText":"[wave]振り剥がせるかより","values":["wave"]},
-      {"time":196.5,"expectedText":"[wave]時に歩み合うかより","values":["wave"]},
-      {"time":200,"expectedText":"[wave]抱きしめ合えるより","values":["wave"]},
-      {"time":209,"expectedText":"[wave]Oh-yeah, yeah-yeah-yeah x 3","values":["wave"]},
-      {"time":227.5,"expectedText":"[wave]ホムンクルス!","values":["wave"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["開頭與尾段的「Oh-yeah, yeah-yeah-yeah」請盡量吸飽氣唱。","副歌的「ホムンクルス!」最重要；其他「イチ・ニー・サン」等應援能跟上就好。"],
-        cues: [
-          {"time":59,"expectedText":"[wave]イチ・ニー・サン起爆上等Alright","chant":{"kind":"full"}},
-          {"time":62.5,"expectedText":"[wave]ヨン で開幕起爆、解放万歳","chant":{"kind":"full"}},
-          {"time":65.5,"expectedText":"[wave]サン・ニー・イチ・ハイ‼ 起爆、障壁崩壊","chant":{"kind":"full"}},
-          {"time":72,"expectedText":"ホムンクルス!","chant":{"kind":"full"}},
-          {"time":77,"expectedText":"ホムンクルス!","chant":{"kind":"full"}},
-          {"time":109.5,"expectedText":"[wave]イチ・ニー・サン起爆上等Alright","chant":{"kind":"full"}},
-          {"time":112.5,"expectedText":"[wave]ヨン で開幕起爆、解放万歳","chant":{"kind":"full"}},
-          {"time":115.5,"expectedText":"[wave]サン・ニー・イチ・ハイ‼ 起爆、障壁崩壊","chant":{"kind":"full"}},
-          {"time":122,"expectedText":"ホムンクルス!","chant":{"kind":"full"}},
-          {"time":127,"expectedText":"ホムンクルス!","chant":{"kind":"full"}},
-          {"time":181.5,"expectedText":"[wave]確かめ合うかより","chant":{"kind":"full"}},
-          {"time":187.5,"expectedText":"[wave]思い合えるより","chant":{"kind":"full"}},
-          {"time":190.5,"expectedText":"[wave]振り剥がせるかより","chant":{"kind":"full"}},
-          {"time":196.5,"expectedText":"[wave]時に歩み合うかより","chant":{"kind":"full"}},
-          {"time":200,"expectedText":"[wave]抱きしめ合えるより","chant":{"kind":"full"}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "開頭與尾段的「Oh-yeah, yeah-yeah-yeah」請盡量吸飽氣唱。",
+          "副歌的「ホムンクルス!」最重要；其他「イチ・ニー・サン」等應援能跟上就好。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":8,"expectedText":"[wave]Oh-yeah, yeah-yeah-yeah x 3","chant":{"kind":"full"}},
-          {"time":27,"expectedText":"[wave]ホムンクルス!","chant":{"kind":"full"}},
-          {"time":59,"expectedText":"[wave]イチ・ニー・サン起爆上等Alright","chant":{"kind":"full"}},
-          {"time":62.5,"expectedText":"[wave]ヨン で開幕起爆、解放万歳","chant":{"kind":"full"}},
-          {"time":65.5,"expectedText":"[wave]サン・ニー・イチ・ハイ‼ 起爆、障壁崩壊","chant":{"kind":"full"}},
-          {"time":72,"expectedText":"ホムンクルス!","chant":{"kind":"full"}},
-          {"time":77,"expectedText":"ホムンクルス!","chant":{"kind":"full"}},
-          {"time":85,"expectedText":"[wave]Oh-oh, Oh-oh, Oh-oh Oh-yeah, yeah-yeah-yeah","chant":{"kind":"full"}},
-          {"time":109.5,"expectedText":"[wave]イチ・ニー・サン起爆上等Alright","chant":{"kind":"full"}},
-          {"time":112.5,"expectedText":"[wave]ヨン で開幕起爆、解放万歳","chant":{"kind":"full"}},
-          {"time":115.5,"expectedText":"[wave]サン・ニー・イチ・ハイ‼ 起爆、障壁崩壊","chant":{"kind":"full"}},
-          {"time":122,"expectedText":"ホムンクルス!","chant":{"kind":"full"}},
-          {"time":127,"expectedText":"ホムンクルス!","chant":{"kind":"full"}},
-          {"time":181.5,"expectedText":"[wave]確かめ合うかより","chant":{"kind":"full"}},
-          {"time":187.5,"expectedText":"[wave]思い合えるより","chant":{"kind":"full"}},
-          {"time":190.5,"expectedText":"[wave]振り剥がせるかより","chant":{"kind":"full"}},
-          {"time":196.5,"expectedText":"[wave]時に歩み合うかより","chant":{"kind":"full"}},
-          {"time":200,"expectedText":"[wave]抱きしめ合えるより","chant":{"kind":"full"}},
-          {"time":209,"expectedText":"[wave]Oh-yeah, yeah-yeah-yeah x 3","chant":{"kind":"full"}},
-          {"time":227.5,"expectedText":"[wave]ホムンクルス!","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "soramimi": {
-    actions: [
-      {"time":0,"expectedText":"[clap]","values":["clap"]},
-      {"time":16.5,"expectedText":"[clap]今日も愉快だね叶えたい想像に塞いだ目","values":["clap"]},
-      {"time":20.5,"expectedText":"[clap]だいたいそんなもん理不尽がお決まりの世界だもん","values":["clap"]},
-      {"time":24.5,"expectedText":"[clap]で、まぁいいかな","values":["clap"]},
-      {"time":26,"expectedText":"[clap]このくらいがちょうどいいかなって","values":["clap"]},
-      {"time":28,"expectedText":"[clap]自分にも周りの人にもバレないように手を抜いて","values":["clap"]},
-      {"time":39,"expectedText":"[clap]今日も愉快だね支えたいと君に伝えた日","values":["clap"]},
-      {"time":43,"expectedText":"[clap]だいたいそんなもん振られるくらいが僕らしいんだもん","values":["clap"]},
-      {"time":46.5,"expectedText":"[clap]で、まぁいいから","values":["clap"]},
-      {"time":48,"expectedText":"[clap]そのエロい体を貸してくれ","values":["clap"]},
-      {"time":50,"expectedText":"[clap]誰も知らないミッドナイト携帯越しのタッグファイト","values":["clap"]},
-      {"time":54,"expectedText":"[clap]散々だな後悔はないけど","values":["clap"]},
-      {"time":57.5,"expectedText":"[clap]先天的だ過敏なこの衝動","values":["clap"]},
-      {"time":61.5,"expectedText":"[clap]珍回答だ僕は気にしないけど","values":["clap"]},
-      {"time":65,"expectedText":"[clap]1発打ったこのビートを鳴らしてよさぁ","values":["clap"]},
-      {"time":70,"expectedText":"[wave](jump) Distance This Dance? x 2","values":["jump","wave"]},
-      {"time":94.5,"expectedText":"[clap]今日も愉快だねでも何もかもが不快だね","values":["clap"]},
-      {"time":98,"expectedText":"[clap]だいたいそんなもん自己満たちが踊る世界だもん","values":["clap"]},
-      {"time":102,"expectedText":"[clap]で、まぁいいかな","values":["clap"]},
-      {"time":103.5,"expectedText":"[clap]このくらいがちょうどいいかなって","values":["clap"]},
-      {"time":105.5,"expectedText":"[clap]自分にも周りの人にもバレないように利を振って","values":["clap"]},
-      {"time":116.5,"expectedText":"[clap]今日も愉快だね刺さった枯れ木に注いだ火","values":["clap"]},
-      {"time":120.5,"expectedText":"[clap]だいたいこんなもん世間は許しちゃくれやせんよ","values":["clap"]},
-      {"time":124,"expectedText":"[clap]ぁあ、まぁいいからそんなことはどうでもいいからって?","values":["clap"]},
-      {"time":131.5,"expectedText":"[clap]散々だな後悔はないけど","values":["clap"]},
-      {"time":135.5,"expectedText":"[clap]先天的だ過敏なこの衝動","values":["clap"]},
-      {"time":139,"expectedText":"[clap]珍回答だ僕は気にしないけど","values":["clap"]},
-      {"time":142.5,"expectedText":"[clap]1発打ったこのビートを鳴らしてよさぁ","values":["clap"]},
-      {"time":147.5,"expectedText":"[wave](jump) Distance This Dance? x 4","values":["jump","wave"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["日本版副歌重點是跟著 Vaundy 一起跳；Distance／This dance? 是跳舞時的口號。"],
-        cues: [
-          {"time":70,"expectedText":"[wave](jump) Distance This Dance? x 2","chant":{"kind":"full"}},
-          {"time":128,"expectedText":"大炎上 x 5","chant":{"kind":"full"}},
-          {"time":147.5,"expectedText":"[wave](jump) Distance This Dance? x 4","chant":{"kind":"full"}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "日本版副歌重點是跟著 Vaundy 一起跳；Distance／This dance? 是跳舞時的口號。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":16.5,"expectedText":"[clap]今日も愉快だね叶えたい想像に塞いだ目","chant":{"kind":"full"}},
-          {"time":20.5,"expectedText":"[clap]だいたいそんなもん理不尽がお決まりの世界だもん","chant":{"kind":"full"}},
-          {"time":24.5,"expectedText":"[clap]で、まぁいいかな","chant":{"kind":"full"}},
-          {"time":28,"expectedText":"[clap]自分にも周りの人にもバレないように手を抜いて","chant":{"kind":"full"}},
-          {"time":39,"expectedText":"[clap]今日も愉快だね支えたいと君に伝えた日","chant":{"kind":"full"}},
-          {"time":43,"expectedText":"[clap]だいたいそんなもん振られるくらいが僕らしいんだもん","chant":{"kind":"full"}},
-          {"time":46.5,"expectedText":"[clap]で、まぁいいから","chant":{"kind":"full"}},
-          {"time":54,"expectedText":"[clap]散々だな後悔はないけど","chant":{"kind":"full"}},
-          {"time":57.5,"expectedText":"[clap]先天的だ過敏なこの衝動","chant":{"kind":"full"}},
-          {"time":61.5,"expectedText":"[clap]珍回答だ僕は気にしないけど","chant":{"kind":"full"}},
-          {"time":65,"expectedText":"[clap]1発打ったこのビートを鳴らしてよさぁ","chant":{"kind":"full"}},
-          {"time":70,"expectedText":"[wave](jump) Distance This Dance? x 2","chant":{"kind":"full"}},
-          {"time":94.5,"expectedText":"[clap]今日も愉快だねでも何もかもが不快だね","chant":{"kind":"full"}},
-          {"time":98,"expectedText":"[clap]だいたいそんなもん自己満たちが踊る世界だもん","chant":{"kind":"full"}},
-          {"time":102,"expectedText":"[clap]で、まぁいいかな","chant":{"kind":"full"}},
-          {"time":105.5,"expectedText":"[clap]自分にも周りの人にもバレないように利を振って","chant":{"kind":"full"}},
-          {"time":116.5,"expectedText":"[clap]今日も愉快だね刺さった枯れ木に注いだ火","chant":{"kind":"full"}},
-          {"time":120.5,"expectedText":"[clap]だいたいこんなもん世間は許しちゃくれやせんよ","chant":{"kind":"full"}},
-          {"time":124,"expectedText":"[clap]ぁあ、まぁいいからそんなことはどうでもいいからって?","chant":{"kind":"full"}},
-          {"time":128,"expectedText":"大炎上 x 5","chant":{"kind":"full"}},
-          {"time":131.5,"expectedText":"[clap]散々だな後悔はないけど","chant":{"kind":"full"}},
-          {"time":135.5,"expectedText":"[clap]先天的だ過敏なこの衝動","chant":{"kind":"full"}},
-          {"time":139,"expectedText":"[clap]珍回答だ僕は気にしないけど","chant":{"kind":"full"}},
-          {"time":142.5,"expectedText":"[clap]1発打ったこのビートを鳴らしてよさぁ","chant":{"kind":"full"}},
-          {"time":147.5,"expectedText":"[wave](jump) Distance This Dance? x 4","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "TokyoFlash": {
-    actions: [
-      {"time":63,"expectedText":"[wave]東京フラッシュ君の目が覚めたら","values":["wave"]},
-      {"time":69,"expectedText":"[wave]どこへ行こうどこへ行こう","values":["wave"]},
-      {"time":73,"expectedText":"[wave]東京フラッシュ君と手を繋いだら","values":["wave"]},
-      {"time":79,"expectedText":"[wave]どこへ行こうどこへ行こう","values":["wave"]},
-      {"time":82.5,"expectedText":"[wave]東京フラッシュ","values":["wave"]},
-      {"time":143.5,"expectedText":"[wave]東京フラッシュ君の目が覚めたら","values":["wave"]},
-      {"time":150,"expectedText":"[wave]どこへ行こうどこへ行こう","values":["wave"]},
-      {"time":153.5,"expectedText":"[wave]東京フラッシュ君と手を繋いだら","values":["wave"]},
-      {"time":159.5,"expectedText":"[wave]どこへ行こうどこへ行こう","values":["wave"]},
-      {"time":163.5,"expectedText":"[wave]東京フラッシュ","values":["wave"]},
-      {"time":195,"expectedText":"[wave]東京フラッシュ君の目が覚めたら","values":["wave"]},
-      {"time":201.5,"expectedText":"[wave]どこへ行こうどこへ行こう","values":["wave"]},
-      {"time":205,"expectedText":"[wave]東京フラッシュ君と手を繋いだら","values":["wave"]},
-      {"time":211,"expectedText":"[wave]どこへ行こうどこへ行こう","values":["wave"]},
-      {"time":215,"expectedText":"[wave]東京フラッシュ君の目が覚めたら","values":["wave"]},
-      {"time":221,"expectedText":"[wave]どこへ行こうどこへ行こう","values":["wave"]},
-      {"time":225,"expectedText":"[wave]東京フラッシュ君と手を繋いだら","values":["wave"]},
-      {"time":230.5,"expectedText":"[wave]どこへ行こうどこへ行こう","values":["wave"]},
-      {"time":234.5,"expectedText":"[wave]東京フラッシュ","values":["wave"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["副歌以「できてるできてる」「悪くない悪くない」與「何処へ行こう」作為回應，並配合前後揮手。","中段需要安靜的地方不要拍手。"],
-        cues: [
-          {"time":26,"expectedText":"できてるできてる","chant":{"kind":"full"}},
-          {"time":37.5,"expectedText":"わるくないわるくない","chant":{"kind":"full"}},
-          {"time":69,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}},
-          {"time":79,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}},
-          {"time":107,"expectedText":"できてるできてる","chant":{"kind":"full"}},
-          {"time":118,"expectedText":"わるくないわるくない","chant":{"kind":"full"}},
-          {"time":150,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}},
-          {"time":159.5,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}},
-          {"time":201.5,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}},
-          {"time":211,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}},
-          {"time":221,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}},
-          {"time":230.5,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "副歌以「できてるできてる」「悪くない悪くない」與「何処へ行こう」作為回應，並配合前後揮手。",
+          "中段需要安靜的地方不要拍手。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":26,"expectedText":"できてるできてる","chant":{"kind":"full"}},
-          {"time":37.5,"expectedText":"わるくないわるくない","chant":{"kind":"full"}},
-          {"time":42,"expectedText":"STAYまだここにいてね君の","chant":{"kind":"full"}},
-          {"time":47,"expectedText":"FAKEの笑顔をみせてよみせてよ","chant":{"kind":"full"}},
-          {"time":52,"expectedText":"STAGE4の癌にかかっているみたいかい","chant":{"kind":"full"}},
-          {"time":57,"expectedText":"AGEごしの性愛者でいいの","chant":{"kind":"full"}},
-          {"time":63,"expectedText":"[wave]東京フラッシュ君の目が覚めたら","chant":{"kind":"full"}},
-          {"time":69,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}},
-          {"time":73,"expectedText":"[wave]東京フラッシュ君と手を繋いだら","chant":{"kind":"full"}},
-          {"time":79,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}},
-          {"time":82.5,"expectedText":"[wave]東京フラッシュ","chant":{"kind":"full"}},
-          {"time":107,"expectedText":"できてるできてる","chant":{"kind":"full"}},
-          {"time":118,"expectedText":"わるくないわるくない","chant":{"kind":"full"}},
-          {"time":123,"expectedText":"STAYまだここにいてね君の","chant":{"kind":"full"}},
-          {"time":128,"expectedText":"FAKEの笑顔をみせてよみせてよ","chant":{"kind":"full"}},
-          {"time":133,"expectedText":"STAGE4の癌にかかっているみたいかい","chant":{"kind":"full"}},
-          {"time":137.5,"expectedText":"AGEごしの性愛者でいいの","chant":{"kind":"full"}},
-          {"time":143.5,"expectedText":"[wave]東京フラッシュ君の目が覚めたら","chant":{"kind":"full"}},
-          {"time":150,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}},
-          {"time":153.5,"expectedText":"[wave]東京フラッシュ君と手を繋いだら","chant":{"kind":"full"}},
-          {"time":159.5,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}},
-          {"time":163.5,"expectedText":"[wave]東京フラッシュ","chant":{"kind":"full"}},
-          {"time":195,"expectedText":"[wave]東京フラッシュ君の目が覚めたら","chant":{"kind":"full"}},
-          {"time":201.5,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}},
-          {"time":205,"expectedText":"[wave]東京フラッシュ君と手を繋いだら","chant":{"kind":"full"}},
-          {"time":211,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}},
-          {"time":215,"expectedText":"[wave]東京フラッシュ君の目が覚めたら","chant":{"kind":"full"}},
-          {"time":221,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}},
-          {"time":225,"expectedText":"[wave]東京フラッシュ君と手を繋いだら","chant":{"kind":"full"}},
-          {"time":230.5,"expectedText":"[wave]どこへ行こうどこへ行こう","chant":{"kind":"full"}},
-          {"time":234.5,"expectedText":"[wave]東京フラッシュ","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "NakiJizo": {
-    actions: [
-      {"time":0,"expectedText":"[clap]","values":["clap"]},
-      {"time":16,"expectedText":"[clap]僕たちは少数の利益のためのピラミッド","values":["clap"]},
-      {"time":19.5,"expectedText":"[clap]ねぇ感想はあぁ、聞かないよ","values":["clap"]},
-      {"time":21.5,"expectedText":"[clap]さも幸せかのよなその笑顔","values":["clap"]},
-      {"time":39.5,"expectedText":"[wave]あぁもう何回目の最後の警告?","values":["wave"]},
-      {"time":42.5,"expectedText":"[wave]じゃあここらで 祈り繋いどく？","values":["wave"]},
-      {"time":44.5,"expectedText":"[wave]感動も何もない自暴自棄の中で","values":["wave"]},
-      {"time":48.5,"expectedText":"[wave]何回目の愛のお買い得？","values":["wave"]},
-      {"time":50.5,"expectedText":"[wave]じゃあここらで 心繋いどく？","values":["wave"]},
-      {"time":52.5,"expectedText":"[wave]感覚が落とした僕は泣き地蔵","values":["wave"]},
-      {"time":58,"expectedText":"[clap]あぁ 私たちに流れるこの血は","values":["clap"]},
-      {"time":60,"expectedText":"[clap]惨憺たる日々を彩るためか","values":["clap"]},
-      {"time":62.5,"expectedText":"[clap]たぎり出したこの命の種は","values":["clap"]},
-      {"time":64.5,"expectedText":"[clap]考えるほどに断崖絶壁だ","values":["clap"]},
-      {"time":81.5,"expectedText":"[wave]あぁもう何回目の最後の警告?","values":["wave"]},
-      {"time":84.5,"expectedText":"[wave]じゃあここらで 祈り繋いどく？","values":["wave"]},
-      {"time":86.5,"expectedText":"[wave]感動も何もない自暴自棄の中で","values":["wave"]},
-      {"time":90.5,"expectedText":"[wave]何回目の愛のお買い得？","values":["wave"]},
-      {"time":92.5,"expectedText":"[wave]じゃあここらで 心繋いどく？","values":["wave"]},
-      {"time":94.5,"expectedText":"[wave]感覚が落とした僕は泣き地蔵","values":["wave"]},
-      {"time":107,"expectedText":"[wave]僕もずっと笑う夢を見ていたい","values":["wave"]},
-      {"time":115.5,"expectedText":"[wave]でもずっと願うほどの夢じゃなかった気がして","values":["wave"]},
-      {"time":124.5,"expectedText":"[wave]何回目の最後の警告?","values":["wave"]},
-      {"time":126.5,"expectedText":"[wave]じゃあここらで 祈り繋いどく？","values":["wave"]},
-      {"time":128.5,"expectedText":"[wave]感動も何もない自暴自棄の中で","values":["wave"]},
-      {"time":132.5,"expectedText":"[wave]何回目の愛のお買い得？","values":["wave"]},
-      {"time":134.5,"expectedText":"[wave]じゃあここらで 心繋いどく？","values":["wave"]},
-      {"time":136.5,"expectedText":"[wave]感覚が落とした僕は泣き地蔵","values":["wave"]}
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":23.5,"expectedText":"もう精一杯をもう一回 ねぇ神様もういいだろって","chant":{"kind":"full"}},
-          {"time":27.5,"expectedText":"ねぇもう一回を精一杯","chant":{"kind":"full"}},
-          {"time":39.5,"expectedText":"[wave]あぁもう何回目の最後の警告?","chant":{"kind":"full"}},
-          {"time":81.5,"expectedText":"[wave]あぁもう何回目の最後の警告?","chant":{"kind":"full"}},
-          {"time":124.5,"expectedText":"[wave]何回目の最後の警告?","chant":{"kind":"full"}},
-          {"time":126.5,"expectedText":"[wave]じゃあここらで 祈り繋いどく？","chant":{"kind":"full"}},
-          {"time":132.5,"expectedText":"[wave]何回目の愛のお買い得？","chant":{"kind":"full"}},
-          {"time":134.5,"expectedText":"[wave]じゃあここらで 心繋いどく？","chant":{"kind":"full"}}
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "napori": {
-    actions: [
-
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":30,"expectedText":"2人になって 君を待って思い出したんだ思い出したんだ","chant":{"kind":"full"}},
-          {"time":36,"expectedText":"僕が 大人になって思い出すのは君じゃないかな","chant":{"kind":"full"}},
-          {"time":43.5,"expectedText":"あれは縁そっと flight","chant":{"kind":"full"}},
-          {"time":52,"expectedText":"Napori ずっといたいよ","chant":{"kind":"full"}},
-          {"time":60,"expectedText":"Oh right x 3","chant":{"kind":"full"}},
-          {"time":67,"expectedText":"Oh right x 3","chant":{"kind":"full"}},
-          {"time":89,"expectedText":"音になって 大人になって思い出したんだ","chant":{"kind":"full"}},
-          {"time":95,"expectedText":"君が 大人になって思い出すのは ぼくじゃないかな","chant":{"kind":"full"}},
-          {"time":102.5,"expectedText":"いずれ縁そっと flight","chant":{"kind":"full"}},
-          {"time":111,"expectedText":"Napori ずっといたいよ","chant":{"kind":"full"}},
-          {"time":119,"expectedText":"Oh right x 3","chant":{"kind":"full"}},
-          {"time":126.5,"expectedText":"Oh right x 3","chant":{"kind":"full"}},
-          {"time":149,"expectedText":"君と 縁そっと flight","chant":{"kind":"full"}},
-          {"time":157,"expectedText":"Napori ずっといたいよ","chant":{"kind":"full"}},
-          {"time":165,"expectedText":"Oh right x 3","chant":{"kind":"full"}},
-          {"time":172.5,"expectedText":"Oh right x 3","chant":{"kind":"full"}},
-          {"time":180,"expectedText":"Oh right x 3","chant":{"kind":"full"}},
-          {"time":187,"expectedText":"Oh right x 3","chant":{"kind":"full"}}
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "Backlight": {
-    actions: [
-      {"time":27.5,"expectedText":"[clap]散々な思い出は悲しみを穿つほど","values":["clap"]},
-      {"time":34,"expectedText":"[clap]やるせない恨みはアイツのために置いてきたのさ","values":["clap"]},
-      {"time":41,"expectedText":"[clap]あんたらわかっちゃないだろ","values":["clap"]},
-      {"time":42.5,"expectedText":"[clap]本当に傷む孤独を今だけ箍外してきて","values":["clap"]},
-      {"time":46.5,"expectedText":"[wave]怒りよ今悪党ぶっ飛ばしてそりゃあ愛ある罰だ","values":["wave"]},
-      {"time":53.5,"expectedText":"[wave]もう眠くはないやないやないや","values":["wave"]},
-      {"time":56.5,"expectedText":"[wave]もう悲しくないさないさ","values":["wave"]},
-      {"time":59,"expectedText":"[wave]そう 怒りよ今 悪党蹴り飛ばして そりゃあ愛への罰だ","values":["wave"]},
-      {"time":66.5,"expectedText":"[wave]もう眠くはないな ないなないな","values":["wave"]},
-      {"time":70,"expectedText":"[wave]もう寂しくないさないさ 逆光よ","values":["wave"]},
-      {"time":87,"expectedText":"[clap]惨憺たる結末は美しさを纏うほど","values":["clap"]},
-      {"time":93.5,"expectedText":"[clap]限りなく、体温に近い 「赤」に彩られていた","values":["clap"]},
-      {"time":100.5,"expectedText":"[clap]散漫な視界でも美しさがわかるほど","values":["clap"]},
-      {"time":107,"expectedText":"[clap]焼き付ける光を背に受ける 「赤」に気を取られている","values":["clap"]},
-      {"time":114.5,"expectedText":"[clap]もつれてしまった心は 解っている今でも","values":["clap"]},
-      {"time":121,"expectedText":"[clap]ほつれてしまった。 言葉が焦っている。","values":["clap"]},
-      {"time":126,"expectedText":"[wave]怒りよ今悪党ぶっ飛ばしてそりゃあ愛ある罰だ","values":["wave"]},
-      {"time":132.5,"expectedText":"[wave]もう眠くはないやないやないや","values":["wave"]},
-      {"time":136,"expectedText":"[wave]もう悲しくないさないさ","values":["wave"]},
-      {"time":139,"expectedText":"[wave]そう 怒りよ今 悪党蹴り飛ばして そりゃあ愛への罰だ","values":["wave"]},
-      {"time":146,"expectedText":"[wave]もう眠くはないな ないなないな","values":["wave"]},
-      {"time":149.5,"expectedText":"[wave]もう寂しくないさないさ 逆光よ","values":["wave"]},
-      {"time":166.5,"expectedText":"[clap]もう、怒り願った言葉は 崩れ、へたってしまったが","values":["clap"]},
-      {"time":173,"expectedText":"[clap]今でも未練たらしくしている。あぁ、何度も放った言葉が","values":["clap"]},
-      {"time":183.5,"expectedText":"[clap]届き、解っているのなら なんて、夢見が苦しいから","values":["clap"]},
-      {"time":193.5,"expectedText":"[wave]もう怒りよまた悪党ぶっ飛ばしてそりゃあ愛ある罰だ","values":["wave"]},
-      {"time":200.5,"expectedText":"[wave]もう眠くはないやないやないや","values":["wave"]},
-      {"time":204,"expectedText":"[wave]もう悲しくないさないさ","values":["wave"]},
-      {"time":207,"expectedText":"[wave]そう 怒りよさぁ 悪党ふっ飛ばして そりゃあ愛への罰だ","values":["wave"]},
-      {"time":214,"expectedText":"[wave]もう眠くはないな ないなないな","values":["wave"]},
-      {"time":217,"expectedText":"[wave]もう寂しくないさないさ 逆光よ","values":["wave"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["副歌一起大聲唱；最後一段先唱「悪党ぶっ飛ばして」，再唱「悪党ふっ飛ばして」，請特別注意。"],
-        cues: [
-          {"time":46.5,"expectedText":"[wave]怒りよ今悪党ぶっ飛ばしてそりゃあ愛ある罰だ","chant":{"kind":"full"}},
-          {"time":53.5,"expectedText":"[wave]もう眠くはないやないやないや","chant":{"kind":"partial","parts":[{"jp":{"text":"ないやないやないや","occurrence":1},"romaji":{"text":"nai ya na iya na iya","occurrence":1}}]}},
-          {"time":56.5,"expectedText":"[wave]もう悲しくないさないさ","chant":{"kind":"partial","parts":[{"jp":{"text":"ないさないさ","occurrence":1},"romaji":{"text":"nai sa nai sa","occurrence":1}}]}},
-          {"time":59,"expectedText":"[wave]そう 怒りよ今 悪党蹴り飛ばして そりゃあ愛への罰だ","chant":{"kind":"full"}},
-          {"time":66.5,"expectedText":"[wave]もう眠くはないな ないなないな","chant":{"kind":"partial","parts":[{"jp":{"text":"ないな ないなないな","occurrence":1},"romaji":{"text":"nai na nai na nai na","occurrence":1}}]}},
-          {"time":70,"expectedText":"[wave]もう寂しくないさないさ 逆光よ","chant":{"kind":"partial","parts":[{"jp":{"text":"ないさないさ","occurrence":1},"romaji":{"text":"nai sa nai sa","occurrence":1}}]}},
-          {"time":126,"expectedText":"[wave]怒りよ今悪党ぶっ飛ばしてそりゃあ愛ある罰だ","chant":{"kind":"full"}},
-          {"time":132.5,"expectedText":"[wave]もう眠くはないやないやないや","chant":{"kind":"partial","parts":[{"jp":{"text":"ないやないやないや","occurrence":1},"romaji":{"text":"nai ya na iya na iya","occurrence":1}}]}},
-          {"time":136,"expectedText":"[wave]もう悲しくないさないさ","chant":{"kind":"partial","parts":[{"jp":{"text":"ないさないさ","occurrence":1},"romaji":{"text":"nai sa nai sa","occurrence":1}}]}},
-          {"time":139,"expectedText":"[wave]そう 怒りよ今 悪党蹴り飛ばして そりゃあ愛への罰だ","chant":{"kind":"full"}},
-          {"time":146,"expectedText":"[wave]もう眠くはないな ないなないな","chant":{"kind":"partial","parts":[{"jp":{"text":"ないな ないなないな","occurrence":1},"romaji":{"text":"nai na nai na nai na","occurrence":1}}]}},
-          {"time":149.5,"expectedText":"[wave]もう寂しくないさないさ 逆光よ","chant":{"kind":"partial","parts":[{"jp":{"text":"ないさないさ","occurrence":1},"romaji":{"text":"nai sa nai sa","occurrence":1}}]}},
-          {"time":193.5,"expectedText":"[wave]もう怒りよまた悪党ぶっ飛ばしてそりゃあ愛ある罰だ","chant":{"kind":"full"}},
-          {"time":200.5,"expectedText":"[wave]もう眠くはないやないやないや","chant":{"kind":"partial","parts":[{"jp":{"text":"ないやないやないや","occurrence":1},"romaji":{"text":"nai ya na iya na iya","occurrence":1}}]}},
-          {"time":204,"expectedText":"[wave]もう悲しくないさないさ","chant":{"kind":"partial","parts":[{"jp":{"text":"ないさないさ","occurrence":1},"romaji":{"text":"nai sa nai sa","occurrence":1}}]}},
-          {"time":207,"expectedText":"[wave]そう 怒りよさぁ 悪党ふっ飛ばして そりゃあ愛への罰だ","chant":{"kind":"full"}},
-          {"time":214,"expectedText":"[wave]もう眠くはないな ないなないな","chant":{"kind":"partial","parts":[{"jp":{"text":"ないな ないなないな","occurrence":1},"romaji":{"text":"nai na nai na nai na","occurrence":1}}]}},
-          {"time":217,"expectedText":"[wave]もう寂しくないさないさ 逆光よ","chant":{"kind":"partial","parts":[{"jp":{"text":"ないさないさ","occurrence":1},"romaji":{"text":"nai sa nai sa","occurrence":1}}]}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "副歌一起大聲唱；最後一段先唱「悪党ぶっ飛ばして」，再唱「悪党ふっ飛ばして」，請特別注意。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":53.5,"expectedText":"[wave]もう眠くはないやないやないや","chant":{"kind":"full"}},
-          {"time":56.5,"expectedText":"[wave]もう悲しくないさないさ","chant":{"kind":"full"}},
-          {"time":66.5,"expectedText":"[wave]もう眠くはないな ないなないな","chant":{"kind":"full"}},
-          {"time":70,"expectedText":"[wave]もう寂しくないさないさ 逆光よ","chant":{"kind":"full"}},
-          {"time":132.5,"expectedText":"[wave]もう眠くはないやないやないや","chant":{"kind":"full"}},
-          {"time":136,"expectedText":"[wave]もう悲しくないさないさ","chant":{"kind":"full"}},
-          {"time":146,"expectedText":"[wave]もう眠くはないな ないなないな","chant":{"kind":"full"}},
-          {"time":149.5,"expectedText":"[wave]もう寂しくないさないさ 逆光よ","chant":{"kind":"full"}},
-          {"time":200.5,"expectedText":"[wave]もう眠くはないやないやないや","chant":{"kind":"full"}},
-          {"time":204,"expectedText":"[wave]もう悲しくないさないさ","chant":{"kind":"full"}},
-          {"time":214,"expectedText":"[wave]もう眠くはないな ないなないな","chant":{"kind":"full"}},
-          {"time":217,"expectedText":"[wave]もう寂しくないさないさ 逆光よ","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "NEOJAPAN": {
-    actions: [
-
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":71,"expectedText":"きっと彼はアキラが好きなだけ","chant":{"kind":"full"}},
-          {"time":95.5,"expectedText":" ディストピア x 6","chant":{"kind":"full"}},
-          {"time":191.5,"expectedText":"きっと彼はアキラが好きなだけ","chant":{"kind":"full"}},
-          {"time":216,"expectedText":"ディストピア x 6","chant":{"kind":"full"}}
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "ZuttoLoveSong": {
-    actions: [
-      {"time":53,"expectedText":"[wave]だから今夜","values":["wave"]},
-      {"time":56.5,"expectedText":"[wave]あなたの心奪う 超Nice","values":["wave"]},
-      {"time":60,"expectedText":"[wave]な言葉で紡がれた 希望を","values":["wave"]},
-      {"time":63.5,"expectedText":"[wave]隠さないラブソングがBGMさ","values":["wave"]},
-      {"time":67.5,"expectedText":"[wave]キャトルミューティレイション","values":["wave"]},
-      {"time":70,"expectedText":"[wave]あなたの心奪う 超Nice","values":["wave"]},
-      {"time":73,"expectedText":"[wave]な笑顔で紡がれた 希望を","values":["wave"]},
-      {"time":76.5,"expectedText":"[wave]隠さないラブソングを 僕に歌ってくれ","values":["wave"]},
-      {"time":152,"expectedText":"[wave]だから今夜","values":["wave"]},
-      {"time":156,"expectedText":"[wave]あなたの心奪う 超Nice","values":["wave"]},
-      {"time":160,"expectedText":"[wave]な言葉で紡がれた 希望を","values":["wave"]},
-      {"time":162.5,"expectedText":"[wave]隠さないラブソングがBGMさ","values":["wave"]},
-      {"time":167,"expectedText":"[wave]キャトルミューティレイション","values":["wave"]},
-      {"time":169,"expectedText":"[wave]あなたの心奪う 超Nice","values":["wave"]},
-      {"time":172.5,"expectedText":"[wave]な笑顔で紡がれた 希望を","values":["wave"]},
-      {"time":176,"expectedText":"[wave]隠さないラブソングを 僕に歌ってくれ","values":["wave"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["副歌可以跟 Vaundy 一樣高舉手比 1。","「あの日から消えない……」有人會跟鼓聲連打兩下，屬於自由選擇。"],
-        cues: [
-          {"time":55,"expectedText":"キャトルミューティレイション","chant":{"kind":"full"}},
-          {"time":67.5,"expectedText":"[wave]キャトルミューティレイション","chant":{"kind":"partial","parts":[{"jp":{"text":"キャトルミューティレイション","occurrence":1},"romaji":{"text":"kyatorumyūtireishon","occurrence":1}}]}},
-          {"time":154,"expectedText":"キャトルミューティレイション","chant":{"kind":"full"}},
-          {"time":167,"expectedText":"[wave]キャトルミューティレイション","chant":{"kind":"partial","parts":[{"jp":{"text":"キャトルミューティレイション","occurrence":1},"romaji":{"text":"kyatorumyūtireishon","occurrence":1}}]}},
-          {"time":183,"expectedText":"oh yeah~ 「ずっとラブソング」~","chant":{"kind":"partial","parts":[{"jp":{"text":"oh yeah","occurrence":1},"romaji":{"text":"oh yeah","occurrence":1}}]}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "副歌可以跟 Vaundy 一樣高舉手比 1。",
+          "「あの日から消えない……」有人會跟鼓聲連打兩下，屬於自由選擇。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":55,"expectedText":"キャトルミューティレイション","chant":{"kind":"full"}},
-          {"time":56.5,"expectedText":"[wave]あなたの心奪う 超Nice","chant":{"kind":"full"}},
-          {"time":63.5,"expectedText":"[wave]隠さないラブソングがBGMさ","chant":{"kind":"full"}},
-          {"time":67.5,"expectedText":"[wave]キャトルミューティレイション","chant":{"kind":"full"}},
-          {"time":70,"expectedText":"[wave]あなたの心奪う 超Nice","chant":{"kind":"full"}},
-          {"time":146.5,"expectedText":"Oh この瞬間のため 抱きしめるための","chant":{"kind":"full"}},
-          {"time":150,"expectedText":"「ずっとラブソング」さ","chant":{"kind":"full"}},
-          {"time":154,"expectedText":"キャトルミューティレイション","chant":{"kind":"full"}},
-          {"time":156,"expectedText":"[wave]あなたの心奪う 超Nice","chant":{"kind":"full"}},
-          {"time":162.5,"expectedText":"[wave]隠さないラブソングがBGMさ","chant":{"kind":"full"}},
-          {"time":167,"expectedText":"[wave]キャトルミューティレイション","chant":{"kind":"full"}},
-          {"time":169,"expectedText":"[wave]あなたの心奪う 超Nice","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "Iseijin'": {
-    actions: [
-      {"time":14,"expectedText":"[wave]ha wha wha yeah yeah x 4","values":["wave"]},
-      {"time":25,"expectedText":"[clap]僕ら昔は灯台の下を探す子供のまま生きてた","values":["clap"]},
-      {"time":30.5,"expectedText":"[clap]今もそんなに変わってないみたいだ","values":["clap"]},
-      {"time":36,"expectedText":"[clap]そんな僕らは何千と違う心に穴を開けて生きてた","values":["clap"]},
-      {"time":42,"expectedText":"[clap]実はそんなに変わってないんだって ああそうだ","values":["clap"]},
-      {"time":47,"expectedText":"[wave]先生ここにあるものじゃ","values":["wave"]},
-      {"time":50.5,"expectedText":"[wave]全然足りなかったような 悲しみが未来を","values":["wave"]},
-      {"time":56.5,"expectedText":"[wave]そう、作っているって","values":["wave"]},
-      {"time":59,"expectedText":"[wave]先生ここにあるものじゃ","values":["wave"]},
-      {"time":61.5,"expectedText":"[wave]全然足りなかったような 愛しさと未来を","values":["wave"]},
-      {"time":67.5,"expectedText":"[wave]もう、笑っていこうぜ","values":["wave"]},
-      {"time":70.5,"expectedText":"[clap]子供の頃は世界を守って精一杯 ただ、めいっぱいだった","values":["clap"]},
-      {"time":82,"expectedText":"[clap]でっかくなったが変わることが苦しいなら やめてたのに","values":["clap"]},
-      {"time":92.5,"expectedText":"[clap]「胸にいっぱいの葛藤と愛しさでまだ","values":["clap"]},
-      {"time":96.5,"expectedText":"[clap]変わることができてた」","values":["clap"]},
-      {"time":98.5,"expectedText":"[clap]ずっとそんなに苦しまなくたって もういいよ","values":["clap"]},
-      {"time":104,"expectedText":"[wave]先生ここにあるものじゃ","values":["wave"]},
-      {"time":106.5,"expectedText":"[wave]全然足りなかったような 愛しさと未来を","values":["wave"]},
-      {"time":113,"expectedText":"[wave]もう、笑っていこうぜ","values":["wave"]},
-      {"time":115.5,"expectedText":"[wave]Wha wha wha yeah yeah x 3 True True True","values":["wave"]},
-      {"time":127,"expectedText":"[wave]Wha wha wha yeah yeah x 4","values":["wave"]},
-      {"time":138,"expectedText":"[wave]理想郷目指した 誰より早く","values":["wave"]},
-      {"time":144,"expectedText":"[wave]間違いなく 自分のために","values":["wave"]},
-      {"time":149.5,"expectedText":"[wave]そこから根差した 誰より高く","values":["wave"]},
-      {"time":155,"expectedText":"[wave]幸せ目指した だからさ","values":["wave"]},
-      {"time":161.5,"expectedText":"[wave]先生ここにあるものじゃ","values":["wave"]},
-      {"time":163,"expectedText":"[wave]全然足りなかったような 悲しみが未来を","values":["wave"]},
-      {"time":169.5,"expectedText":"[wave]そう、作っているって","values":["wave"]},
-      {"time":171.5,"expectedText":"[wave]先生ここにあるものじゃ","values":["wave"]},
-      {"time":174.5,"expectedText":"[wave]全然足りなかったような 愛しさと未来を","values":["wave"]},
-      {"time":180.5,"expectedText":"[wave]もう、笑っていこうぜ","values":["wave"]},
-      {"time":183,"expectedText":"[wave]Wha wha wha yeah yeah x 3","values":["wave"]},
-      {"time":192,"expectedText":"[wave]ああもうつかれちまったろ","values":["wave"]},
-      {"time":194.5,"expectedText":"[wave]Wha wha wha yeah yeah x 3","values":["wave"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["第二次 Whoa, whoa, whoa, yeah, yeah 是三次，接著唱 True, true, true。","副歌以「先生」與「全然」交互喊為主。"],
-        cues: [
-          {"time":33,"expectedText":"ふふふ","chant":{"kind":"full"}},
-          {"time":47,"expectedText":"[wave]先生ここにあるものじゃ","chant":{"kind":"partial","parts":[{"jp":{"text":"先生","occurrence":1},"romaji":{"text":"sensei","occurrence":1}}]}},
-          {"time":50.5,"expectedText":"[wave]全然足りなかったような 悲しみが未来を","chant":{"kind":"partial","parts":[{"jp":{"text":"全然","occurrence":1},"romaji":{"text":"zenzen","occurrence":1}}]}},
-          {"time":59,"expectedText":"[wave]先生ここにあるものじゃ","chant":{"kind":"partial","parts":[{"jp":{"text":"先生","occurrence":1},"romaji":{"text":"sensei","occurrence":1}}]}},
-          {"time":61.5,"expectedText":"[wave]全然足りなかったような 愛しさと未来を","chant":{"kind":"partial","parts":[{"jp":{"text":"全然","occurrence":1},"romaji":{"text":"zenzen","occurrence":1}}]}},
-          {"time":104,"expectedText":"[wave]先生ここにあるものじゃ","chant":{"kind":"partial","parts":[{"jp":{"text":"先生","occurrence":1},"romaji":{"text":"sensei","occurrence":1}}]}},
-          {"time":106.5,"expectedText":"[wave]全然足りなかったような 愛しさと未来を","chant":{"kind":"partial","parts":[{"jp":{"text":"全然","occurrence":1},"romaji":{"text":"zenzen","occurrence":1}}]}},
-          {"time":161.5,"expectedText":"[wave]先生ここにあるものじゃ","chant":{"kind":"partial","parts":[{"jp":{"text":"先生","occurrence":1},"romaji":{"text":"sensei","occurrence":1}}]}},
-          {"time":163,"expectedText":"[wave]全然足りなかったような 悲しみが未来を","chant":{"kind":"partial","parts":[{"jp":{"text":"全然","occurrence":1},"romaji":{"text":"zenzen","occurrence":1}}]}},
-          {"time":171.5,"expectedText":"[wave]先生ここにあるものじゃ","chant":{"kind":"partial","parts":[{"jp":{"text":"先生","occurrence":1},"romaji":{"text":"sensei","occurrence":1}}]}},
-          {"time":174.5,"expectedText":"[wave]全然足りなかったような 愛しさと未来を","chant":{"kind":"partial","parts":[{"jp":{"text":"全然","occurrence":1},"romaji":{"text":"zenzen","occurrence":1}}]}},
-          {"time":183,"expectedText":"[wave]Wha wha wha yeah yeah x 3","chant":{"kind":"full"}},
-          {"time":194.5,"expectedText":"[wave]Wha wha wha yeah yeah x 3","chant":{"kind":"full"}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "第二次 Whoa, whoa, whoa, yeah, yeah 是三次，接著唱 True, true, true。",
+          "副歌以「先生」與「全然」交互喊為主。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":14,"expectedText":"[wave]ha wha wha yeah yeah x 4","chant":{"kind":"full"}},
-          {"time":33,"expectedText":"ふふふ","chant":{"kind":"full"}},
-          {"time":47,"expectedText":"[wave]先生ここにあるものじゃ","chant":{"kind":"full"}},
-          {"time":50.5,"expectedText":"[wave]全然足りなかったような 悲しみが未来を","chant":{"kind":"full"}},
-          {"time":56.5,"expectedText":"[wave]そう、作っているって","chant":{"kind":"full"}},
-          {"time":59,"expectedText":"[wave]先生ここにあるものじゃ","chant":{"kind":"full"}},
-          {"time":61.5,"expectedText":"[wave]全然足りなかったような 愛しさと未来を","chant":{"kind":"full"}},
-          {"time":67.5,"expectedText":"[wave]もう、笑っていこうぜ","chant":{"kind":"full"}},
-          {"time":92.5,"expectedText":"[clap]「胸にいっぱいの葛藤と愛しさでまだ","chant":{"kind":"full"}},
-          {"time":96.5,"expectedText":"[clap]変わることができてた」","chant":{"kind":"full"}},
-          {"time":104,"expectedText":"[wave]先生ここにあるものじゃ","chant":{"kind":"full"}},
-          {"time":106.5,"expectedText":"[wave]全然足りなかったような 愛しさと未来を","chant":{"kind":"full"}},
-          {"time":113,"expectedText":"[wave]もう、笑っていこうぜ","chant":{"kind":"full"}},
-          {"time":115.5,"expectedText":"[wave]Wha wha wha yeah yeah x 3 True True True","chant":{"kind":"full"}},
-          {"time":127,"expectedText":"[wave]Wha wha wha yeah yeah x 4","chant":{"kind":"full"}},
-          {"time":161.5,"expectedText":"[wave]先生ここにあるものじゃ","chant":{"kind":"full"}},
-          {"time":163,"expectedText":"[wave]全然足りなかったような 悲しみが未来を","chant":{"kind":"full"}},
-          {"time":169.5,"expectedText":"[wave]そう、作っているって","chant":{"kind":"full"}},
-          {"time":171.5,"expectedText":"[wave]先生ここにあるものじゃ","chant":{"kind":"full"}},
-          {"time":174.5,"expectedText":"[wave]全然足りなかったような 愛しさと未来を","chant":{"kind":"full"}},
-          {"time":180.5,"expectedText":"[wave]もう、笑っていこうぜ","chant":{"kind":"full"}},
-          {"time":183,"expectedText":"[wave]Wha wha wha yeah yeah x 3","chant":{"kind":"full"}},
-          {"time":194.5,"expectedText":"[wave]Wha wha wha yeah yeah x 3","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "ZERO": {
-    actions: [
-
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":48,"expectedText":"Na Na Na Na Na Na Na","chant":{"kind":"full"}},
-          {"time":57,"expectedText":"Na Na Na Na Na Na Na Hey, Now","chant":{"kind":"full"}},
-          {"time":68,"expectedText":"Na Na Na Hey, Now","chant":{"kind":"full"}},
-          {"time":121,"expectedText":"Na Na Na Na Na Na Na","chant":{"kind":"full"}},
-          {"time":130,"expectedText":"Na Na Na Na Na Na Na Hey, Now","chant":{"kind":"full"}},
-          {"time":141,"expectedText":"Na Na Na Hey, Now","chant":{"kind":"full"}},
-          {"time":168,"expectedText":"Na Na Na Hey, Now","chant":{"kind":"full"}},
-          {"time":178,"expectedText":"Na Na Na Hey, Now","chant":{"kind":"full"}},
-          {"time":187,"expectedText":"Na Na Na Hey, Now","chant":{"kind":"full"}},
-          {"time":196,"expectedText":"Na Na Na Hey, Now","chant":{"kind":"full"}}
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "SonnaBitternaHanashi)": {
-    actions: [
-      {"time":62.5,"expectedText":"[wave]ほろ苦い、そう苦い 僕たちの望む愛やらの出口は","values":["wave"]},
-      {"time":73.5,"expectedText":"[wave]消えることも 見えることも","values":["wave"]},
-      {"time":79,"expectedText":"[wave]忘れることもできぬように","values":["wave"]},
-      {"time":84,"expectedText":"[wave]ほろ苦い、そう苦い 僕たちの思う愛やらの未来は","values":["wave"]},
-      {"time":95,"expectedText":"[wave]消えることも 見えることも","values":["wave"]},
-      {"time":100.5,"expectedText":"[wave]忘れることもできぬように","values":["wave"]},
-      {"time":106,"expectedText":"[wave]愛おしいのさ","values":["wave"]},
-      {"time":159.5,"expectedText":"[wave]ほろ苦い、そう苦い 僕たちの望む愛やらの入口は","values":["wave"]},
-      {"time":170.5,"expectedText":"[wave]消えることも 見えることも","values":["wave"]},
-      {"time":176,"expectedText":"[wave]忘れることもできぬほどに​","values":["wave"]},
-      {"time":181,"expectedText":"[wave]苦すぎるから​","values":["wave"]},
-      {"time":224,"expectedText":"[wave]ほろ苦い、あぁ苦い 僕たちの望む愛やらの出口は","values":["wave"]},
-      {"time":235.5,"expectedText":"[wave]消えることも 見えることも","values":["wave"]},
-      {"time":240.5,"expectedText":"[wave]忘れることもできぬように","values":["wave"]},
-      {"time":246,"expectedText":"[wave]ほろ苦い、もう苦い 僕たちの思う愛やらの未来は","values":["wave"]},
-      {"time":257,"expectedText":"[wave]消えることも 見えることも","values":["wave"]},
-      {"time":262,"expectedText":"[wave]忘れることもできぬゆえに​","values":["wave"]},
-      {"time":267,"expectedText":"[wave]愛おしいのさ​","values":["wave"]}
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":40.5,"expectedText":"こんなことじゃあ 出会わなきゃよかったな","chant":{"kind":"full"}},
-          {"time":46,"expectedText":"そんなことじゃあ ラブコメみたいなくだりで","chant":{"kind":"full"}},
-          {"time":73.5,"expectedText":"[wave]消えることも 見えることも","chant":{"kind":"full"}},
-          {"time":95,"expectedText":"[wave]消えることも 見えることも","chant":{"kind":"full"}},
-          {"time":138,"expectedText":"こんなことじゃあ 出会わなきゃよかったな","chant":{"kind":"full"}},
-          {"time":143,"expectedText":"そんなことじゃあ ラブコメみたいな2人を","chant":{"kind":"full"}},
-          {"time":170.5,"expectedText":"[wave]消えることも 見えることも","chant":{"kind":"full"}},
-          {"time":220,"expectedText":"いうんだよ これはそう​","chant":{"kind":"full"}},
-          {"time":235.5,"expectedText":"[wave]消えることも 見えることも","chant":{"kind":"full"}},
-          {"time":257,"expectedText":"[wave]消えることも 見えることも","chant":{"kind":"full"}}
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "Fujin": {
-    actions: [
-      {"time":13,"expectedText":"[clap]よりも 「救いたい」 と悲劇を気取ってた","values":["clap"]},
-      {"time":23,"expectedText":"[clap]面倒よりも それが砕いても、煮込んでも","values":["clap"]},
-      {"time":30,"expectedText":"[clap]食べれない故に","values":["clap"]},
-      {"time":50.5,"expectedText":"[wave]この先も誰かを想うたび","values":["wave"]},
-      {"time":55.5,"expectedText":"[wave]風纏い擦り傷が絶えないだろう","values":["wave"]},
-      {"time":60.5,"expectedText":"[wave]だがやがてこの風、受けるたびに","values":["wave"]},
-      {"time":65.5,"expectedText":"[wave]その、変え難い ぬくい痛みに","values":["wave"]},
-      {"time":70,"expectedText":"[wave]報われていたい はず...","values":["wave"]},
-      {"time":91.5,"expectedText":"[clap]ジリジリ 頬つたって痛いよ","values":["clap"]},
-      {"time":95.5,"expectedText":"[clap]芽吹いた ヒラヒラ 喉元つたって","values":["clap"]},
-      {"time":101.5,"expectedText":"[clap]吸い込み 肺が痛いよ","values":["clap"]},
-      {"time":106,"expectedText":"[clap]でもね トクトク あたたかいね","values":["clap"]},
-      {"time":129.5,"expectedText":"[wave]この先も誰かを想うたび","values":["wave"]},
-      {"time":134.5,"expectedText":"[wave]風纏い擦り傷が絶えないだろう","values":["wave"]},
-      {"time":139.5,"expectedText":"[wave]だがやがてこの風、受けるたびに","values":["wave"]},
-      {"time":144.5,"expectedText":"[wave]その、変え難い ぬくい痛みに","values":["wave"]},
-      {"time":149.5,"expectedText":"[wave]報われていたい はず...","values":["wave"]},
-      {"time":179.5,"expectedText":"[wave]僕が、誰かを想うたび","values":["wave"]},
-      {"time":184,"expectedText":"[wave]風纏い擦り傷が絶えないだろう","values":["wave"]},
-      {"time":189,"expectedText":"[wave]だがやがてこの風、受けるたびに","values":["wave"]},
-      {"time":194,"expectedText":"[wave]その、変え難い ぬくい痛みに","values":["wave"]},
-      {"time":198.5,"expectedText":"[wave]拭われて あなたを想うたびに","values":["wave"]},
-      {"time":203.5,"expectedText":"[wave]風纏い擦り傷が絶えないだろう","values":["wave"]},
-      {"time":208.5,"expectedText":"[wave]だがやがてこの風、受けるたびに","values":["wave"]},
-      {"time":214,"expectedText":"[wave]その、変え難い ぬくい痛みに","values":["wave"]},
-      {"time":218.5,"expectedText":"[wave]救われていた はず だから","values":["wave"]}
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":32,"expectedText":"大脳の意思では","chant":{"kind":"full"}},
-          {"time":41.5,"expectedText":"だが、心臓が言うには","chant":{"kind":"full"}},
-          {"time":50.5,"expectedText":"[wave]この先も誰かを想うたび","chant":{"kind":"full"}},
-          {"time":55.5,"expectedText":"[wave]風纏い擦り傷が絶えないだろう","chant":{"kind":"full"}},
-          {"time":60.5,"expectedText":"[wave]だがやがてこの風、受けるたびに","chant":{"kind":"full"}},
-          {"time":70,"expectedText":"[wave]報われていたい はず...","chant":{"kind":"full"}},
-          {"time":110.5,"expectedText":"それが 大脳の意思では","chant":{"kind":"full"}},
-          {"time":121,"expectedText":"また、心臓が言うには","chant":{"kind":"full"}},
-          {"time":129.5,"expectedText":"[wave]この先も誰かを想うたび","chant":{"kind":"full"}},
-          {"time":134.5,"expectedText":"[wave]風纏い擦り傷が絶えないだろう","chant":{"kind":"full"}},
-          {"time":139.5,"expectedText":"[wave]だがやがてこの風、受けるたびに","chant":{"kind":"full"}},
-          {"time":149.5,"expectedText":"[wave]報われていたい はず...","chant":{"kind":"full"}},
-          {"time":179.5,"expectedText":"[wave]僕が、誰かを想うたび","chant":{"kind":"full"}},
-          {"time":184,"expectedText":"[wave]風纏い擦り傷が絶えないだろう","chant":{"kind":"full"}},
-          {"time":189,"expectedText":"[wave]だがやがてこの風、受けるたびに","chant":{"kind":"full"}},
-          {"time":198.5,"expectedText":"[wave]拭われて あなたを想うたびに","chant":{"kind":"full"}},
-          {"time":203.5,"expectedText":"[wave]風纏い擦り傷が絶えないだろう","chant":{"kind":"full"}},
-          {"time":208.5,"expectedText":"[wave]だがやがてこの風、受けるたびに","chant":{"kind":"full"}},
-          {"time":218.5,"expectedText":"[wave]救われていた はず だから","chant":{"kind":"full"}}
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "Jonetsu": {
-    actions: [
-      {"time":0,"expectedText":"[clap]","values":["clap"]},
-      {"time":29,"expectedText":"[clap]太陽系をちょうど抜けたあたりで","values":["clap"]},
-      {"time":36.5,"expectedText":"[clap]思い出した","values":["clap"]},
-      {"time":42,"expectedText":"[clap]何億年もループを抜けない旅を","values":["clap"]},
-      {"time":49,"expectedText":"[clap]してたような","values":["clap"]},
-      {"time":53,"expectedText":"[clap]動悸に気づき出した。","values":["clap"]},
-      {"time":56.5,"expectedText":"[clap]そのころには、視界にはもう靄がかかっていく","values":["clap"]},
-      {"time":64,"expectedText":"[clap]正気を取り戻した。","values":["clap"]},
-      {"time":69,"expectedText":"[clap]そのころには、その機体はすでに止まっている。","values":["clap"]},
-      {"time":77.5,"expectedText":"[wave]いつだって君のことは","values":["wave"]},
-      {"time":80.5,"expectedText":"[wave] 底なしで触れてたいな","values":["wave"]},
-      {"time":83.5,"expectedText":"[wave]平熱も上がるような毎日をあげるから","values":["wave"]},
-      {"time":89.5,"expectedText":"[wave]もうどうしたって君の心が","values":["wave"]},
-      {"time":93,"expectedText":"[wave]溶け出して、焦るほどの","values":["wave"]},
-      {"time":96,"expectedText":"[wave]常熱を その鼓動に毎日あげるから」","values":["wave"]},
-      {"time":103.5,"expectedText":"[clap]海底圏がちょうど見えたあたりで","values":["clap"]},
-      {"time":111,"expectedText":"[clap]思い出した","values":["clap"]},
-      {"time":116,"expectedText":"[clap]何重圧も肌に溶ける","values":["clap"]},
-      {"time":120.5,"expectedText":"[clap]血圧が上がるような","values":["clap"]},
-      {"time":139,"expectedText":"[clap]この動悸に気づき出した。","values":["clap"]},
-      {"time":143,"expectedText":"[clap]そのころには、視界にはもう靄がかかっていく","values":["clap"]},
-      {"time":151,"expectedText":"[clap]正気を取り戻した。","values":["clap"]},
-      {"time":155.5,"expectedText":"[clap]そのころには、その液体はすでに上がっている。","values":["clap"]},
-      {"time":164,"expectedText":"[wave]いつだって君のことは","values":["wave"]},
-      {"time":167,"expectedText":"[wave] 底なしで触れてたいな","values":["wave"]},
-      {"time":170,"expectedText":"[wave]平熱も上がるような毎日をあげるから","values":["wave"]},
-      {"time":176,"expectedText":"[wave]もうどうしたって君の心が","values":["wave"]},
-      {"time":179.5,"expectedText":"[wave]溶け出して、焦るほどの","values":["wave"]},
-      {"time":182.5,"expectedText":"[wave]常熱を その鼓動に毎日あげるから」","values":["wave"]},
-      {"time":189,"expectedText":"[clap]ぁ～あ 言葉が溶け出していくぅ","values":["clap"]},
-      {"time":194,"expectedText":"[clap]脳圧満たして またもう夢見心地さ","values":["clap"]},
-      {"time":201.5,"expectedText":"[wave]いつだって君のことは","values":["wave"]},
-      {"time":204.5,"expectedText":"[wave] 底なしで触れてたいな","values":["wave"]},
-      {"time":207.5,"expectedText":"[wave]平熱も上がるような毎日をあげるから","values":["wave"]},
-      {"time":213.5,"expectedText":"[wave]もうどうしたって君の心が","values":["wave"]},
-      {"time":217,"expectedText":"[wave]溶け出して、焦るほどの","values":["wave"]},
-      {"time":220,"expectedText":"[wave]常熱を その鼓動に毎日あげるから」","values":["wave"]},
-      {"time":226,"expectedText":"[clap]","values":["clap"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["拍手會在 1/2 拍與 1/4 拍之間切換，請跟著鼓點。","最後一段副歌前 Vaundy 喊話時可以一起尖叫，再跟著他搖擺。"],
-        cues: [
-
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "拍手會在 1/2 拍與 1/4 拍之間切換，請跟著鼓點。",
+          "最後一段副歌前 Vaundy 喊話時可以一起尖叫，再跟著他搖擺。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":77.5,"expectedText":"[wave]いつだって君のことは","chant":{"kind":"full"}},
-          {"time":80.5,"expectedText":"[wave] 底なしで触れてたいな","chant":{"kind":"full"}},
-          {"time":83.5,"expectedText":"[wave]平熱も上がるような毎日をあげるから","chant":{"kind":"full"}},
-          {"time":89.5,"expectedText":"[wave]もうどうしたって君の心が","chant":{"kind":"full"}},
-          {"time":93,"expectedText":"[wave]溶け出して、焦るほどの","chant":{"kind":"full"}},
-          {"time":96,"expectedText":"[wave]常熱を その鼓動に毎日あげるから」","chant":{"kind":"full"}},
-          {"time":164,"expectedText":"[wave]いつだって君のことは","chant":{"kind":"full"}},
-          {"time":167,"expectedText":"[wave] 底なしで触れてたいな","chant":{"kind":"full"}},
-          {"time":170,"expectedText":"[wave]平熱も上がるような毎日をあげるから","chant":{"kind":"full"}},
-          {"time":176,"expectedText":"[wave]もうどうしたって君の心が","chant":{"kind":"full"}},
-          {"time":179.5,"expectedText":"[wave]溶け出して、焦るほどの","chant":{"kind":"full"}},
-          {"time":182.5,"expectedText":"[wave]常熱を その鼓動に毎日あげるから」","chant":{"kind":"full"}},
-          {"time":201.5,"expectedText":"[wave]いつだって君のことは","chant":{"kind":"full"}},
-          {"time":204.5,"expectedText":"[wave] 底なしで触れてたいな","chant":{"kind":"full"}},
-          {"time":207.5,"expectedText":"[wave]平熱も上がるような毎日をあげるから","chant":{"kind":"full"}},
-          {"time":213.5,"expectedText":"[wave]もうどうしたって君の心が","chant":{"kind":"full"}},
-          {"time":217,"expectedText":"[wave]溶け出して、焦るほどの","chant":{"kind":"full"}},
-          {"time":220,"expectedText":"[wave]常熱を その鼓動に毎日あげるから」","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "Kagero": {
-    actions: [
-      {"time":53.5,"expectedText":"[wave]この涙誰のために流せばいい","values":["wave"]},
-      {"time":61,"expectedText":"[wave]ベランダに落ちた鳥か 芽吹いた花か","values":["wave"]},
-      {"time":67,"expectedText":"[wave]忘れてたあの日憧れた僕か","values":["wave"]},
-      {"time":72.5,"expectedText":"[wave]この涙何のために流せばいい","values":["wave"]},
-      {"time":80,"expectedText":"[wave]目にかかる砂煙が 魅せてった熱か","values":["wave"]},
-      {"time":86,"expectedText":"[wave]今こそ啸いてくれ かげろう","values":["wave"]},
-      {"time":137.5,"expectedText":"[wave]この涙誰のために流せばいい","values":["wave"]},
-      {"time":145,"expectedText":"[wave]ベランダに落ちた鳥か 芽吹いた花か","values":["wave"]},
-      {"time":151,"expectedText":"[wave]忘れてたあの日憧れた僕か","values":["wave"]},
-      {"time":156.5,"expectedText":"[wave]この涙何のために流せばいい","values":["wave"]},
-      {"time":164,"expectedText":"[wave]目にかかる砂煙が 魅せてった熱か","values":["wave"]},
-      {"time":170,"expectedText":"[wave]今こそ啸いてくれ かげろう","values":["wave"]},
-      {"time":200.5,"expectedText":"[wave]笑う魂ならば","values":["wave"]},
-      {"time":204.5,"expectedText":"[wave]この涙誰のために流せばいい","values":["wave"]},
-      {"time":212,"expectedText":"[wave]ベランダに落ちた烏が 咲かせた花か","values":["wave"]},
-      {"time":218,"expectedText":"[wave]湧き上がるこれまでの僕達か","values":["wave"]},
-      {"time":224,"expectedText":"[wave]この涙何のために流せばいい","values":["wave"]},
-      {"time":231,"expectedText":"[wave]目にかかる砂煙が 魅せてった熱よ","values":["wave"]},
-      {"time":237,"expectedText":"[wave]今こそ啸いてくれ かげろう","values":["wave"]}
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":17,"expectedText":"おどけた魂が俺に魅せる幻。","chant":{"kind":"full"}},
-          {"time":42.5,"expectedText":"揺れる言葉 揺れる影や 揺れる心を","chant":{"kind":"full"}},
-          {"time":50,"expectedText":"許すのならば","chant":{"kind":"full"}},
-          {"time":53.5,"expectedText":"[wave]この涙誰のために流せばいい","chant":{"kind":"full"}},
-          {"time":67,"expectedText":"[wave]忘れてたあの日憧れた僕か","chant":{"kind":"full"}},
-          {"time":72.5,"expectedText":"[wave]この涙何のために流せばいい","chant":{"kind":"full"}},
-          {"time":86,"expectedText":"[wave]今こそ啸いてくれ かげろう","chant":{"kind":"full"}},
-          {"time":101,"expectedText":"おどけた魂が俺を帰せる幻。","chant":{"kind":"full"}},
-          {"time":126.5,"expectedText":"揺れる言葉 揺れる影や 揺れる心が","chant":{"kind":"full"}},
-          {"time":134,"expectedText":"呼び声ならば","chant":{"kind":"full"}},
-          {"time":137.5,"expectedText":"[wave]この涙誰のために流せばいい","chant":{"kind":"full"}},
-          {"time":151,"expectedText":"[wave]忘れてたあの日憧れた僕か","chant":{"kind":"full"}},
-          {"time":156.5,"expectedText":"[wave]この涙何のために流せばいい","chant":{"kind":"full"}},
-          {"time":170,"expectedText":"[wave]今こそ啸いてくれ かげろう","chant":{"kind":"full"}},
-          {"time":200.5,"expectedText":"[wave]笑う魂ならば","chant":{"kind":"full"}},
-          {"time":204.5,"expectedText":"[wave]この涙誰のために流せばいい","chant":{"kind":"full"}},
-          {"time":218,"expectedText":"[wave]湧き上がるこれまでの僕達か","chant":{"kind":"full"}},
-          {"time":224,"expectedText":"[wave]この涙何のために流せばいい","chant":{"kind":"full"}},
-          {"time":237,"expectedText":"[wave]今こそ啸いてくれ かげろう","chant":{"kind":"full"}}
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "IdeagaAfureteNemurenai": {
-    actions: [
-      {"time":66.5,"expectedText":"[wave]この 偶然の先、必然の先、言葉は光すらも超えて","values":["wave"]},
-      {"time":75.5,"expectedText":"[wave]この 天井の先、星々の先、宇宙の先、銀河を超えて","values":["wave"]},
-      {"time":84.5,"expectedText":"[wave]間違いなく残るでしょう","values":["wave"]},
-      {"time":87,"expectedText":"[wave]袖伸ばして未来を待とう","values":["wave"]},
-      {"time":89,"expectedText":"[wave]僕の瞼流る 軌道はいつも同じ","values":["wave"]},
-      {"time":93.5,"expectedText":"[wave]このイデアが描くでしょう","values":["wave"]},
-      {"time":96,"expectedText":"[wave]靴を履いて未来を待とう","values":["wave"]},
-      {"time":98,"expectedText":"[wave]まだ、イデアが溢れて眠れない","values":["wave"]},
-      {"time":139.5,"expectedText":"[wave]この 偶然の先、必然の先、言葉は光すらも超えて","values":["wave"]},
-      {"time":148.5,"expectedText":"[wave]この 天井の先、星々の先、宇宙の先、銀河を超えて","values":["wave"]},
-      {"time":158,"expectedText":"[wave]イデアが溢れて眠れない x 4","values":["wave"]},
-      {"time":194,"expectedText":"[wave]この 偶然の先、必然の先、言葉は光すらも超えて","values":["wave"]},
-      {"time":203,"expectedText":"[wave]この 天井の先、星々の先、宇宙の先、銀河を超えて","values":["wave"]},
-      {"time":212,"expectedText":"[wave]この 偶然の光、必然の光、運命は秩序を超えて","values":["wave"]},
-      {"time":221.5,"expectedText":"[wave]この 天井の光、星々の光、宇宙の光、銀河を超えて","values":["wave"]},
-      {"time":231,"expectedText":"[wave]間違いなく残るでしょう","values":["wave"]},
-      {"time":233,"expectedText":"[wave]袖伸ばして未来を待とう","values":["wave"]},
-      {"time":235,"expectedText":"[wave]僕の瞼流る 軌道はいつも同じ","values":["wave"]},
-      {"time":239.5,"expectedText":"[wave]このイデアが描くでしょう","values":["wave"]},
-      {"time":242.5,"expectedText":"[wave]靴を履いて未来を待とう","values":["wave"]},
-      {"time":244.5,"expectedText":"[wave]まだ、イデアが溢れて眠れない","values":["wave"]},
-      {"time":250,"expectedText":"[wave]イデアが溢れて眠れない x 4","values":["wave"]}
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":61,"expectedText":"胸が ドキドキしだしたよ！","chant":{"kind":"full"}},
-          {"time":66.5,"expectedText":"[wave]この 偶然の先、必然の先、言葉は光すらも超えて","chant":{"kind":"full"}},
-          {"time":75.5,"expectedText":"[wave]この 天井の先、星々の先、宇宙の先、銀河を超えて","chant":{"kind":"full"}},
-          {"time":134,"expectedText":"胸が ドキドキしだしたよ！","chant":{"kind":"full"}},
-          {"time":139.5,"expectedText":"[wave]この 偶然の先、必然の先、言葉は光すらも超えて","chant":{"kind":"full"}},
-          {"time":148.5,"expectedText":"[wave]この 天井の先、星々の先、宇宙の先、銀河を超えて","chant":{"kind":"full"}},
-          {"time":158,"expectedText":"[wave]イデアが溢れて眠れない x 4","chant":{"kind":"full"}},
-          {"time":177.5,"expectedText":"晴天と、この校舎に流れたあの曲を","chant":{"kind":"full"}},
-          {"time":180.5,"expectedText":"「時は、光をとらえた情景の","chant":{"kind":"full"}},
-          {"time":183,"expectedText":"掴みあぐねた、淡い一瞬と","chant":{"kind":"full"}},
-          {"time":187,"expectedText":"公転と、僕の軌跡が生み出す人生を","chant":{"kind":"full"}},
-          {"time":194,"expectedText":"[wave]この 偶然の先、必然の先、言葉は光すらも超えて","chant":{"kind":"full"}},
-          {"time":203,"expectedText":"[wave]この 天井の先、星々の先、宇宙の先、銀河を超えて","chant":{"kind":"full"}},
-          {"time":212,"expectedText":"[wave]この 偶然の光、必然の光、運命は秩序を超えて","chant":{"kind":"full"}},
-          {"time":221.5,"expectedText":"[wave]この 天井の光、星々の光、宇宙の光、銀河を超えて","chant":{"kind":"full"}},
-          {"time":250,"expectedText":"[wave]イデアが溢れて眠れない x 4","chant":{"kind":"full"}}
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "flyaway": {
-    actions: [
-      {"time":0,"expectedText":"[wave]","values":["wave"]},
-      {"time":19.5,"expectedText":"[clap]痛みの数だけ","values":["clap"]},
-      {"time":26,"expectedText":"[clap]それは、僕の静脈を通り","values":["clap"]},
-      {"time":33,"expectedText":"[clap]心臓を突破して 忘れた頃、到達 脳に","values":["clap"]},
-      {"time":44,"expectedText":"[wave]まぁ辛くはないが この小さな、この小さな","values":["wave"]},
-      {"time":49.5,"expectedText":"[wave]うらみわびの隙間風は 許してくれ","values":["wave"]},
-      {"time":58,"expectedText":"[wave](jump)この不甲斐ない","values":["jump","wave"]},
-      {"time":61,"expectedText":"[wave](jump)僕の言葉も涙も全部","values":["jump","wave"]},
-      {"time":65,"expectedText":"[wave](jump)気分次第で生えた羽だって","values":["jump","wave"]},
-      {"time":68.5,"expectedText":"[wave](jump)今は背で受けておくよ全部","values":["jump","wave"]},
-      {"time":71.5,"expectedText":"[wave](jump)それじゃまた","values":["jump","wave"]},
-      {"time":75,"expectedText":"[wave](jump)ここに置いていくから全部","values":["jump","wave"]},
-      {"time":78.5,"expectedText":"[wave](jump)怖くない この空へ","values":["jump","wave"]},
-      {"time":82,"expectedText":"[wave](jump)風に靡く羽に ほら従って","values":["jump","wave"]},
-      {"time":87,"expectedText":"[wave]Woah-oh, woah-oh","values":["wave"]},
-      {"time":93.5,"expectedText":"[wave]Woah-oh, ah, ah, ah, ah","values":["wave"]},
-      {"time":100.5,"expectedText":"[clap]言葉の数だけ","values":["clap"]},
-      {"time":107,"expectedText":"[clap]それは、あなたの神経を通り","values":["clap"]},
-      {"time":114,"expectedText":"[clap]脳幹を突破して 忘れた頃、到達 瞳に","values":["clap"]},
-      {"time":125.5,"expectedText":"[wave]されどイメージしたのは","values":["wave"]},
-      {"time":129,"expectedText":"[wave]光飛び散った最中","values":["wave"]},
-      {"time":133,"expectedText":"[wave]当てはないことを 許してくれ","values":["wave"]},
-      {"time":139,"expectedText":"[wave](jump)この不甲斐ない","values":["jump","wave"]},
-      {"time":142.5,"expectedText":"[wave](jump)僕の言葉も涙も全部","values":["jump","wave"]},
-      {"time":146,"expectedText":"[wave](jump)向かい風受けた羽だって","values":["jump","wave"]},
-      {"time":150,"expectedText":"[wave](jump)今は背で受けておくよ全部","values":["jump","wave"]},
-      {"time":152.5,"expectedText":"[wave](jump)それじゃまた","values":["jump","wave"]},
-      {"time":155.5,"expectedText":"[wave](jump)ここに置いていくから全部","values":["jump","wave"]},
-      {"time":159.5,"expectedText":"[wave](jump)怖くない この空へ","values":["jump","wave"]},
-      {"time":163,"expectedText":"[wave](jump)風に靡く羽に","values":["jump","wave"]},
-      {"time":186.5,"expectedText":"[wave](jump)この不甲斐ない","values":["jump","wave"]},
-      {"time":189.5,"expectedText":"[wave](jump)僕の言葉も涙も全部","values":["jump","wave"]},
-      {"time":193,"expectedText":"[wave](jump)気分次第で生えた羽だって","values":["jump","wave"]},
-      {"time":197,"expectedText":"[wave](jump)でも僕の翼だよ全部","values":["jump","wave"]},
-      {"time":200,"expectedText":"[wave](jump)それじゃまた","values":["jump","wave"]},
-      {"time":203,"expectedText":"[wave](jump)ずっと忘れない 軒並み全部","values":["jump","wave"]},
-      {"time":207,"expectedText":"[wave](jump)怖くない、この夜空で 明日を目指す","values":["jump","wave"]},
-      {"time":211.5,"expectedText":"[wave](jump)朝焼けに ほら、連なって","values":["jump","wave"]},
-      {"time":215,"expectedText":"[wave]Woah-oh, woah-oh","values":["wave"]},
-      {"time":222,"expectedText":"[wave]Woah-oh, ah, ah, ah, ah","values":["wave"]},
-      {"time":229,"expectedText":"[wave]Woah-oh, woah-oh","values":["wave"]},
-      {"time":235.5,"expectedText":"[wave]Woah-oh, ah, ah, ah, ah","values":["wave"]}
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":44,"expectedText":"[wave]まぁ辛くはないが この小さな、この小さな","chant":{"kind":"full"}},
-          {"time":58,"expectedText":"[wave](jump)この不甲斐ない","chant":{"kind":"full"}},
-          {"time":61,"expectedText":"[wave](jump)僕の言葉も涙も全部","chant":{"kind":"full"}},
-          {"time":68.5,"expectedText":"[wave](jump)今は背で受けておくよ全部","chant":{"kind":"full"}},
-          {"time":71.5,"expectedText":"[wave](jump)それじゃまた","chant":{"kind":"full"}},
-          {"time":87,"expectedText":"[wave]Woah-oh, woah-oh","chant":{"kind":"full"}},
-          {"time":93.5,"expectedText":"[wave]Woah-oh, ah, ah, ah, ah","chant":{"kind":"full"}},
-          {"time":139,"expectedText":"[wave](jump)この不甲斐ない","chant":{"kind":"full"}},
-          {"time":142.5,"expectedText":"[wave](jump)僕の言葉も涙も全部","chant":{"kind":"full"}},
-          {"time":150,"expectedText":"[wave](jump)今は背で受けておくよ全部","chant":{"kind":"full"}},
-          {"time":152.5,"expectedText":"[wave](jump)それじゃまた","chant":{"kind":"full"}},
-          {"time":173,"expectedText":"その鬱蒼としげる兵糧と退路","chant":{"kind":"full"}},
-          {"time":176,"expectedText":"眼前が正解じゃ無いよ","chant":{"kind":"full"}},
-          {"time":177.5,"expectedText":"擦り切れる突風が解廊","chant":{"kind":"full"}},
-          {"time":186.5,"expectedText":"[wave](jump)この不甲斐ない","chant":{"kind":"full"}},
-          {"time":189.5,"expectedText":"[wave](jump)僕の言葉も涙も全部","chant":{"kind":"full"}},
-          {"time":197,"expectedText":"[wave](jump)でも僕の翼だよ全部","chant":{"kind":"full"}},
-          {"time":200,"expectedText":"[wave](jump)それじゃまた","chant":{"kind":"full"}},
-          {"time":215,"expectedText":"[wave]Woah-oh, woah-oh","chant":{"kind":"full"}},
-          {"time":222,"expectedText":"[wave]Woah-oh, ah, ah, ah, ah","chant":{"kind":"full"}},
-          {"time":229,"expectedText":"[wave]Woah-oh, woah-oh","chant":{"kind":"full"}},
-          {"time":235.5,"expectedText":"[wave]Woah-oh, ah, ah, ah, ah","chant":{"kind":"full"}}
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "mabuta": {
-    actions: [
-      {"time":0,"expectedText":"[clap]","values":["clap"]},
-      {"time":19.5,"expectedText":"[clap]あなたが今も","values":["clap"]},
-      {"time":23.5,"expectedText":"[clap]口をはにかみ、涙流すから","values":["clap"]},
-      {"time":28,"expectedText":"[clap]放つ言葉も 血が滲んでる","values":["clap"]},
-      {"time":68.5,"expectedText":"[wave]僕ら 目を閉じあうことで","values":["wave"]},
-      {"time":72,"expectedText":"[wave]少しずつわかるようになるかもね","values":["wave"]},
-      {"time":77.5,"expectedText":"[wave]背を向け合うほどね","values":["wave"]},
-      {"time":80.5,"expectedText":"[wave]確かめ合い 生きてる","values":["wave"]},
-      {"time":86,"expectedText":"[wave]La La La La La La x 8","values":["wave"]},
-      {"time":103,"expectedText":"[clap]あなたが今も","values":["clap"]},
-      {"time":107,"expectedText":"[clap]苦しそうに、爪を噛むから","values":["clap"]},
-      {"time":111,"expectedText":"[clap]放つ言葉は まきつき根を張った","values":["clap"]},
-      {"time":152,"expectedText":"[wave]僕ら 目を閉じあうことで","values":["wave"]},
-      {"time":156,"expectedText":"[wave]少しずつわかるようになるかもね","values":["wave"]},
-      {"time":161,"expectedText":"[wave]背を向け合うほどね","values":["wave"]},
-      {"time":164,"expectedText":"[wave]確かめ合い 生きてる","values":["wave"]},
-      {"time":202,"expectedText":"[wave]僕ら 目を閉じあうことで","values":["wave"]},
-      {"time":206,"expectedText":"[wave]少しずつわかるようになるかもね","values":["wave"]},
-      {"time":211,"expectedText":"[wave]背を向け合うほどね","values":["wave"]},
-      {"time":214,"expectedText":"[wave]確かめ合い 生きてる","values":["wave"]},
-      {"time":218.5,"expectedText":"[wave]僕ら 目を閉じあうことで","values":["wave"]},
-      {"time":222.5,"expectedText":"[wave]背伸びせずに疲れないで済むかもね","values":["wave"]},
-      {"time":228,"expectedText":"[wave]背で受け合う先で","values":["wave"]},
-      {"time":231,"expectedText":"[wave]見つめ合い 生きられる","values":["wave"]},
-      {"time":236.5,"expectedText":"[wave]La La La La La La x 8","values":["wave"]}
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":68.5,"expectedText":"[wave]僕ら 目を閉じあうことで","chant":{"kind":"full"}},
-          {"time":77.5,"expectedText":"[wave]背を向け合うほどね","chant":{"kind":"full"}},
-          {"time":86,"expectedText":"[wave]La La La La La La x 8","chant":{"kind":"full"}},
-          {"time":120.5,"expectedText":"針の先に指先が触れるような","chant":{"kind":"full"}},
-          {"time":152,"expectedText":"[wave]僕ら 目を閉じあうことで","chant":{"kind":"full"}},
-          {"time":161,"expectedText":"[wave]背を向け合うほどね","chant":{"kind":"full"}},
-          {"time":202,"expectedText":"[wave]僕ら 目を閉じあうことで","chant":{"kind":"full"}},
-          {"time":211,"expectedText":"[wave]背を向け合うほどね","chant":{"kind":"full"}},
-          {"time":218.5,"expectedText":"[wave]僕ら 目を閉じあうことで","chant":{"kind":"full"}},
-          {"time":228,"expectedText":"[wave]背で受け合う先で","chant":{"kind":"full"}},
-          {"time":236.5,"expectedText":"[wave]La La La La La La x 8","chant":{"kind":"full"}}
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "Hitomibore": {
-    actions: [
-      {"time":0,"expectedText":"[clap]","values":["clap"]},
-      {"time":20.5,"expectedText":"[clap]さりげなく時は","values":["clap"]},
-      {"time":25,"expectedText":"[clap]あの日まで流れ、着いた","values":["clap"]},
-      {"time":29.5,"expectedText":"[clap]鈍い足取りは","values":["clap"]},
-      {"time":34,"expectedText":"[clap]甘い香りに誘われて","values":["clap"]},
-      {"time":38.5,"expectedText":"[clap]突き刺す音で体が揺れる","values":["clap"]},
-      {"time":45,"expectedText":"[clap]予感がした","values":["clap"]},
-      {"time":47,"expectedText":"[clap]まるで出会うことを知ってたかのように","values":["clap"]},
-      {"time":54.5,"expectedText":"[wave]今虜になっていく","values":["wave"]},
-      {"time":56.5,"expectedText":"[wave]それはトキメクパッションで","values":["wave"]},
-      {"time":58.5,"expectedText":"[wave]滑り込んで、瞳奪っていく","values":["wave"]},
-      {"time":61,"expectedText":"[wave]ほらまだ眩しいよ","values":["wave"]},
-      {"time":63,"expectedText":"[wave]あれ、虜になっていく","values":["wave"]},
-      {"time":65,"expectedText":"[wave]あの魅惑のパッションに","values":["wave"]},
-      {"time":67.5,"expectedText":"[wave]滑り込んできた小悪魔も","values":["wave"]},
-      {"time":69.5,"expectedText":"[wave]ほら、踊り出して もう ","values":["wave"]},
-      {"time":72,"expectedText":"[wave]それは、目まぐるしく笑い","values":["wave"]},
-      {"time":76,"expectedText":"[wave]目を塞いでも、また思い出すように","values":["wave"]},
-      {"time":81,"expectedText":"[wave]眩暈がするほど強い光","values":["wave"]},
-      {"time":84.5,"expectedText":"[wave]言葉足らずの","values":["wave"]},
-      {"time":87,"expectedText":"[wave]それは瞳惚れ","values":["wave"]},
-      {"time":90,"expectedText":"[clap]","values":["clap"]},
-      {"time":99.5,"expectedText":"[clap]あの日から時は","values":["clap"]},
-      {"time":104,"expectedText":"[clap]重くなり止まり出した","values":["clap"]},
-      {"time":108,"expectedText":"[clap]迷う秒針はあの日の魔法に惑わされ","values":["clap"]},
-      {"time":116.5,"expectedText":"[clap]きっと 心がもたないね","values":["clap"]},
-      {"time":119,"expectedText":"[clap]煮詰まり思いが噴き出て","values":["clap"]},
-      {"time":122.5,"expectedText":"[clap]しまいそうなほど","values":["clap"]},
-      {"time":125.5,"expectedText":"[clap]見間違いじゃないね","values":["clap"]},
-      {"time":128,"expectedText":"[clap]迷う秒針が焦って","values":["clap"]},
-      {"time":131,"expectedText":"[clap]巻き戻り出す前に","values":["clap"]},
-      {"time":134.5,"expectedText":"[clap]背けるたびに体が揺れる","values":["clap"]},
-      {"time":141,"expectedText":"[clap]予感がした","values":["clap"]},
-      {"time":143,"expectedText":"[clap]それは逃げることを知ってたかのように","values":["clap"]},
-      {"time":150.5,"expectedText":"[wave]また虜になっていく","values":["wave"]},
-      {"time":152.5,"expectedText":"[wave]それはトキメクパッションで","values":["wave"]},
-      {"time":155,"expectedText":"[wave]滑り込んで、瞳奪っていく","values":["wave"]},
-      {"time":157,"expectedText":"[wave]ほらまだ眩しいよ","values":["wave"]},
-      {"time":159,"expectedText":"[wave]あれ、虜になっていく","values":["wave"]},
-      {"time":161,"expectedText":"[wave]あの魅惑のパッションに","values":["wave"]},
-      {"time":163.5,"expectedText":"[wave]滑り込んできた小悪魔も","values":["wave"]},
-      {"time":165.5,"expectedText":"[wave]ほら、踊り出して もう","values":["wave"]},
-      {"time":204,"expectedText":"[wave]今虜になっていく","values":["wave"]},
-      {"time":206,"expectedText":"[wave]それはトキメクパッションで","values":["wave"]},
-      {"time":208,"expectedText":"[wave]滑り込んで、瞳奪っていく","values":["wave"]},
-      {"time":210.5,"expectedText":"[wave]ほらまだ眩しいよ","values":["wave"]},
-      {"time":213,"expectedText":"[wave]あれ、虜になっていく","values":["wave"]},
-      {"time":215,"expectedText":"[wave]あの魅惑のパッションに","values":["wave"]},
-      {"time":217,"expectedText":"[wave]滑り込んできた小悪魔も","values":["wave"]},
-      {"time":219,"expectedText":"[wave]ほら、踊り出して もう","values":["wave"]},
-      {"time":222,"expectedText":"[wave]それは、目まぐるしく笑い","values":["wave"]},
-      {"time":225.5,"expectedText":"[wave]目を塞いでも、また思い出すように","values":["wave"]},
-      {"time":230.5,"expectedText":"[wave]眩暈がするほど強い光","values":["wave"]},
-      {"time":234,"expectedText":"[wave]言葉足らずの","values":["wave"]},
-      {"time":236.5,"expectedText":"[wave]それは瞳惚れ","values":["wave"]}
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":116.5,"expectedText":"[clap]きっと 心がもたないね","chant":{"kind":"full"}},
-          {"time":125.5,"expectedText":"[clap]見間違いじゃないね","chant":{"kind":"full"}}
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "SekainoHimitsu": {
-    actions: [
-      {"time":14,"expectedText":"[clap]","values":["clap"]},
-      {"time":27,"expectedText":"[clap]きっと僕ら何かに追われてる","values":["clap"]},
-      {"time":30.5,"expectedText":"[clap]漠然としてるけど","values":["clap"]},
-      {"time":32.5,"expectedText":"[clap]四六時中グダグダと チクチクが流れる","values":["clap"]},
-      {"time":36.5,"expectedText":"[clap]波に乗せて ネットサーフィン","values":["clap"]},
-      {"time":39.5,"expectedText":"[clap]何か、これはあーだこーだ言って 古臭いな","values":["clap"]},
-      {"time":42.5,"expectedText":"[clap]それはそれで、なんだかんだ言って 新しいな","values":["clap"]},
-      {"time":45.5,"expectedText":"[clap]そんな無駄な繰り返しを、また繰り返して","values":["clap"]},
-      {"time":48.5,"expectedText":"[clap]僕ら、生きていくうちに","values":["clap"]},
-      {"time":51.5,"expectedText":"[clap]I'm sorry 気づいちゃったよ x 2","values":["clap"]},
-      {"time":62,"expectedText":"[clap]世界のこと","values":["clap"]},
-      {"time":63.5,"expectedText":"[clap]ステップだけ x 2 置いてきちゃってよ","values":["clap"]},
-      {"time":69,"expectedText":"[clap]僕ら、涙に合わせて","values":["clap"]},
-      {"time":72.5,"expectedText":"[clap]リズムに乗っている はず","values":["clap"]},
-      {"time":75.5,"expectedText":"[clap]ステップだけ x 2 置いてきちゃっても","values":["clap"]},
-      {"time":81,"expectedText":"[clap]僕ら、笑顔の数だけ","values":["clap"]},
-      {"time":84.5,"expectedText":"[clap]ブレイクできるはず だから","values":["clap"]},
-      {"time":87.5,"expectedText":"[clap]I'm sorry 気づいちゃっても","values":["clap"]},
-      {"time":93.5,"expectedText":"[clap]I'm sorry 忘れといてよ","values":["clap"]},
-      {"time":99.5,"expectedText":"[clap]今日どっかで悪者が死んだらしい","values":["clap"]},
-      {"time":102.5,"expectedText":"[clap]でもたくさんの命が救われたらしい","values":["clap"]},
-      {"time":105.5,"expectedText":"[clap]正義と倫理と命を天秤にかけて","values":["clap"]},
-      {"time":110,"expectedText":"[clap]量った声明で","values":["clap"]},
-      {"time":111.5,"expectedText":"[clap]難しいことはもう分からない けれど","values":["clap"]},
-      {"time":115,"expectedText":"[clap]実は僕らが悪者だったかもしれない","values":["clap"]},
-      {"time":119,"expectedText":"[clap]なんて考えると","values":["clap"]},
-      {"time":120.5,"expectedText":"[clap]彼の気持ちが分かるかもしれない","values":["clap"]},
-      {"time":123.5,"expectedText":"[clap]I'm sorry 気づいちゃったよ x 2","values":["clap"]},
-      {"time":134,"expectedText":"[clap]自分のこと","values":["clap"]},
-      {"time":135.5,"expectedText":"[clap]ステップだけ x 2 置いてきちゃってよ","values":["clap"]},
-      {"time":140.5,"expectedText":"[clap]僕ら、涙に合わせて","values":["clap"]},
-      {"time":144.5,"expectedText":"[clap]リズムに乗っている はず","values":["clap"]},
-      {"time":147.5,"expectedText":"[clap]ステップだけ x 2 置いてきちゃっても","values":["clap"]},
-      {"time":153,"expectedText":"[clap]僕ら、笑顔の数だけ","values":["clap"]},
-      {"time":156.5,"expectedText":"[clap]ブレイクできるはず そうだろ？","values":["clap"]},
-      {"time":160,"expectedText":"[clap]","values":["clap"]},
-      {"time":171.5,"expectedText":"[clap]探してた未来に追いついて","values":["clap"]},
-      {"time":174.5,"expectedText":"[clap]その時初めて気づいたんだ","values":["clap"]},
-      {"time":177.5,"expectedText":"[clap]これが良い事か悪い事か","values":["clap"]},
-      {"time":180.5,"expectedText":"[clap]これが「世界の秘密」ってやつか","values":["clap"]},
-      {"time":184,"expectedText":"[clap]ステップだけ x 2 置いてきちゃってよ","values":["clap"]},
-      {"time":189,"expectedText":"[clap]僕ら、涙に合わせて","values":["clap"]},
-      {"time":192.5,"expectedText":"[clap]リズムに乗っている はず","values":["clap"]},
-      {"time":196,"expectedText":"[clap]ステップだけ x2 置いてきちゃっても","values":["clap"]},
-      {"time":201,"expectedText":"[clap]僕ら、笑顔の数だけ","values":["clap"]},
-      {"time":204.5,"expectedText":"[clap]ブレイクできるはず そうだろ？","values":["clap"]},
-      {"time":208,"expectedText":"[clap]ステップだけ x 4","values":["clap"]}
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":208,"expectedText":"[clap]ステップだけ x 4","chant":{"kind":"full"}}
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "Wasuremono": {
-    actions: [
-      {"time":42,"expectedText":"[wave]帰ろうか","values":["wave"]},
-      {"time":45,"expectedText":"[wave]笑ったふりして ここで","values":["wave"]},
-      {"time":51,"expectedText":"[wave]泣けるシーンが来た数だけ ほら","values":["wave"]},
-      {"time":57.5,"expectedText":"[wave]忘れ物してんだって","values":["wave"]},
-      {"time":106,"expectedText":"[wave]帰ろうか","values":["wave"]},
-      {"time":109,"expectedText":"[wave]笑ったふりして ここで","values":["wave"]},
-      {"time":115,"expectedText":"[wave]泣けるシーンが来た数だけ ほら","values":["wave"]},
-      {"time":121,"expectedText":"[wave]忘れ物してんだって","values":["wave"]},
-      {"time":151.5,"expectedText":"[wave]帰ろうか","values":["wave"]},
-      {"time":154.5,"expectedText":"[wave]思い出よ全部ここにおいで あぁ ここで","values":["wave"]},
-      {"time":160.5,"expectedText":"[wave]泣けるシーンが来た数だけ","values":["wave"]},
-      {"time":166,"expectedText":"[wave]まぁ、拾っても最後に笑えんなら","values":["wave"]},
-      {"time":173.5,"expectedText":"[wave]ほら ぎゅっと掴め忘れ物","values":["wave"]}
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "Timeparadox": {
-    actions: [
-      {"time":11.5,"expectedText":"[clap]","values":["clap"]},
-      {"time":24.5,"expectedText":"[clap]あのね君と出会ったことを今でも","values":["clap"]},
-      {"time":31.5,"expectedText":"[clap]ずっと覚えているけど","values":["clap"]},
-      {"time":36,"expectedText":"[clap]でもね それは ずっと先の未来の話を","values":["clap"]},
-      {"time":43.5,"expectedText":"[clap]横で見てるみたいなの","values":["clap"]},
-      {"time":48,"expectedText":"[clap]もしも君の願い一つ叶うとする","values":["clap"]},
-      {"time":56.5,"expectedText":"[clap]未来変えるとする いや","values":["clap"]},
-      {"time":59.5,"expectedText":"[clap]あのね僕のポケットの未来を覗いて","values":["clap"]},
-      {"time":67,"expectedText":"[clap]きっと笑ってくれるから","values":["clap"]},
-      {"time":71,"expectedText":"[clap]これは いつか この先出会うあなたの","values":["clap"]},
-      {"time":78.5,"expectedText":"[clap]痛み一つ拭う魔法","values":["clap"]},
-      {"time":83.5,"expectedText":"[clap]僕らの抱えてる魔法には","values":["clap"]},
-      {"time":89,"expectedText":"[clap]いつも一つ小さな秘密があって","values":["clap"]},
-      {"time":95,"expectedText":"[clap]どうしても一人じゃ使えないのさ","values":["clap"]},
-      {"time":103.5,"expectedText":"[clap]だから聞いて","values":["clap"]},
-      {"time":106,"expectedText":"[clap]ねぇ あのね君のポケットの未来を覗いて","values":["clap"]},
-      {"time":114,"expectedText":"[clap]きっと笑ってくれるから","values":["clap"]},
-      {"time":118,"expectedText":"[clap]これは いつか この先出会うあなたの","values":["clap"]},
-      {"time":125.5,"expectedText":"[clap]痛み一つ拭う魔法","values":["clap"]},
-      {"time":130,"expectedText":"[clap]ねぇ ほら しまっておきなよ","values":["clap"]},
-      {"time":136,"expectedText":"[clap]どうしても拭えない痛みが","values":["clap"]},
-      {"time":142,"expectedText":"[clap]君を襲いかかる時がくるさ","values":["clap"]},
-      {"time":147.5,"expectedText":"[clap]そんなときは君もその魔法の力を","values":["clap"]},
-      {"time":156,"expectedText":"[clap]唱えてみて","values":["clap"]},
-      {"time":158.5,"expectedText":"[clap]ねぇ あのね僕のポケットの未来の君はね","values":["clap"]},
-      {"time":166,"expectedText":"[clap]いつも笑ってるんだよ","values":["clap"]},
-      {"time":171,"expectedText":"[clap]だから君のポケットの未来の僕もね","values":["clap"]},
-      {"time":178,"expectedText":"[clap]笑っててほしいから","values":["clap"]},
-      {"time":182.5,"expectedText":"[clap]ねぇ 笑っててほしいから","values":["clap"]},
-      {"time":188.5,"expectedText":"[clap]ねぇ 笑っててくれよ","values":["clap"]}
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   "TodomenoIchigeki": {
-    actions: [
-      {"time":7,"expectedText":"[clap]","values":["clap"]},
-      {"time":26.5,"expectedText":"[clap]視界に目前映る深い真紅","values":["clap"]},
-      {"time":36,"expectedText":"[clap]この先およそ 40000km","values":["clap"]},
-      {"time":62,"expectedText":"[wave]だから","values":["wave"]},
-      {"time":63.5,"expectedText":"[wave]今日の夜は隣にいさせて","values":["wave"]},
-      {"time":73,"expectedText":"[wave]今夜だけは本気だからね","values":["wave"]},
-      {"time":82,"expectedText":"[wave]こっちにきてもっと","values":["wave"]},
-      {"time":84.5,"expectedText":"[wave]祈りあった未来とて","values":["wave"]},
-      {"time":87,"expectedText":"[wave]道が違うのよ アナタ","values":["wave"]},
-      {"time":94,"expectedText":"[wave]互いの殺意で","values":["wave"]},
-      {"time":96.5,"expectedText":"[wave]トドメ喰らっちゃうね","values":["wave"]},
-      {"time":101,"expectedText":"[wave]やっぱりやめとくわ","values":["wave"]},
-      {"time":104,"expectedText":"[clap]","values":["clap"]},
-      {"time":155,"expectedText":"[wave]だから","values":["wave"]},
-      {"time":159.5,"expectedText":"[wave]今日の夜は隣にいさせて","values":["wave"]},
-      {"time":169,"expectedText":"[wave]今夜だけは本気だからね","values":["wave"]},
-      {"time":178,"expectedText":"[wave]こっちにきてもっと","values":["wave"]},
-      {"time":180.5,"expectedText":"[wave]祈りあった未来とて","values":["wave"]},
-      {"time":183,"expectedText":"[wave]道が違うのよ アナタ","values":["wave"]},
-      {"time":190,"expectedText":"[wave]互いの殺意で","values":["wave"]},
-      {"time":192.5,"expectedText":"[wave]トドメ喰らっちゃうね","values":["wave"]},
-      {"time":197,"expectedText":"[wave]やっぱりやめとくわ","values":["wave"]},
-      {"time":200,"expectedText":"[clap]","values":["clap"]},
-      {"time":236,"expectedText":"[wave]今日の夜はワタシにさせて","values":["wave"]},
-      {"time":246,"expectedText":"[wave]今夜だけはワタシに守らせて","values":["wave"]},
-      {"time":256,"expectedText":"[wave]今日の夜が明けたころに","values":["wave"]},
-      {"time":262,"expectedText":"[wave]待ち合わせね","values":["wave"]},
-      {"time":265,"expectedText":"[wave]明日の夜も守れますように","values":["wave"]},
-      {"time":274,"expectedText":"[wave]こっちにきてもっと","values":["wave"]},
-      {"time":276.5,"expectedText":"[wave]祈りあった未来とて","values":["wave"]},
-      {"time":279,"expectedText":"[wave]道が違うのよ アナタ","values":["wave"]},
-      {"time":286,"expectedText":"[wave]互いの殺意で","values":["wave"]},
-      {"time":288.5,"expectedText":"[wave]トドメ喰らっちゃうね","values":["wave"]},
-      {"time":293.5,"expectedText":"[wave]ワタシにさせて","values":["wave"]},
-      {"time":295.5,"expectedText":"[wave]祈りあった未来とて","values":["wave"]},
-      {"time":298,"expectedText":"[wave]道が違うのよ アナタ","values":["wave"]},
-      {"time":305,"expectedText":"[wave]互いの殺意で","values":["wave"]},
-      {"time":307.5,"expectedText":"[wave]トドメ喰らっちゃうね","values":["wave"]},
-      {"time":312,"expectedText":"[wave]やっぱりやめとくわ","values":["wave"]}
-    ],
-    versions: {
-      jp: {
-        kind: "guide",
-        sourceIds: ["jp-canva"],
-        notes: ["副歌回應從「今日の夜は／今夜だけは」開始，接著唱「祈りあった未来とて」「道が違うのよ」「アナタ」「互いの殺意で」「トドメ」。"],
-        cues: [
-          {"time":62,"expectedText":"[wave]だから","chant":{"kind":"full"}},
-          {"time":63.5,"expectedText":"[wave]今日の夜は隣にいさせて","chant":{"kind":"full"}},
-          {"time":73,"expectedText":"[wave]今夜だけは本気だからね","chant":{"kind":"full"}},
-          {"time":84.5,"expectedText":"[wave]祈りあった未来とて","chant":{"kind":"full"}},
-          {"time":87,"expectedText":"[wave]道が違うのよ アナタ","chant":{"kind":"full"}},
-          {"time":94,"expectedText":"[wave]互いの殺意で","chant":{"kind":"full"}},
-          {"time":96.5,"expectedText":"[wave]トドメ喰らっちゃうね","chant":{"kind":"full"}},
-          {"time":155,"expectedText":"[wave]だから","chant":{"kind":"full"}},
-          {"time":159.5,"expectedText":"[wave]今日の夜は隣にいさせて","chant":{"kind":"full"}},
-          {"time":169,"expectedText":"[wave]今夜だけは本気だからね","chant":{"kind":"full"}},
-          {"time":180.5,"expectedText":"[wave]祈りあった未来とて","chant":{"kind":"full"}},
-          {"time":183,"expectedText":"[wave]道が違うのよ アナタ","chant":{"kind":"full"}},
-          {"time":190,"expectedText":"[wave]互いの殺意で","chant":{"kind":"full"}},
-          {"time":192.5,"expectedText":"[wave]トドメ喰らっちゃうね","chant":{"kind":"full"}},
-          {"time":236,"expectedText":"[wave]今日の夜はワタシにさせて","chant":{"kind":"full"}},
-          {"time":246,"expectedText":"[wave]今夜だけはワタシに守らせて","chant":{"kind":"full"}},
-          {"time":256,"expectedText":"[wave]今日の夜が明けたころに","chant":{"kind":"full"}},
-          {"time":262,"expectedText":"[wave]待ち合わせね","chant":{"kind":"full"}},
-          {"time":265,"expectedText":"[wave]明日の夜も守れますように","chant":{"kind":"full"}},
-          {"time":276.5,"expectedText":"[wave]祈りあった未来とて","chant":{"kind":"full"}},
-          {"time":279,"expectedText":"[wave]道が違うのよ アナタ","chant":{"kind":"full"}},
-          {"time":286,"expectedText":"[wave]互いの殺意で","chant":{"kind":"full"}},
-          {"time":288.5,"expectedText":"[wave]トドメ喰らっちゃうね","chant":{"kind":"full"}},
-          {"time":295.5,"expectedText":"[wave]祈りあった未来とて","chant":{"kind":"full"}},
-          {"time":298,"expectedText":"[wave]道が違うのよ アナタ","chant":{"kind":"full"}},
-          {"time":305,"expectedText":"[wave]互いの殺意で","chant":{"kind":"full"}},
-          {"time":307.5,"expectedText":"[wave]トドメ喰らっちゃうね","chant":{"kind":"full"}}
+    "versions": {
+      "jp": {
+        "kind": "guide",
+        "sourceIds": [
+          "jp-canva"
+        ],
+        "notes": [
+          "副歌回應從「今日の夜は／今夜だけは」開始，接著唱「祈りあった未来とて」「道が違うのよ」「アナタ」「互いの殺意で」「トドメ」。"
         ]
       },
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-          {"time":62,"expectedText":"[wave]だから","chant":{"kind":"full"}},
-          {"time":63.5,"expectedText":"[wave]今日の夜は隣にいさせて","chant":{"kind":"full"}},
-          {"time":73,"expectedText":"[wave]今夜だけは本気だからね","chant":{"kind":"full"}},
-          {"time":84.5,"expectedText":"[wave]祈りあった未来とて","chant":{"kind":"full"}},
-          {"time":87,"expectedText":"[wave]道が違うのよ アナタ","chant":{"kind":"full"}},
-          {"time":94,"expectedText":"[wave]互いの殺意で","chant":{"kind":"full"}},
-          {"time":96.5,"expectedText":"[wave]トドメ喰らっちゃうね","chant":{"kind":"full"}},
-          {"time":155,"expectedText":"[wave]だから","chant":{"kind":"full"}},
-          {"time":159.5,"expectedText":"[wave]今日の夜は隣にいさせて","chant":{"kind":"full"}},
-          {"time":169,"expectedText":"[wave]今夜だけは本気だからね","chant":{"kind":"full"}},
-          {"time":180.5,"expectedText":"[wave]祈りあった未来とて","chant":{"kind":"full"}},
-          {"time":183,"expectedText":"[wave]道が違うのよ アナタ","chant":{"kind":"full"}},
-          {"time":190,"expectedText":"[wave]互いの殺意で","chant":{"kind":"full"}},
-          {"time":192.5,"expectedText":"[wave]トドメ喰らっちゃうね","chant":{"kind":"full"}},
-          {"time":236,"expectedText":"[wave]今日の夜はワタシにさせて","chant":{"kind":"full"}},
-          {"time":246,"expectedText":"[wave]今夜だけはワタシに守らせて","chant":{"kind":"full"}},
-          {"time":256,"expectedText":"[wave]今日の夜が明けたころに","chant":{"kind":"full"}},
-          {"time":262,"expectedText":"[wave]待ち合わせね","chant":{"kind":"full"}},
-          {"time":265,"expectedText":"[wave]明日の夜も守れますように","chant":{"kind":"full"}},
-          {"time":276.5,"expectedText":"[wave]祈りあった未来とて","chant":{"kind":"full"}},
-          {"time":279,"expectedText":"[wave]道が違うのよ アナタ","chant":{"kind":"full"}},
-          {"time":286,"expectedText":"[wave]互いの殺意で","chant":{"kind":"full"}},
-          {"time":288.5,"expectedText":"[wave]トドメ喰らっちゃうね","chant":{"kind":"full"}},
-          {"time":295.5,"expectedText":"[wave]祈りあった未来とて","chant":{"kind":"full"}},
-          {"time":298,"expectedText":"[wave]道が違うのよ アナタ","chant":{"kind":"full"}},
-          {"time":305,"expectedText":"[wave]互いの殺意で","chant":{"kind":"full"}},
-          {"time":307.5,"expectedText":"[wave]トドメ喰らっちゃうね","chant":{"kind":"full"}},
-          {"time":312,"expectedText":"[wave]やっぱりやめとくわ","chant":{"kind":"full"}}
-        ]
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
   },
   " Kimagure": {
-    actions: [
-
-    ],
-    versions: {
-      jp: {"kind":"inherit","from":"kr"},
-      kr: {
-        kind: "guide",
-        sourceIds: [],
-        notes: [],
-        cues: [
-
-        ]
+    "versions": {
+      "jp": {
+        "kind": "inherit",
+        "from": "kr"
+      },
+      "kr": {
+        "kind": "guide",
+        "sourceIds": [],
+        "notes": []
       }
     }
-  },
+  }
 };
 
 export const CHANT_SOURCES = {
-  "jp-canva": { label: "VAUNDY 應援教學", url: "https://www.canva.com/design/DAGzhwjn1P4/WDMcBwi1A-ZJpX615SFpig/view" }
+  "jp-canva": {
+    "label": "VAUNDY 應援教學",
+    "url": "https://www.canva.com/design/DAGzhwjn1P4/WDMcBwi1A-ZJpX615SFpig/view"
+  }
 };

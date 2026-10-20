@@ -19,18 +19,16 @@ test("exact merge threshold keeps practice blocks separate", () => {
   const result = buildChantBlocks([line("full"), line(), line("full")], [0, 5, 9.3]);
   assert.equal(result.length, 2);
 });
-test("validation rejects invalid references, duplicate cues and unknown sources", () => {
-  const song = { id: "test", lyrics: [{ time: 1, jp: "test" }] };
-  const cue = { time: 1, expectedText: "test", chant: { kind: "full" } };
-  const entry = { actions: [], versions: { jp: { kind: "guide", cues: [cue], sourceIds: [], notes: [] }, kr: { kind: "inherit", from: "jp" } } };
+test("validation rejects duplicate times, inherited overrides and unknown sources", () => {
+  const song = { id: "test", lyrics: [{ time: 1, jp: "test", chants: { jp: { chant: { kind: "full" } } } }] };
+  const entry = { versions: { jp: { kind: "guide", sourceIds: [], notes: [] }, kr: { kind: "inherit", from: "jp" } } };
   validateChantEntry(song, entry, {});
-  const duplicate = structuredClone(entry);
-  duplicate.versions.jp.cues.push(cue);
-  assert.throws(() => validateChantEntry(song, duplicate, {}), /Duplicate cue/);
-  const missing = structuredClone(entry);
-  missing.versions.jp.cues[0].time = 2;
-  assert.throws(() => validateChantEntry(song, missing, {}), /Missing lyric/);
+  assert.throws(() => validateChantEntry({ ...song, lyrics: [...song.lyrics, song.lyrics[0]] }, entry, {}), /Duplicate lyric time/);
+  const inherited = structuredClone(song);
+  inherited.lyrics[0].chants.kr = { actions: [] };
+  assert.throws(() => validateChantEntry(inherited, entry, {}), /Inherited/);
   const unknown = structuredClone(entry);
   unknown.versions.jp.sourceIds.push("unknown");
   assert.throws(() => validateChantEntry(song, unknown, {}), /Unknown source/);
+  assert.throws(() => validateChantEntry({ ...song, lyrics: [{ time: 1, jp: "[wave]test" }] }, entry, {}), /action markers/);
 });
