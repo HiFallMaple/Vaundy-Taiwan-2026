@@ -2,7 +2,7 @@ import fs from "node:fs";
 import vm from "node:vm";
 import { SONG_LYRICS as SONGS } from "../src/song-lyrics.js";
 import { ROMAJI_CORRECTIONS } from "../src/furigana-corrections.js";
-import { JP_CHANT_GUIDES } from "../src/chant-guide.js";
+import { CHANT_GUIDES } from "../src/chant/version-data.js";
 
 const furiganaSource = fs.readFileSync(new URL("../furigana.js", import.meta.url), "utf8");
 const generated = { window: {} };
@@ -41,38 +41,18 @@ for (const song of SONGS) {
       leaking.push({ song: song.id, index, time: line.time, source, romaji });
     }
 
-    for (const segment of line.jpSegments || []) {
-      if (!segment || segment.tag !== "chant"
-        || !japaneseCharacters.test(String(segment.text || ""))) continue;
-      const segmentRomaji = romajiByLine[segment.text];
-      if (typeof segmentRomaji !== "string") {
-        missingChantSegments.push({ song: song.id, index, time: line.time, source: segment.text });
-      } else if (japaneseCharacters.test(segmentRomaji)) {
-        leaking.push({
-          song: song.id,
-          index,
-          time: line.time,
-          source: segment.text,
-          romaji: segmentRomaji,
-          kind: "chant segment",
-        });
-      }
-    }
+
   }
 }
 
-for (const [song, guide] of Object.entries(JP_CHANT_GUIDES || {})) {
-  for (const [index, segment] of (guide.chantSegments || []).entries()) {
-    if (!segment || typeof segment.romaji !== "string") continue;
-    if (japaneseCharacters.test(segment.romaji)) {
-      leaking.push({
-        song,
-        index,
-        time: segment.time,
-        source: segment.text,
-        romaji: segment.romaji,
-        kind: "chant segment",
-      });
+for (const [song, entry] of Object.entries(CHANT_GUIDES)) {
+  for (const [version, guide] of Object.entries(entry.versions)) {
+    for (const cue of guide.cues || []) {
+      for (const part of cue.chant.parts || []) {
+        if (typeof part.romaji?.text !== "string" || japaneseCharacters.test(part.romaji.text)) {
+          missingChantSegments.push({ song, version, time: cue.time, source: part.jp?.text });
+        }
+      }
     }
   }
 }

@@ -42,11 +42,13 @@ import {
   CHANT_VERSIONS,
   CHANT_DIFFERENCES,
   DEFAULT_CHANT_VERSION,
-  JP_CHANT_GUIDES,
   CHANT_REFERENCE_URL
 } from "./chant-guide.js";
+import { resolveLineChant, selectGuide } from "./chant/resolve.js";
+import { markChantRanges } from "./chant/render.js";
+import { chantSummary, buildChantBlocks } from "./chant/summary.js";
 import { SONG_MARKS } from "./song-mark-metadata.js";
-import { loadFurigana, loadKaraokeSources, loadSongLyrics } from "./services/lazy-modules.js";
+import { getChantGuides, getChantSources, loadFurigana, loadKaraokeSources, loadSongLyrics } from "./services/lazy-modules.js";
 import { loadJapaneseFontSubset } from "./services/japanese-font.js";
 import { store } from "./services/storage.js";
 import { createDocumentPip } from "./document-pip.js";
@@ -264,7 +266,8 @@ function chantVersionControlHtml(scope = "guide"){
 
 function chantGuideFor(song = currentSong, version = chantVersion){
   if (!song) return null;
-  return version === "jp" ? (JP_CHANT_GUIDES[song.id] || null) : null;
+  const entry = getChantGuides()?.[song.id];
+  return entry ? selectGuide(entry, version) : null;
 }
 
 function chantVersionLabel(version = chantVersion){
@@ -305,19 +308,13 @@ function applyChantVersionUi(){
 function renderChantVersionNote(song = currentSong){
   const el = document.getElementById("chant-version-note");
   if (!el) return;
-
-  if (chantVersion === "kr"){
-    el.innerHTML = `<b>${CHANT_VERSIONS.kr.label}</b>：使用韓國場應援標記。`;
-    return;
-  }
-
-  const guide = chantGuideFor(song, "jp");
-  if (!guide){
-    el.innerHTML = `<b>${CHANT_VERSIONS.jp.label}</b>：這首歌目前沒有獨立的日本版提示，暫沿用現有標記。`;
-    return;
-  }
-
-  el.innerHTML = `<b>${CHANT_VERSIONS.jp.label}</b>：歌詞旁的麥克風圖示就是日本版大合唱段落。`;
+  const guide = chantGuideFor(song);
+  const inherited = guide.resolvedVersion !== chantVersion;
+  const sources = guide.sourceIds.map(id => getChantSources()[id]);
+  el.innerHTML = `<b>${chantVersionLabel()}</b>：${inherited
+    ? `這首歌沿用${chantVersionLabel(guide.resolvedVersion)}標記。`
+    : "歌詞旁的麥克風圖示代表大合唱段落。"}${sources.map(source =>
+      ` <a href="${escapeHtml(source.url)}" target="_blank" rel="noopener">${escapeHtml(source.label)} ↗</a>`).join("")}`;
 }
 
 function renderChantNotes(song = currentSong){
@@ -326,7 +323,7 @@ function renderChantNotes(song = currentSong){
   const list = document.getElementById("chant-notes-list");
   if (!button || !panel || !list) return;
 
-  const guide = chantVersion === "jp" ? chantGuideFor(song, "jp") : null;
+  const guide = chantGuideFor(song);
   const notes = guide && Array.isArray(guide.notes)
     ? guide.notes.filter(note => typeof note === "string" && note.trim())
     : [];
@@ -550,7 +547,7 @@ function songJapaneseFontText(song){
   return [
     japaneseTitleText(song.title),
     ...(song.lyrics || []).map(line => line.jp || ""),
-    ...(guide?.chantSegments || []).map(segment => segment.text || "")
+    ...(guide?.cues || []).flatMap(cue => (cue.chant.parts || []).map(part => part.jp.text))
   ];
 }
 
@@ -2270,18 +2267,14 @@ function currentChantBlocks(){ return chantBlocks(currentSong); }
 
 function repaintChantVersionLines(song = currentSong){
   const list = document.getElementById("lyrics-list");
-  if (!list || !song || !Array.isArray(song.lyrics)) return;
+  if (!list || !song?.lyrics) return;
   list.querySelectorAll(".lyric-line").forEach(line => {
-    const index = Number(line.dataset.idx);
-    const lyric = song.lyrics[index];
-    if (!lyric) return;
-    const chantClass = chantLineClass(lyric, song);
-    line.classList.toggle("is-chant", chantClass.split(" ").includes("is-chant"));
-    line.classList.toggle("chant-partial", chantClass.split(" ").includes("chant-partial"));
-    line.classList.toggle("has-chant-segment", chantClass.split(" ").includes("has-chant-segment"));
-    const icons = line.querySelector(".lyric-icons");
-    if (icons) icons.innerHTML = lyricIconsHtml(lyric, song);
+    const lyric = song.lyrics[Number(line.dataset.idx)];
+    line.dataset.chant = resolvedChant(lyric, song).chant;
+    line.querySelector(".lyric-icons").innerHTML = lyricIconsHtml(lyric, song);
+    line.querySelector(".lyric-zh").innerHTML = renderTranslationLyricLine(lyric, song);
   });
+  repaintJapaneseReadings();
 }
 
 function setChantVersion(next){
@@ -2293,7 +2286,6 @@ function setChantVersion(next){
   chantVersion = next;
   store("horo-chant-version", chantVersion);
   songMarksCache.clear();
-  jpChantTimeCache.clear();
   chantBlockCache.clear();
   chantIdx = -1;
   chantDone = false;
@@ -2596,18 +2588,15 @@ function renderSong(song){
 
   document.getElementById("lyrics-list").innerHTML = song.lyrics.map((l,i)=>`
     <li>
-      <button class="lyric-line ${chantLineClass(l, song)}" data-time="${l.time}" data-idx="${i}">
+      <button class="lyric-line" data-chant="${resolvedChant(l, song).chant}" data-time="${l.time}" data-idx="${i}">
         <span class="lyric-icons">${lyricIconsHtml(l, song)}</span>
         <span class="lyric-body">
           <span class="lyric-jp" lang="ja">${renderJapaneseLyricLine(l, song)}</span>
           <span class="lyric-romaji" lang="ja-Latn">${readingMode === "both" ? renderRomajiLyricLine(l, song) : ""}</span>
-          <span class="lyric-zh">${withIcons(l.tr || "")}</span>
+          <span class="lyric-zh">${renderTranslationLyricLine(l, song)}</span>
         </span>
       </button>
     </li>`).join("");
-  document.querySelectorAll("#lyrics-list .lyric-line").forEach(line => {
-    markLyricChantSegments(line, song.lyrics[Number(line.dataset.idx)]);
-  });
   decorateKaraokeLines(song);
   setKaraokeSourceStatus("loading", "歌詞逐字時間：正在尋找開源時間碼…");
 
@@ -2806,7 +2795,6 @@ function repaintJapaneseReadings(){
         ? renderRomajiLyricLine(lyric, currentSong)
         : "";
     }
-    markLyricChantSegments(line, lyric);
     decorateKaraokeLine(target);
     if (romajiTarget) decorateKaraokeLine(romajiTarget);
     assignKaraokeLineTiming(line, karaokeLineTiming(currentSong, idx));
@@ -3064,278 +3052,31 @@ function renderJapaneseLine(str){
   return readingMode === "romaji" ? renderRomajiLine(str) : renderKanaLine(str);
 }
 
-/* 日本版有些應援只落在一句歌詞中的幾個字（例如「愛して」），不能
-   直接把整列套上 .is-chant。先把完整歌詞轉成既有的假名／羅馬字
-   HTML，再在對應的可見文字節點外包一層標記，這樣不會丟掉 ruby 讀音。 */
-function jpChantSegmentsForLine(line, song = currentSong){
-  if (chantVersion !== "jp" || !line || !song) return [];
-  const guide = JP_CHANT_GUIDES[song.id];
-  if (!guide || !Array.isArray(guide.chantSegments)) return [];
-  const time = Number(line.time);
-  if (!Number.isFinite(time)) return [];
-  return guide.chantSegments.filter(segment =>
-    segment && Math.abs(Number(segment.time) - time) < 0.01 && segment.text
-  );
-}
-
-function chantSegmentText(segment, mode = "jp"){
-  if (!segment) return "";
-  return String(mode === "romaji" ? (segment.romaji || segment.text) : segment.text || "");
-}
-
-function wrapChantMarkup(markup, target, options = {}){
-  const value = String(markup || "");
-  const needle = String(target || "");
-  if (!needle || !value || typeof document === "undefined") return value;
-
-  const template = document.createElement("template");
-  template.innerHTML = value;
-  const entries = [];
-  const visit = (node, hidden = false) => {
-    if (node.nodeType === Node.TEXT_NODE){
-      if (!hidden){
-        Array.from(node.nodeValue || "").forEach((char, offset) => {
-          entries.push({ node, char, offset });
-        });
-      }
-      return;
-    }
-    if (node.nodeType !== Node.ELEMENT_NODE && node.nodeType !== Node.DOCUMENT_FRAGMENT_NODE) return;
-    const element = node.nodeType === Node.ELEMENT_NODE ? node : null;
-    const nextHidden = hidden || Boolean(element && (
-      element.tagName === "RT" || element.tagName === "RP"
-      || element.classList.contains("ico") || element.classList.contains("chant-segment")
-    ));
-    [...node.childNodes].forEach(child => visit(child, nextHidden));
-  };
-  visit(template.content);
-
-  const visible = entries.map(entry => entry.char).join("");
-  const start = visible.indexOf(needle);
-  if (start < 0) return value;
-
-  const selected = entries.slice(start, start + Array.from(needle).length);
-  if (selected.length !== Array.from(needle).length) return value;
-
-  const grouped = new Map();
-  selected.forEach(entry => {
-    if (!grouped.has(entry.node)) grouped.set(entry.node, []);
-    grouped.get(entry.node).push(entry.offset);
+function resolvedChant(line, song = currentSong){
+  return resolveLineChant(line, getChantGuides()[song.id], chantVersion, {
+    romaji: window.JP_ROMAJI?.[line.jp]
   });
-
-  [...grouped.entries()].reverse().forEach(([node, offsets]) => {
-    if (!node.parentNode) return;
-    const first = Math.min(...offsets);
-    const last = Math.max(...offsets) + 1;
-    const parent = node.parentNode;
-    const ruby = parent.nodeType === Node.ELEMENT_NODE && parent.tagName === "RUBY"
-      && first === 0 && last === (node.nodeValue || "").length
-      ? parent
-      : null;
-    const span = document.createElement("span");
-    span.className = `chant-segment${options.breakBefore ? " break-before" : ""}`;
-
-    if (ruby){
-      ruby.parentNode.insertBefore(span, ruby);
-      span.appendChild(ruby);
-      return;
-    }
-
-    let selectedNode = node;
-    if (first > 0) selectedNode = node.splitText(first);
-    if (last - first < (selectedNode.nodeValue || "").length){
-      selectedNode.splitText(last - first);
-    }
-    selectedNode.parentNode.insertBefore(span, selectedNode);
-    span.appendChild(selectedNode);
-  });
-
-  return template.innerHTML;
 }
 
 function renderChantAwareLine(str, line, song, render, mode){
-  let markup = render(str);
-  jpChantSegmentsForLine(line, song).forEach(segment => {
-    markup = wrapChantMarkup(markup, chantSegmentText(segment, mode), segment);
-  });
-  return markup;
+  const resolved = resolvedChant(line, song);
+  const full = resolved.chant === "full" && mode !== "zh";
+  const icons = mode === "jp" || mode === "romaji" && readingMode === "romaji"
+    ? resolved.actions.map(action => INLINE_ICONS[action] || "").join("") : "";
+  return icons + markChantRanges(render(str), resolved.ranges[mode] || [], full);
 }
 
 function renderJapaneseLyricLine(line, song = currentSong){
-  const source = line && line.jp || "";
   const mode = readingMode === "romaji" ? "romaji" : "jp";
-  return renderChantAwareLine(source, line, song, text => renderJapaneseLine(text), mode);
+  return renderChantAwareLine(line.jp || "", line, song, renderJapaneseLine, mode);
 }
 
 function renderRomajiLyricLine(line, song = currentSong){
-  const source = line && line.jp || "";
-  return renderChantAwareLine(source, line, song, text => renderRomajiLine(text, false), "romaji");
+  return renderChantAwareLine(line.jp || "", line, song, text => renderRomajiLine(text, false), "romaji");
 }
 
-/*
- * 分段合唱標色
- *
- * data.js 把 jp／tr 的分段另存在 jpSegments／trSegments。畫面照常用整行
- * 字串渲染，渲染後再依分段把合唱段包成 .seg-chant。比對時略過空白與
- * 動作圖示，因為中日英之間的空白是顯示層另外補上的。
- */
-const isLyricSpace = (ch)=> /\s/u.test(ch);
-
-function hasChantSegment(segments){
-  return Array.isArray(segments) && segments.some(seg => seg && seg.tag === "chant");
-}
-
-function lineHasChantSegments(line){
-  return !!line && (hasChantSegment(line.jpSegments) || hasChantSegment(line.trSegments));
-}
-
-/* 分段是依日本版應援整理的，只在日本版生效；韓國版維持整行標色。 */
-function lineUsesChantSegments(line){
-  return chantVersion === "jp" && lineHasChantSegments(line);
-}
-
-/* 依分段原文逐字標記：每個非空白字元對應 true（合唱）或 false。 */
-function segmentChantMask(segments){
-  const mask = [];
-  segments.forEach(seg => {
-    const text = String(seg && seg.text || "").replace(ICON_TOKEN_RE, "");
-    Array.from(text).forEach(ch => {
-      if (!isLyricSpace(ch)) mask.push(seg.tag === "chant");
-    });
-  });
-  return mask;
-}
-
-/* 羅馬拼音沒有沿用日文分段，先用原文查既有羅馬字，再比對顯示文字。
-   英文段落沒有讀音查表時，直接使用原文。 */
-function romajiChantMask(compactText, segments){
-  const mask = Array.from(compactText).map(() => false);
-  let cursor = 0;
-  segments.forEach(seg => {
-    if (!seg || seg.tag !== "chant") return;
-    const source = String(seg.text || "");
-    const mapped = window.JP_ROMAJI && window.JP_ROMAJI[source];
-    const romaji = typeof mapped === "string" ? mapped : source;
-    if (typeof mapped !== "string" && /[ぁ-ゖ゠-ヿ一-鿿]/u.test(source.replace(ICON_TOKEN_RE, ""))) return;
-    const needle = Array.from(romaji.replace(ICON_TOKEN_RE, ""))
-      .filter(ch => !isLyricSpace(ch)).join("");
-    if (!needle || /[ぁ-ゖ゠-ヿ一-鿿]/u.test(needle)) return;
-    const at = compactText.indexOf(needle, cursor);
-    if (at < 0) return;
-    const start = Array.from(compactText.slice(0, at)).length;
-    Array.from(needle).forEach((_, i) => { mask[start + i] = true; });
-    cursor = at + needle.length;
-  });
-  return mask;
-}
-
-/* 收集可見文字的片段。ruby 整個當成一個片段，避免把 rt 算進去，
-   也讓逐字高亮仍能讀到 ruby 的本文。 */
-function chantTextPieces(target){
-  const pieces = [];
-  const visit = (parent)=>{
-    [...parent.childNodes].forEach(node => {
-      if (node.nodeType === Node.TEXT_NODE){
-        pieces.push({ node, text: node.nodeValue || "" });
-        return;
-      }
-      if (node.nodeType !== Node.ELEMENT_NODE) return;
-      if (node.classList.contains("ico") || node.tagName === "RT" || node.tagName === "RP") return;
-      if (node.tagName === "RUBY"){
-        const base = [...node.childNodes]
-          .filter(child => child.nodeType === Node.TEXT_NODE)
-          .map(child => child.nodeValue || "")
-          .join("");
-        pieces.push({ node, text: base, atomic: true });
-        return;
-      }
-      visit(node);
-    });
-  };
-  visit(target);
-  return pieces;
-}
-
-function wrapChantNode(node){
-  const span = document.createElement("span");
-  span.className = "seg-chant";
-  node.replaceWith(span);
-  span.appendChild(node);
-}
-
-function splitTextNodeByMask(node, mask, index){
-  const fragment = document.createDocumentFragment();
-  let run = "", runChant = false;
-  const flush = ()=>{
-    if (!run) return;
-    const textNode = document.createTextNode(run);
-    if (runChant){
-      const span = document.createElement("span");
-      span.className = "seg-chant";
-      span.appendChild(textNode);
-      fragment.appendChild(span);
-    } else {
-      fragment.appendChild(textNode);
-    }
-    run = "";
-  };
-  Array.from(node.nodeValue || "").forEach(ch => {
-    if (!isLyricSpace(ch)){
-      const chant = mask[index++];
-      if (chant !== runChant){ flush(); runChant = chant; }
-    }
-    run += ch;
-  });
-  flush();
-  node.replaceWith(fragment);
-  return index;
-}
-
-function applyChantMask(target, mask){
-  // 切換讀音只重畫日文列，繁中列已經標過就不要再包一次。
-  if (target.querySelector(".seg-chant")) return;
-  const pieces = chantTextPieces(target);
-  const compactLength = pieces.reduce((sum, piece) =>
-    sum + Array.from(piece.text).filter(ch => !isLyricSpace(ch)).length, 0);
-  // 查表結果與分段原文對不上時不標色，避免標錯位置。
-  if (compactLength !== mask.length || !mask.includes(true)) return;
-  let index = 0;
-  pieces.forEach(piece => {
-    if (piece.atomic){
-      const count = Array.from(piece.text).filter(ch => !isLyricSpace(ch)).length;
-      if (mask.slice(index, index + count).some(Boolean)) wrapChantNode(piece.node);
-      index += count;
-      return;
-    }
-    index = splitTextNodeByMask(piece.node, mask, index);
-  });
-}
-
-function markRomajiChant(target, segments){
-  const compact = chantTextPieces(target)
-    .map(piece => Array.from(piece.text).filter(ch => !isLyricSpace(ch)).join(""))
-    .join("");
-  applyChantMask(target, romajiChantMask(compact, segments));
-}
-
-/* 在一行歌詞的日文、羅馬拼音、繁中列標出合唱段。
-   必須在逐字高亮（decorateKaraokeLine）之前呼叫。 */
-function markLyricChantSegments(lineEl, lyric){
-  if (!lineEl || !lineHasChantSegments(lyric)) return;
-  const jpSegments = lyric.jpSegments;
-  if (hasChantSegment(jpSegments)){
-    const jpEl = lineEl.querySelector(".lyric-jp");
-    if (jpEl){
-      if (readingMode === "romaji") markRomajiChant(jpEl, jpSegments);
-      else applyChantMask(jpEl, segmentChantMask(jpSegments));
-    }
-    const romajiEl = lineEl.querySelector(".lyric-romaji");
-    if (romajiEl) markRomajiChant(romajiEl, jpSegments);
-  }
-  const zhEl = lineEl.querySelector(".lyric-zh");
-  if (zhEl && hasChantSegment(lyric.trSegments)){
-    applyChantMask(zhEl, segmentChantMask(lyric.trSegments));
-  }
+function renderTranslationLyricLine(line, song = currentSong){
+  return renderChantAwareLine(line.tr || "", line, song, withIcons, "zh");
 }
 
 /*
@@ -3444,6 +3185,7 @@ function documentPipLineMarkup(line, active){
   clone.classList.add("in-view");
   const output = document.createElement("div");
   output.className = clone.className;
+  output.dataset.chant = clone.dataset.chant;
   output.innerHTML = clone.innerHTML;
   return output.outerHTML;
 }
@@ -3936,210 +3678,39 @@ function updateKaraokeProgress(line, time){
   });
 }
 
-const ICON_TOKEN_PATTERNS = {
-  wave: /[\[(]wave[\])]/i,
-  clap: /[\[(]clap[\])]/i,
-  jump: /[\[(]jump[\])]/i,
-  spin: /[\[(]spin[\])]/i,
-  turn: /[\[(]turn[\])]/i,
-  mic: /[\[(]mic[\])]/i,
-  chant: /[\[(]chant[\])]/i
-};
-
-function hasIconToken(str, name){
-  if (typeof str !== "string") return false;
-  return ICON_TOKEN_PATTERNS[name]?.test(str) || false;
-}
-
-// 한 줄의 jp 조각들을 훑어서 박수·동작 아이콘과 현재 선택한
-// 응원 버전의 대합창 아이콘을 만들어 줍니다.
 function lyricIconsHtml(line, song = currentSong){
-  const hasChant = lineIsChant(line, song);
-  let hasClap = false, wave = false;
-  const scan = (arr) => {
-    if (typeof arr === "string"){
-      if (hasIconToken(arr, "wave")) wave = true;
-      if (hasIconToken(arr, "clap")) hasClap = true;
-      return;
-    }
-    if (!Array.isArray(arr)) return;
-    arr.forEach(seg => {
-      if (seg.tag === "clap") hasClap = true;
-      if (hasIconToken(seg.text, "wave")) wave = true;
-      if (hasIconToken(seg.text, "clap")) hasClap = true;
-    });
-  };
-  scan(line.jpSegments || line.jp);
-  scan(line.trSegments || line.tr);
-  let html = "";
-  // 박수·손 흔들기는 가사 안에 넣는 [clap] / [wave] 아이콘으로만 표시하고
-  // 왼쪽 종류 표시에는 떼창만 남긴다.
-  if (hasChant) html += `<span class="lyric-type-icon chant" title="大合唱">${INLINE_ICONS.mic}</span>`;
-  return html;
+  return lineIsChant(line, song)
+    ? `<span class="lyric-type-icon chant" title="大合唱">${INLINE_ICONS.mic}</span>` : "";
 }
 
-function lineIsChantKr(line){
-  if (!line) return false;
-  const hit = (part)=>{
-    if (typeof part === "string")
-      return hasIconToken(part, "mic") || hasIconToken(part, "chant");
-    if (!Array.isArray(part)) return false;
-    return part.some(seg => seg && (seg.tag === "chant"
-      || hasIconToken(seg.text, "mic") || hasIconToken(seg.text, "chant")));
-  };
-  return hit(line.jpSegments || line.jp) || hit(line.trSegments || line.tr);
-}
-
-function lineIsChantJp(line, song){
-  if (!line || !song) return false;
-  const guide = JP_CHANT_GUIDES[song.id];
-  // Canva 沒有整理到的歌曲，先沿用原有標記，但在畫面上明確說明。
-  if (!guide) return lineIsChantKr(line);
-  const time = Number(line.time);
-  if (!Number.isFinite(time)) return false;
-  const matcher = jpChantTimeMatcher(song);
-  return hasChantTime(matcher.any, time);
-}
-
-function lineIsFullChantJp(line, song){
-  const guide = song && JP_CHANT_GUIDES[song.id];
-  const time = Number(line && line.time);
-  return Boolean(guide && Number.isFinite(time)
-    && hasChantTime(jpChantTimeMatcher(song).full, time));
-}
-
-const jpChantTimeCache = new Map();
-
-function jpChantTimeMatcher(song){
-  const cacheKey = `${chantVersion}:${song.id}`;
-  if (jpChantTimeCache.has(cacheKey)) return jpChantTimeCache.get(cacheKey);
-  const guide = JP_CHANT_GUIDES[song.id] || {};
-  const toBuckets = values => new Set((values || [])
-    .map(value => Number(value))
-    .filter(Number.isFinite)
-    .map(value => Math.round(value * 100)));
-  const full = toBuckets(guide.chantTimes);
-  const any = new Set(full);
-  (guide.chantSegments || []).forEach(segment => {
-    const bucket = Number(segment && segment.time);
-    if (Number.isFinite(bucket)) any.add(Math.round(bucket * 100));
-  });
-  const matcher = { full, any };
-  jpChantTimeCache.set(cacheKey, matcher);
-  return matcher;
-}
-
-function hasChantTime(buckets, time){
-  const bucket = Math.round(Number(time) * 100);
-  return buckets.has(bucket - 1) || buckets.has(bucket) || buckets.has(bucket + 1);
-}
-
-function chantLineClass(line, song = currentSong){
-  if (!lineIsChant(line, song)) return "";
-  if (typeof lineUsesChantSegments === "function" && lineUsesChantSegments(line)) {
-    return "is-chant chant-partial";
-  }
-  const partial = chantVersion === "jp" && jpChantSegmentsForLine(line, song).length > 0;
-  return partial && !lineIsFullChantJp(line, song) ? "has-chant-segment" : "is-chant";
-}
-
-/* ── 떼창 구간 ───────────────────────────────────────────────
-   "떼창만 듣기" 가 쓰는 계산. 한 줄이 떼창인지 판단하는 기준은
-   곡 목록 배지(songMarks)와 똑같다 — 기준이 갈리면 배지에는 떼창이
-   있다고 뜨는데 재생은 건너뛰는 일이 생기므로 여기 한 곳에 모아 둔다.
-     · 日本版：使用 JP_CHANT_GUIDES 的歌詞時間點
-     · 韓國版：沿用 jp/tr 的 [mic]、[chant]、tag:"chant" */
 function lineIsChant(line, song = currentSong){
-  return chantVersion === "jp"
-    ? lineIsChantJp(line, song)
-    : lineIsChantKr(line);
+  return resolvedChant(line, song).chant !== "none";
 }
 
-const CHANT_LEAD_SEC  = 1.2;   // 떼창 직전 한 박자 먼저 들어가 준비할 시간
-const CHANT_TAIL_SEC  = 0.6;   // 마지막 글자가 잘리지 않도록 뒤에 남기는 여유
-const CHANT_GAP_MERGE = 2.5;   // 실제로 붙어 있는 짧은 공백만 이어서 듣는다
 const chantBlockCache = new Map();
 
-/* 곡을 훑어 떼창 구간 목록을 만든다. [{from,to,start,end}, …]
-   from/to 는 가사 줄 번호, start/end 는 영상에서의 초. */
 function chantBlocks(song){
   if (!song) return [];
-  const cacheKey = `${chantVersion}:${song.id}`;
-  if (chantBlockCache.has(cacheKey)) return chantBlockCache.get(cacheKey);
-
-  const lines = song.lyrics || [];
-  const lineEnd = (i)=> lines[i + 1] ? playbackTimeForLine(song, i + 1)
-                                     : playbackTimeForLine(song, i) + 8;
-  const raw = [];
-  for (let i = 0; i < lines.length; i++){
-    if (!lineIsChant(lines[i], song)) continue;
-    let e = i;
-    while (e + 1 < lines.length && lineIsChant(lines[e + 1], song)) e++;
-    raw.push({
-      from: i, to: e,
-      start: Math.max(0, playbackTimeForLine(song, i) - CHANT_LEAD_SEC),
-      end:   lineEnd(e) + CHANT_TAIL_SEC
-    });
-    i = e;
+  const key = `${chantVersion}:${song.id}`;
+  if (!chantBlockCache.has(key)){
+    const lines = song.lyrics || [];
+    chantBlockCache.set(key, buildChantBlocks(
+      lines.map(line => resolvedChant(line, song)),
+      lines.map((_, index) => playbackTimeForLine(song, index))
+    ));
   }
-  // 몇 초 듣자고 끊으면 오히려 어수선하므로 가까운 구간끼리 묶는다
-  const out = [];
-  raw.forEach(b => {
-    const last = out[out.length - 1];
-    if (last && b.start - last.end < CHANT_GAP_MERGE){ last.end = b.end; last.to = b.to; }
-    else out.push({ from:b.from, to:b.to, start:b.start, end:b.end });
-  });
-  chantBlockCache.set(cacheKey, out);
-  return out;
+  return chantBlockCache.get(key);
 }
 
-/* ── 곡 목록 응원 배지 ───────────────────────────────────────
-   곡의 가사 데이터를 한 번 훑어서 떼창이 몇 줄인지, 박수·손 흔들기·
-   점프·팔 돌리기가 들어 있는지 세어 둔다. 가사를 고치면 배지도 저절로
-   따라 바뀌므로 따로 관리할 표가 없다. */
 const songMarksCache = new Map();
 
 function songMarks(song){
   const cacheKey = `${chantVersion}:${song.id}`;
   if (songMarksCache.has(cacheKey)) return songMarksCache.get(cacheKey);
 
-  const guideMarks = SONG_MARKS[song.id];
-  if (!song.lyrics && guideMarks){
-    const mark = {
-      chant: guideMarks.chant?.[chantVersion] || 0,
-      clap: Boolean(guideMarks.clap),
-      wave: Boolean(guideMarks.wave),
-      jump: Boolean(guideMarks.jump),
-      spin: Boolean(guideMarks.spin)
-    };
-    songMarksCache.set(cacheKey, mark);
-    return mark;
-  }
-
-  const mark = { chant: 0, clap: false, wave: false, jump: false, spin: false };
-
-  (song.lyrics || []).forEach(line => {
-    const scanText = (t) => {
-      if (typeof t !== "string") return;
-      if (hasIconToken(t, "wave")) mark.wave = true;
-      if (hasIconToken(t, "clap")) mark.clap = true;
-      if (hasIconToken(t, "jump")) mark.jump = true;
-      if (hasIconToken(t, "spin") || hasIconToken(t, "turn")) mark.spin = true;
-    };
-    const scanPart = (part) => {
-      if (typeof part === "string"){ scanText(part); return; }
-      if (!Array.isArray(part)) return;
-      part.forEach(seg => {
-        if (seg.tag === "clap")  mark.clap = true;
-        scanText(seg.text);
-      });
-    };
-
-    scanPart(line.jpSegments || line.jp);
-    scanPart(line.trSegments || line.tr);
-    // 판단 기준은 lineIsChant 한 곳에서만 (떼창만 듣기와 어긋나지 않도록)
-    if (lineIsChant(line, song)) mark.chant++;
-  });
+  const mark = song.lyrics
+    ? chantSummary(song.lyrics.map(line => resolvedChant(line, song)))
+    : SONG_MARKS[song.id][chantVersion];
 
   songMarksCache.set(cacheKey, mark);
   return mark;
