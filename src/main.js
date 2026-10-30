@@ -2621,8 +2621,11 @@ function renderSong(song){
   if (lyricsCredit) {
     const hasCredit = Boolean(song.translationCredit);
     if (hasCredit) {
-      const creditUrl = song.translationCreditUrl || TRANSLATION_CREDIT_URL;
-      const creditLink = `<a href="${creditUrl}" target="_blank" rel="noopener">${escapeHtml(song.translationCredit)}</a>`;
+      // A null URL means the credit has no page to link to (e.g. AI translation).
+      const creditUrl = song.translationCreditUrl === undefined ? TRANSLATION_CREDIT_URL : song.translationCreditUrl;
+      const creditLink = creditUrl
+        ? `<a href="${creditUrl}" target="_blank" rel="noopener">${escapeHtml(song.translationCredit)}</a>`
+        : escapeHtml(song.translationCredit);
       const sourceLink = song.translationSourceUrl
         ? ` · <a href="${song.translationSourceUrl}" target="_blank" rel="noopener">出處</a>`
         : "";

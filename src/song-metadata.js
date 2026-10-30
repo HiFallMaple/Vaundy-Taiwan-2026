@@ -96,6 +96,8 @@ export const SONGS = [
   {
     "id": "Shiwaawase'",
     "title": "皺褶相合 (しわあわせ)",
+    "translationCredit": "AI 翻譯（Claude Opus 5.5）",
+    "translationCreditUrl": null,
     "youtubeId": "JwmGruvGt_I",
     "spotifyTrackId": "03nLyVPeLP7ivujEZW0dIj"
   },
@@ -109,6 +111,8 @@ export const SONGS = [
   {
     "id": "soramimi",
     "title": "soramimi",
+    "translationCredit": "AI 翻譯（Claude Opus 5.5）",
+    "translationCreditUrl": null,
     "youtubeId": "Jh_0EW6G3gQ",
     "spotifyTrackId": "6LWeWihAkhTGaO0JrzVNR2"
   },
@@ -131,6 +135,8 @@ export const SONGS = [
   {
     "id": "napori",
     "title": "napori",
+    "translationCredit": "AI 翻譯（Claude Opus 5.5）",
+    "translationCreditUrl": null,
     "youtubeId": "ZeIGVnkYX04",
     "spotifyTrackId": "7hDX39mc6Uf6zp8RXYUQ6d"
   },
@@ -144,12 +150,16 @@ export const SONGS = [
   {
     "id": "NEOJAPAN",
     "title": "NEO JAPAN",
+    "translationCredit": "AI 翻譯（Claude Opus 5.5）",
+    "translationCreditUrl": null,
     "youtubeId": "QC6gd_b1nz8",
     "spotifyTrackId": "4PQJs2U6R1xhXLxyjmf4gj"
   },
   {
     "id": "ZuttoLoveSong",
     "title": "一直都是情歌 (ずっとラブソング)",
+    "translationCredit": "AI 翻譯（Claude Opus 5.5）",
+    "translationCreditUrl": null,
     "youtubeId": "wriTi0J_-1A",
     "spotifyTrackId": "7slVPAiTi7H25Oxburz5Ky"
   },
@@ -163,18 +173,24 @@ export const SONGS = [
   {
     "id": "ZERO",
     "title": "ZERO",
+    "translationCredit": "AI 翻譯（Claude Opus 5.5）",
+    "translationCreditUrl": null,
     "youtubeId": "Fs7MW0rx9Cw",
     "spotifyTrackId": "65HcaAy1eQRr5pxVvVAqc5"
   },
   {
     "id": "SonnaBitternaHanashi)",
     "title": "那樣的 bitter 故事 (そんなbitterな話)",
+    "translationCredit": "AI 翻譯（Claude Opus 5.5）",
+    "translationCreditUrl": null,
     "youtubeId": "V-gxqhWEbxI",
     "spotifyTrackId": "3ardQwlcji4juSJOSAoViE"
   },
   {
     "id": "Fujin",
     "title": "風神 (風神)",
+    "translationCredit": "AI 翻譯（Claude Opus 5.5）",
+    "translationCreditUrl": null,
     "youtubeId": "yiU0I0tvt6s",
     "spotifyTrackId": "00GDUNeJd97qjKp2yrx0OC"
   },
@@ -197,6 +213,8 @@ export const SONGS = [
   {
     "id": "IdeagaAfureteNemurenai",
     "title": "理念滿溢而無法入睡 (イデアが溢れて眠れない)",
+    "translationCredit": "AI 翻譯（Claude Opus 5.5）",
+    "translationCreditUrl": null,
     "youtubeId": "0u_zA8BJG6A",
     "spotifyTrackId": "4nsrIXDihSYr8eb56j015A"
   },
@@ -218,6 +236,8 @@ export const SONGS = [
   {
     "id": "Hitomibore",
     "title": "為瞳孔著迷 (瞳惚れ)",
+    "translationCredit": "AI 翻譯（Claude Opus 5.5）",
+    "translationCreditUrl": null,
     "youtubeId": "XEEXE8Ei5SA",
     "spotifyTrackId": "5ZqO8UI3rELw35xCb8oF7c"
   },
@@ -235,6 +255,8 @@ export const SONGS = [
   {
     "id": "Wasuremono",
     "title": "遺忘之物 (忘れ物)",
+    "translationCredit": "AI 翻譯（Claude Opus 5.5）",
+    "translationCreditUrl": null,
     "youtubeId": "tQq8C7irREk",
     "spotifyTrackId": "6y3ZWLQTlgRUqqNKBt3WgO"
   },
@@ -260,6 +282,8 @@ export const SONGS = [
   {
     "id": " Kimagure",
     "title": "任性 (気まぐれ)",
+    "translationCredit": "AI 翻譯（Claude Opus 5.5）",
+    "translationCreditUrl": null,
     "youtubeId": "uYyfD5A-w8Q",
     "spotifyTrackId": "1X1D6ZPjreIX7iBfm2i3HC"
   }
