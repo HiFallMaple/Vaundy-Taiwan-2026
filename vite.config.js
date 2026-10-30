@@ -52,7 +52,8 @@ export default defineConfig({
   base: "./",
   plugins: [prerenderHome(), copyRootStaticAssets()],
   server: {
-    allowedHosts: ["vn7591g.tail12ac60.ts.net"]
+    // A leading dot allows every device on this tailnet.
+    allowedHosts: [".tail12ac60.ts.net"]
   },
   build: {
     outDir: "dist",
