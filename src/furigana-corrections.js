@@ -123,7 +123,7 @@ export const FURIGANA_CORRECTIONS = Object.freeze({
   "力が伴う 悪意振り解いて": "<ruby>力<rt>ちから</rt></ruby>が<ruby>伴<rt>ともな</rt></ruby>う <ruby>悪意振<rt>あくいふ</rt></ruby>り<ruby>解<rt>ほど</rt></ruby>いて",
   "それは涙と対になって 悲しみと力となって": "それは<ruby>涙<rt>なみだ</rt></ruby>と<ruby>対<rt>つい</rt></ruby>になって <ruby>悲<rt>かな</rt></ruby>しみと<ruby>力<rt>ちから</rt></ruby>となって",
   "そこは涙と対になって 滾りが溢れかえって": "そこは<ruby>涙<rt>なみだ</rt></ruby>と<ruby>対<rt>つい</rt></ruby>になって <ruby>滾<rt>たぎ</rt></ruby>りが<ruby>溢<rt>あふ</rt></ruby>れかえって",
-  "[clap]誰もが求めた剣はこの誰かが残してった鈍が": "[clap]<ruby>誰<rt>だれ</rt></ruby>もが<ruby>求<rt>もと</rt></ruby>めた<ruby>剣<rt>つるぎ</rt></ruby>はこの<ruby>誰<rt>だれ</rt></ruby>かが<ruby>残<rt>のこ</rt></ruby>してった<ruby>鈍<rt>なまくら</rt></ruby>が",
+  "[clap]誰もが求めた剣も 錆だらけで使えなかった": "[clap]<ruby>誰<rt>だれ</rt></ruby>もが<ruby>求<rt>もと</rt></ruby>めた<ruby>剣<rt>つるぎ</rt></ruby>も <ruby>錆<rt>さび</rt></ruby>だらけで<ruby>使<rt>つか</rt></ruby>えなかった",
   "[clap]この誰かが残してった鈍が闇を裂いてしまう前に": "[clap]この<ruby>誰<rt>だれ</rt></ruby>かが<ruby>残<rt>のこ</rt></ruby>してった<ruby>鈍<rt>なまくら</rt></ruby>が<ruby>闇<rt>やみ</rt></ruby>を<ruby>裂<rt>さ</rt></ruby>いてしまう<ruby>前<rt>まえ</rt></ruby>に",
   "[wave]だが勇者は今力はいらない身に任せて": "[wave]だが<ruby>勇者<rt>ゆうしゃ</rt></ruby>は<ruby>今<rt>いま</rt></ruby><ruby>力<rt>ちから</rt></ruby>はいらない<ruby>身<rt>み</rt></ruby>に<ruby>任<rt>まか</rt></ruby>せて",
 
@@ -156,6 +156,7 @@ export const FURIGANA_CORRECTIONS = Object.freeze({
   "[clap]恋路の果てには何がある": "[clap]<ruby>恋路<rt>こいじ</rt></ruby>の<ruby>果<rt>は</rt></ruby>てには<ruby>何<rt>なに</rt></ruby>がある",
   "くだらない話をニ人で": "くだらない<ruby>話<rt>はなし</rt></ruby>を<ruby>ニ人<rt>ふたり</rt></ruby>で",
   "[wave]僕達の千年の恋は": "[wave]<ruby>僕達<rt>ぼくたち</rt></ruby>の<ruby>千<rt>せん</rt></ruby><ruby>年<rt>ねん</rt></ruby>の<ruby>恋<rt>こい</rt></ruby>は",
+  "深い土で折れる花のようだ": "<ruby>深<rt>ふか</rt></ruby>い<ruby>土<rt>つち</rt></ruby>で<ruby>折<rt>お</rt></ruby>れる<ruby>花<rt>はな</rt></ruby>のようだ",
   "相槌で折れる花のようだ": "<ruby>相槌<rt>あいづち</rt></ruby>で<ruby>折<rt>お</rt></ruby>れる<ruby>花<rt>はな</rt></ruby>のようだ",
   "[wave]僕達は千年後もまだ": "[wave]<ruby>僕達<rt>ぼくたち</rt></ruby>は<ruby>千<rt>せん</rt></ruby><ruby>年<rt>ねん</rt></ruby><ruby>後<rt>ご</rt></ruby>もまだ",
   "同じ様にまってんだ": "<ruby>同<rt>おな</rt></ruby>じ<ruby>様<rt>よう</rt></ruby>にまってんだ",
@@ -187,6 +188,7 @@ export const FURIGANA_CORRECTIONS = Object.freeze({
   "[clap]ニ人でちぎった花に願いを込めて": "[clap]<ruby>ニ人<rt>ふたり</rt></ruby>でちぎった<ruby>花<rt>はな</rt></ruby>に<ruby>願<rt>ねが</rt></ruby>いを<ruby>込<rt>こ</rt></ruby>めて",
 
   // 呼喚聲 (呼び声) — https://utaten.com/lyric/hw25121002/
+  "[wave]唱えるわ": "[wave]<ruby>唱<rt>とな</rt></ruby>えるわ",
   "[clap]この惑星の真ん中で": "[clap]この<ruby>惑星<rt>ほし</rt></ruby>の<ruby>真<rt>ま</rt></ruby>ん<ruby>中<rt>なか</rt></ruby>で",
   "[clap]この部屋を立ち籠めている何か": "[clap]この<ruby>部屋<rt>へや</rt></ruby>を<ruby>立<rt>た</rt></ruby>ち<ruby>籠<rt>こ</rt></ruby>めている<ruby>何<rt>なに</rt></ruby>か",
   "[clap]それは紅色の記憶のような": "[clap]それは<ruby>紅色<rt>べにいろ</rt></ruby>の<ruby>記憶<rt>きおく</rt></ruby>のような",
@@ -259,7 +261,7 @@ export const FURIGANA_CORRECTIONS = Object.freeze({
   // napori — https://utaten.com/lyric/nm20052728/
   "ろくな音楽もなくてそんなひびをまた2人で": "ろくな<ruby>音楽<rt>おんがく</rt></ruby>もなくてそんなひびをまた<ruby>2人<rt>ふたり</rt></ruby>で",
   "僕ら指にラブソングで今夜も二人で歩いてこ": "<ruby>僕<rt>ぼく</rt></ruby>ら<ruby>指<rt>ゆび</rt></ruby>にラブソングで<ruby>今夜<rt>こんや</rt></ruby>も<ruby>二人<rt>ふたり</rt></ruby>で<ruby>歩<rt>ある</rt></ruby>いてこ",
-  "2人になって 君を待って思い出したんだ思い出したんだ": "<ruby>2人<rt>ふたり</rt></ruby>になって <ruby>君<rt>きみ</rt></ruby>を<ruby>待<rt>ま</rt></ruby>って<ruby>思<rt>おも</rt></ruby>い<ruby>出<rt>だ</rt></ruby>したんだ<ruby>思<rt>おも</rt></ruby>い<ruby>出<rt>だ</rt></ruby>したんだ",
+  "2人になって 君を待って思い出したんだ": "<ruby>2人<rt>ふたり</rt></ruby>になって <ruby>君<rt>きみ</rt></ruby>を<ruby>待<rt>ま</rt></ruby>って<ruby>思<rt>おも</rt></ruby>い<ruby>出<rt>だ</rt></ruby>したんだ",
   "あれは縁そっと flight": "あれは<ruby>縁<rt>べり</rt></ruby>そっと flight",
   "いずれ縁そっと flight": "いずれ<ruby>縁<rt>べり</rt></ruby>そっと flight",
   "君と 縁そっと flight": "<ruby>君<rt>きみ</rt></ruby>と <ruby>縁<rt>べり</rt></ruby>そっと flight",
@@ -331,6 +333,9 @@ export const FURIGANA_CORRECTIONS = Object.freeze({
 
   // 世界的秘密 (世界の秘密) — https://utaten.com/lyric/tt21012509/
   "[clap]これが良い事か悪い事か": "[clap]これが<ruby>良<rt>い</rt></ruby>い<ruby>事<rt>こと</rt></ruby>か<ruby>悪<rt>わる</rt></ruby>い<ruby>事<rt>こと</rt></ruby>か",
+
+  // 遺忘之物 (忘れ物) — https://utaten.com/lyric/ym22112201/
+  "[wave]思い出も全部ここに置いて あぁ ここで": "[wave]<ruby>思<rt>おも</rt></ruby>い<ruby>出<rt>で</rt></ruby>も<ruby>全部<rt>ぜんぶ</rt></ruby>ここに<ruby>置<rt>お</rt></ruby>いて あぁ ここで",
 
   // 時間悖論 (タイムパラドックス) — https://utaten.com/lyric/hw24011202/
   "[clap]どうしても一人じゃ使えないのさ": "[clap]どうしても<ruby>一人<rt>ひとり</rt></ruby>じゃ<ruby>使<rt>つか</rt></ruby>えないのさ",
@@ -523,7 +528,7 @@ export const ROMAJI_CORRECTIONS = Object.freeze({
   "力が伴う 悪意振り解いて": "chikara ga tomonau akui furihodoite",
   "それは涙と対になって 悲しみと力となって": "sore wa namida to tsui ni natte kanashimi to chikara to natte",
   "そこは涙と対になって 滾りが溢れかえって": "soko wa namida to tsui ni natte tagiri ga afure kaette",
-  "[clap]誰もが求めた剣はこの誰かが残してった鈍が": "[clap]dare mo ga motome ta tsurugi wa kono dareka ga nokoshitetta namakura ga",
+  "[clap]誰もが求めた剣も 錆だらけで使えなかった": "[clap]dare mo ga motome ta tsurugi mo sabi darake de tsukae nakatta",
   "[clap]この誰かが残してった鈍が闇を裂いてしまう前に": "[clap]kono dareka ga nokoshitetta namakura ga yami o sai te shimau mae ni",
   "[wave]力が伴う悪意振り解いて耳は聞こえちゃいない": "[wave]chikara ga tomonau akui furihodoite mimi wa kikoe cha i nai",
   "[wave]だが勇者は今力はいらない身に任せて": "[wave]daga yūsha wa ima chikara wa ira nai mi ni makase te",
@@ -559,6 +564,7 @@ export const ROMAJI_CORRECTIONS = Object.freeze({
   "[clap]恋路の果てには何がある": "[clap]koiji no hate ni wa nani ga aru",
   "くだらない話をニ人で": "kudaranai hanashi o futari de",
   "[wave]僕達の千年の恋は": "[wave]bokutachi no sen nen no koi wa",
+  "深い土で折れる花のようだ": "fukai tsuchi de oreru hana no yō da",
   "相槌で折れる花のようだ": "aizuchi de oreru hana no yō da",
   "[wave]僕達は千年後もまだ": "[wave]bokutachi wa sen nen go mo mada",
   "同じ様にまってんだ": "onaji yō ni matten da",
@@ -596,6 +602,7 @@ export const ROMAJI_CORRECTIONS = Object.freeze({
   "[clap]ニ人でちぎった花に願いを込めて": "[clap]futari de chigitta hana ni negai o kome te",
 
   // 呼喚聲 (呼び声) — https://utaten.com/lyric/hw25121002/
+  "[wave]唱えるわ": "[wave]tonaeru wa",
   "[clap]この惑星の真ん中で": "[clap]kono hoshi no mannaka de",
   "[clap]時折り描いた暗闇照らす何か": "[clap]tokiori kaita kurayami terasu nani ka",
   "[clap]この部屋を立ち籠めている何か": "[clap]kono heya o tachikomete iru nani ka",
@@ -648,7 +655,7 @@ export const ROMAJI_CORRECTIONS = Object.freeze({
   // napori — https://utaten.com/lyric/nm20052728/
   "ろくな音楽もなくてそんなひびをまた2人で": "rokuna ongaku mo naku te sonna hibi o mata futari de",
   "僕ら指にラブソングで今夜も二人で歩いてこ": "bokura yubi ni rabusongu de kon'ya mo futari de arui te ko",
-  "2人になって 君を待って思い出したんだ思い出したんだ": "futari ni natte kimi o matte omoidashi ta n da omoidashi ta n da",
+  "2人になって 君を待って思い出したんだ": "futari ni natte kimi o matte omoidashi ta n da",
   "あれは縁そっと flight": "are wa beri sotto flight",
   "いずれ縁そっと flight": "izure beri sotto flight",
   "君と 縁そっと flight": "kimi to beri sotto flight",
@@ -726,6 +733,7 @@ export const ROMAJI_CORRECTIONS = Object.freeze({
   "[clap]これが良い事か悪い事か": "[clap]kore ga ii koto ka warui koto ka",
 
   // 遺忘之物 (忘れ物) — https://utaten.com/lyric/ym22112201/
+  "[wave]思い出も全部ここに置いて あぁ ここで": "[wave]omoide mo zenbu koko ni oi te aa koko de",
   "そこらにある物じゃ 足りなかった": "sokora ni aru mono ja tari nakatta",
 
   // 時間悖論 (タイムパラドックス) — https://utaten.com/lyric/hw24011202/
