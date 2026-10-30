@@ -2,7 +2,7 @@
 
 本檔案依 Git 歷史整理，使用版本提交作為每一段的邊界。
 
-## [**v1.15.0**]
+## [**v1.15.0**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/28f0f7dcb03feac9944cd1090420c4da00efa6bd)
 
 - [PR #32](https://github.com/watain666/Vaundy-Taiwan-2026/pull/32)：歌曲頁控制列新增「字」選單，可將歌詞字級切換為小、標準、大、特大、超大；日文、讀音、羅馬字、繁中翻譯與背景合唱會一起縮放，切換後目前這一句會重新置中，設定會保存。
 - [PR #32](https://github.com/watain666/Vaundy-Taiwan-2026/pull/32)：開啟中的 PiP 字幕小窗會同步套用歌詞字級；字太大放不下時，優先完整顯示目前這一句。
