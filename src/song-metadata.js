@@ -38,7 +38,8 @@ export const SONGS = [
   {
     "id": "HadakaNoYusha",
     "title": "裸身勇者 (裸の勇者)",
-    "translationCredit": "巴哈姆特的月勳",
+    "translationCredit": "Vaundy 官方 YouTube 字幕",
+    "translationCreditUrl": "https://www.youtube.com/watch?v=FT0GKCuSaW0",
     "youtubeId": "FT0GKCuSaW0",
     "spotifyTrackId": "3k64vNcgYPkETG7TNgpW4o"
   },
@@ -202,7 +203,8 @@ export const SONGS = [
   {
     "id": "flyaway",
     "title": "飛翔之時 (飛ぶ時)",
-    "translationCredit": "巴哈姆特的月勳",
+    "translationCredit": "Vaundy 官方 YouTube 字幕",
+    "translationCreditUrl": "https://www.youtube.com/watch?v=ARj1adoUoEU",
     "youtubeId": "ARj1adoUoEU",
     "spotifyTrackId": "2NFgZXeRjcqV91SaBIZ3cI"
   },
@@ -239,9 +241,8 @@ export const SONGS = [
   {
     "id": "Timeparadox",
     "title": "時間悖論 (タイムパラドックス)",
-    "translationCredit": "藍色小樹熊",
-    "translationCreditUrl": "https://bluekokomurmur.com/lyrics/vaundy-taimu-paradokkusu/",
-    "translationSourceUrl": "https://bluekokomurmur.com/lyrics/vaundy-taimu-paradokkusu/",
+    "translationCredit": "Vaundy 官方 YouTube 字幕",
+    "translationCreditUrl": "https://www.youtube.com/watch?v=ewhRE-BvJCg",
     "youtubeId": "ewhRE-BvJCg",
     "spotifyTrackId": "3jNwPOqdPvQIr5dRT0hzgY"
   },
