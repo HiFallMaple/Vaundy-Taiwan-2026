@@ -126,6 +126,7 @@
     if (type !== "syllable" && !Array.isArray(payload.Content) && !Array.isArray(payload.content)) return null;
     const content = payload.Content || payload.content || [];
     const lines = [];
+    let lineOnly = false;
     content.forEach((entry) => {
       if (!entry || String(entry.Type ?? entry.type ?? "").toLowerCase() !== "vocal") return;
       const lead = entry.Lead || entry.lead || entry;
@@ -135,6 +136,12 @@
         start: word.StartTime ?? word.start,
         end: word.EndTime ?? word.end
       }));
+      // "Line" payloads carry only the line text and its time span.
+      const lineText = lead.Text ?? lead.text;
+      if (!words.length && lineText) {
+        lineOnly = true;
+        words.push({ text: lineText, start: lead.StartTime ?? lead.start, end: lead.EndTime ?? lead.end });
+      }
       const line = normaliseLines([{
         start: lead.StartTime ?? lead.start,
         end: lead.EndTime ?? lead.end,
@@ -142,7 +149,9 @@
       }], "");
       if (line) lines.push(line.lines[0]);
     });
-    return normaliseLines(lines, "open provider pool");
+    const timed = normaliseLines(lines, "open provider pool");
+    if (timed && (lineOnly || type === "line")) timed.granularity = "line";
+    return timed;
   }
 
   function parseEnhancedLrc(text) {
@@ -432,7 +441,10 @@
     const duration = finite(options && options.duration);
     if (duration && duration > 0) url.searchParams.set("duration", String(Math.round(duration)));
     const payload = await fetchJson(url.toString(), {
-      timeoutMs: (options && options.timeoutMs) || 12000,
+      // The worker may spend about 25 seconds on an uncached song (15 s for
+      // word timings, then 10 s for line timings); wait past that so a slow
+      // first lookup is not mistaken for an outage.
+      timeoutMs: (options && options.workerTimeoutMs) || 30000,
       // The worker requires a bearer token; a static site has no Spotify session.
       headers: { Accept: "application/json", Authorization: "Bearer static-site" },
       onFailure: (status) => {

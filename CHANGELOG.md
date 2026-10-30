@@ -2,6 +2,11 @@
 
 本檔案依 Git 歷史整理，使用版本提交作為每一段的邊界。
 
+## [**v1.14.10**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/da433f6612f58f533fea4f03389b5e9c313d7489)
+
+- [PR #29](https://github.com/watain666/Vaundy-Taiwan-2026/pull/29)：修正卡拉OK 第一次查詢較慢的歌曲時會因逾時放棄，並暫停查詢所有歌曲 30 分鐘；現在 36 首歌都能取得時間碼，其中 35 首為逐字時間。
+- [PR #29](https://github.com/watain666/Vaundy-Taiwan-2026/pull/29)：只提供逐行時間的歌曲（例如〈逆光〉）改為直接使用該來源，不再額外查詢其他歌詞服務。
+
 ## [**v1.14.9**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/c5c8d1e82a6067855025d2d87c6403687a73dcd9)
 
 - [PR #28](https://github.com/watain666/Vaundy-Taiwan-2026/pull/28)：卡拉OK 逐字時間改用每首歌正確的 Spotify 歌曲 ID 查詢 Beautiful Lyrics Reborn，原本找不到時間的歌曲（例如〈再会〉）現在也能取得逐字時間；歌詞區下方會顯示實際提供時間碼的來源。
