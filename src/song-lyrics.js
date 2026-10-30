@@ -1213,7 +1213,7 @@ export const SONGS = [
     translationCreditUrl: null,
     youtubeId: "yiU0I0tvt6s",
     lyrics: [
-      { time: 13, jp: [{ text: "[clap]よりも 「救いたい」 と悲劇を気取ってた", tag: "clap" }],                 tr: "比起那些　我說著「想要拯救」　裝出悲劇的模樣" },
+      { time: 13, jp: [{ text: "[clap]誰よりも 「救いたい」 と悲劇を気取ってた", tag: "clap" }],                 tr: "我比誰都　說著「想要拯救」　裝出悲劇的模樣" },
       { time: 23, jp: [{ text: "[clap]面倒よりも それが砕いても、煮込んでも", tag: "clap" }],                 tr: "比起麻煩　那東西就算搗碎、就算燉煮" },
       { time: 30, jp: [{ text: "[clap]食べれない故に", tag: "clap" }],                 tr: "也一樣吞不下去　正因如此" },
       { time: 32, jp: [{ text: "大脳の意思では", tag: "chant" }],                 tr: "大腦的意志認為" },
