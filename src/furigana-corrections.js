@@ -122,8 +122,6 @@ export const FURIGANA_CORRECTIONS = Object.freeze({
   // 裸身勇者 (裸の勇者) — https://utaten.com/lyric/ma22011710/
   "[clap]誰かが今涙を飲み込んでいる": "[clap]<ruby>誰<rt>だれ</rt></ruby>かが<ruby>今<rt>いま</rt></ruby><ruby>涙<rt>なみだ</rt></ruby>を<ruby>飲<rt>の</rt></ruby>み<ruby>込<rt>こ</rt></ruby>んでいる",
   "力はいらない 身に任せて 小さなこの手は今": "<ruby>力<rt>ちから</rt></ruby>はいらない <ruby>身<rt>み</rt></ruby>に<ruby>任<rt>まか</rt></ruby>せて <ruby>小<rt>ちい</rt></ruby>さなこの<ruby>手<rt>て</rt></ruby>は<ruby>今<rt>いま</rt></ruby>",
-  "[wave]愛してしまった全部 降りかかった呪いも全部": "[wave]<ruby>愛<rt>あい</rt></ruby>してしまった<ruby>全部<rt>ぜんぶ</rt></ruby> <ruby>降<rt>ふ</rt></ruby>りかかった<ruby>呪<rt>のろ</rt></ruby>いも<ruby>全部<rt>ぜんぶ</rt></ruby>",
-  "愛してしまった全部 降りかかった呪いも全部": "<ruby>愛<rt>あい</rt></ruby>してしまった<ruby>全部<rt>ぜんぶ</rt></ruby> <ruby>降<rt>ふ</rt></ruby>りかかった<ruby>呪<rt>のろ</rt></ruby>いも<ruby>全部<rt>ぜんぶ</rt></ruby>",
   "[wave]もう愛してしまった思いを全部 守れるほどの光を": "[wave]もう<ruby>愛<rt>あい</rt></ruby>してしまった<ruby>思<rt>おも</rt></ruby>いを<ruby>全部<rt>ぜんぶ</rt></ruby> <ruby>守<rt>まも</rt></ruby>れるほどの<ruby>光<rt>ひかり</rt></ruby>を",
   "[clap]どこからかまた悲しみが 飛び交っている": "[clap]どこからかまた<ruby>悲<rt>かな</rt></ruby>しみが <ruby>飛<rt>と</rt></ruby>び<ruby>交<rt>か</rt></ruby>っている",
   "[clap]失って また失って 膝を突き 息をしている": "[clap]<ruby>失<rt>うしな</rt></ruby>って また<ruby>失<rt>うしな</rt></ruby>って <ruby>膝<rt>ひざ</rt></ruby>を<ruby>突<rt>つ</rt></ruby>き <ruby>息<rt>いき</rt></ruby>をしている",
@@ -538,8 +536,6 @@ export const ROMAJI_CORRECTIONS = Object.freeze({
   // 裸身勇者 (裸の勇者) — https://utaten.com/lyric/ma22011710/
   "[clap]誰かが今涙を飲み込んでいる": "[clap]dare ka ga ima namida o nomikon de iru",
   "力はいらない 身に任せて 小さなこの手は今": "chikara wa ira nai mi ni makase te chīsana kono te wa ima",
-  "[wave]愛してしまった全部 降りかかった呪いも全部": "[wave]aishi te shimatta zembu furi kakatta noroi mo zembu",
-  "愛してしまった全部 降りかかった呪いも全部": "aishi te shimatta zembu furi kakatta noroi mo zembu",
   "[wave]もう愛してしまった思いを全部 守れるほどの光を": "[wave]mō aishi te shimatta omoi o zembu mamoreru hodo no hikari o",
   "[clap]どこからかまた悲しみが 飛び交っている": "[clap]doko kara ka mata kanashimi ga tobikatte iru",
   "[clap]失って また失って 膝を突き 息をしている": "[clap]ushinatte mata ushinatte hiza o tsuki iki o shi te iru",
