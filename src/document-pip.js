@@ -162,6 +162,10 @@ export function createDocumentPip({
     root.classList.toggle("hide-chinese", !showChinese);
     root.classList.toggle("karaoke-off", model.karaokeEnabled === false);
     root.classList.toggle("lyrics-hidden", lyricsHidden);
+    const lyricScale = Number(model.lyricScale);
+    if (Number.isFinite(lyricScale) && lyricScale > 0){
+      root.style.setProperty("--lyric-scale", String(lyricScale));
+    } else root.style.removeProperty("--lyric-scale");
     if (model.iconBeatDuration){
       root.style.setProperty("--icon-beat-duration", model.iconBeatDuration);
     } else root.style.removeProperty("--icon-beat-duration");

@@ -207,6 +207,7 @@ const LYRIC_SIZE_OPTIONS = Object.freeze([
   Object.freeze({ value: "normal", label: "標準", scale: 1 }),
   Object.freeze({ value: "large", label: "大", scale: 1.2 }),
   Object.freeze({ value: "xlarge", label: "特大", scale: 1.4 }),
+  Object.freeze({ value: "xxlarge", label: "超大", scale: 1.7 }),
 ]);
 const LYRIC_SIZE_STORAGE_KEY = "horo-lyric-size";
 const storedLyricSize = store(LYRIC_SIZE_STORAGE_KEY);
@@ -2847,6 +2848,7 @@ function setLyricSize(value){
   // 字級改變後行高跟著變，重新置中目前這一句。
   updateLyricsPadding();
   if (isSongViewActive()) updateLyricsSync(true);
+  updateDocumentPip();
 }
 
 function updateKaraokeUi(){
@@ -3573,6 +3575,7 @@ function buildDocumentPipViewModel(activeIdx = lastActiveIdx){
     showChinese,
     readingMode,
     karaokeEnabled,
+    lyricScale: lyricSizeOption().scale,
     iconBeatDuration: beatDuration,
     status: playerReady ? "" : "正在等待影片播放器…"
   };
