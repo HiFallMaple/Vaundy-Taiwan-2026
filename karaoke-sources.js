@@ -13,17 +13,26 @@
  * Keeping this boundary separate means a provider can disappear without
  * changing the renderer.  The default worker is the public backend used by
  * Beautiful Lyrics Reborn; it races the open Musixmatch RichSync, QQ QRC,
- * KuGou KRC and NetEase YRC providers.  AMLL TTML DB is tried afterwards as
- * a direct, CORS-enabled fallback.
+ * KuGou KRC and NetEase YRC providers.  It is keyed by Spotify track ID, so
+ * only songs with a `spotifyTrackId` ask it.  AMLL TTML DB is tried afterwards
+ * as a direct, CORS-enabled fallback.
+ *
+ * Results are kept in localStorage: found timings until CACHE_VERSION
+ * changes, a clean miss for MISS_TTL_MS, and a worker 4xx for good, so the
+ * same song does not hit the providers on every visit.  After a worker
+ * timeout or 5xx, the worker is skipped for WORKER_BACKOFF_MS.
  */
 (function (root) {
   "use strict";
 
-  const CACHE_VERSION = "v2";
+  const CACHE_VERSION = "v3";
   const CACHE_PREFIX = "horo-karaoke-";
   const DEFAULT_WORKER = "https://lyrics.txw.qzz.io";
   const AMLL_API = "https://api.amll.dev";
   const LRCLIB_API = "https://lrclib.net/api";
+  const MISS_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+  const WORKER_BACKOFF_MS = 30 * 60 * 1000;
+  const SPOTIFY_TRACK_ID = /^[A-Za-z0-9]{22}$/;
   const PROVIDER_ORDER = Object.freeze([
     "Musixmatch RichSync",
     "QQ Music QRC",
@@ -33,6 +42,9 @@
     "LRCLIB lyricsfile（逐行時間）"
   ]);
   const pending = new Map();
+  // Fallback when localStorage is unavailable, so one tab still asks once.
+  const memoryStore = new Map();
+  let staleCacheCleared = false;
 
   function finite(value) {
     const number = Number(value);
@@ -259,29 +271,64 @@
     }
   }
 
-  function cacheKey(song) {
-    return `${CACHE_PREFIX}${CACHE_VERSION}-${String(song && song.id || "unknown")}`;
+  function cacheKey(song, kind) {
+    const id = String(song && song.id || "unknown");
+    return `${CACHE_PREFIX}${CACHE_VERSION}-${kind ? `${kind}-` : ""}${id}`;
   }
 
-  function readCache(song) {
+  function readStored(key) {
     const storage = getLocalStorage();
-    if (!storage) return null;
     try {
-      const value = JSON.parse(storage.getItem(cacheKey(song)) || "null");
-      return value && value.format === "timed-lyrics-v1" ? value : null;
+      const stored = storage && storage.getItem(key);
+      if (stored) return JSON.parse(stored);
     } catch (error) {
-      return null;
+      // Fall through to the in-memory copy.
     }
+    return memoryStore.has(key) ? memoryStore.get(key) : null;
   }
 
-  function writeCache(song, value) {
+  function writeStored(key, value) {
+    if (!value) return;
+    memoryStore.set(key, value);
     const storage = getLocalStorage();
-    if (!storage || !value) return;
+    if (!storage) return;
     try {
-      storage.setItem(cacheKey(song), JSON.stringify(value));
+      storage.setItem(key, JSON.stringify(value));
     } catch (error) {
       // A full localStorage must never disable the lyric page.
     }
+  }
+
+  // Drop entries written under an older CACHE_VERSION.
+  function clearStaleCache() {
+    if (staleCacheCleared) return;
+    staleCacheCleared = true;
+    const storage = getLocalStorage();
+    if (!storage) return;
+    const current = `${CACHE_PREFIX}${CACHE_VERSION}-`;
+    try {
+      const stale = [];
+      for (let index = 0; index < storage.length; index += 1) {
+        const key = storage.key(index);
+        if (key && key.startsWith(CACHE_PREFIX) && !key.startsWith(current)) stale.push(key);
+      }
+      stale.forEach(key => storage.removeItem(key));
+    } catch (error) {
+      // Cleanup is best effort.
+    }
+  }
+
+  function readCache(song) {
+    const value = readStored(cacheKey(song));
+    return value && value.format === "timed-lyrics-v1" ? value : null;
+  }
+
+  function writeCache(song, value) {
+    writeStored(cacheKey(song), value);
+  }
+
+  function isTransientFailure(status) {
+    return status === 0 || status === 429 || status >= 500;
   }
 
   function notify(options, event) {
@@ -298,9 +345,21 @@
         signal: controller ? controller.signal : undefined,
         headers: (options && options.headers) || { Accept: "application/json" }
       });
-      if (!response.ok) return null;
-      return await response.json();
+      if (!response.ok) {
+        if (options && options.onFailure) options.onFailure(response.status);
+        return null;
+      }
+      const text = await response.text();
+      // The worker answers "no lyrics" with an empty 200; treat it and
+      // unreadable bodies as a clean miss, not as a network failure.
+      try {
+        return text ? JSON.parse(text) : null;
+      } catch (error) {
+        return null;
+      }
     } catch (error) {
+      // Network errors and timeouts are reported as status 0.
+      if (options && options.onFailure) options.onFailure(0);
       return null;
     } finally {
       root.clearTimeout(timeout);
@@ -355,8 +414,18 @@
   }
 
   async function fetchWorker(song, options) {
+    const trackId = String(song && song.spotifyTrackId || "");
+    if (!SPOTIFY_TRACK_ID.test(trackId)) return null;
+    const rejectedKey = cacheKey(song, "worker-rejected");
+    if (readStored(rejectedKey)) return null;
+    const backoffKey = `${CACHE_PREFIX}${CACHE_VERSION}-worker-backoff`;
+    const backoff = readStored(backoffKey);
+    if (backoff && Number(backoff.until) > Date.now()) {
+      // Count the skipped worker as a transient miss so the song is retried later.
+      if (options && options.onFailure) options.onFailure(0);
+      return null;
+    }
     const base = String((options && options.workerUrl) || DEFAULT_WORKER).replace(/\/$/, "");
-    const trackId = encodeURIComponent(`horo-${String(song && song.id || "song")}`);
     const url = new URL(`${base}/lyrics/${trackId}`);
     url.searchParams.set("track_name", sourceTitle(song));
     url.searchParams.append("artist_name", sourceArtist(song));
@@ -364,12 +433,21 @@
     if (duration && duration > 0) url.searchParams.set("duration", String(Math.round(duration)));
     const payload = await fetchJson(url.toString(), {
       timeoutMs: (options && options.timeoutMs) || 12000,
-      headers: { Accept: "application/json", Authorization: "Bearer static-site" }
+      // The worker requires a bearer token; a static site has no Spotify session.
+      headers: { Accept: "application/json", Authorization: "Bearer static-site" },
+      onFailure: (status) => {
+        // A 4xx will not change on retry, so stop asking for this song.
+        if (status >= 400 && status < 500 && status !== 429) writeStored(rejectedKey, { status });
+        // While the worker is down or slow, leave it alone for every song.
+        else if (isTransientFailure(status)) writeStored(backoffKey, { until: Date.now() + WORKER_BACKOFF_MS });
+        if (options && options.onFailure) options.onFailure(status);
+      }
     });
     const timed = normaliseBeautifulLyrics(payload);
     if (timed) {
-      timed.source = "開源多來源（Musixmatch / QQ / 酷狗 / 網易雲）";
-      timed.providerOrder = PROVIDER_ORDER.slice(0, 4);
+      const provider = payload.Source && payload.Source.Provider;
+      timed.source = provider ? `Beautiful Lyrics Reborn（${provider}）` : "Beautiful Lyrics Reborn";
+      timed.providerOrder = [timed.source];
     }
     return timed;
   }
@@ -379,7 +457,10 @@
     url.searchParams.set("musicName", sourceTitle(song));
     url.searchParams.set("artistName", sourceArtist(song));
     url.searchParams.set("pageSize", "10");
-    const search = await fetchJson(url.toString(), { timeoutMs: (options && options.timeoutMs) || 7000 });
+    const search = await fetchJson(url.toString(), {
+      timeoutMs: (options && options.timeoutMs) || 7000,
+      onFailure: options && options.onFailure
+    });
     const items = search && search.status === 200 && search.data && Array.isArray(search.data.items)
       ? search.data.items : [];
     const wantedTitle = normaliseText(sourceTitle(song));
@@ -394,7 +475,10 @@
 
     const lyricUrl = new URL(`${AMLL_API}/v1/lyrics/get`);
     lyricUrl.searchParams.set("id", String(item.id));
-    const fetched = await fetchJson(lyricUrl.toString(), { timeoutMs: (options && options.timeoutMs) || 7000 });
+    const fetched = await fetchJson(lyricUrl.toString(), {
+      timeoutMs: (options && options.timeoutMs) || 7000,
+      onFailure: options && options.onFailure
+    });
     const ttml = fetched && fetched.status === 200 && fetched.data && fetched.data.lyrics;
     const timed = ttml ? parseTtml(ttml) : null;
     if (timed) timed.providerOrder = ["AMLL TTML DB"];
@@ -406,7 +490,8 @@
     url.searchParams.set("track_name", sourceTitle(song));
     url.searchParams.set("artist_name", sourceArtist(song));
     const search = await fetchJson(url.toString(), {
-      timeoutMs: (options && options.timeoutMs) || 7000
+      timeoutMs: (options && options.timeoutMs) || 7000,
+      onFailure: options && options.onFailure
     });
     if (!Array.isArray(search)) return null;
 
@@ -431,11 +516,18 @@
     const opts = options || {};
     const key = cacheKey(song);
     if (pending.has(key)) return pending.get(key);
+    clearStaleCache();
 
     const cached = readCache(song);
     if (cached) {
       notify(opts, { state: "cache", source: cached.source });
       return cached;
+    }
+    const missKey = cacheKey(song, "miss");
+    const miss = readStored(missKey);
+    if (miss && Number(miss.until) > Date.now()) {
+      notify(opts, { state: "miss" });
+      return null;
     }
     if (root.navigator && root.navigator.onLine === false) {
       notify(opts, { state: "offline" });
@@ -443,20 +535,27 @@
     }
 
     const request = (async () => {
+      let transient = false;
+      const tracked = {
+        ...opts,
+        onFailure: (status) => { if (isTransientFailure(status)) transient = true; }
+      };
       notify(opts, { state: "loading", source: PROVIDER_ORDER.slice(0, 4).join(" → ") });
-      let timed = await fetchWorker(song, opts);
+      let timed = await fetchWorker(song, tracked);
       if (!timed) {
         notify(opts, { state: "fallback", source: "AMLL TTML DB" });
-        timed = await fetchAmll(song, opts);
+        timed = await fetchAmll(song, tracked);
       }
       if (!timed) {
         notify(opts, { state: "fallback", source: "LRCLIB lyricsfile（逐行時間）" });
-        timed = await fetchLrclib(song, opts);
+        timed = await fetchLrclib(song, tracked);
       }
       if (timed) {
         writeCache(song, timed);
         notify(opts, { state: "ready", source: timed.source });
       } else {
+        // Remember a clean miss; after a network or server error, try again next visit.
+        if (!transient) writeStored(missKey, { until: Date.now() + MISS_TTL_MS });
         notify(opts, { state: "miss" });
       }
       return timed;

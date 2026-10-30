@@ -100,7 +100,7 @@ const SYNC_INTERVAL_MS   = 100;
 /* 지금 폰에 깔려 있는 화면이 몇 번째 판인지 알려 주는 표시.
    새로 올렸는데 화면이 그대로일 때, 옛 판이 남아 있는지 바로 확인할 수 있다.
    sw.js 의 CACHE_VERSION 과 같이 올려 주세요. */
-const BUILD = "v1.14.8";
+const BUILD = "v1.14.9";
 
 const TRANSLATION_CREDIT_URL = "https://home.gamer.com.tw/profile/index.php?owner=tsukilsao319";
 const CC_BY_NC_SA_URL = "https://creativecommons.org/licenses/by-nc-sa/4.0/";
@@ -3640,7 +3640,7 @@ async function loadKaraokeTiming(song){
   aligned.songId = song.id;
   karaokeTiming = aligned;
   applyKaraokeTimingToDom(song);
-  const cachedHint = timed.source && timed.source.indexOf("開源多來源") >= 0 ? "開源多來源" : (timed.source || "開源來源");
+  const cachedHint = timed.source || "開源來源";
   const timingLabel = timed.granularity === "line" ? "歌詞逐行時間" : "歌詞逐字時間";
   setKaraokeSourceStatus("ready", `${timingLabel}：${cachedHint}（已對齊 ${aligned.matchedLines}/${aligned.totalLines}行，偏移${aligned.offset.toFixed(2)}秒）`);
   updateLyricsSync(true);
