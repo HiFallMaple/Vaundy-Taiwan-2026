@@ -3640,7 +3640,7 @@ async function loadKaraokeTiming(song){
   aligned.songId = song.id;
   karaokeTiming = aligned;
   applyKaraokeTimingToDom(song);
-  const cachedHint = timed.source && timed.source.indexOf("開源多來源") >= 0 ? "開源多來源" : (timed.source || "開源來源");
+  const cachedHint = timed.source || "開源來源";
   const timingLabel = timed.granularity === "line" ? "歌詞逐行時間" : "歌詞逐字時間";
   setKaraokeSourceStatus("ready", `${timingLabel}：${cachedHint}（已對齊 ${aligned.matchedLines}/${aligned.totalLines}行，偏移${aligned.offset.toFixed(2)}秒）`);
   updateLyricsSync(true);
