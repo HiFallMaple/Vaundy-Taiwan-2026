@@ -201,6 +201,18 @@ let playbackRate = PLAYBACK_RATE_OPTIONS.includes(storedPlaybackRate)
   ? storedPlaybackRate
   : 1;
 let availablePlaybackRates = [];
+// 歌詞字級：以倍率縮放日文、讀音、羅馬字與繁中，設定會保存。
+const LYRIC_SIZE_OPTIONS = Object.freeze([
+  Object.freeze({ value: "small", label: "小", scale: 0.85 }),
+  Object.freeze({ value: "normal", label: "標準", scale: 1 }),
+  Object.freeze({ value: "large", label: "大", scale: 1.2 }),
+  Object.freeze({ value: "xlarge", label: "特大", scale: 1.4 }),
+]);
+const LYRIC_SIZE_STORAGE_KEY = "horo-lyric-size";
+const storedLyricSize = store(LYRIC_SIZE_STORAGE_KEY);
+let lyricSize = LYRIC_SIZE_OPTIONS.some(option => option.value === storedLyricSize)
+  ? storedLyricSize
+  : "normal";
 
 let scrollRafId = null;
 let currentSong = null;
@@ -2025,6 +2037,12 @@ function buildSongShell(){
             ${PLAYBACK_RATE_OPTIONS.map(rate => "<option value=\"" + rate + "\">" + formatPlaybackRate(rate) + "</option>").join("")}
           </select>
         </label>
+        <label class="playback-rate-control lyric-size-control" for="lyric-size" title="歌詞字級">
+          <span class="lyric-size-icon" aria-hidden="true">字</span>
+          <select class="playback-rate-select lyric-size-select" id="lyric-size" aria-label="歌詞字級：${lyricSizeOption().label}">
+            ${LYRIC_SIZE_OPTIONS.map(option => "<option value=\"" + option.value + "\">" + option.label + "</option>").join("")}
+          </select>
+        </label>
         <button class="venue-toggle pip-toggle" id="pip-btn" type="button" aria-pressed="false" aria-label="開啟或聚焦同步字幕小窗" title="開啟或聚焦同步字幕小窗"${documentPip.supported ? "" : " hidden"}>
           ${PIP_SVG}
           <span class="venue-label venue-label-desktop">PiP</span>
@@ -2211,6 +2229,10 @@ function buildSongShell(){
     setPlaybackRate(Number(event.currentTarget.value));
   });
   updatePlaybackRateUi();
+
+  document.getElementById("lyric-size").addEventListener("change", event=>{
+    setLyricSize(event.currentTarget.value);
+  });
 
   document.getElementById("chant-btn").addEventListener("click", ()=>{
     setChantOnly(!chantOnly);
@@ -2670,6 +2692,7 @@ function renderSong(song){
   applyVenueMode();                      // 단축모드 상태 반영 (글자 크기 등)
   updateReadingUi();                      // 假名／羅馬拼音顯示狀態
   updateLyricDisplayUi();                 // 日文／繁中顯示狀態
+  updateLyricSizeUi();                    // 歌詞字級
   updateKaraokeUi();                      // 逐字 Karaoke 高亮狀態
   updateLyricsPadding();                 // 첫 소절도 가운데 오도록 여백 계산
   observeLyricLines();                   // 보이는 줄의 아이콘만 움직이게
@@ -2797,6 +2820,33 @@ function updateLyricDisplayUi(){
   }
   updateLyricsPadding();
   updateDocumentPip();
+}
+
+function lyricSizeOption(){
+  return LYRIC_SIZE_OPTIONS.find(option => option.value === lyricSize)
+    || LYRIC_SIZE_OPTIONS.find(option => option.value === "normal");
+}
+
+function updateLyricSizeUi(){
+  const page = document.getElementById("song-page");
+  if (!page) return;
+  const option = lyricSizeOption();
+  page.style.setProperty("--lyric-scale", String(option.scale));
+  const select = document.getElementById("lyric-size");
+  if (select){
+    select.value = option.value;
+    select.setAttribute("aria-label", `歌詞字級：${option.label}`);
+  }
+}
+
+function setLyricSize(value){
+  if (!LYRIC_SIZE_OPTIONS.some(option => option.value === value)) return;
+  lyricSize = value;
+  store(LYRIC_SIZE_STORAGE_KEY, lyricSize);
+  updateLyricSizeUi();
+  // 字級改變後行高跟著變，重新置中目前這一句。
+  updateLyricsPadding();
+  if (isSongViewActive()) updateLyricsSync(true);
 }
 
 function updateKaraokeUi(){

@@ -865,6 +865,7 @@ button{touch-action:manipulation;}
   .song-page .reading-value-mobile{display:inline;}
   .song-page .playback-rate-control{ padding-left:4px;padding-right:4px; }
   .song-page .playback-rate-select{ min-width:54px; }
+  .song-page .lyric-size-select{ min-width:40px; }
   .song-page .reading-toggle{
     min-width:72px;
     gap:3px;
@@ -1057,11 +1058,11 @@ button{touch-action:manipulation;}
 
   .song-page .lyric-jp,
   .song-page .lyric-romaji{
-    font-size:12px;
+    font-size:calc(12px * var(--lyric-scale, 1));
   }
 
   .song-page .lyric-zh{
-    font-size:15px;
+    font-size:calc(15px * var(--lyric-scale, 1));
   }
 
   /* 控制列固定留在最底部；項目太多時可左右滑動，不會折成第二排。 */
