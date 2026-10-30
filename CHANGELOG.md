@@ -2,6 +2,11 @@
 
 本檔案依 Git 歷史整理，使用版本提交作為每一段的邊界。
 
+## [**v1.14.11**]
+
+- [PR #30](https://github.com/watain666/Vaundy-Taiwan-2026/pull/30)：修正〈napori〉歌詞「2人になって 君を待って思い出したんだ」多寫了一次「思い出したんだ」。
+- [PR #30](https://github.com/watain666/Vaundy-Taiwan-2026/pull/30)：修正〈裸の勇者〉、〈花占い〉、〈呼び声〉、〈忘れ物〉各有一句誤抄成鄰近段落的歌詞，改為實際演唱的內容，讀音與羅馬拼音同步更新。
+
 ## [**v1.14.10**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/da433f6612f58f533fea4f03389b5e9c313d7489)
 
 - [PR #29](https://github.com/watain666/Vaundy-Taiwan-2026/pull/29)：修正卡拉OK 第一次查詢較慢的歌曲時會因逾時放棄，並暫停查詢所有歌曲 30 分鐘；現在 36 首歌都能取得時間碼，其中 35 首為逐字時間。
