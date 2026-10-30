@@ -2,7 +2,7 @@
 
 本檔案依 Git 歷史整理，使用版本提交作為每一段的邊界。
 
-## [**v1.15.2**]
+## [**v1.15.2**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/87c8e573c06ce1a62d3a89b389ccf5488c07eb67)
 
 - [PR #34](https://github.com/watain666/Vaundy-Taiwan-2026/pull/34)：修正〈風神〉開頭「誰よりも 「救いたい」 と悲劇を気取ってた」漏掉的「誰」，讀音、羅馬拼音與中文翻譯同步更新。
 
