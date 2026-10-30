@@ -123,7 +123,7 @@ export const FURIGANA_CORRECTIONS = Object.freeze({
   "力が伴う 悪意振り解いて": "<ruby>力<rt>ちから</rt></ruby>が<ruby>伴<rt>ともな</rt></ruby>う <ruby>悪意振<rt>あくいふ</rt></ruby>り<ruby>解<rt>ほど</rt></ruby>いて",
   "それは涙と対になって 悲しみと力となって": "それは<ruby>涙<rt>なみだ</rt></ruby>と<ruby>対<rt>つい</rt></ruby>になって <ruby>悲<rt>かな</rt></ruby>しみと<ruby>力<rt>ちから</rt></ruby>となって",
   "そこは涙と対になって 滾りが溢れかえって": "そこは<ruby>涙<rt>なみだ</rt></ruby>と<ruby>対<rt>つい</rt></ruby>になって <ruby>滾<rt>たぎ</rt></ruby>りが<ruby>溢<rt>あふ</rt></ruby>れかえって",
-  "[clap]誰もが求めた剣も 錆だらけで使えなかった": "[clap]<ruby>誰<rt>だれ</rt></ruby>もが<ruby>求<rt>もと</rt></ruby>めた<ruby>剣<rt>つるぎ</rt></ruby>も <ruby>錆<rt>さび</rt></ruby>だらけで<ruby>使<rt>つか</rt></ruby>えなかった",
+  "[clap]誰もが求めた剣は 錆だらけで使えなかった": "[clap]<ruby>誰<rt>だれ</rt></ruby>もが<ruby>求<rt>もと</rt></ruby>めた<ruby>剣<rt>つるぎ</rt></ruby>は <ruby>錆<rt>さび</rt></ruby>だらけで<ruby>使<rt>つか</rt></ruby>えなかった",
   "[clap]この誰かが残してった鈍が闇を裂いてしまう前に": "[clap]この<ruby>誰<rt>だれ</rt></ruby>かが<ruby>残<rt>のこ</rt></ruby>してった<ruby>鈍<rt>なまくら</rt></ruby>が<ruby>闇<rt>やみ</rt></ruby>を<ruby>裂<rt>さ</rt></ruby>いてしまう<ruby>前<rt>まえ</rt></ruby>に",
   "[wave]だが勇者は今力はいらない身に任せて": "[wave]だが<ruby>勇者<rt>ゆうしゃ</rt></ruby>は<ruby>今<rt>いま</rt></ruby><ruby>力<rt>ちから</rt></ruby>はいらない<ruby>身<rt>み</rt></ruby>に<ruby>任<rt>まか</rt></ruby>せて",
 
@@ -528,7 +528,7 @@ export const ROMAJI_CORRECTIONS = Object.freeze({
   "力が伴う 悪意振り解いて": "chikara ga tomonau akui furihodoite",
   "それは涙と対になって 悲しみと力となって": "sore wa namida to tsui ni natte kanashimi to chikara to natte",
   "そこは涙と対になって 滾りが溢れかえって": "soko wa namida to tsui ni natte tagiri ga afure kaette",
-  "[clap]誰もが求めた剣も 錆だらけで使えなかった": "[clap]dare mo ga motome ta tsurugi mo sabi darake de tsukae nakatta",
+  "[clap]誰もが求めた剣は 錆だらけで使えなかった": "[clap]dare mo ga motome ta tsurugi wa sabi darake de tsukae nakatta",
   "[clap]この誰かが残してった鈍が闇を裂いてしまう前に": "[clap]kono dareka ga nokoshitetta namakura ga yami o sai te shimau mae ni",
   "[wave]力が伴う悪意振り解いて耳は聞こえちゃいない": "[wave]chikara ga tomonau akui furihodoite mimi wa kikoe cha i nai",
   "[wave]だが勇者は今力はいらない身に任せて": "[wave]daga yūsha wa ima chikara wa ira nai mi ni makase te",
