@@ -259,7 +259,7 @@ export const FURIGANA_CORRECTIONS = Object.freeze({
   // napori — https://utaten.com/lyric/nm20052728/
   "ろくな音楽もなくてそんなひびをまた2人で": "ろくな<ruby>音楽<rt>おんがく</rt></ruby>もなくてそんなひびをまた<ruby>2人<rt>ふたり</rt></ruby>で",
   "僕ら指にラブソングで今夜も二人で歩いてこ": "<ruby>僕<rt>ぼく</rt></ruby>ら<ruby>指<rt>ゆび</rt></ruby>にラブソングで<ruby>今夜<rt>こんや</rt></ruby>も<ruby>二人<rt>ふたり</rt></ruby>で<ruby>歩<rt>ある</rt></ruby>いてこ",
-  "2人になって 君を待って思い出したんだ思い出したんだ": "<ruby>2人<rt>ふたり</rt></ruby>になって <ruby>君<rt>きみ</rt></ruby>を<ruby>待<rt>ま</rt></ruby>って<ruby>思<rt>おも</rt></ruby>い<ruby>出<rt>だ</rt></ruby>したんだ<ruby>思<rt>おも</rt></ruby>い<ruby>出<rt>だ</rt></ruby>したんだ",
+  "2人になって 君を待って思い出したんだ": "<ruby>2人<rt>ふたり</rt></ruby>になって <ruby>君<rt>きみ</rt></ruby>を<ruby>待<rt>ま</rt></ruby>って<ruby>思<rt>おも</rt></ruby>い<ruby>出<rt>だ</rt></ruby>したんだ",
   "あれは縁そっと flight": "あれは<ruby>縁<rt>べり</rt></ruby>そっと flight",
   "いずれ縁そっと flight": "いずれ<ruby>縁<rt>べり</rt></ruby>そっと flight",
   "君と 縁そっと flight": "<ruby>君<rt>きみ</rt></ruby>と <ruby>縁<rt>べり</rt></ruby>そっと flight",
@@ -648,7 +648,7 @@ export const ROMAJI_CORRECTIONS = Object.freeze({
   // napori — https://utaten.com/lyric/nm20052728/
   "ろくな音楽もなくてそんなひびをまた2人で": "rokuna ongaku mo naku te sonna hibi o mata futari de",
   "僕ら指にラブソングで今夜も二人で歩いてこ": "bokura yubi ni rabusongu de kon'ya mo futari de arui te ko",
-  "2人になって 君を待って思い出したんだ思い出したんだ": "futari ni natte kimi o matte omoidashi ta n da omoidashi ta n da",
+  "2人になって 君を待って思い出したんだ": "futari ni natte kimi o matte omoidashi ta n da",
   "あれは縁そっと flight": "are wa beri sotto flight",
   "いずれ縁そっと flight": "izure beri sotto flight",
   "君と 縁そっと flight": "kimi to beri sotto flight",
