@@ -2,6 +2,10 @@
 
 本檔案依 Git 歷史整理，使用版本提交作為每一段的邊界。
 
+## [**v1.15.2**]
+
+- [PR #34](https://github.com/watain666/Vaundy-Taiwan-2026/pull/34)：修正〈風神〉開頭「誰よりも 「救いたい」 と悲劇を気取ってた」漏掉的「誰」，讀音、羅馬拼音與中文翻譯同步更新。
+
 ## [**v1.15.1**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/a0dc412919ad9169914fddee2c7d3d90f64ee5e1)
 
 - [PR #33](https://github.com/watain666/Vaundy-Taiwan-2026/pull/33)：〈ずっとラブソング〉、〈瞳惚れ〉、〈忘れ物〉、〈そんなbitterな話〉、〈イデアが溢れて眠れない〉、〈風神〉、〈気まぐれ〉、〈しわあわせ〉、〈napori〉、〈NEO JAPAN〉、〈soramimi〉、〈ZERO〉共 12 首的中文翻譯，原本是從韓文翻譯再機器翻譯而來，出現「蠟燭」（超Nice）、「馬匹」（言葉）、「打噴嚏」（擦り傷）等錯譯；現在全部改為直接從原文歌詞重新翻譯，並逐行複查。
