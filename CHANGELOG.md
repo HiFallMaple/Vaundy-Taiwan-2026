@@ -2,7 +2,7 @@
 
 本檔案依 Git 歷史整理，使用版本提交作為每一段的邊界。
 
-## [**v1.14.11**]
+## [**v1.14.11**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/fdc5f39c0775ed707a9e45006e6f94b431c128b4)
 
 - [PR #30](https://github.com/watain666/Vaundy-Taiwan-2026/pull/30)：修正〈napori〉歌詞「2人になって 君を待って思い出したんだ」多寫了一次「思い出したんだ」。
 - [PR #30](https://github.com/watain666/Vaundy-Taiwan-2026/pull/30)：修正〈裸の勇者〉、〈花占い〉、〈呼び声〉、〈忘れ物〉各有一句誤抄成鄰近段落的歌詞，改為實際演唱的內容，讀音與羅馬拼音同步更新。
