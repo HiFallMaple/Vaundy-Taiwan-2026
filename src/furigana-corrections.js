@@ -120,8 +120,16 @@ export const FURIGANA_CORRECTIONS = Object.freeze({
   "[clap]壊れない愛を歌う 言葉を二人に課して": "[clap]<ruby>壊<rt>わす</rt></ruby>れない<ruby>愛<rt>あい</rt></ruby>を<ruby>歌<rt>うた</rt></ruby>う <ruby>言葉<rt>ことば</rt></ruby>を<ruby>二人<rt>ふたり</rt></ruby>に<ruby>課<rt>か</rt></ruby>して",
 
   // 裸身勇者 (裸の勇者) — https://utaten.com/lyric/ma22011710/
+  "[clap]誰かが今涙を飲み込んでいる": "[clap]<ruby>誰<rt>だれ</rt></ruby>かが<ruby>今<rt>いま</rt></ruby><ruby>涙<rt>なみだ</rt></ruby>を<ruby>飲<rt>の</rt></ruby>み<ruby>込<rt>こ</rt></ruby>んでいる",
+  "力はいらない 身に任せて 小さなこの手は今": "<ruby>力<rt>ちから</rt></ruby>はいらない <ruby>身<rt>み</rt></ruby>に<ruby>任<rt>まか</rt></ruby>せて <ruby>小<rt>ちい</rt></ruby>さなこの<ruby>手<rt>て</rt></ruby>は<ruby>今<rt>いま</rt></ruby>",
+  "[wave]愛してしまった全部 降りかかった呪いも全部": "[wave]<ruby>愛<rt>あい</rt></ruby>してしまった<ruby>全部<rt>ぜんぶ</rt></ruby> <ruby>降<rt>ふ</rt></ruby>りかかった<ruby>呪<rt>のろ</rt></ruby>いも<ruby>全部<rt>ぜんぶ</rt></ruby>",
+  "愛してしまった全部 降りかかった呪いも全部": "<ruby>愛<rt>あい</rt></ruby>してしまった<ruby>全部<rt>ぜんぶ</rt></ruby> <ruby>降<rt>ふ</rt></ruby>りかかった<ruby>呪<rt>のろ</rt></ruby>いも<ruby>全部<rt>ぜんぶ</rt></ruby>",
+  "[wave]もう愛してしまった思いを全部 守れるほどの光を": "[wave]もう<ruby>愛<rt>あい</rt></ruby>してしまった<ruby>思<rt>おも</rt></ruby>いを<ruby>全部<rt>ぜんぶ</rt></ruby> <ruby>守<rt>まも</rt></ruby>れるほどの<ruby>光<rt>ひかり</rt></ruby>を",
+  "[clap]どこからかまた悲しみが 飛び交っている": "[clap]どこからかまた<ruby>悲<rt>かな</rt></ruby>しみが <ruby>飛<rt>と</rt></ruby>び<ruby>交<rt>か</rt></ruby>っている",
+  "[clap]失って また失って 膝を突き 息をしている": "[clap]<ruby>失<rt>うしな</rt></ruby>って また<ruby>失<rt>うしな</rt></ruby>って <ruby>膝<rt>ひざ</rt></ruby>を<ruby>突<rt>つ</rt></ruby>き <ruby>息<rt>いき</rt></ruby>をしている",
+  "この全てを背負った手は": "この<ruby>全<rt>すべ</rt></ruby>てを<ruby>背負<rt>せお</rt></ruby>った<ruby>手<rt>て</rt></ruby>は",
   "力が伴う 悪意振り解いて": "<ruby>力<rt>ちから</rt></ruby>が<ruby>伴<rt>ともな</rt></ruby>う <ruby>悪意振<rt>あくいふ</rt></ruby>り<ruby>解<rt>ほど</rt></ruby>いて",
-  "それは涙と対になって 悲しみと力となって": "それは<ruby>涙<rt>なみだ</rt></ruby>と<ruby>対<rt>つい</rt></ruby>になって <ruby>悲<rt>かな</rt></ruby>しみと<ruby>力<rt>ちから</rt></ruby>となって",
+  "それは涙と対になって 悲しみが力となって": "それは<ruby>涙<rt>なみだ</rt></ruby>と<ruby>対<rt>つい</rt></ruby>になって <ruby>悲<rt>かな</rt></ruby>しみが<ruby>力<rt>ちから</rt></ruby>となって",
   "そこは涙と対になって 滾りが溢れかえって": "そこは<ruby>涙<rt>なみだ</rt></ruby>と<ruby>対<rt>つい</rt></ruby>になって <ruby>滾<rt>たぎ</rt></ruby>りが<ruby>溢<rt>あふ</rt></ruby>れかえって",
   "[clap]誰もが求めた剣は 錆だらけで使えなかった": "[clap]<ruby>誰<rt>だれ</rt></ruby>もが<ruby>求<rt>もと</rt></ruby>めた<ruby>剣<rt>つるぎ</rt></ruby>は <ruby>錆<rt>さび</rt></ruby>だらけで<ruby>使<rt>つか</rt></ruby>えなかった",
   "[clap]この誰かが残してった鈍が闇を裂いてしまう前に": "[clap]この<ruby>誰<rt>だれ</rt></ruby>かが<ruby>残<rt>のこ</rt></ruby>してった<ruby>鈍<rt>なまくら</rt></ruby>が<ruby>闇<rt>やみ</rt></ruby>を<ruby>裂<rt>さ</rt></ruby>いてしまう<ruby>前<rt>まえ</rt></ruby>に",
@@ -324,6 +332,7 @@ export const FURIGANA_CORRECTIONS = Object.freeze({
   "[wave]この 天井の光、星々の光、宇宙の光、銀河を超えて": "[wave]この <ruby>天井<rt>てんじょう</rt></ruby>の<ruby>光<rt>ひかり</rt></ruby>、<ruby>星々<rt>ほしぼし</rt></ruby>の<ruby>光<rt>ひかり</rt></ruby>、<ruby>宇宙<rt>うちゅう</rt></ruby>の<ruby>光<rt>ひかり</rt></ruby>、<ruby>銀河<rt>ぎんが</rt></ruby>を<ruby>超<rt>こ</rt></ruby>えて",
 
   // 飛翔之時 (飛ぶ時) — https://utaten.com/lyric/sz26020427/
+  "僕の運命を前に 僕がすれ違ってしまう前に": "<ruby>僕<rt>ぼく</rt></ruby>の<ruby>運命<rt>うんめい</rt></ruby>を<ruby>前<rt>まえ</rt></ruby>に <ruby>僕<rt>ぼく</rt></ruby>がすれ<ruby>違<rt>ちが</rt></ruby>ってしまう<ruby>前<rt>まえ</rt></ruby>に",
   "[wave](jump)怖くない、この夜空で 明日を目指す": "[wave](jump)<ruby>怖<rt>こわ</rt></ruby>くない、この<ruby>夜空<rt>よぞら</rt></ruby>で <ruby>明日<rt>あす</rt></ruby>を<ruby>目指<rt>めざ</rt></ruby>す",
 
   // 為瞳孔著迷 (瞳惚れ) — https://utaten.com/lyric/ym22110116/
@@ -338,6 +347,8 @@ export const FURIGANA_CORRECTIONS = Object.freeze({
   "[wave]思い出も全部ここに置いて あぁ ここで": "[wave]<ruby>思<rt>おも</rt></ruby>い<ruby>出<rt>で</rt></ruby>も<ruby>全部<rt>ぜんぶ</rt></ruby>ここに<ruby>置<rt>お</rt></ruby>いて あぁ ここで",
 
   // 時間悖論 (タイムパラドックス) — https://utaten.com/lyric/hw24011202/
+  "[clap]その時は君のその魔法の力を": "[clap]その<ruby>時<rt>とき</rt></ruby>は<ruby>君<rt>きみ</rt></ruby>のその<ruby>魔法<rt>まほう</rt></ruby>の<ruby>力<rt>ちから</rt></ruby>を",
+  "[clap]笑っててほしいかな": "[clap]<ruby>笑<rt>わら</rt></ruby>っててほしいかな",
   "[clap]どうしても一人じゃ使えないのさ": "[clap]どうしても<ruby>一人<rt>ひとり</rt></ruby>じゃ<ruby>使<rt>つか</rt></ruby>えないのさ",
 
   // 最後一擊 (トドメの一撃) — https://utaten.com/lyric/tt23092503/
@@ -525,8 +536,16 @@ export const ROMAJI_CORRECTIONS = Object.freeze({
   "[clap]壊れない愛を歌う 言葉を二人に課して": "[clap]wasure nai ai o utau kotoba o futari ni kashi te",
 
   // 裸身勇者 (裸の勇者) — https://utaten.com/lyric/ma22011710/
+  "[clap]誰かが今涙を飲み込んでいる": "[clap]dare ka ga ima namida o nomikon de iru",
+  "力はいらない 身に任せて 小さなこの手は今": "chikara wa ira nai mi ni makase te chīsana kono te wa ima",
+  "[wave]愛してしまった全部 降りかかった呪いも全部": "[wave]aishi te shimatta zembu furi kakatta noroi mo zembu",
+  "愛してしまった全部 降りかかった呪いも全部": "aishi te shimatta zembu furi kakatta noroi mo zembu",
+  "[wave]もう愛してしまった思いを全部 守れるほどの光を": "[wave]mō aishi te shimatta omoi o zembu mamoreru hodo no hikari o",
+  "[clap]どこからかまた悲しみが 飛び交っている": "[clap]doko kara ka mata kanashimi ga tobikatte iru",
+  "[clap]失って また失って 膝を突き 息をしている": "[clap]ushinatte mata ushinatte hiza o tsuki iki o shi te iru",
+  "この全てを背負った手は": "kono subete o seotta te wa",
   "力が伴う 悪意振り解いて": "chikara ga tomonau akui furihodoite",
-  "それは涙と対になって 悲しみと力となって": "sore wa namida to tsui ni natte kanashimi to chikara to natte",
+  "それは涙と対になって 悲しみが力となって": "sore wa namida to tsui ni natte kanashimi ga chikara to natte",
   "そこは涙と対になって 滾りが溢れかえって": "soko wa namida to tsui ni natte tagiri ga afure kaette",
   "[clap]誰もが求めた剣は 錆だらけで使えなかった": "[clap]dare mo ga motome ta tsurugi wa sabi darake de tsukae nakatta",
   "[clap]この誰かが残してった鈍が闇を裂いてしまう前に": "[clap]kono dareka ga nokoshitetta namakura ga yami o sai te shimau mae ni",
@@ -720,6 +739,7 @@ export const ROMAJI_CORRECTIONS = Object.freeze({
   "[wave]この 天井の光、星々の光、宇宙の光、銀河を超えて": "[wave]kono tenjō no hikari, hoshiboshi no hikari, uchū no hikari, ginga o koe te",
 
   // 飛翔之時 (飛ぶ時) — https://utaten.com/lyric/sz26020427/
+  "僕の運命を前に 僕がすれ違ってしまう前に": "boku no ummei o mae ni boku ga surechigatte shimau mae ni",
   "[wave]光飛び散った最中": "[wave]hikari tobichitta sanaka",
   "[wave](jump)怖くない、この夜空で 明日を目指す": "[wave](jump)kowaku nai, kono yozora de asu o mezasu",
 
@@ -737,6 +757,8 @@ export const ROMAJI_CORRECTIONS = Object.freeze({
   "そこらにある物じゃ 足りなかった": "sokora ni aru mono ja tari nakatta",
 
   // 時間悖論 (タイムパラドックス) — https://utaten.com/lyric/hw24011202/
+  "[clap]その時は君のその魔法の力を": "[clap]sono toki wa kimi no sono mahō no chikara o",
+  "[clap]笑っててほしいかな": "[clap]waratte te hoshii ka na",
   "[clap]どうしても一人じゃ使えないのさ": "[clap]dōshitemo hitori ja tsukae nai no sa",
 
   // 最後一擊 (トドメの一撃) — https://utaten.com/lyric/tt23092503/
