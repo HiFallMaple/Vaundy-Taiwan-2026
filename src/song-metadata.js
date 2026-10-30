@@ -173,6 +173,8 @@ export const SONGS = [
   {
     "id": "ZERO",
     "title": "ZERO",
+    "translationCredit": "AI 翻譯（Claude Opus 5.5）",
+    "translationCreditUrl": null,
     "youtubeId": "Fs7MW0rx9Cw",
     "spotifyTrackId": "65HcaAy1eQRr5pxVvVAqc5"
   },
