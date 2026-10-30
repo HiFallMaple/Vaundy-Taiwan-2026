@@ -2,6 +2,11 @@
 
 本檔案依 Git 歷史整理，使用版本提交作為每一段的邊界。
 
+## [**v1.15.0**]
+
+- [PR #32](https://github.com/watain666/Vaundy-Taiwan-2026/pull/32)：歌曲頁控制列新增「字」選單，可將歌詞字級切換為小、標準、大、特大、超大；日文、讀音、羅馬字、繁中翻譯與背景合唱會一起縮放，切換後目前這一句會重新置中，設定會保存。
+- [PR #32](https://github.com/watain666/Vaundy-Taiwan-2026/pull/32)：開啟中的 PiP 字幕小窗會同步套用歌詞字級；字太大放不下時，優先完整顯示目前這一句。
+
 ## [**v1.14.12**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/d7d0b0231cfdd55df3d56a99c60edf8c3bb9b5e6)
 
 - [PR #31](https://github.com/watain666/Vaundy-Taiwan-2026/pull/31)：〈裸の勇者〉、〈飛ぶ時〉、〈タイムパラドックス〉的中文翻譯改用 Vaundy 官方 MV 上傳的繁體中文字幕，翻譯署名改為「Vaundy 官方 YouTube 字幕」並連到該首 MV。
