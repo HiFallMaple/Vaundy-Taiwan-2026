@@ -2,63 +2,63 @@
 
 本檔案依 Git 歷史整理，使用版本提交作為每一段的邊界。
 
-## [**v1.14.8**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/8580090db638a5a64c4ae6c1e673379c60889779)
+## [**v1.14.8**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/a1e403be68af1ed3ebe6814fc2bd275750a87d4c)
 
 - [PR #27](https://github.com/watain666/Vaundy-Taiwan-2026/pull/27)：修正 VAWS 交流區捲到最底時，輸入框下方會多出一段空白，間距不再隨捲動位置改變。
 
-## [**v1.14.7**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/4e45486ea0edeaa6966932b28e3199cf5cbec5d4)
+## [**v1.14.7**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/6309f14d73d235b6044171cd65a80961d160103c)
 
 - [PR #26](https://github.com/watain666/Vaundy-Taiwan-2026/pull/26)：修正在 VAWS 交流區點回覆留言開頭的「@暱稱」時，背後的應援指南會被換成首頁並跳回頁首；現在只會在交流區內捲到被回覆的留言，網址與頁面維持不變。
 
-## [**v1.14.6**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/868b351b05d96f256d7a9e60f79336a106dec218)
+## [**v1.14.6**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/d16b9d53961dbf3662172f76cc46c7660c3fe825)
 
 - [PR #25](https://github.com/watain666/Vaundy-Taiwan-2026/pull/25)：修正 VAWS 交流區的留言含有長網址時，整個聊天視窗被撐寬、可以左右捲動；長網址現在會自動換行，點擊連結不受影響。
 
-## [**v1.14.5**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/b70cb35c4914c7e9ea09b85b311adeccc1efb0f0)
+## [**v1.14.5**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/577e747bcf1834d5aa3be2a3a72ef2ec0ff6112c)
 
 - [PR #24](https://github.com/watain666/Vaundy-Taiwan-2026/pull/24)：右下角聊天泡泡改用 VAUNDY 字樣的金藍漸層底色與橘色對話框圖示，上方加上「VAWS 交流區」標籤，點標籤也能打開視窗。
 - [PR #24](https://github.com/watain666/Vaundy-Taiwan-2026/pull/24)：「VAWS 交流板」改名為「VAWS 交流區」，視窗標題、按鈕與載入提示文字都使用新名稱。
 
-## [**v1.14.4**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/6f998bedb443e60649c342a948aa6c6290081d5e)
+## [**v1.14.4**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/2c6661add7bfc54e78ab4cdd4b92c345ce6473fb)
 
 - [PR #23](https://github.com/watain666/Vaundy-Taiwan-2026/pull/23)：聊天視窗統一改名為「VAWS 交流板」，標題、開關按鈕與載入中、載入失敗等提示文字都使用新名稱。
 
-## [**v1.14.3**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/61045e54a240a02512d11ab8d33cb53abdbbc7dd)
+## [**v1.14.3**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/44cb8fb20276ea4c2102de6ac6b62c8776b1589e)
 
 - [PR #22](https://github.com/watain666/Vaundy-Taiwan-2026/pull/22)：聊天視窗標題由「應援小物交流」改為「留言板」，下方說明改為「交換應援小物、和 VAWS 交流的地方」。
 - [PR #22](https://github.com/watain666/Vaundy-Taiwan-2026/pull/22)：留言板拿掉留言的愛心按讚功能。
 
-## [**v1.14.2**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/93a491bbd9536672036857e39bb9c9150082409f)
+## [**v1.14.2**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/f2935126198865c130f97c2bf76705263a0b6691)
 
 - [PR #21](https://github.com/watain666/Vaundy-Taiwan-2026/pull/21)：應援小物交流聊天視窗改用與首頁相同的深紅底與金色，不再隨淺色或深色主題變換；手機點完「送出」按鈕後不再變色。
 - [PR #21](https://github.com/watain666/Vaundy-Taiwan-2026/pull/21)：修正回覆留言時輸入框被擠在訊息泡泡內，改為撐滿視窗寬度，關閉按鈕不再蓋住暱稱。
 
-## [**v1.14.1**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/2e327a610eaeb88fb7145b7d7d578442057275f3)
+## [**v1.14.1**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/d5610182c3d806664bf39d6439c2b81d0e1a2811)
 
 - [PR #20](https://github.com/watain666/Vaundy-Taiwan-2026/pull/20)：修正應援小物交流中，含圖片的留言往上捲時會蓋住輸入框；圖片載入後會自動捲到最新留言。
 - [PR #20](https://github.com/watain666/Vaundy-Taiwan-2026/pull/20)：修正手機打開鍵盤時聊天視窗版面錯亂，視窗改為貼齊可見範圍並暫時收起提醒文字；輸入框不再跳出聯絡人自動填入。
 
-## [**v1.14.0**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/2510301de4b79b2a3eb87ea47d84280c7e70f8c8)
+## [**v1.14.0**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/da3abd34868a34a3fba4904970678550eb52a472)
 
 - [PR #19](https://github.com/watain666/Vaundy-Taiwan-2026/pull/19)：「應援小物交流板」從首頁卡片改為首頁與應援指南列表右下角的聊天泡泡，點開後以聊天視窗顯示，最新留言在最底部，自己暱稱的留言靠右；視窗開著時會自動載入新留言，正在輸入時不會打斷。歌曲頁與歌單頁不顯示泡泡。
 - [PR #19](https://github.com/watain666/Vaundy-Taiwan-2026/pull/19)：交流板可以上傳圖片，照片會先自動縮小並移除拍攝地點等資訊；點圖片可在新分頁查看大圖。
 - [PR #19](https://github.com/watain666/Vaundy-Taiwan-2026/pull/19)：留言改為送出後直接公開，不當內容由管理員事後刪除。
 
-## [**v1.13.0**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/628fcbc3c9f29c82c28414fcd05cf1d039c77f49)
+## [**v1.13.0**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/e6d34547ce28587c8a96b571a83a6d62121edf59)
 
 - [PR #18](https://github.com/watain666/Vaundy-Taiwan-2026/pull/18)：首頁「Spotify 官方預熱歌單」下方新增可收合的「應援小物交流板」，讓粉絲討論應援小物的發放時間、地點與認人方式；只需填暱稱即可留言，新留言經管理員審核後才公開，留言板在展開卡片時才載入。
 
-## [**v1.12.0**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/0040f50095ff45042c0ff79c62f5d9718e3fffbe)
+## [**v1.12.0**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/f30abe406ebd6d68877ea6524afd74fd6023d224)
 
 - [PR #17](https://github.com/watain666/Vaundy-Taiwan-2026/pull/17)：首頁「VAWS 會員票卡」下方新增可收合的「Spotify 官方預熱歌單」，內嵌 Spotify「On Tour Taiwan: Vaundy」播放器，展開卡片時才載入；標題與內文提醒曲目可能與實際歌單相近，介意劇透者請勿播放。
 
-## [**v1.11.3**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/0c9c72da2ff829a82fcb03d0988e43a04418f91d)
+## [**v1.11.3**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/e8cebb197f11569b326fef916db53fe574a0753f)
 
 - [PR #16](https://github.com/watain666/Vaundy-Taiwan-2026/pull/16)：首頁「公告・指南」併入「演出資訊」，台北場現場配置圖移到卡片最上方，且「演出資訊」改為預設展開，打開網站就能看到。
 - [PR #16](https://github.com/watain666/Vaundy-Taiwan-2026/pull/16)：現場配置圖在卡片中改用壓縮過的縮圖，點開放大檢視時才載入原圖，減少首頁載入流量。
 - [PR #16](https://github.com/watain666/Vaundy-Taiwan-2026/pull/16)：演出進行中時，倒數區的文字由「直播中」改為「演出中」。
 
-## [**v1.11.2**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/7c26b4080334bde923e1aea1bdc1f6015c92d94b)
+## [**v1.11.2**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/f2be0f1e409b2cfab0affb22c11d9e18d860e770)
 
 - [PR #15](https://github.com/watain666/Vaundy-Taiwan-2026/pull/15)：依主辦單位公告補上台北場現場資訊，包括實名驗證、服務台、周邊販售、拍貼機、卡拉OK MONSTER 與 VAWS 攤位的時間，各區整隊位置與入場門，現場無法取票的提醒；「公告・指南」加入現場配置圖。
 - [PR #15](https://github.com/watain666/Vaundy-Taiwan-2026/pull/15)：應援禮儀加入「台北場官方規定」，包括以尖叫、合唱、揮手、掌聲代替上下跳動，2、3 樓勿站立和跺腳，以及禁止攜帶物品等事項；行李提醒改為官方禁止攜帶大型行李。
