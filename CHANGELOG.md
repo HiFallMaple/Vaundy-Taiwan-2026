@@ -2,7 +2,7 @@
 
 本檔案依 Git 歷史整理，使用版本提交作為每一段的邊界。
 
-## [**v1.14.12**]
+## [**v1.14.12**](https://github.com/watain666/Vaundy-Taiwan-2026/commit/d7d0b0231cfdd55df3d56a99c60edf8c3bb9b5e6)
 
 - [PR #31](https://github.com/watain666/Vaundy-Taiwan-2026/pull/31)：〈裸の勇者〉、〈飛ぶ時〉、〈タイムパラドックス〉的中文翻譯改用 Vaundy 官方 MV 上傳的繁體中文字幕，翻譯署名改為「Vaundy 官方 YouTube 字幕」並連到該首 MV。
 - [PR #31](https://github.com/watain666/Vaundy-Taiwan-2026/pull/31)：依官方 MV 日文字幕與 utaten 修正這三首共 11 句歌詞的用字（例如〈裸の勇者〉「誰かが今涙を飲み込んでいる」、〈飛ぶ時〉「僕の運命を前に」），讀音與羅馬拼音同步更新；實際唱兩次的「全部全部」維持原樣。
